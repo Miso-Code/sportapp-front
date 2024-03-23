@@ -1,5 +1,5 @@
-import prettierConfig from './index.js'
+const prettierConfig = require('./index.js')
 
-export default {
+module.exports = {
 	...prettierConfig
 }
