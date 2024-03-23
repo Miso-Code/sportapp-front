@@ -1,3 +1,3 @@
-module.exports = {
-  preset: 'react-native',
-};
+export default {
+	preset: 'react-native'
+}

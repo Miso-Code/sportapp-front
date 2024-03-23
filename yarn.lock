@@ -2094,10 +2094,34 @@
     eslint-plugin-react-hooks "^4.6.0"
     eslint-plugin-react-native "^4.0.0"
 
+"@react-native/eslint-config@^0.75.0-main":
+  version "0.75.0-main"
+  resolved "https://registry.yarnpkg.com/@react-native/eslint-config/-/eslint-config-0.75.0-main.tgz#5411a058cc50ef1779cfd6368d838a9bbfcf26fc"
+  integrity sha512-KnWKsCRe4lg9LWbAOZeB2sJTs+p4ulXptS8tuIsoi6B+hQcx7VjR2sGj95PDVXTpa7Ut1F6H4tByPddaH+4t0Q==
+  dependencies:
+    "@babel/core" "^7.20.0"
+    "@babel/eslint-parser" "^7.20.0"
+    "@react-native/eslint-plugin" "0.75.0-main"
+    "@typescript-eslint/eslint-plugin" "^6.7.4"
+    "@typescript-eslint/parser" "^6.7.4"
+    eslint-config-prettier "^8.5.0"
+    eslint-plugin-eslint-comments "^3.2.0"
+    eslint-plugin-ft-flow "^2.0.1"
+    eslint-plugin-jest "^26.5.3"
+    eslint-plugin-prettier "^4.2.1"
+    eslint-plugin-react "^7.30.1"
+    eslint-plugin-react-hooks "^4.6.0"
+    eslint-plugin-react-native "^4.0.0"
+
 "@react-native/eslint-plugin@0.73.1":
   version "0.73.1"
   resolved "https://registry.yarnpkg.com/@react-native/eslint-plugin/-/eslint-plugin-0.73.1.tgz#79d2c4d90c80bfad8900db335bfbaf1ca599abdc"
   integrity sha512-8BNMFE8CAI7JLWLOs3u33wcwcJ821LYs5g53Xyx9GhSg0h8AygTwDrwmYb/pp04FkCNCPjKPBoaYRthQZmxgwA==
+
+"@react-native/eslint-plugin@0.75.0-main":
+  version "0.75.0-main"
+  resolved "https://registry.yarnpkg.com/@react-native/eslint-plugin/-/eslint-plugin-0.75.0-main.tgz#a186da15837ea313b805a27fa629926b809cadc6"
+  integrity sha512-r5JICIq8TCPMkbbJwAgOdE4wIAsELQX+NhaPfB6LMvxCYwsGc41UZG8ZAoCnaCLVtHA/p9xtmJNMVAODiArASA==
 
 "@react-native/gradle-plugin@0.73.4":
   version "0.73.4"
@@ -2424,7 +2448,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/eslint-plugin@^6.5.0":
+"@typescript-eslint/eslint-plugin@^6.5.0", "@typescript-eslint/eslint-plugin@^6.7.4":
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.21.0.tgz#30830c1ca81fd5f3c2714e524c4303e0194f9cd3"
   integrity sha512-oy9+hTPCUFpngkEZUSzbf9MxI65wbKFoQYsgPdILTfbUldp5ovUuphZVe4i30emU9M/kP+T64Di0mxl7dSw3MA==
@@ -2468,7 +2492,7 @@
     "@typescript-eslint/typescript-estree" "5.62.0"
     debug "^4.3.4"
 
-"@typescript-eslint/parser@^6.5.0":
+"@typescript-eslint/parser@^6.5.0", "@typescript-eslint/parser@^6.7.4":
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-6.21.0.tgz#af8fcf66feee2edc86bc5d1cf45e33b0630bf35b"
   integrity sha512-tbsV1jPne5CkFQCgPBcDOt30ItF7aJoZL997JSF7MhGQqOeT3svWRYxiqlfA5RUdlHN6Fi+EI9bxqbdyAUZjYQ==
