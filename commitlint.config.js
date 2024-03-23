@@ -9,5 +9,3 @@ module.exports = {
 		'references-empty': [2, 'never']
 	}
 }
-
-console.log('Hello, world!')
