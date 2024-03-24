@@ -5,7 +5,9 @@
 	"scripts": {
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
-		"lint": "eslint .",
+		"lint": "yarn lint:js",
+		"lint:js": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
 		"start": "react-native start",
 		"test": "jest",
 		"pre-commit": "lint-staged",
@@ -25,7 +27,6 @@
 		"@react-native/typescript-config": "0.73.1",
 		"@sportapp/eslint-config": "*",
 		"@sportapp/prettier-config": "*",
-		"@sportapp/stylelint-config": "*",
 		"@types/react": "^18.2.6",
 		"@types/react-test-renderer": "^18.0.0",
 		"babel-jest": "^29.6.3",
