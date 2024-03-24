@@ -1,11 +1,5 @@
 module.exports = {
-	extends: ['stylelint-config-standard'],
-	overrides: [
-		{
-			files: ['*.scss', '**/*.sass'],
-			extends: ['stylelint-config-standard-scss']
-		}
-	],
+	extends: ['stylelint-config-standard-scss'],
 	rules: {
 		'scss/at-rule-no-unknown': [
 			true,
@@ -27,6 +21,5 @@ module.exports = {
 				ignoreShorthands: ['/^grid.*/']
 			}
 		]
-	},
-	ignoreFiles: ['**/coverage/**']
+	}
 }

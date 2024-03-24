@@ -11,6 +11,7 @@
 		"@sportapp/prettier-config": "*",
 		"stylelint": "^16.2.1",
 		"stylelint-config-standard": "^22.0.0",
+		"stylelint-config-standard-scss": "^13.0.0",
 		"stylelint-react-native": "^2.7.0"
 	}
 }
