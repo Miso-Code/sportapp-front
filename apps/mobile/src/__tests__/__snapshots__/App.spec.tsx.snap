@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render correctly 1`] = `
+<RCTSafeAreaView
+  style={
+    {
+      "backgroundColor": "#F3F3F3",
+    }
+  }
+>
+  <Text>
+    Mobile App
+  </Text>
+</RCTSafeAreaView>
+`;

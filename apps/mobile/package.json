@@ -9,7 +9,7 @@
 		"lint:js": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
 		"start": "react-native start",
-		"test": "jest",
+		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage",
 		"pre-commit": "lint-staged",
 		"format": "prettier --write \"**/*.{ts,tsx,md,js}\""
 	},
@@ -27,6 +27,7 @@
 		"@react-native/typescript-config": "0.73.1",
 		"@sportapp/eslint-config": "*",
 		"@sportapp/prettier-config": "*",
+		"@types/jest": "^29.5.12",
 		"@types/react": "^18.2.6",
 		"@types/react-test-renderer": "^18.0.0",
 		"babel-jest": "^29.6.3",
@@ -35,6 +36,9 @@
 		"lint-staged": "^15.2.2",
 		"prettier": "2.8.8",
 		"react-test-renderer": "18.2.0",
+		"ts-jest": "^29.1.2",
+		"ts-jest-mock-import-meta": "^1.2.0",
+		"ts-node": "^10.9.2",
 		"typescript": "5.0.4"
 	},
 	"engines": {
