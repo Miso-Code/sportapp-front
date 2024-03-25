@@ -5,7 +5,8 @@
 	"files": [
 		"library.js",
 		"next.js",
-		"react-internal.js"
+		"react-internal.js",
+		"web.js"
 	],
 	"devDependencies": {
 		"@react-native/eslint-config": "^0.75.0-main",
@@ -17,6 +18,8 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-config-turbo": "^1.12.4",
 		"eslint-plugin-only-warn": "^1.1.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.6",
 		"typescript": "^5.3.3"
 	}
 }
