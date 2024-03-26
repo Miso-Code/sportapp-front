@@ -9,5 +9,6 @@
 			"@containers/*": ["./src/containers/*"],
 			"@screens/*": ["./src/screens/*"]
 		}
-	}
+	},
+	"allowJs": true
 }

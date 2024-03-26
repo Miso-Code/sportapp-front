@@ -10,7 +10,9 @@
 			"**/react-native",
 			"**/react-native/**",
 			"**/@react-native",
-			"**/@react-native/**"
+			"**/@react-native/**",
+			"**/react-i18next",
+			"**/react-i18next/**"
 		]
 	},
 	"scripts": {
@@ -22,6 +24,8 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"i18next": "^23.10.1",
+		"react-i18next": "^14.1.0",
 		"typescript": "5.3.3"
 	},
 	"devDependencies": {

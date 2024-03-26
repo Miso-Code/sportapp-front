@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { SafeAreaView, Text } from 'react-native'
-
+import { SafeAreaView } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
+import TestComponent from './TestComponent'
 
 function App(): React.JSX.Element {
 	const backgroundStyle = {
@@ -11,7 +11,7 @@ function App(): React.JSX.Element {
 
 	return (
 		<SafeAreaView style={backgroundStyle}>
-			<Text>Mobile App</Text>
+			<TestComponent />
 		</SafeAreaView>
 	)
 }

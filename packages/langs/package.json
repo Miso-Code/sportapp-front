@@ -1,0 +1,13 @@
+{
+	"name": "@sportapp/langs",
+	"version": "1.0.0",
+	"license": "MIT",
+	"files": [
+		"en.json",
+		"es.json",
+		"index.ts"
+	],
+	"devDependencies": {
+		"@sportapp/prettier-config": "*"
+	}
+}
