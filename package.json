@@ -12,7 +12,11 @@
 			"**/@react-native",
 			"**/@react-native/**",
 			"**/react-i18next",
-			"**/react-i18next/**"
+			"**/react-i18next/**",
+			"**/react-native-vector-icons",
+			"**/react-native-vector-icons/**",
+			"**/react-native-paper",
+			"**/react-native-paper/**"
 		]
 	},
 	"scripts": {
