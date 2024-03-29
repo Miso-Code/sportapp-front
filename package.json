@@ -23,9 +23,16 @@
 	},
 	"scripts": {
 		"build": "turbo build",
+		"build:web": "turbo build --filter=@sportapp/web",
+		"build:mobile": "turbo build --filter=@sportapp/mobile",
 		"dev": "turbo dev",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo lint",
+		"lint:web":  "turbo lint --filter=@sportapp/web",
+		"lint:mobile":  "turbo lint --filter=@sportapp/mobile",
+		"test": "turbo test",
+		"test:web":  "turbo test --filter=@sportapp/web",
+		"test:mobile":  "turbo test --filter=@sportapp/mobile",
 		"pre-commit": "turbo pre-commit",
 		"prepare": "husky install"
 	},

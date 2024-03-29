@@ -1,0 +1,49 @@
+name: Auto Merge PR to MobileApp
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+    paths:
+      - "apps/mobile/**"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: adopt
+          cache: gradle
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Run Yarn Install
+        run: yarn install --fro-zen-lockfile
+
+      - name: Lint
+        run: yarn lint:mobile
+
+      - name: Run the tests
+        run: yarn test:mobile
+
+      - name: Build
+        run: yarn build:mobile
+
+#      - name: Upload application
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: app
+#          path: android/app/build/outputs/apk/release/app-release.apk
+#          retention-days: 3
