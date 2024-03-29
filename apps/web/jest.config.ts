@@ -10,11 +10,8 @@ export default {
 	collectCoverageFrom: [
 		'<rootDir>/src/components/**/*.{ts,tsx}',
 		'<rootDir>/src/containers/**/*.{ts,tsx}',
-		'<rootDir>/src/hooks/**/*.{ts,tsx}',
 		'<rootDir>/src/pages/**/*.{ts,tsx}',
-		'<rootDir>/src/store/**/*.{ts,tsx}',
-		'<rootDir>/src/repository/**/*.ts',
-		'<rootDir>/src/utils/**/*.ts',
+		'<rootDir>/src/router/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/interfaces/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],
@@ -25,13 +22,7 @@ export default {
 		'^@/(.*)$': ['<rootDir>/src/$1'],
 		'^@components/(.*)$': ['<rootDir>/src/components/$1'],
 		'^@containers/(.*)$': ['<rootDir>/src/containers/$1'],
-		'^@assets/(.*)$': ['<rootDir>/src/assets/$1'],
-		'^@pages/(.*)$': ['<rootDir>/src/pages/$1'],
-		'^@styles/(.*)$': ['<rootDir>/src/styles/$1'],
-		'^@utils/(.*)$': ['<rootDir>/src/utils/$1'],
-		'^@hooks/(.*)$': ['<rootDir>/src/hooks/$1'],
-		'^@locales/(.*)$': ['<rootDir>/src/translate/locales/$1'],
-		'^@store/(.*)$': ['<rootDir>/src/store/$1']
+		'^@pages/(.*)$': ['<rootDir>/src/pages/$1']
 	},
-	reporters: ['default', 'jest-junit']
+	reporters: ['default']
 }

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import './App.scss'
+import './_index.scss'
 import Button from '@mui/material/Button'
 
 function App() {
