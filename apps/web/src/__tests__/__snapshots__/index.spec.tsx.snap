@@ -5,99 +5,39 @@ exports[`<App /> should render correctly 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        <a
-          href="https://vitejs.dev"
-          target="_blank"
-        >
-          <img
-            alt="Vite logo"
-            class="logo"
-            src="mocked-file-content"
-          />
-        </a>
-        <a
-          href="https://react.dev"
-          target="_blank"
-        >
-          <img
-            alt="React logo"
-            class="logo react"
-            src="mocked-file-content"
-          />
-        </a>
-      </div>
-      <h1>
-        Vite + React
+      <h1
+        class="text-9xl"
+      >
+        app.name
       </h1>
-      <div
-        class="card"
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
       >
-        <button>
-          count is 
-          0
-        </button>
-        <p>
-          Edit 
-          <code>
-            src/App.tsx
-          </code>
-           and save to test HMR
-        </p>
-      </div>
-      <p
-        class="read-the-docs"
-      >
-        Click on the Vite and React logos to learn more
-      </p>
+        Hello world
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div>
-      <a
-        href="https://vitejs.dev"
-        target="_blank"
-      >
-        <img
-          alt="Vite logo"
-          class="logo"
-          src="mocked-file-content"
-        />
-      </a>
-      <a
-        href="https://react.dev"
-        target="_blank"
-      >
-        <img
-          alt="React logo"
-          class="logo react"
-          src="mocked-file-content"
-        />
-      </a>
-    </div>
-    <h1>
-      Vite + React
+    <h1
+      class="text-9xl"
+    >
+      app.name
     </h1>
-    <div
-      class="card"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
     >
-      <button>
-        count is 
-        0
-      </button>
-      <p>
-        Edit 
-        <code>
-          src/App.tsx
-        </code>
-         and save to test HMR
-      </p>
-    </div>
-    <p
-      class="read-the-docs"
-    >
-      Click on the Vite and React logos to learn more
-    </p>
+      Hello world
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

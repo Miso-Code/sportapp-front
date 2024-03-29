@@ -28,7 +28,10 @@
 			"@screens/*": ["./src/screens/*"]
 		},
 
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true
 	},
 	"include": ["src", "src/config/test/jest.setup.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
