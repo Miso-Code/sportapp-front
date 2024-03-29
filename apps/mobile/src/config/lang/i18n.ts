@@ -4,8 +4,8 @@ import en from '@sportapp/langs/en.json'
 import es from '@sportapp/langs/es.json'
 
 const resources = {
-	en: en,
-	es: es
+	en,
+	es
 }
 
 i18n.use(initReactI18next).init({

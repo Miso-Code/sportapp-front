@@ -1,11 +1,11 @@
 import { render, RenderResult } from '@testing-library/react'
-import App from '@pages/Home'
+import Home from '@pages/Home'
 
-describe('<App />', () => {
+describe('Home', () => {
 	let wrapper: RenderResult
 
 	beforeEach(() => {
-		wrapper = render(<App />)
+		wrapper = render(<Home />)
 	})
 
 	afterEach(() => {

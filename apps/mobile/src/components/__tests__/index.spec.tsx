@@ -1,14 +1,13 @@
-import 'react-native'
 import React from 'react'
-import App from '@/App'
+import TestComponent from '@components/TestComponent'
 
 import renderer, { ReactTestRenderer } from 'react-test-renderer'
 
-describe('<App />', () => {
+describe('TestComponent', () => {
 	let wrapper: ReactTestRenderer
 
 	beforeEach(() => {
-		wrapper = renderer.create(<App />)
+		wrapper = renderer.create(<TestComponent />)
 	})
 
 	afterEach(() => {

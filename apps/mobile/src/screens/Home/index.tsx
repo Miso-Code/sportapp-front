@@ -1,16 +1,16 @@
 import React from 'react'
 
+import TestComponent from '@components/TestComponent'
 import { SafeAreaView } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
-import { PaperProvider } from 'react-native-paper'
 import {
 	ActivityIndicator,
-	MD2Colors,
 	Button,
 	Icon,
-	MD3Colors
+	MD2Colors,
+	MD3Colors,
+	PaperProvider
 } from 'react-native-paper'
-import TestComponent from './TestComponent'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 function App(): React.JSX.Element {
 	const backgroundStyle = {

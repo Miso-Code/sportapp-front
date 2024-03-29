@@ -16,7 +16,9 @@
 			"**/react-native-vector-icons",
 			"**/react-native-vector-icons/**",
 			"**/react-native-paper",
-			"**/react-native-paper/**"
+			"**/react-native-paper/**",
+			"**/react-test-renderer",
+			"**/react-test-renderer/**"
 		]
 	},
 	"scripts": {

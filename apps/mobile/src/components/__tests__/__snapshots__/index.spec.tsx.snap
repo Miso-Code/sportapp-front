@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestComponent should render correctly 1`] = `
+<Text>
+  app.name
+</Text>
+`;

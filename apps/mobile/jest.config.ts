@@ -3,6 +3,7 @@ import type { Config } from 'jest'
 const config: Config = {
 	preset: 'react-native',
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'node'],
+	setupFilesAfterEnv: ['<rootDir>/src/config/test/jest.setup.ts'],
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'<rootDir>/src/components/**/*.{ts,tsx}',
@@ -10,6 +11,7 @@ const config: Config = {
 		'!<rootDir>/src/**/interfaces/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],
+	transformIgnorePatterns: ['node_modules/react-native-paper'],
 	moduleNameMapper: {
 		'\\.(gif|ttf|eot|svg|png)$':
 			'<rootDir>/src/config/test/__mocks__/fileMock.ts',

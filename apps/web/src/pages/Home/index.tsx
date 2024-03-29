@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import Button from '@mui/material/Button'
 
-function App() {
+function Home() {
 	const { t } = useTranslation()
 
 	return (
@@ -13,4 +13,4 @@ function App() {
 	)
 }
 
-export default App
+export default Home

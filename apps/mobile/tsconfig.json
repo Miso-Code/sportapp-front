@@ -10,5 +10,6 @@
 			"@screens/*": ["./src/screens/*"]
 		}
 	},
-	"allowJs": true
+	"allowJs": true,
+	"include": ["src", "src/config/test/jest.setup.ts"]
 }
