@@ -16,7 +16,7 @@ export default {
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],
 	moduleNameMapper: {
-		'\\.(gif|ttf|eot|svg|png)$':
+		'\\.(gif|ttf|eot|svg|png|jpg)$':
 			'<rootDir>/config/test/__mocks__/fileMock.ts',
 		'^.+\\.(css|less|scss)$': 'babel-jest',
 		'^@/(.*)$': ['<rootDir>/src/$1'],

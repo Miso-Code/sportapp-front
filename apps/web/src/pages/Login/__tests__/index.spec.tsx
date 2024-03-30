@@ -1,11 +1,11 @@
 import { render, RenderResult } from '@testing-library/react'
-import Home from 'pages/Home'
+import Login from 'pages/Login'
 
-describe('Home', () => {
+describe('Login', () => {
 	let wrapper: RenderResult
 
 	beforeEach(() => {
-		wrapper = render(<Home />)
+		wrapper = render(<Login />)
 	})
 
 	afterEach(() => {
