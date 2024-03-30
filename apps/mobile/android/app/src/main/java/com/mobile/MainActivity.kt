@@ -1,4 +1,4 @@
-package com.mobile
+package com.misoteam.sportapp
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

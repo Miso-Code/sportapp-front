@@ -16,9 +16,9 @@ const config: Config = {
 		'\\.(gif|ttf|eot|svg|png)$':
 			'<rootDir>/src/config/test/__mocks__/fileMock.ts',
 		'^@/(.*)$': ['<rootDir>/src/$1'],
-		'^@components/(.*)$': ['<rootDir>/src/components/$1'],
-		'^@containers/(.*)$': ['<rootDir>/src/containers/$1'],
-		'^@screens/(.*)$': ['<rootDir>/src/screens/$1']
+		'^components/(.*)$': ['<rootDir>/src/components/$1'],
+		'^containers/(.*)$': ['<rootDir>/src/containers/$1'],
+		'^screens/(.*)$': ['<rootDir>/src/screens/$1']
 	},
 	reporters: ['default'],
 	coverageThreshold: {

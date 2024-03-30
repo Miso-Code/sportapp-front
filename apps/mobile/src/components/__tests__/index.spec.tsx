@@ -1,5 +1,5 @@
 import React from 'react'
-import TestComponent from '@components/TestComponent'
+import TestComponent from 'components/TestComponent'
 
 import renderer, { ReactTestRenderer } from 'react-test-renderer'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TestComponent from '@components/TestComponent'
+import TestComponent from 'components/TestComponent'
 import { SafeAreaView } from 'react-native'
 import {
 	ActivityIndicator,
