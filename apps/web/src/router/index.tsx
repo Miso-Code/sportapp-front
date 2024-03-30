@@ -1,16 +1,5 @@
-import App from '@pages/Home'
-import {
-	createBrowserRouter,
-	RouteObject,
-	RouterProvider
-} from 'react-router-dom'
-
-const routes: RouteObject[] = [
-	{
-		path: '/',
-		element: <App />
-	}
-]
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { routes } from './routes'
 
 const router = createBrowserRouter(routes)
 
