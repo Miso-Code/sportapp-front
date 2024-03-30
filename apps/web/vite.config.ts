@@ -8,9 +8,9 @@ export default defineConfig({
 		/* Absolutes paths */
 		alias: {
 			'@': '/src',
-			'@components': '/src/components',
-			'@containers': '/src/containers',
-			'@pages': '/src/pages'
+			components: '/src/components',
+			containers: '/src/containers',
+			pages: '/src/pages'
 		}
 	}
 })

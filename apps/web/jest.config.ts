@@ -20,9 +20,9 @@ export default {
 			'<rootDir>/config/test/__mocks__/fileMock.ts',
 		'^.+\\.(css|less|scss)$': 'babel-jest',
 		'^@/(.*)$': ['<rootDir>/src/$1'],
-		'^@components/(.*)$': ['<rootDir>/src/components/$1'],
-		'^@containers/(.*)$': ['<rootDir>/src/containers/$1'],
-		'^@pages/(.*)$': ['<rootDir>/src/pages/$1']
+		'^components/(.*)$': ['<rootDir>/src/components/$1'],
+		'^containers/(.*)$': ['<rootDir>/src/containers/$1'],
+		'^pages/(.*)$': ['<rootDir>/src/pages/$1']
 	},
 	reporters: ['default']
 }
