@@ -1,6 +1,10 @@
 import { routes } from '@/router/routes'
 import { RouteObject } from 'react-router-dom'
 
+jest.mock('@/pages/Home', () => () => <div>Home</div>)
+
+jest.mock('@/pages/Register', () => () => <div>Register</div>)
+
 describe('routes', () => {
 	let route: RouteObject[]
 

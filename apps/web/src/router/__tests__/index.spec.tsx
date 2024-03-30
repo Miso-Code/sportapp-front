@@ -1,7 +1,18 @@
 import Router from '@/router'
 import { RenderResult, render } from '@testing-library/react'
 
-jest.mock('@/pages/Home', () => () => <div>Home</div>)
+jest.mock('@/router/routes', () => ({
+	routes: [
+		{
+			path: '/',
+			element: <div>Home</div>
+		},
+		{
+			path: '/register',
+			element: <div>Register</div>
+		}
+	]
+}))
 
 describe('Router', () => {
 	let wrapper: RenderResult

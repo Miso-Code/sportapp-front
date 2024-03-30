@@ -1,11 +1,13 @@
 import { render, RenderResult } from '@testing-library/react'
-import Login from 'pages/Login'
+import Register from 'pages/Register'
 
-describe('Login', () => {
+jest.mock('containers/Register', () => () => <div>RegisterContainer</div>)
+
+describe('Register', () => {
 	let wrapper: RenderResult
 
 	beforeEach(() => {
-		wrapper = render(<Login />)
+		wrapper = render(<Register />)
 	})
 
 	afterEach(() => {

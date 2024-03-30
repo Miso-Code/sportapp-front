@@ -1,0 +1,29 @@
+import RegisterContainer from 'containers/Register'
+import registerImage from 'assets/images/login-wallpaper.jpg'
+import 'pages/Register/_index.scss'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+
+export default function Login() {
+	return (
+		<div className='register'>
+			<main className='section-main'>
+				<Paper className='card-register'>
+					<Typography className='card-title' variant='h6'>
+						Registro
+					</Typography>
+					<RegisterContainer />
+				</Paper>
+			</main>
+			<section className='section-secondary'>
+				<figure className='container-image'>
+					<img
+						className='image-register'
+						src={registerImage}
+						alt='register'
+					/>
+				</figure>
+			</section>
+		</div>
+	)
+}

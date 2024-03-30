@@ -1,0 +1,37 @@
+.register {
+	@apply flex;
+
+	min-width: 100vw;
+	min-height: 100vh;
+
+	.section {
+		&-main {
+			@apply flex-1 p-2 flex flex-col items-center justify-center;
+		}
+
+		&-secondary {
+			@apply w-1/2 lg:block hidden;
+		}
+	}
+
+	.container-image {
+		@apply w-full h-full;
+	}
+
+	.image-register {
+		@apply object-cover object-center w-full h-full;
+	}
+
+	.card {
+		&-register {
+			@apply w-full p-4;
+
+			min-width: 300px;
+			max-width: 466px;
+		}
+
+		&-title {
+			@apply w-full text-center mb-6;
+		}
+	}
+}
