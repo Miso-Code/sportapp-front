@@ -76,15 +76,17 @@ jobs:
 
       - name: Resolve bump strategy
         id: bump_strategy
+        env:
+          BUMP_STRATEGY: ${{ github.event.inputs.BUMP_STRATEGY }}
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             ## Validate input
-            if [[ "${{ github.event.inputs.BUMP_STRATEGY }}" != "major" && "${{ github.event.inputs.BUMP_STRATEGY }}" != "minor" && "${{ github.event.inputs.BUMP_STRATEGY }}" != "patch" ]]; then
-              echo "Invalid bump strategy '${{ github.event.inputs.BUMP_STRATEGY }}'."
+            if [[ "$BUMP_STRATEGY" != "major" && "$BUMP_STRATEGY" != "minor" && "$BUMP_STRATEGY" != "patch" ]]; then
+              echo "Invalid bump strategy '$BUMP_STRATEGY'."
               exit 1
             fi
             # echo "{name}={value}" >> $GITHUB_OUTPUT
-            echo "strategy=${{ github.event.inputs.BUMP_STRATEGY }}" >> $GITHUB_OUTPUT
+            echo "strategy=$BUMP_STRATEGY" >> $GITHUB_OUTPUT
           else
             if [[ "${{ github.event.head_commit.message }}" == *"[MAJOR]"* ]]; then
               echo "strategy=major" >> $GITHUB_OUTPUT

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TestComponent from 'components/TestComponent'
-import { SafeAreaView } from 'react-native'
+import { Alert, SafeAreaView } from 'react-native'
 import {
 	ActivityIndicator,
 	Button,
@@ -17,15 +17,16 @@ function App(): React.JSX.Element {
 		backgroundColor: Colors.lighter
 	}
 
+	const handlePress = () => {
+		Alert.alert('Button Pressed', 'You pressed the button!')
+	}
+
 	return (
 		<PaperProvider>
 			<SafeAreaView style={backgroundStyle}>
 				<ActivityIndicator animating={true} color={MD2Colors.red800} />
 				<TestComponent />
-				<Button
-					icon='camera'
-					mode='contained'
-					onPress={() => console.log('Pressed')}>
+				<Button icon='camera' mode='contained' onPress={handlePress}>
 					Press me
 				</Button>
 				<Icon source='camera' color={MD3Colors.error50} size={20} />
