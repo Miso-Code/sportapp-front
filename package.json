@@ -25,6 +25,7 @@
 		"build": "turbo build",
 		"build:web": "turbo build --filter=@sportapp/web",
 		"build:mobile": "turbo build --filter=@sportapp/mobile",
+		"package:mobile": "turbo package --filter=@sportapp/mobile",
 		"dev": "turbo dev",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"lint": "turbo lint",
