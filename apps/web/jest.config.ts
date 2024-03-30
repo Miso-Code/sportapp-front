@@ -22,6 +22,7 @@ export default {
 		'^@/(.*)$': ['<rootDir>/src/$1'],
 		'^components/(.*)$': ['<rootDir>/src/components/$1'],
 		'^containers/(.*)$': ['<rootDir>/src/containers/$1'],
+		'^assets/(.*)$': ['<rootDir>/src/assets/$1'],
 		'^pages/(.*)$': ['<rootDir>/src/pages/$1']
 	},
 	reporters: ['default']
