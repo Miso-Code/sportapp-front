@@ -28,12 +28,12 @@ jobs:
       - name: Run the tests
         run: yarn test:mobile
 
-  instrumented-tests:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-  # TODO: Work in progress
+# TODO: Work in progress
+#  instrumented-tests:
+#    runs-on: macos-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
   #      - name: Install Java
   #        uses: actions/setup-java@v3
   #        with:
@@ -59,6 +59,15 @@ jobs:
           java-version: 17
           distribution: adopt
           cache: gradle
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Run Yarn Install
+        run: yarn install --fro-zen-lockfile
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
