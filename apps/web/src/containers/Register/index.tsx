@@ -1,15 +1,11 @@
+import TextFieldPasswordController from '@/components/Inputs/TexFieldPasswordController'
 import { yupResolver } from '@hookform/resolvers/yup'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { Button } from '@mui/material'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
 import TextFieldController from 'components/Inputs/TexFieldController'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './_index.scss'
-import schema from './utils/schema'
 import { Props } from './interfaces'
+import schema from './utils/schema'
 
 export default function RegisterContainer({ onHandleSubmit }: Props) {
 	const { handleSubmit, control } = useForm({
@@ -22,16 +18,6 @@ export default function RegisterContainer({ onHandleSubmit }: Props) {
 		},
 		mode: 'onChange'
 	})
-
-	const [showPassword, setShowPassword] = useState(false)
-
-	const handleClickShowPassword = () => setShowPassword((show) => !show)
-
-	const handleMouseDownPassword = (
-		event: React.MouseEvent<HTMLButtonElement>
-	) => {
-		event.preventDefault()
-	}
 
 	const onSubmit = (data: unknown) => {
 		onHandleSubmit(data)
@@ -59,28 +45,10 @@ export default function RegisterContainer({ onHandleSubmit }: Props) {
 				label='Correo electronico'
 				name='email'
 			/>
-			<TextFieldController
+			<TextFieldPasswordController
 				// @ts-ignore
 				control={control}
 				fullWidth
-				type={showPassword ? 'text' : 'password'}
-				InputProps={{
-					endAdornment: (
-						<InputAdornment position='end'>
-							<IconButton
-								aria-label='toggle password visibility'
-								onClick={handleClickShowPassword}
-								onMouseDown={handleMouseDownPassword}
-								edge='end'>
-								{showPassword ? (
-									<VisibilityOff />
-								) : (
-									<Visibility />
-								)}
-							</IconButton>
-						</InputAdornment>
-					)
-				}}
 				label='Contraseña'
 				name='password'
 			/>
