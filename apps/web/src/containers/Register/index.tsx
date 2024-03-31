@@ -31,42 +31,52 @@ export default function RegisterContainer() {
 		event.preventDefault()
 	}
 
-	const onSubmit = (data) => console.log(data)
+	const onSubmit = (data: unknown) => console.log(data)
 	return (
 		<form className='register-form' onSubmit={handleSubmit(onSubmit)}>
-			<TextFieldController<typeof control>
+			<TextFieldController
+				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Nombre'
 				name='name'
 			/>
-			<TextFieldController<typeof control>
+			<TextFieldController
+				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Apellido'
 				name='lastName'
 			/>
-			<TextFieldController<typeof control>
+			<TextFieldController
+				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Correo electronico'
 				name='email'
 			/>
-			<TextFieldController<typeof control>
+			<TextFieldController
+				// @ts-ignore
 				control={control}
 				fullWidth
 				type={showPassword ? 'text' : 'password'}
-				endAdornment={
-					<InputAdornment position='end'>
-						<IconButton
-							aria-label='toggle password visibility'
-							onClick={handleClickShowPassword}
-							onMouseDown={handleMouseDownPassword}
-							edge='end'>
-							{showPassword ? <VisibilityOff /> : <Visibility />}
-						</IconButton>
-					</InputAdornment>
-				}
+				InputProps={{
+					endAdornment: (
+						<InputAdornment position='end'>
+							<IconButton
+								aria-label='toggle password visibility'
+								onClick={handleClickShowPassword}
+								onMouseDown={handleMouseDownPassword}
+								edge='end'>
+								{showPassword ? (
+									<VisibilityOff />
+								) : (
+									<Visibility />
+								)}
+							</IconButton>
+						</InputAdornment>
+					)
+				}}
 				label='Contraseña'
 				name='password'
 			/>

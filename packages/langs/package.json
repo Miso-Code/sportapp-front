@@ -5,6 +5,8 @@
 	"files": [
 		"en.json",
 		"es.json",
+		"en.js",
+		"es.js",
 		"index.ts"
 	],
 	"devDependencies": {

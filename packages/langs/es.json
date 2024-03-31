@@ -1,7 +1,13 @@
 {
-	"translation": {
-		"app": {
-			"name": "Mi aplicacion"
-		}
+	"app": {
+		"name": "Mi aplicacion"
+	},
+	"validations": {
+		"email": "El correo electrónico es invalido",
+		"invalid": "El campo no es válido",
+		"invalidType": "Tiene que ser un {{type}}",
+		"required": "Se requiere campo",
+		"stringMin": "Debe tener al menos {{min}} caracteres",
+		"stringMax": "Debe tener como máximo {{max}} caracteres"
 	}
 }
