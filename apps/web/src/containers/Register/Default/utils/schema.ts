@@ -1,5 +1,5 @@
 import { object, string } from 'yup'
-import '../../../../config/lang/form.ts'
+import 'config/lang/form.ts'
 
 const schema = object()
 	.shape({

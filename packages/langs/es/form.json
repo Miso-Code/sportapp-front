@@ -1,0 +1,7 @@
+{
+	"name": "Nombre",
+	"lastName": "Apellido",
+	"phone": "Teléfono",
+	"email": "Correo electrónico",
+	"password": "Contraseña"
+}

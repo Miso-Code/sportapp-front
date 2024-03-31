@@ -23,6 +23,7 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./src/*"],
+			"config/*": ["./config/*"],
 			"components/*": ["./src/components/*"],
 			"containers/*": ["./src/containers/*"],
 			"assets/*": ["./src/assets/*"],

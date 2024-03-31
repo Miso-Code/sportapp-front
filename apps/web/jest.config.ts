@@ -23,7 +23,8 @@ export default {
 		'^components/(.*)$': ['<rootDir>/src/components/$1'],
 		'^containers/(.*)$': ['<rootDir>/src/containers/$1'],
 		'^assets/(.*)$': ['<rootDir>/src/assets/$1'],
-		'^pages/(.*)$': ['<rootDir>/src/pages/$1']
+		'^pages/(.*)$': ['<rootDir>/src/pages/$1'],
+		'^config/(.*)$': ['<rootDir>/config/$1']
 	},
 	reporters: ['default']
 }

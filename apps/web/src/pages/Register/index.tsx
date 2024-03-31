@@ -1,28 +1,31 @@
-import RegisterContainer from 'containers/Register'
+import RegisterContainer from 'containers/Register/Default'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import 'pages/Register/_index.scss'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { Button } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
-export default function Login() {
+export default function Register() {
+	const { t } = useTranslation()
 	return (
 		<div className='register'>
 			<main className='section-main'>
 				<Typography className='title' variant='h1'>
-					SportApp
+					{t('app.name')}
 				</Typography>
 				<Paper className='card-register'>
 					<Typography className='card-title' variant='h6'>
-						Registro
+						{t('register.default')}
 					</Typography>
-					<RegisterContainer />
+					<RegisterContainer onHandleSubmit={console.log} />
 					<Button
 						fullWidth
 						type='button'
 						variant='text'
+						title={t('register.button')}
 						className='navigation'>
-						Iniciar sesión
+						{t('register.login')}
 					</Button>
 				</Paper>
 			</main>
@@ -31,7 +34,7 @@ export default function Login() {
 					<img
 						className='image-register'
 						src={registerImage}
-						alt='register'
+						alt={t('register.image')}
 					/>
 				</figure>
 			</section>

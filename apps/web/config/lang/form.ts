@@ -6,6 +6,10 @@ const yupLocale: LocaleObject = {
 		...defaultLocale.mixed,
 		default: 'validations.invalid',
 		required: 'validations.required'
+	},
+	string: {
+		...defaultLocale.string,
+		email: 'validations.email'
 	}
 }
 
