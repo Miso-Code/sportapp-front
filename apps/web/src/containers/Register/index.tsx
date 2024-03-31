@@ -9,8 +9,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './_index.scss'
 import schema from './utils/schema'
+import { Props } from './interfaces'
 
-export default function RegisterContainer() {
+export default function RegisterContainer({ onHandleSubmit }: Props) {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 		defaultValues: {
@@ -18,7 +19,8 @@ export default function RegisterContainer() {
 			lastName: '',
 			email: '',
 			password: ''
-		}
+		},
+		mode: 'onChange'
 	})
 
 	const [showPassword, setShowPassword] = useState(false)
@@ -31,7 +33,9 @@ export default function RegisterContainer() {
 		event.preventDefault()
 	}
 
-	const onSubmit = (data: unknown) => console.log(data)
+	const onSubmit = (data: unknown) => {
+		onHandleSubmit(data)
+	}
 	return (
 		<form className='register-form' onSubmit={handleSubmit(onSubmit)}>
 			<TextFieldController

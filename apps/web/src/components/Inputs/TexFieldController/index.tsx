@@ -25,7 +25,7 @@ export default function TextFieldController({
 						id={name}
 						label={label}
 						variant={variant}
-						helperText={t(error?.message ?? '')}
+						helperText={error?.message ? t(error.message) : ''}
 						error={!!error}
 						value={value}
 						onChange={onChange}
