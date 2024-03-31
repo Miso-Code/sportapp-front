@@ -1,6 +1,6 @@
-import { object, string } from 'yup'
-import baseSchema from 'containers/Register/Default/utils/schema'
 import 'config/lang/form.ts'
+import baseSchema from 'containers/Register/Default/utils/schema'
+import { object, string } from 'yup'
 
 const schema = baseSchema.concat(
 	object().shape({
@@ -14,7 +14,9 @@ const schema = baseSchema.concat(
 			country: string().required(),
 			city: string().required(),
 			lengthOfStay: string().required()
-		})
+		}),
+		gender: string().required(),
+		birthday: string().required()
 	})
 )
 

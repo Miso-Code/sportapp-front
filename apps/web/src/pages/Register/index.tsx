@@ -1,9 +1,9 @@
-import RegisterContainer from 'containers/Register/Default'
-import registerImage from 'assets/images/login-wallpaper.jpg'
-import 'pages/Register/_index.scss'
+import RegisterFullContainer from '@/containers/Register/Full'
+import { Button } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import { Button } from '@mui/material'
+import registerImage from 'assets/images/login-wallpaper.jpg'
+import 'pages/Register/_index.scss'
 import { useTranslation } from 'react-i18next'
 
 export default function Register() {
@@ -18,7 +18,8 @@ export default function Register() {
 					<Typography className='card-title' variant='h6'>
 						{t('register.default')}
 					</Typography>
-					<RegisterContainer onHandleSubmit={console.log} />
+					{/* <RegisterContainer onHandleSubmit={console.log} /> */}
+					<RegisterFullContainer onHandleSubmit={console.log} />
 					<Button
 						fullWidth
 						type='button'
