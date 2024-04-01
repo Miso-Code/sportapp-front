@@ -8,7 +8,9 @@ import './_index.scss'
 import { PropsDefault } from 'containers/Register/interfaces'
 import schema from 'containers/Register/Default/utils/schema'
 
-export default function RegisterContainer({ onHandleSubmit }: PropsDefault) {
+export default function RegisterDefaultContainer({
+	onHandleSubmit
+}: PropsDefault) {
 	const { t } = useTranslation()
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),

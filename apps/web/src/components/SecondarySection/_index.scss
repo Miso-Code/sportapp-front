@@ -1,0 +1,11 @@
+.section-secondary {
+	@apply w-1/2 lg:block hidden;
+
+	.container-image {
+		@apply w-full h-full;
+	}
+
+	.image-register {
+		@apply object-cover object-center w-full h-full;
+	}
+}

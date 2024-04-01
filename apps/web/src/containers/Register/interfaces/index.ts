@@ -1,3 +1,10 @@
+export interface Props {
+	step: number
+	onHandleFirstSubmit: (data: unknown) => void
+	firstDefaultValues?: DefaultValues
+	onHandleSecondSubmit: (data: unknown) => void
+	secondDefaultValues?: DefaultFullValues
+}
 export interface PropsDefault {
 	onHandleSubmit: (data: unknown) => void
 	defaultValues?: DefaultValues
