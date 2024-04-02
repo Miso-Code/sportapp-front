@@ -41,7 +41,6 @@ export default function Register() {
 					{t('app.name')}
 				</Typography>
 				<Paper
-					elevation={1}
 					variant='outlined'
 					className={`card-register ${
 						step !== 0 && 'card-register__full'
@@ -51,8 +50,8 @@ export default function Register() {
 					</Typography>
 					<RegisterContainer
 						step={step}
-						onHandleFirstSubmit={handleNext}
-						onHandleSecondSubmit={handleSubmit}
+						onHandleFirstSubmit={handleSubmit}
+						onHandleSecondSubmit={handleNext}
 					/>
 					{step === 0 && (
 						<Button
