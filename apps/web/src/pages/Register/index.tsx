@@ -3,20 +3,34 @@ import RegisterContainer from '@/containers/Register'
 import { Button } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import 'pages/Register/_index.scss'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
 	const [step, setStep] = useState(0)
+	const navigate = useNavigate()
 	const { t } = useTranslation()
+	const { login } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {
 			setStep(step + 1)
 		} else {
 			setStep(0)
+		}
+	}
+
+	const handleSubmit = async () => {
+		const result = await login('a', 'b')
+
+		if (result) {
+			navigate('/home')
+		} else {
+			alert('Error')
 		}
 	}
 
@@ -38,7 +52,7 @@ export default function Register() {
 					<RegisterContainer
 						step={step}
 						onHandleFirstSubmit={handleNext}
-						onHandleSecondSubmit={handleNext}
+						onHandleSecondSubmit={handleSubmit}
 					/>
 					{step === 0 && (
 						<Button

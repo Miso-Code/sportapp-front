@@ -1,0 +1,3 @@
+{
+	"extends": "@sportapp/typescript-config/base.json"
+}
