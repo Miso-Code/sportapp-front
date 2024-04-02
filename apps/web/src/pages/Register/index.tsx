@@ -26,7 +26,12 @@ export default function Register() {
 				<Typography className='title' variant='h1'>
 					{t('app.name')}
 				</Typography>
-				<Paper className='card-register'>
+				<Paper
+					elevation={1}
+					variant='outlined'
+					className={`card-register ${
+						step !== 0 && 'card-register__full'
+					}`}>
 					<Typography className='card-title' variant='h6'>
 						{t(step === 0 ? 'register.default' : 'register.full')}
 					</Typography>

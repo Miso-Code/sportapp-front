@@ -13,28 +13,20 @@
 
 	.section {
 		&-main {
-			@apply flex-1 p-2 flex flex-col items-center justify-center;
+			@apply flex-1 p-2 flex flex-col items-center justify-center pb-10;
 		}
-
-		&-secondary {
-			@apply w-1/2 lg:block hidden;
-		}
-	}
-
-	.container-image {
-		@apply w-full h-full;
-	}
-
-	.image-register {
-		@apply object-cover object-center w-full h-full;
 	}
 
 	.card {
 		&-register {
-			@apply w-full p-4 pb-4;
+			@apply w-full p-7 pb-4 border;
 
-			min-width: 300px;
-			max-width: 466px;
+			min-width: 18.75rem;
+			max-width: 29.125rem;
+
+			&__full {
+				max-width: 44.375rem;
+			}
 		}
 
 		&-title {

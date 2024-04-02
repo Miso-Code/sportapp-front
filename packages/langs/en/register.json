@@ -2,6 +2,8 @@
 	"default": "Register",
 	"button": "Ingres",
 	"button-alt": "Ingres",
+	"button-two": "Saved",
 	"login": "Login",
-	"image": "Register image"
+	"image": "Register image",
+	"full": "We are almost finished with your registration, please fill in the following information, in order to be able to use all the functionalities."
 }
