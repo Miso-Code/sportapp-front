@@ -1,4 +1,4 @@
-import DatePickerController from '@/components/Inputs/DatePickerController '
+import DatePickerController from '@/components/Inputs/DatePickerController'
 import SelectController from '@/components/Inputs/SelectController'
 import TextFieldPasswordController from '@/components/Inputs/TexFieldPasswordController'
 import { yupResolver } from '@hookform/resolvers/yup'
