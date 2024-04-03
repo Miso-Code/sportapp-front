@@ -4,6 +4,7 @@ import { Props } from 'components/Inputs/TexFieldPasswordController/interfaces'
 import { useState } from 'react'
 import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { changeDotInId } from 'components/Inputs/utils'
 
 export default function TextFieldPasswordController<
 	T extends FieldValues = FieldValues
@@ -24,7 +25,7 @@ export default function TextFieldPasswordController<
 				}) => (
 					<TextField
 						{...props}
-						id={name}
+						id={changeDotInId(name)}
 						label={label}
 						variant={variant}
 						helperText={error?.message ? t(error.message) : ''}

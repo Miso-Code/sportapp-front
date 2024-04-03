@@ -37,6 +37,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 	})
 
 	const onSubmit = (data: unknown) => {
+		console.log(data)
+
 		onHandleSubmit(data)
 	}
 	return (

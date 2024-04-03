@@ -8,6 +8,7 @@ import {
 import { Props } from 'components/Inputs/SelectController/interfaces'
 import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { changeDotInId } from 'components/Inputs/utils'
 
 export default function SelectController<T extends FieldValues = FieldValues>({
 	control,
@@ -41,9 +42,13 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 							<Select
 								{...selectProps}
 								labelId={`${name}-select-label`}
-								id={name}
 								value={value}
 								label={label}
+								slotProps={{
+									input: {
+										id: changeDotInId(name)
+									}
+								}}
 								onChange={onChange}
 								{...field}>
 								{options.map((option) => (

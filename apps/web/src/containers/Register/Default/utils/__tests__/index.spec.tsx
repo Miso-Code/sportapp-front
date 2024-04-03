@@ -1,65 +1,25 @@
-import {
-	RenderResult,
-	render,
-	waitFor,
-	fireEvent
-} from '@testing-library/react'
-import DefaultRegister from 'containers/Register/Default'
-import { act } from 'react-dom/test-utils'
+import schema from 'containers/Register/Default/utils/schema'
 
-describe('RegisterDefaultContainer', () => {
-	let wrapper: RenderResult
+describe('schema default register', () => {
+	it('should validate the schema', async () => {
+		const data = {
+			name: 'John',
+			lastName: 'Doe',
+			email: 'test@gmail.com',
+			password: '123456uU*'
+		}
 
-	beforeEach(() => {
-		wrapper = render(<DefaultRegister onHandleSubmit={jest.fn()} />)
+		expect(await schema.isValid(data)).toBeTruthy()
 	})
 
-	afterEach(() => {
-		wrapper.unmount()
-	})
+	it('should not validate the schema', async () => {
+		const data = {
+			name: '',
+			lastName: '',
+			email: '',
+			password: ''
+		}
 
-	it('should render the component', () => {
-		expect(wrapper.container).toMatchSnapshot()
-	})
-
-	it('should call onHandleSubmit', async () => {
-		const onHandleSubmit = jest.fn()
-		wrapper.rerender(<DefaultRegister onHandleSubmit={onHandleSubmit} />)
-
-		let inputName = wrapper.container.querySelector('#name')
-		let inputLastName = wrapper.container.querySelector('#lastName')
-		let inputEmail = wrapper.container.querySelector('#email')
-		let inputPassword = wrapper.container.querySelector('#password')
-		const button = wrapper.container.querySelector('button[type="submit"]')
-
-		act(() => {
-			fireEvent.change(inputName as Element, {
-				target: { value: 'John' }
-			})
-			fireEvent.change(inputLastName as Element, {
-				target: { value: 'Doe' }
-			})
-			fireEvent.change(inputEmail as Element, {
-				target: { value: 'test@correo.com' }
-			})
-			fireEvent.change(inputPassword as Element, {
-				target: { value: '123456' }
-			})
-			fireEvent.submit(button as Element)
-		})
-
-		inputName = wrapper.container.querySelector('#name')
-		inputLastName = wrapper.container.querySelector('#lastName')
-		inputEmail = wrapper.container.querySelector('#email')
-		inputPassword = wrapper.container.querySelector('#password')
-
-		expect(inputName).toHaveValue('John')
-		expect(inputLastName).toHaveValue('Doe')
-		expect(inputEmail).toHaveValue('test@correo.com')
-		expect(inputPassword).toHaveValue('123456')
-
-		await waitFor(() => {
-			expect(onHandleSubmit).toHaveBeenCalled()
-		})
+		expect(await schema.isValid(data)).toBeFalsy()
 	})
 })

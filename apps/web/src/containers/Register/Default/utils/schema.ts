@@ -1,4 +1,4 @@
-import { object, string } from 'yup'
+import { InferType, object, string } from 'yup'
 import 'config/lang/form.ts'
 
 const schema = object().shape({
@@ -14,3 +14,5 @@ const schema = object().shape({
 })
 
 export default schema
+
+export type FormData = InferType<typeof schema>

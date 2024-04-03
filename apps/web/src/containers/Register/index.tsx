@@ -1,6 +1,6 @@
-import RegisterDefaultContainer from './Default'
-import RegisterFullContainer from './Full'
-import { Props } from './interfaces'
+import RegisterDefaultContainer from 'containers/Register/Default'
+import RegisterFullContainer from 'containers/Register/Full'
+import { Props } from 'containers/Register/interfaces'
 
 export default function RegisterContainer({
 	step,
