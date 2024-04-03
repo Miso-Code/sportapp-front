@@ -35,6 +35,6 @@
 		"noImplicitThis": true,
 		"strictNullChecks": true
 	},
-	"include": ["src", "src/config/test/jest.setup.ts"],
+	"include": ["src", "./config/test/jest.setup.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

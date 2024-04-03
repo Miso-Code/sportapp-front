@@ -1,18 +1,18 @@
-import { RenderResult, render, renderHook } from '@testing-library/react'
-import DatePickerController from 'components/Inputs/DatePickerController'
+import TextFieldController from 'components/Inputs/TexFieldController'
+import { render, RenderResult, renderHook } from '@testing-library/react'
 import { useForm } from 'react-hook-form'
 
-describe('DatePickerController', () => {
+describe('TextFieldController', () => {
 	let wrapper: RenderResult
 
 	beforeEach(() => {
 		const { result } = renderHook(() => useForm())
 		wrapper = render(
-			<DatePickerController
+			<TextFieldController
 				// @ts-ignore
 				control={result.current.control}
-				name='date'
-				label='Date'
+				name='text'
+				label='Text'
 			/>
 		)
 	})
@@ -27,19 +27,19 @@ describe('DatePickerController', () => {
 
 	it('should display helper text when there is an error in input', () => {
 		const { result } = renderHook(() => useForm())
-		result.current.setError('date', {
+		result.current.setError('text', {
 			type: 'manual',
-			message: 'Invalid Date'
+			message: 'Invalid Text'
 		})
 		wrapper = render(
-			<DatePickerController
+			<TextFieldController
 				// @ts-ignore
 				control={result.current.control}
-				name='date'
-				label='Date'
+				name='text'
+				label='Text'
 			/>
 		)
 
-		expect(wrapper.getByText('Invalid Date')).toBeInTheDocument()
+		expect(wrapper.getByText('Invalid Text')).toBeInTheDocument()
 	})
 })
