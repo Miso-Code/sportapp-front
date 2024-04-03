@@ -14,7 +14,6 @@ describe('TextFieldPasswordController', () => {
 		const { result } = renderHook(() => useForm())
 		wrapper = render(
 			<TextFieldPasswordController
-				// @ts-ignore
 				control={result.current.control}
 				name='password'
 				label='Password'
@@ -38,7 +37,6 @@ describe('TextFieldPasswordController', () => {
 		})
 		wrapper = render(
 			<TextFieldPasswordController
-				// @ts-ignore
 				control={result.current.control}
 				name='password'
 				label='Password'

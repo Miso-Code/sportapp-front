@@ -42,37 +42,32 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 	return (
 		<form className='register-form' onSubmit={handleSubmit(onSubmit)}>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Correo electronico'
 				name='email'
 			/>
 			<TextFieldPasswordController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Contraseña'
 				name='password'
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Nombre'
 				name='name'
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Apellido'
 				name='lastName'
 			/>
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Tipo de documento'
 				name='documentType'
 				options={[
@@ -81,16 +76,14 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				]}
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Numero de identificación'
 				name='documentNumber'
 			/>
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Pais de nacimiento'
 				name='nationality.country'
 				options={[
@@ -99,9 +92,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				]}
 			/>
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Ciudad de nacimiento'
 				name='nationality.city'
 				options={[
@@ -111,9 +103,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 			/>
 
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Pais de residencia'
 				name='residence.country'
 				options={[
@@ -122,7 +113,6 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				]}
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Tiempo de residencia'
@@ -130,9 +120,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				type='number'
 			/>
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Ciudad de residencia'
 				name='residence.city'
 				options={[
@@ -141,9 +130,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				]}
 			/>
 			<SelectController
-				// @ts-ignore
 				control={control}
-				fullWidth
+				selectProps={{ fullWidth: true }}
 				label='Genero'
 				name='gender'
 				options={[
@@ -154,7 +142,6 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				]}
 			/>
 			<DatePickerController
-				// @ts-ignore
 				control={control}
 				name='birthday'
 				label='Fecha de nacimiento'

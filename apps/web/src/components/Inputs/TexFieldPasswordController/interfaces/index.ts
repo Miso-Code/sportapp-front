@@ -1,9 +1,10 @@
 import { BaseTextFieldProps, TextFieldVariants } from '@mui/material'
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 
-export interface Props extends BaseTextFieldProps {
-	control: Control<FieldValues, unknown> | undefined
-	name: string
+export interface Props<T extends FieldValues = FieldValues>
+	extends BaseTextFieldProps {
+	control: Control<T> | undefined
+	name: Path<T>
 	label: string
 	variant?: TextFieldVariants
 }

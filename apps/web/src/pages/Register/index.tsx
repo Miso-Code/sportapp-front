@@ -50,8 +50,8 @@ export default function Register() {
 					</Typography>
 					<RegisterContainer
 						step={step}
-						onHandleFirstSubmit={handleSubmit}
-						onHandleSecondSubmit={handleNext}
+						onHandleFirstSubmit={handleNext}
+						onHandleSecondSubmit={handleSubmit}
 					/>
 					{step === 0 && (
 						<Button

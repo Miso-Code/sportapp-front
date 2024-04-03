@@ -2,16 +2,12 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { IconButton, InputAdornment, TextField } from '@mui/material'
 import { Props } from 'components/Inputs/TexFieldPasswordController/interfaces'
 import { useState } from 'react'
-import { Controller } from 'react-hook-form'
+import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-export default function TextFieldPasswordController({
-	control,
-	name,
-	label,
-	variant = 'outlined',
-	...props
-}: Props) {
+export default function TextFieldPasswordController<
+	T extends FieldValues = FieldValues
+>({ control, name, label, variant = 'outlined', ...props }: Props<T>) {
 	const { t } = useTranslation()
 	const [showPassword, setShowPassword] = useState(false)
 

@@ -2,11 +2,11 @@ import TextFieldPasswordController from '@/components/Inputs/TexFieldPasswordCon
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Button } from '@mui/material'
 import TextFieldController from 'components/Inputs/TexFieldController'
-import { useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
+import schema from 'containers/Register/Default/utils/schema'
 import './_index.scss'
 import { PropsDefault } from 'containers/Register/interfaces'
-import schema from 'containers/Register/Default/utils/schema'
+import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 export default function RegisterDefaultContainer({
 	onHandleSubmit
@@ -29,28 +29,24 @@ export default function RegisterDefaultContainer({
 	return (
 		<form className='register-form' onSubmit={handleSubmit(onSubmit)}>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Nombre'
 				name='name'
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Apellido'
 				name='lastName'
 			/>
 			<TextFieldController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Correo electronico'
 				name='email'
 			/>
 			<TextFieldPasswordController
-				// @ts-ignore
 				control={control}
 				fullWidth
 				label='Contraseña'

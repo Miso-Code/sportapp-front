@@ -9,7 +9,6 @@ describe('SelectController', () => {
 		const { result } = renderHook(() => useForm())
 		wrapper = render(
 			<SelectController
-				// @ts-ignore
 				control={result.current.control}
 				name='select'
 				label='Select'
@@ -37,7 +36,6 @@ describe('SelectController', () => {
 		})
 		wrapper = render(
 			<SelectController
-				// @ts-ignore
 				control={result.current.control}
 				name='select'
 				label='Select'

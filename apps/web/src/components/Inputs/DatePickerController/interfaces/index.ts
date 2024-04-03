@@ -1,8 +1,8 @@
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 
-export interface Props {
-	control: Control<FieldValues, unknown> | undefined
-	name: string
+export interface Props<T extends FieldValues = FieldValues> {
+	control: Control<T> | undefined
+	name: Path<T>
 	label: string
 	fullWidth?: boolean
 }

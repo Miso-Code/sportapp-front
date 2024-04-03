@@ -9,7 +9,6 @@ describe('TextFieldController', () => {
 		const { result } = renderHook(() => useForm())
 		wrapper = render(
 			<TextFieldController
-				// @ts-ignore
 				control={result.current.control}
 				name='text'
 				label='Text'
@@ -33,7 +32,6 @@ describe('TextFieldController', () => {
 		})
 		wrapper = render(
 			<TextFieldController
-				// @ts-ignore
 				control={result.current.control}
 				name='text'
 				label='Text'

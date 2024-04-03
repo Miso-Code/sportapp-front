@@ -6,10 +6,10 @@ import {
 	Select
 } from '@mui/material'
 import { Props } from 'components/Inputs/SelectController/interfaces'
-import { Controller } from 'react-hook-form'
+import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-export default function SelectController({
+export default function SelectController<T extends FieldValues = FieldValues>({
 	control,
 	name,
 	label,
@@ -17,7 +17,7 @@ export default function SelectController({
 	formControlProps,
 	inputLabelProps,
 	selectProps
-}: Props) {
+}: Props<T>) {
 	const { t } = useTranslation()
 	return (
 		<>

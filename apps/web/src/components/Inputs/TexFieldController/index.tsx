@@ -1,15 +1,11 @@
 import { TextField } from '@mui/material'
 import { Props } from 'components/Inputs/TexFieldController/interfaces'
-import { Controller } from 'react-hook-form'
+import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-export default function TextFieldController({
-	control,
-	name,
-	label,
-	variant = 'outlined',
-	...props
-}: Props) {
+export default function TextFieldController<
+	T extends FieldValues = FieldValues
+>({ control, name, label, variant = 'outlined', ...props }: Props<T>) {
 	const { t } = useTranslation()
 	return (
 		<>

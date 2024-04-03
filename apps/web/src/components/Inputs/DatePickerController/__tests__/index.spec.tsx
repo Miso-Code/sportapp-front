@@ -9,7 +9,6 @@ describe('DatePickerController', () => {
 		const { result } = renderHook(() => useForm())
 		wrapper = render(
 			<DatePickerController
-				// @ts-ignore
 				control={result.current.control}
 				name='date'
 				label='Date'
@@ -33,7 +32,6 @@ describe('DatePickerController', () => {
 		})
 		wrapper = render(
 			<DatePickerController
-				// @ts-ignore
 				control={result.current.control}
 				name='date'
 				label='Date'
