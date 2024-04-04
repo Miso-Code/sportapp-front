@@ -1,3 +1,5 @@
+import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
+
 export interface IAuthStore extends IAuthState, IAuthActions {}
 
 export interface IAuthState {
@@ -11,4 +13,5 @@ export interface IAuthActions {
 	logout: () => void
 	setError: (error: string) => void
 	setLoading: (isAuth: boolean) => void
+	register: (request: RegisterUserRequest) => Promise<boolean>
 }

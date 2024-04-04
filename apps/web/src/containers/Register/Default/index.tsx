@@ -23,7 +23,7 @@ export default function RegisterDefaultContainer({
 		mode: 'onChange'
 	})
 
-	const onSubmit = (data: unknown) => {
+	const onSubmit = (data: FormData) => {
 		onHandleSubmit(data)
 	}
 	return (

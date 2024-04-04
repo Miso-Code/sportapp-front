@@ -2,6 +2,8 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { IAuthState, IAuthStore } from './interfaces'
+import UserApi from '@sportapp/sportapp-repository/src/user'
+import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
 
 export const initialAuthState: IAuthState = {
 	isAuth: false,
@@ -24,6 +26,13 @@ export const useAuthStore = create(
 			logout: () => {
 				// WIP logout logic
 				set({ isAuth: false })
+			},
+			register: async (request: RegisterUserRequest) => {
+				const userApi = new UserApi()
+				// WIP register logic
+				await userApi.register(request)
+
+				return false
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading })

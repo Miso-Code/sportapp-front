@@ -1,5 +1,5 @@
 {
-	"name": "@sportapp/stores",
+	"name": "@sportapp/sportapp-repository",
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "scr/index.ts",
@@ -12,11 +12,11 @@
 		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose"
 	},
 	"dependencies": {
-		"@sportapp/sportapp-repository": "*",
 		"@tanstack/react-query": "^5.28.9",
 		"@testing-library/jest-dom": "^6.4.2",
 		"@testing-library/react": "^14.2.2",
 		"@types/jest": "^29.5.12",
+		"axios": "^1.6.8",
 		"babel-jest": "^29.7.0",
 		"jest": "^29.7.0",
 		"prettier": "^3.2.5",
