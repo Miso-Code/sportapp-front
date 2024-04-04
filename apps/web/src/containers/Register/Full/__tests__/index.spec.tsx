@@ -37,6 +37,7 @@ describe('RegisterFullContainer', () => {
 		const nationalityCountry = wrapper.container.querySelector(
 			'input[name="nationality.country"]'
 		)
+
 		const nationalityCity = wrapper.container.querySelector(
 			'input[name="nationality.city"'
 		)
@@ -71,6 +72,9 @@ describe('RegisterFullContainer', () => {
 		fireEvent.change(nationalityCountry as Element, {
 			target: { value: 'Colombia' }
 		})
+		fireEvent.change(nationalityCountry as Element, {
+			target: { value: 'Colombia' }
+		})
 		fireEvent.change(nationalityCity as Element, {
 			target: { value: 'Bogota' }
 		})
@@ -90,6 +94,8 @@ describe('RegisterFullContainer', () => {
 
 		fireEvent.click(button as Element)
 
+		console.log(nationalityCountry)
+
 		expect(wrapper.container).toMatchSnapshot()
 
 		expect(inputEmail).toHaveValue('test@correo.com')
@@ -98,11 +104,11 @@ describe('RegisterFullContainer', () => {
 		expect(inputLastName).toHaveValue('Test')
 		expect(documentType).toHaveValue('CC')
 		expect(documentNumber).toHaveValue('123456789')
+		expect(residenceLengthOfStay).toHaveValue(1)
 
 		expect(nationalityCountry).toHaveValue('Colombia')
 		expect(nationalityCity).toHaveValue('Bogota')
 		expect(residenceCountry).toHaveValue('Colombia')
-		expect(residenceLengthOfStay).toHaveValue('1')
 		expect(residentCity).toHaveValue('Bogota')
 		expect(gender).toHaveValue('Masculino')
 		expect(birthday).toHaveValue('1994-10-10')

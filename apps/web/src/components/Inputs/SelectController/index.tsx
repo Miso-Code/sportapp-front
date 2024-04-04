@@ -25,7 +25,7 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 				control={control}
 				name={name}
 				render={({
-					field: { onChange, value, ...field },
+					field: { onChange, value, ref },
 					fieldState: { error }
 				}) => (
 					<>
@@ -40,6 +40,7 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 							</InputLabel>
 							<Select
 								{...selectProps}
+								inputRef={ref}
 								labelId={`${name}-select-label`}
 								value={value}
 								label={label}
@@ -49,8 +50,7 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 										name: name
 									}
 								}}
-								onChange={onChange}
-								{...field}>
+								onChange={onChange}>
 								{options.map((option) => (
 									<MenuItem
 										key={option.value}
