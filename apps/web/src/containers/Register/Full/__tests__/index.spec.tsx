@@ -35,16 +35,20 @@ describe('RegisterFullContainer', () => {
 		const documentNumber =
 			wrapper.container.querySelector('#documentNumber')
 		const nationalityCountry = wrapper.container.querySelector(
-			'#nationality-country'
+			'input[name="nationality.country"]'
 		)
-		const nationalityCity =
-			wrapper.container.querySelector('#nationality-city')
-		const residenceCountry =
-			wrapper.container.querySelector('#residence-country')
+		const nationalityCity = wrapper.container.querySelector(
+			'input[name="nationality.city"'
+		)
+		const residenceCountry = wrapper.container.querySelector(
+			'input[name="residence.country"]'
+		)
 		const residenceLengthOfStay = wrapper.container.querySelector(
-			'#residence-lengthOfStay'
+			'input[name="residence.lengthOfStay"]'
 		)
-		const residentCity = wrapper.container.querySelector('#residence-city')
+		const residentCity = wrapper.container.querySelector(
+			'input[name="residence.city"]'
+		)
 		const gender = wrapper.container.querySelector('input[name="gender"]')
 		const birthday = wrapper.container.querySelector('#birthday')
 
@@ -88,26 +92,22 @@ describe('RegisterFullContainer', () => {
 
 		expect(wrapper.container).toMatchSnapshot()
 
+		expect(inputEmail).toHaveValue('test@correo.com')
+		expect(inputPassword).toHaveValue('123456Uu*')
+		expect(inputName).toHaveValue('Test')
+		expect(inputLastName).toHaveValue('Test')
+		expect(documentType).toHaveValue('CC')
+		expect(documentNumber).toHaveValue('123456789')
+
+		expect(nationalityCountry).toHaveValue('Colombia')
+		expect(nationalityCity).toHaveValue('Bogota')
+		expect(residenceCountry).toHaveValue('Colombia')
+		expect(residenceLengthOfStay).toHaveValue('1')
+		expect(residentCity).toHaveValue('Bogota')
+		expect(gender).toHaveValue('Masculino')
+		expect(birthday).toHaveValue('1994-10-10')
+
 		await waitFor(() => {
-			/* expect(onHandleSubmit).toHaveBeenCalledWith({
-				email: 'test@correo.com',
-				password: '123456Uu*',
-				name: 'Test',
-				lastName: 'Test',
-				documentType: 'CC',
-				documentNumber: '123456789',
-				nationality: {
-					country: 'Colombia',
-					city: 'Bogota'
-				},
-				residence: {
-					country: 'Colombia',
-					city: 'Bogota',
-					lengthOfStay: '1'
-				},
-				gender: 'Masculino',
-				birthday: '1994-10-10'
-			}) */
 			expect(onHandleSubmit).toHaveBeenCalled()
 		})
 	})

@@ -11,8 +11,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="email"
-        id="email-label"
+        for=":re:"
+        id=":re:-label"
       >
         Correo electronico
       </label>
@@ -47,8 +47,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="password"
-        id="password-label"
+        for=":rf:"
+        id=":rf:-label"
       >
         Contraseña
       </label>
@@ -108,8 +108,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="name"
-        id="name-label"
+        for=":rg:"
+        id=":rg:-label"
       >
         Nombre
       </label>
@@ -144,8 +144,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="lastName"
-        id="lastName-label"
+        for=":rh:"
+        id=":rh:-label"
       >
         Apellido
       </label>
@@ -242,8 +242,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="documentNumber"
-        id="documentNumber-label"
+        for=":rj:"
+        id=":rj:-label"
       >
         Numero de identificación
       </label>
@@ -305,7 +305,7 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality-country"
+          id="nationality.country"
           name="nationality.country"
           tabindex="-1"
           value=""
@@ -371,7 +371,7 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality-city"
+          id="nationality.city"
           name="nationality.city"
           tabindex="-1"
           value=""
@@ -437,7 +437,7 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence-country"
+          id="residence.country"
           name="residence.country"
           tabindex="-1"
           value=""
@@ -476,8 +476,8 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
-        for="residence-lengthOfStay"
-        id="residence-lengthOfStay-label"
+        for=":rn:"
+        id=":rn:-label"
       >
         Tiempo de residencia
       </label>
@@ -487,7 +487,7 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
         <input
           aria-invalid="false"
           class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="residence-lengthOfStay"
+          id="residence.lengthOfStay"
           name="residence.lengthOfStay"
           type="number"
           value="1"
@@ -539,7 +539,7 @@ exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence-city"
+          id="residence.city"
           name="residence.city"
           tabindex="-1"
           value=""
@@ -727,8 +727,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="email"
-        id="email-label"
+        for=":r0:"
+        id=":r0:-label"
       >
         Correo electronico
       </label>
@@ -763,8 +763,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="password"
-        id="password-label"
+        for=":r1:"
+        id=":r1:-label"
       >
         Contraseña
       </label>
@@ -824,8 +824,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="name"
-        id="name-label"
+        for=":r2:"
+        id=":r2:-label"
       >
         Nombre
       </label>
@@ -860,8 +860,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="lastName"
-        id="lastName-label"
+        for=":r3:"
+        id=":r3:-label"
       >
         Apellido
       </label>
@@ -962,8 +962,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="documentNumber"
-        id="documentNumber-label"
+        for=":r5:"
+        id=":r5:-label"
       >
         Numero de identificación
       </label>
@@ -1025,7 +1025,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality-country"
+          id="nationality.country"
           name="nationality.country"
           tabindex="-1"
           value=""
@@ -1091,7 +1091,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality-city"
+          id="nationality.city"
           name="nationality.city"
           tabindex="-1"
           value=""
@@ -1157,7 +1157,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence-country"
+          id="residence.country"
           name="residence.country"
           tabindex="-1"
           value=""
@@ -1196,8 +1196,8 @@ exports[`RegisterFullContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for="residence-lengthOfStay"
-        id="residence-lengthOfStay-label"
+        for=":r9:"
+        id=":r9:-label"
       >
         Tiempo de residencia
       </label>
@@ -1207,7 +1207,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         <input
           aria-invalid="false"
           class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="residence-lengthOfStay"
+          id="residence.lengthOfStay"
           name="residence.lengthOfStay"
           type="number"
           value=""
@@ -1259,7 +1259,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence-city"
+          id="residence.city"
           name="residence.city"
           tabindex="-1"
           value=""

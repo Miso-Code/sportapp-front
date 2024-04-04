@@ -4,7 +4,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { changeDotInId } from 'components/Inputs/utils'
 
 export default function DatePickerController<
 	T extends FieldValues = FieldValues
@@ -30,10 +29,10 @@ export default function DatePickerController<
 										? t(error.message)
 										: '',
 									error: !!error,
-									id: changeDotInId(name)
+									id: name,
+									name: name
 								}
 							}}
-							name={name}
 							ref={ref}
 							disabled={disabled}
 						/>
