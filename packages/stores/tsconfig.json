@@ -19,6 +19,12 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
-	}
+		"noFallthroughCasesInSwitch": true,
+
+		"esModuleInterop": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true
+	},
+	"include": ["src", "./config/test/jest.setup.ts"]
 }
