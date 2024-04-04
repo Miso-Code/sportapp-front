@@ -1,1 +1,1 @@
-export { useAuthStore, initialAuthState } from './auth/index'
+export { useAuthStore, initialAuthState } from './auth'

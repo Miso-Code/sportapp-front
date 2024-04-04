@@ -10,6 +10,7 @@ describe('SelectController', () => {
 		wrapper = render(
 			<SelectController
 				control={result.current.control}
+				selectProps={{ fullWidth: true, defaultValue: '1' }}
 				name='select'
 				label='Select'
 				options={[

@@ -19,8 +19,6 @@ export default function Register() {
 	const handleNext = () => {
 		if (step < 2) {
 			setStep(step + 1)
-		} else {
-			setStep(0)
 		}
 	}
 

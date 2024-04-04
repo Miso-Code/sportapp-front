@@ -1,15 +1,17 @@
 import Router from '@/router'
 import { RenderResult, render } from '@testing-library/react'
 
-jest.mock('@/router/routes', () => ({
-	routes: [
+jest.mock('@/router/private/routes', () => ({
+	__esModule: true,
+	default: () => []
+}))
+
+jest.mock('@/router/public/routes', () => ({
+	__esModule: true,
+	default: () => [
 		{
 			path: '/',
 			element: <div>Home</div>
-		},
-		{
-			path: '/register',
-			element: <div>Register</div>
 		}
 	]
 }))

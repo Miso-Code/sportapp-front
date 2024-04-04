@@ -15,6 +15,7 @@ describe('TextFieldPasswordController', () => {
 		wrapper = render(
 			<TextFieldPasswordController
 				control={result.current.control}
+				defaultValue={''}
 				name='password'
 				label='Password'
 			/>
@@ -38,6 +39,7 @@ describe('TextFieldPasswordController', () => {
 		wrapper = render(
 			<TextFieldPasswordController
 				control={result.current.control}
+				defaultValue={''}
 				name='password'
 				label='Password'
 			/>
