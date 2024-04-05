@@ -9,6 +9,7 @@ export interface Props<T extends FieldValues = FieldValues> {
 	selectProps?: SelectProps
 	formControlProps?: FormControlProps
 	inputLabelProps?: InputLabelProps
+	isTranslated?: boolean
 }
 
 export interface Options {

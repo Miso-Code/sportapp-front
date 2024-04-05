@@ -16,7 +16,8 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 	options,
 	formControlProps,
 	inputLabelProps,
-	selectProps
+	selectProps,
+	isTranslated = true
 }: Props<T>) {
 	const { t } = useTranslation()
 	return (
@@ -55,7 +56,9 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 									<MenuItem
 										key={option.value}
 										value={option.value}>
-										{t(option.label)}
+										{isTranslated
+											? t(option.label)
+											: option.label}
 									</MenuItem>
 								))}
 							</Select>

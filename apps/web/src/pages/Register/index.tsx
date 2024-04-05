@@ -1,8 +1,11 @@
 import SecondarySection from '@/components/SecondarySection'
 import RegisterContainer from '@/containers/Register'
+import { FormData } from '@/containers/Register/Default/utils/schema'
 import { Button } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
+import { globalVariables } from '@sportapp/sportapp-repository/src/utils/global-variables'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import 'pages/Register/_index.scss'
@@ -14,7 +17,7 @@ export default function Register() {
 	const [step, setStep] = useState(0)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { login } = useAuthStore()
+	const { register } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {
@@ -22,14 +25,29 @@ export default function Register() {
 		}
 	}
 
-	const handleSubmit = async () => {
-		const result = await login('a', 'b')
+	const handleFirstSubmit = async (data: FormData) => {
+		console.log(data)
+		console.log(globalVariables().VITE_SPORTAPP_API_URL)
+
+		const payload: RegisterUserRequest = {
+			email: data.email,
+			password: data.password,
+			first_name: data.name,
+			last_name: data.lastName
+		}
+
+		const result = await register(payload)
 
 		if (result) {
-			navigate('/home')
+			handleNext()
 		} else {
 			alert('Error')
 		}
+	}
+
+	const handleSecondSubmit = (data: unknown) => {
+		console.log(data)
+		navigate('/home')
 	}
 
 	return (
@@ -48,8 +66,8 @@ export default function Register() {
 					</Typography>
 					<RegisterContainer
 						step={step}
-						onHandleFirstSubmit={handleNext}
-						onHandleSecondSubmit={handleSubmit}
+						onHandleFirstSubmit={handleFirstSubmit}
+						onHandleSecondSubmit={handleSecondSubmit}
 					/>
 					{step === 0 && (
 						<Button

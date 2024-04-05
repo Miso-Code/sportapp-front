@@ -1,3 +1,4 @@
+import { getCitiesOfCountry, getCountries } from '@/utils/contries'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Button } from '@mui/material'
 import DatePickerController from 'components/Inputs/DatePickerController'
@@ -12,7 +13,8 @@ import './_index.scss'
 
 export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 	const { t } = useTranslation()
-	const { handleSubmit, control } = useForm({
+	const contries = getCountries
+	const { watch, handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 		defaultValues: {
 			name: '',
@@ -41,6 +43,10 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 
 		onHandleSubmit(data)
 	}
+
+	const nationalityCountry = watch('nationality.country')
+	const residenceCountry = watch('residence.country')
+
 	return (
 		<form className='register-form' onSubmit={handleSubmit(onSubmit)}>
 			<TextFieldController
@@ -77,31 +83,30 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 					{ label: 'Cedula de extranjeria', value: 'CE' }
 				]}
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
 				label='Numero de identificación'
 				name='documentNumber'
 			/>
+
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
 				label='Pais de nacimiento'
 				name='nationality.country'
-				options={[
-					{ label: 'Colombia', value: 'CO' },
-					{ label: 'Venezuela', value: 'VE' }
-				]}
+				options={contries}
+				isTranslated={false}
 			/>
+
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
 				label='Ciudad de nacimiento'
 				name='nationality.city'
-				options={[
-					{ label: 'Bogota', value: 'BOG' },
-					{ label: 'Medellin', value: 'MED' }
-				]}
+				options={getCitiesOfCountry(nationalityCountry)}
+				isTranslated={false}
 			/>
 
 			<SelectController
@@ -109,10 +114,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				selectProps={{ fullWidth: true }}
 				label='Pais de residencia'
 				name='residence.country'
-				options={[
-					{ label: 'Colombia', value: 'CO' },
-					{ label: 'Venezuela', value: 'VE' }
-				]}
+				options={contries}
+				isTranslated={false}
 			/>
 			<TextFieldController
 				control={control}
@@ -126,10 +129,8 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				selectProps={{ fullWidth: true }}
 				label='Ciudad de residencia'
 				name='residence.city'
-				options={[
-					{ label: 'Bogota', value: 'BOG' },
-					{ label: 'Medellin', value: 'MED' }
-				]}
+				options={getCitiesOfCountry(residenceCountry)}
+				isTranslated={false}
 			/>
 			<SelectController
 				control={control}

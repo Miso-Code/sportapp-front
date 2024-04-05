@@ -1,6 +1,8 @@
+import { FormData } from '../Default/utils/schema'
+
 export interface Props {
 	step: number
-	onHandleFirstSubmit: (data: unknown) => void
+	onHandleFirstSubmit: (data: FormData) => void
 	firstDefaultValues?: DefaultValues
 	onHandleSecondSubmit: (data: unknown) => void
 	secondDefaultValues?: DefaultFullValues

@@ -30,9 +30,8 @@ export const useAuthStore = create(
 			register: async (request: RegisterUserRequest) => {
 				const userApi = new UserApi()
 				// WIP register logic
-				await userApi.register(request)
 
-				return false
+				return await userApi.register(request)
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading })

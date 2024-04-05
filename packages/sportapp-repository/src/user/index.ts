@@ -1,5 +1,6 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AxiosInstance, AxiosResponse } from 'axios'
 import { sportappApi } from '../index'
+import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
 import {
 	RegisterFullUserRequest,
@@ -13,20 +14,41 @@ export default class UserApi {
 		this.sportappApi = sportappApi
 	}
 
-	async register(
-		data: RegisterUserRequest,
-		options?: AxiosRequestConfig
-	): Promise<boolean> {
+	async register(data: RegisterUserRequest): Promise<boolean> {
 		const endpoint = endpoints.register
-		const response = await this.sportappApi.post(endpoint, data, {
-			...options,
-			responseType: 'stream'
-		})
+		try {
+			const response = await fetch(
+				`${globalVariables().VITE_SPORTAPP_API_URL}${endpoint}`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(data)
+				}
+			)
 
-		const dataAux = response.data.pipe(process.stdout)
-		console.log(dataAux)
+			const reader = response
+				.body!.pipeThrough(new TextDecoderStream())
+				.getReader()
 
-		return true
+			let done = false
+
+			while (!done) {
+				const result = await reader.read()
+				done = result.done
+				if (!done) {
+					const value = result.value
+
+					if (value?.toString()?.includes('User created')) {
+						return true
+					}
+				}
+			}
+		} catch (error) {
+			console.error(error)
+		}
+		return false
 	}
 
 	async registerFull(
