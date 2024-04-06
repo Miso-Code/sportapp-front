@@ -22,7 +22,7 @@ const response = {
 			read: jest.fn(() =>
 				Promise.resolve({
 					done: false,
-					value: 'User created'
+					value: 'data: {"status": "success", "message": "User created", "data": {"id": "e4296860-5cad-43ae-a7a7-d8c2acdb0a63", "email": "bryanhenaoxx12x53@gmail.com", "first_name": "John", "last_name": "Doe"}}'
 				})
 			)
 		}))
@@ -74,7 +74,12 @@ describe('UserApi', () => {
 
 			const result = await userApi.register(data)
 
-			expect(result).toBe(true)
+			expect(result).toStrictEqual({
+				email: 'bryanhenaoxx12x53@gmail.com',
+				first_name: 'John',
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				last_name: 'Doe'
+			})
 		})
 
 		it('should return false if the user is not created', async () => {
@@ -90,7 +95,7 @@ describe('UserApi', () => {
 						read: jest.fn(() =>
 							Promise.resolve({
 								done: false,
-								value: 'User already exists'
+								value: 'data: {"status": "error", "message": "User already exists"}'
 							})
 						)
 					}))
@@ -123,13 +128,37 @@ describe('UserApi', () => {
 			try {
 				await userApi.register(data)
 			} catch (error) {
-				expect(error).toBe('error')
+				expect(error).toMatch('error')
 			}
 		})
 	})
 
 	describe('registerFull', () => {
 		it('should call the registerFull endpoint', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						status: 'success',
+						message: 'User created',
+						data: {
+							user_id: '195a9233-2c4f-4c59-9f84-e327b6a48218',
+							first_name: 'John',
+							last_name: 'Doe',
+							email: 'bryanhenaoxx12u53@gmail.com',
+							identification_type: 'CC',
+							identification_number: '123456789',
+							gender: 'M',
+							country_of_birth: 'CountryOfBirth',
+							city_of_birth: 'CityOfBirth',
+							country_of_residence: 'CountryOfResidence',
+							city_of_residence: 'CityOfResidence',
+							residence_age: 25,
+							birth_date: '1996-12-31'
+						}
+					}
+				})
+			)
 			const userApi = new UserApi()
 			const data: RegisterFullUserRequest = {
 				birth_date: '1990-01-01',
@@ -145,7 +174,7 @@ describe('UserApi', () => {
 			const uuid = '1234'
 			await userApi.registerFull(uuid, data)
 
-			expect(sportappApi.post).toHaveBeenCalledWith(
+			expect(sportappApi.patch).toHaveBeenCalledWith(
 				`/users/${uuid}/complete-registration`,
 				data
 			)

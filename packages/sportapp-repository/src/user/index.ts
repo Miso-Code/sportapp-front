@@ -45,7 +45,7 @@ export default class UserApi {
 
 			return false
 		} catch (error) {
-			Promise.reject(error)
+			console.log(error)
 		}
 		return false
 	}
@@ -67,6 +67,7 @@ export default class UserApi {
 						)
 
 					if (
+						jsonResponse &&
 						jsonResponse.status === 'success' &&
 						jsonResponse.message === 'User created'
 					) {
@@ -74,6 +75,7 @@ export default class UserApi {
 					}
 
 					if (
+						jsonResponse &&
 						jsonResponse.status === 'error' &&
 						jsonResponse.message === 'User already exists'
 					) {
@@ -83,16 +85,22 @@ export default class UserApi {
 			}
 		} catch (error) {
 			pipeThrough.cancel()
-			Promise.reject(error)
+			console.error(error)
+
+			// Promise.reject(error)
 		}
 	}
 
-	private convertStringToJSON<StringToJSON>(value: string): StringToJSON {
+	private convertStringToJSON<StringToJSON>(
+		value: string
+	): StringToJSON | undefined {
 		try {
 			const str = value.replace(/\r\n\r\n.*$/, '').replace('data: ', '')
 			return JSON.parse(str) as StringToJSON
 		} catch (error) {
-			throw new Error(error)
+			console.error(error)
+			return undefined
+			//throw new Error(error)
 		}
 	}
 

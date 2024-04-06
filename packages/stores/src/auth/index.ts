@@ -95,7 +95,10 @@ export const useAuthStore = create(
 				return await userApi.registerFull(user.id, request)
 			},
 			setError: (error) => set({ error }),
-			setLoading: (loading) => set({ loading })
+			setLoading: (loading) => set({ loading }),
+			setUser: (user: User) => set({ user }),
+			clearState: () =>
+				set((state) => ({ ...state, ...initialAuthState }))
 		}),
 		{
 			name: 'auth-storage',

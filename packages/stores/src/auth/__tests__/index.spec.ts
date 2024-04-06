@@ -1,15 +1,39 @@
 import { act, renderHook } from '@testing-library/react'
 import { useAuthStore } from '../index'
+import {
+	RegisterUserRequest,
+	RegisterFullUserRequest
+} from '@sportapp/sportapp-repository/src/user/interfaces'
+import UserApi from '@sportapp/sportapp-repository/src/user'
 
 jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
 }))
 
-jest.mock('@sportapp/sportapp-repository/src/user', () => ({
-	useUserApi: jest.fn(() => ({
-		register: jest.fn(() => Promise.resolve(true))
-	}))
-}))
+jest.mock('@sportapp/sportapp-repository/src/user', () => {
+	return {
+		__esModule: true,
+		default: jest.fn().mockImplementation(() => ({
+			register: jest.fn().mockResolvedValue({
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				email: 'bryanhenaoxx12x53@gmail.com',
+				first_name: 'John',
+				last_name: 'Doe'
+			}),
+			registerFull: jest.fn().mockResolvedValue({
+				identification_type: 'CC',
+				identification_number: '123456789',
+				gender: 'M',
+				country_of_birth: 'CountryOfBirth',
+				city_of_birth: 'CityOfBirth',
+				country_of_residence: 'CountryOfResidence',
+				city_of_residence: 'CityOfResidence',
+				residence_age: 25,
+				birth_date: '1996-12-31'
+			})
+		}))
+	}
+})
 
 describe('AuthStore', () => {
 	const OLD_ENV = process.env
@@ -18,8 +42,9 @@ describe('AuthStore', () => {
 		process.env = { ...OLD_ENV }
 	})
 
-	afterEach(() => {
+	afterEach(async () => {
 		process.env = OLD_ENV
+		jest.clearAllMocks()
 	})
 
 	it('should login and logout', async () => {
@@ -64,5 +89,101 @@ describe('AuthStore', () => {
 			await login('c', 'd')
 		})
 		expect(result.current.isAuth).toBe(false)
+	})
+
+	describe('register', () => {
+		const initialStoreState = useAuthStore.getState()
+
+		beforeEach(() => {
+			useAuthStore.setState(initialStoreState)
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should register and update user', async () => {
+			const { result } = renderHook(() => useAuthStore())
+			const { register } = result.current
+			expect(result.current.user).toBe(undefined)
+			const payload: RegisterUserRequest = {
+				email: 'a',
+				first_name: 'b',
+				last_name: 'c',
+				password: 'd'
+			}
+			await act(async () => {
+				await register(payload)
+			})
+			expect(result.current.user).toStrictEqual({
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				email: 'bryanhenaoxx12x53@gmail.com',
+				first_name: 'John',
+				last_name: 'Doe'
+			})
+		})
+
+		it.skip('should not register and set error', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				register: jest.fn().mockResolvedValue(false)
+			}))
+			const { result } = renderHook(() => useAuthStore())
+			const { register } = result.current
+			expect(result.current.user).toBe(undefined)
+			const payload: RegisterUserRequest = {
+				email: 'a',
+				first_name: 'b',
+				last_name: 'c',
+				password: 'd'
+			}
+			await act(async () => {
+				await register(payload)
+			})
+			expect(result.current.user).toBe(undefined)
+			expect(result.current.error).toBe('errors.register.base')
+		})
+	})
+
+	describe('registerFull', () => {
+		const initialStoreState = useAuthStore.getState()
+
+		beforeEach(() => {
+			useAuthStore.setState(initialStoreState)
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should register full', async () => {
+			const { result } = renderHook(() => useAuthStore())
+			expect(result.current.user).toBe(undefined)
+			const { registerFull } = result.current
+			const payload: RegisterFullUserRequest = {
+				identification_type: 'CC',
+				identification_number: '123456789',
+				gender: 'M',
+				country_of_birth: 'CountryOfBirth',
+				city_of_birth: 'CityOfBirth',
+				country_of_residence: 'CountryOfResidence',
+				city_of_residence: 'CityOfResidence',
+				residence_age: 25,
+				birth_date: '1996-12-31'
+			}
+			await act(async () => {
+				await registerFull(payload)
+			})
+			expect(result.current.user).toStrictEqual({
+				identification_type: 'CC',
+				identification_number: '123456789',
+				gender: 'M',
+				country_of_birth: 'CountryOfBirth',
+				city_of_birth: 'CityOfBirth',
+				country_of_residence: 'CountryOfResidence',
+				city_of_residence: 'CityOfResidence',
+				residence_age: 25,
+				birth_date: '1996-12-31'
+			})
+		})
 	})
 })

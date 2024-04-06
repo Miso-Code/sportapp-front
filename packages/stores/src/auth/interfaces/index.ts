@@ -26,4 +26,6 @@ export interface IAuthActions {
 	setLoading: (isAuth: boolean) => void
 	register: (request: RegisterUserRequest) => Promise<boolean>
 	registerFull: (request: RegisterFullUserRequest) => Promise<boolean>
+	setUser: (user: User) => void
+	clearState: () => void
 }
