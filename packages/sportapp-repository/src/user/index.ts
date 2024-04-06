@@ -3,6 +3,8 @@ import { sportappApi } from '../index'
 import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
 import {
+	LoginUserRequest,
+	LoginUserResponse,
 	RegisterFullUserRequest,
 	RegisterUserDataResponse,
 	RegisterUserRequest,
@@ -119,5 +121,27 @@ export default class UserApi {
 			console.error(error)
 		}
 		return false
+	}
+
+	async login({
+		email,
+		password
+	}: LoginUserRequest): Promise<LoginUserResponse | undefined> {
+		const endpoint = endpoints.login
+		try {
+			const response = await this.sportappApi.post<LoginUserResponse>(
+				endpoint,
+				{
+					email,
+					password
+				}
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
 	}
 }

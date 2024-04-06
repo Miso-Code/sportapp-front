@@ -180,4 +180,49 @@ describe('UserApi', () => {
 			)
 		})
 	})
+
+	describe('login', () => {
+		it('should call the login endpoint', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						access_token: 'test_access_token',
+						access_token_expires_minutes: 1,
+						refresh_token: 'test_refresh_token',
+						refresh_token_expires_minutes: 1
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'email@example.com',
+				password: 'password'
+			}
+			const response = await userApi.login(data)
+
+			expect(response).toStrictEqual({
+				access_token: 'test_access_token',
+				access_token_expires_minutes: 1,
+				refresh_token: 'test_refresh_token',
+				refresh_token_expires_minutes: 1
+			})
+		})
+
+		it('should return undefined if the login fails', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'email@example.com',
+				password: 'password'
+			}
+			const response = await userApi.login(data)
+
+			expect(response).toBeUndefined()
+		})
+	})
 })

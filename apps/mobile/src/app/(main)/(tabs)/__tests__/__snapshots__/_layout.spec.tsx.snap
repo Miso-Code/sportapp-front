@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabLayout should render correctly 1`] = `
+[
+  <div>
+    <h1>
+      Profile
+    </h1>
+    <Text
+      allowFontScaling={false}
+      selectable={false}
+      style={
+        [
+          {
+            "color": "blue",
+            "fontSize": 28,
+          },
+          undefined,
+          {
+            "fontFamily": "FontAwesome",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          {},
+        ]
+      }
+    >
+      
+    </Text>
+  </div>,
+  <div>
+    <h1>
+      Entrenamiento
+    </h1>
+    <Text
+      allowFontScaling={false}
+      selectable={false}
+      style={
+        [
+          {
+            "color": "blue",
+            "fontSize": 28,
+          },
+          undefined,
+          {
+            "fontFamily": "FontAwesome",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          {},
+        ]
+      }
+    >
+      
+    </Text>
+  </div>,
+]
+`;

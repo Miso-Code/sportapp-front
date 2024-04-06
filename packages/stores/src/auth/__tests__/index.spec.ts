@@ -48,20 +48,6 @@ describe('AuthStore', () => {
 		jest.clearAllMocks()
 	})
 
-	it('should login and logout', async () => {
-		const { result } = renderHook(() => useAuthStore())
-		const { login, logout } = result.current
-		expect(result.current.isAuth).toBe(false)
-		await act(async () => {
-			await login('a', 'b')
-		})
-		expect(result.current.isAuth).toBe(true)
-		await act(async () => {
-			await logout()
-		})
-		expect(result.current.isAuth).toBe(false)
-	})
-
 	it('should set error', async () => {
 		const { result } = renderHook(() => useAuthStore())
 		const { setError } = result.current
@@ -80,16 +66,6 @@ describe('AuthStore', () => {
 			await setLoading(true)
 		})
 		expect(result.current.loading).toBe(true)
-	})
-
-	it('should not login with wrong credentials', async () => {
-		const { result } = renderHook(() => useAuthStore())
-		const { login } = result.current
-		expect(result.current.isAuth).toBe(false)
-		await act(async () => {
-			await login('c', 'd')
-		})
-		expect(result.current.isAuth).toBe(false)
 	})
 
 	it('should set user', async () => {
@@ -315,6 +291,54 @@ describe('AuthStore', () => {
 				const result = await registerFull(payload)
 				expect(result).toBe(false)
 			})
+		})
+	})
+
+	describe('login', () => {
+		const initialStoreState = useAuthStore.getState()
+
+		beforeEach(() => {
+			useAuthStore.setState(initialStoreState)
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should login', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				login: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh_token: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				})
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { login } = result.current
+
+			const loginPayload = {
+				email: 'email@example.com',
+				password: 'password'
+			}
+
+			await act(async () => {
+				await login(loginPayload)
+			})
+
+			expect(result.current.authToken).toStrictEqual({
+				accessToken: 'accessToken',
+				accessTokenExpirationMinutes: 1,
+				refreshToken: 'refreshToken',
+				refreshTokenExpirationMinutes: 1
+			})
+
+			expect(result.current.isAuth).toBe(true)
 		})
 	})
 })

@@ -1,15 +1,9 @@
 {
-	"extends": "@react-native/typescript-config/tsconfig.json",
-	"compilerOptions": {
-		"jsx": "react-native",
-		"baseUrl": "./",
-		"paths": {
-			"@/*": ["./src/*"],
-			"components/*": ["./src/components/*"],
-			"containers/*": ["./src/containers/*"],
-			"screens/*": ["./src/screens/*"]
-		}
-	},
-	"allowJs": true,
-	"include": ["src", "src/config/test/jest.setup.ts"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "extends": "expo/tsconfig.base"
 }

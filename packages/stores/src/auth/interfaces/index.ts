@@ -10,6 +10,12 @@ export interface IAuthState {
 	isAuth: boolean
 	error: string | undefined
 	loading: boolean
+	authToken?: {
+		accessToken: string
+		accessTokenExpirationMinutes: number
+		refreshToken: string
+		refreshTokenExpirationMinutes: number
+	}
 }
 
 export interface User {
@@ -20,7 +26,7 @@ export interface User {
 }
 
 export interface IAuthActions {
-	login: (email: string, password: string) => Promise<boolean>
+	login: (payload: { email: string; password: string }) => Promise<boolean>
 	logout: () => void
 	setError: (error: string) => void
 	setLoading: (isAuth: boolean) => void

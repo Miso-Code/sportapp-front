@@ -57,3 +57,15 @@ export interface RegisterFullUserResponse {
 	residence_age: number
 	birth_date: string
 }
+
+export interface LoginUserRequest {
+	email: string
+	password: string
+}
+
+export interface LoginUserResponse {
+	access_token: string
+	access_token_expires_minutes: number
+	refresh_token: string
+	refresh_token_expires_minutes: number
+}

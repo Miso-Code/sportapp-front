@@ -5,7 +5,7 @@ import {
 } from '@sportapp/sportapp-repository/src/user/interfaces'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+// import { createJSONStorage, persist } from 'zustand/middleware'
 import { IAuthState, IAuthStore, User } from './interfaces'
 
 export const initialAuthState: IAuthState = {
@@ -15,96 +15,124 @@ export const initialAuthState: IAuthState = {
 	loading: false
 }
 
-export const useAuthStore = create(
-	persist<IAuthStore>(
-		(set, get) => ({
-			...initialAuthState,
-			login: async (email, password) => {
-				// WIP login logic
-				if (email === 'a' && password === 'b') {
-					set((state) => ({ ...state, isAuth: true }))
-					return true
-				}
-				return false
-			},
-			logout: () => {
-				// WIP logout logic
+export const useAuthStore = create<IAuthStore>(
+	// persist<IAuthStore>( #FIXME: This is not working on expo
+	(set, get) => ({
+		...initialAuthState,
+		login: async ({ email, password }) => {
+			const userApi = new UserApi()
+			try {
 				set((state) => ({
 					...state,
-					user: undefined,
-					isAuth: false,
-					loading: false,
-					error: undefined
+					loading: true
 				}))
-			},
-			register: async (request: RegisterUserRequest) => {
-				const userApi = new UserApi()
-				try {
+				const response = await userApi.login({ email, password })
+
+				if (response && response.access_token) {
 					set((state) => ({
 						...state,
-						loading: true
-					}))
-					const response = await userApi.register(request)
-
-					if (
-						response &&
-						typeof response === 'object' &&
-						response.id
-					) {
-						const userPayload: User = {
-							...response
+						isAuth: true,
+						loading: false,
+						authToken: {
+							accessToken: response.access_token,
+							accessTokenExpirationMinutes:
+								response.access_token_expires_minutes,
+							refreshToken: response.refresh_token, // TODO: this is not safe to be stored in the client this way
+							refreshTokenExpirationMinutes:
+								response.refresh_token_expires_minutes
 						}
-						set((state) => ({
-							...state,
-							user: userPayload,
-							loading: false
-						}))
-						return true
-					}
+					}))
+				}
 
+				set((state) => ({
+					...state,
+					error: 'errors.login.base',
+					loading: false
+				}))
+
+				return false
+			} catch (e) {
+				set((state) => ({
+					...state,
+					loading: false,
+					error: 'errors.login.base'
+				}))
+				return false
+			}
+		},
+		logout: () => {
+			// WIP logout logic
+			set((state) => ({
+				...state,
+				user: undefined,
+				isAuth: false,
+				loading: false,
+				error: undefined
+			}))
+		},
+		register: async (request: RegisterUserRequest) => {
+			const userApi = new UserApi()
+			try {
+				set((state) => ({
+					...state,
+					loading: true
+				}))
+				const response = await userApi.register(request)
+
+				if (response && typeof response === 'object' && response.id) {
+					const userPayload: User = {
+						...response
+					}
 					set((state) => ({
 						...state,
-						error: 'errors.register.base',
+						user: userPayload,
 						loading: false
 					}))
-
-					return false
-				} catch (e) {
-					set((state) => ({
-						...state,
-						loading: false,
-						error: 'errors.register.base'
-					}))
-					return false
-				}
-			},
-			registerFull: async (request: RegisterFullUserRequest) => {
-				const userApi = new UserApi()
-				const user = get().user
-
-				if (!user) {
-					return false
+					return true
 				}
 
 				set((state) => ({
 					...state,
-					loading: true,
-					isAuth: true
+					error: 'errors.register.base',
+					loading: false
 				}))
 
-				return await userApi.registerFull(user.id, request)
-			},
-			setError: (error) => set({ error }),
-			setLoading: (loading) => set({ loading }),
-			setUser: (user: User) => set({ user }),
-			clearState: () =>
-				set((state) => ({ ...state, ...initialAuthState }))
-		}),
-		{
-			name: 'auth-storage',
-			storage: createJSONStorage(() => sessionStorage)
-		}
-	)
+				return false
+			} catch (e) {
+				set((state) => ({
+					...state,
+					loading: false,
+					error: 'errors.register.base'
+				}))
+				return false
+			}
+		},
+		registerFull: async (request: RegisterFullUserRequest) => {
+			const userApi = new UserApi()
+			const user = get().user
+
+			if (!user) {
+				return false
+			}
+
+			set((state) => ({
+				...state,
+				loading: true,
+				isAuth: true
+			}))
+
+			return await userApi.registerFull(user.id, request)
+		},
+		setError: (error) => set({ error }),
+		setLoading: (loading) => set({ loading }),
+		setUser: (user: User) => set({ user }),
+		clearState: () => set((state) => ({ ...state, ...initialAuthState }))
+	})
+	// 	{
+	// 		name: 'auth-storage',
+	// 		storage: createJSONStorage(() => sessionStorages)
+	// 	}
+	// )
 )
 
 if (process.env.NODE_ENV === 'development') {
