@@ -4,7 +4,7 @@
 	min-height: 100vh;
 
 	.title {
-		@apply font-bold mb-7;
+		@apply font-bold mb-7 text-6xl md:text-8xl;
 	}
 
 	.navigation {
@@ -33,4 +33,8 @@
 			@apply w-full text-center mb-6;
 		}
 	}
+}
+
+.alert-register-container {
+	@apply absolute top-0 left-0 w-full;
 }

@@ -1,4 +1,5 @@
 import SecondarySection from '@/components/SecondarySection'
+import TransitionAlert from '@/components/TransitionAlert'
 import RegisterContainer from '@/containers/Register'
 import { FormData } from '@/containers/Register/Default/utils/schema'
 import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schema'
@@ -15,6 +16,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
 	const [step, setStep] = useState(0)
+	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
 	const { register } = useAuthStore()
@@ -38,7 +40,7 @@ export default function Register() {
 		if (result) {
 			handleNext()
 		} else {
-			alert('Error')
+			setAlert(true)
 		}
 	}
 
@@ -49,42 +51,60 @@ export default function Register() {
 	}
 
 	return (
-		<div className='register'>
-			<main className='section-main'>
-				<Typography className='title' variant='h1'>
-					{t('app.name')}
-				</Typography>
-				<Paper
-					variant='outlined'
-					className={`card-register ${
-						step !== 0 && 'card-register__full'
-					}`}>
-					<Typography className='card-title' variant='h6'>
-						{t(step === 0 ? 'register.default' : 'register.full')}
+		<>
+			<div className='register'>
+				<main className='section-main'>
+					<Typography className='title' variant='h1'>
+						{t('app.name')}
 					</Typography>
-					<RegisterContainer
-						step={step}
-						onHandleFirstSubmit={handleFirstSubmit}
-						onHandleSecondSubmit={handleSecondSubmit}
+					<Paper
+						variant='outlined'
+						className={`card-register ${
+							step !== 0 && 'card-register__full'
+						}`}>
+						<Typography className='card-title' variant='h6'>
+							{t(
+								step === 0
+									? 'register.default'
+									: 'register.full'
+							)}
+						</Typography>
+						<RegisterContainer
+							step={step}
+							onHandleFirstSubmit={handleFirstSubmit}
+							onHandleSecondSubmit={handleSecondSubmit}
+						/>
+						{step === 0 && (
+							<Button
+								fullWidth
+								type='button'
+								onClick={() => {
+									console.log('Login', alert)
+
+									setAlert(true)
+								}}
+								variant='text'
+								title={t('register.button')}
+								className='navigation'>
+								{t('register.login')}
+							</Button>
+						)}
+					</Paper>
+				</main>
+				{step === 0 && (
+					<SecondarySection
+						image={registerImage}
+						altImage={t('register.image')}
 					/>
-					{step === 0 && (
-						<Button
-							fullWidth
-							type='button'
-							variant='text'
-							title={t('register.button')}
-							className='navigation'>
-							{t('register.login')}
-						</Button>
-					)}
-				</Paper>
-			</main>
-			{step === 0 && (
-				<SecondarySection
-					image={registerImage}
-					altImage={t('register.image')}
-				/>
-			)}
-		</div>
+				)}
+			</div>
+			<TransitionAlert
+				containerClassName='alert-register-container'
+				isOpen={alert}
+				handleClose={setAlert}
+				message='Hello'
+				severity='error'
+			/>
+		</>
 	)
 }
