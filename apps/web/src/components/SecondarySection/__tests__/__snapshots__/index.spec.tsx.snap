@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecondarySection should render correctly 1`] = `
+<div>
+  <section
+    class="section-secondary"
+  >
+    <figure
+      class="container-image"
+    >
+      <img
+        alt="altImage"
+        class="image-register"
+        src="image"
+      />
+    </figure>
+  </section>
+</div>
+`;
