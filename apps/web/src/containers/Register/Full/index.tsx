@@ -13,7 +13,7 @@ import './_index.scss'
 
 export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 	const { t } = useTranslation()
-	const contries = getCountries
+	const countries = getCountries
 	const { watch, handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 		defaultValues: {
@@ -52,58 +52,63 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Correo electronico'
+				label={t('form.email')}
 				name='email'
 			/>
+
 			<TextFieldPasswordController
 				control={control}
 				fullWidth
-				label='Contraseña'
+				label={t('form.password')}
 				name='password'
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Nombre'
+				label={t('form.name')}
 				name='name'
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Apellido'
+				label={t('form.lastName')}
 				name='lastName'
 			/>
+
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Tipo de documento'
+				label={t('form.documentType')}
 				name='documentType'
 				options={[
-					{ label: 'Cedula de ciudadania', value: 'CC' },
-					{ label: 'Cedula de extranjeria', value: 'CE' }
+					{ label: t('documentTypeValues.CC'), value: 'CC' },
+					{ label: t('documentTypeValues.CE'), value: 'CE' },
+					{ label: t('documentTypeValues.PP'), value: 'PP' }
 				]}
 			/>
 
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Numero de identificación'
+				label={t('form.documentNumber')}
 				name='documentNumber'
 			/>
 
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Pais de nacimiento'
+				label={t('form.nationalityCountry')}
 				name='nationality.country'
-				options={contries}
+				options={countries}
 				isTranslated={false}
 			/>
 
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Ciudad de nacimiento'
+				label={t('form.nationalityCity')}
 				name='nationality.city'
 				options={getCitiesOfCountry(nationalityCountry)}
 				isTranslated={false}
@@ -112,43 +117,47 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Pais de residencia'
+				label={t('form.residenceCountry')}
 				name='residence.country'
-				options={contries}
+				options={countries}
 				isTranslated={false}
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Tiempo de residencia'
+				label={t('form.residenceLengthOfStay')}
 				name='residence.lengthOfStay'
 				type='number'
 			/>
+
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Ciudad de residencia'
+				label={t('form.residenceCity')}
 				name='residence.city'
 				options={getCitiesOfCountry(residenceCountry)}
 				isTranslated={false}
 			/>
+
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}
-				label='Genero'
+				label={t('form.gender')}
 				name='gender'
 				options={[
-					{ label: 'Masculino', value: 'M' },
-					{ label: 'Femenino', value: 'F' },
-					{ label: 'Otro', value: 'O' },
-					{ label: 'Prefiero no decir', value: 'PND' }
+					{ label: t('MALE'), value: 'M' },
+					{ label: t('FEMALE'), value: 'F' },
+					{ label: t('OTHER'), value: 'O' }
 				]}
 			/>
+
 			<DatePickerController
 				control={control}
 				name='birthday'
-				label='Fecha de nacimiento'
+				label={t('form.birthday')}
 			/>
+
 			<Button fullWidth size='large' type='submit' variant='contained'>
 				{t('register.button-two')}
 			</Button>

@@ -31,27 +31,31 @@ export default function RegisterDefaultContainer({
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Nombre'
+				label={t('form.name')}
 				name='name'
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Apellido'
+				label={t('form.lastName')}
 				name='lastName'
 			/>
+
 			<TextFieldController
 				control={control}
 				fullWidth
-				label='Correo electronico'
+				label={t('form.email')}
 				name='email'
 			/>
+
 			<TextFieldPasswordController
 				control={control}
 				fullWidth
-				label='Contraseña'
+				label={t('form.password')}
 				name='password'
 			/>
+
 			<Button fullWidth size='large' type='submit' variant='contained'>
 				{t('register.button')}
 			</Button>
