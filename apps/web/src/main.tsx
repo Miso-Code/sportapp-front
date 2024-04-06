@@ -1,8 +1,9 @@
+import '@/index.scss'
+import Router from '@/router'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.scss'
+import '../config/lang/form'
 import '../config/lang/i18n'
-import Router from './router'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>

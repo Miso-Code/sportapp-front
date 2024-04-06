@@ -1,19 +1,11 @@
-import App from 'pages/Home'
-import {
-	createBrowserRouter,
-	RouteObject,
-	RouterProvider
-} from 'react-router-dom'
+import PrivateRoutes from '@/router/private/routes'
+import PublicRoutes from '@/router/public/routes'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-const routes: RouteObject[] = [
-	{
-		path: '/',
-		element: <App />
-	}
-]
+const Router = () => {
+	const router = createBrowserRouter([PrivateRoutes(), ...PublicRoutes()])
 
-const router = createBrowserRouter(routes)
-
-const Router = () => <RouterProvider router={router} />
+	return <RouterProvider router={router} />
+}
 
 export default Router
