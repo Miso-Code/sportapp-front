@@ -1,5 +1,7 @@
 import routes from '@/router/public/routes'
 
+jest.mock('@/pages/Register', () => () => <div>Register</div>)
+
 describe('Public Routes', () => {
 	it('should detect defined the public routes', () => {
 		expect(routes()).toBeDefined()

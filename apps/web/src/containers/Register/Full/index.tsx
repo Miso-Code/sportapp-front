@@ -5,7 +5,7 @@ import DatePickerController from 'components/Inputs/DatePickerController'
 import SelectController from 'components/Inputs/SelectController'
 import TextFieldController from 'components/Inputs/TexFieldController'
 import TextFieldPasswordController from 'components/Inputs/TexFieldPasswordController'
-import schema from 'containers/Register/Full/utils/schema'
+import schema, { FormData } from 'containers/Register/Full/utils/schema'
 import { PropsFull } from 'containers/Register/interfaces'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -38,7 +38,7 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 		mode: 'onChange'
 	})
 
-	const onSubmit = (data: unknown) => {
+	const onSubmit = (data: FormData) => {
 		console.log(data)
 
 		onHandleSubmit(data)

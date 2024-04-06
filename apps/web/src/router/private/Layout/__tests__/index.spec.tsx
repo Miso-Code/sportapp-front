@@ -3,7 +3,6 @@ import { RenderResult, render } from '@testing-library/react'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 
 jest.mock('@sportapp/stores/src/auth', () => ({
-	...jest.requireActual('@sportapp/stores/src/auth'),
 	useAuthStore: jest.fn(() => ({
 		isAuth: true
 	}))

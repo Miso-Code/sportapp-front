@@ -1,11 +1,11 @@
 import SecondarySection from '@/components/SecondarySection'
 import RegisterContainer from '@/containers/Register'
 import { FormData } from '@/containers/Register/Default/utils/schema'
+import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schema'
 import { Button } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
-import { globalVariables } from '@sportapp/sportapp-repository/src/utils/global-variables'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import 'pages/Register/_index.scss'
@@ -26,9 +26,6 @@ export default function Register() {
 	}
 
 	const handleFirstSubmit = async (data: FormData) => {
-		console.log(data)
-		console.log(globalVariables().VITE_SPORTAPP_API_URL)
-
 		const payload: RegisterUserRequest = {
 			email: data.email,
 			password: data.password,
@@ -45,8 +42,9 @@ export default function Register() {
 		}
 	}
 
-	const handleSecondSubmit = (data: unknown) => {
+	const handleSecondSubmit = (data: FormDataFull) => {
 		console.log(data)
+
 		navigate('/home')
 	}
 

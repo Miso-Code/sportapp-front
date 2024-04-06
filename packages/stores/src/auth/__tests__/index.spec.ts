@@ -5,6 +5,12 @@ jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
 }))
 
+jest.mock('@sportapp/sportapp-repository/src/user', () => ({
+	useUserApi: jest.fn(() => ({
+		register: jest.fn(() => Promise.resolve(true))
+	}))
+}))
+
 describe('AuthStore', () => {
 	const OLD_ENV = process.env
 	beforeEach(() => {

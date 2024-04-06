@@ -1,6 +1,6 @@
 import 'config/lang/form.ts'
 import baseSchema from 'containers/Register/Default/utils/schema'
-import { object, string } from 'yup'
+import { InferType, object, string } from 'yup'
 
 const schema = baseSchema.concat(
 	object().shape({
@@ -21,3 +21,5 @@ const schema = baseSchema.concat(
 )
 
 export default schema
+
+export type FormData = InferType<typeof schema>

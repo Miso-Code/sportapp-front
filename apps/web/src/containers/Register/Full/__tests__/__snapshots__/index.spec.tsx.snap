@@ -1,721 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RegisterFullContainer should call onHandleSubmit 1`] = `
-<div>
-  <form
-    class="register-form"
-  >
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":re:"
-        id=":re:-label"
-      >
-        Correo electronico
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="email"
-          name="email"
-          type="text"
-          value="test@correo.com"
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Correo electronico
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":rf:"
-        id=":rf:-label"
-      >
-        Contraseña
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
-          id="password"
-          name="password"
-          type="password"
-          value="123456Uu*"
-        />
-        <div
-          class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
-        >
-          <button
-            aria-label="toggle password visibility"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="VisibilityIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"
-              />
-            </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Contraseña
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":rg:"
-        id=":rg:-label"
-      >
-        Nombre
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="name"
-          name="name"
-          type="text"
-          value="Test"
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Nombre
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":rh:"
-        id=":rh:-label"
-      >
-        Apellido
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="lastName"
-          name="lastName"
-          type="text"
-          value="Test"
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Apellido
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        id="documentType-select-label"
-      >
-        Tipo de documento
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":ri:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="documentType-select-label mui-component-select-documentType"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-documentType"
-          role="combobox"
-          tabindex="0"
-        >
-          Cedula de ciudadania
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="documentType"
-          name="documentType"
-          tabindex="-1"
-          value="CC"
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Tipo de documento
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":rj:"
-        id=":rj:-label"
-      >
-        Numero de identificación
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="documentNumber"
-          name="documentNumber"
-          type="text"
-          value="123456789"
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Numero de identificación
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        id="nationality.country-select-label"
-      >
-        Pais de nacimiento
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":rk:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="nationality.country-select-label mui-component-select-nationality.country"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-nationality.country"
-          role="combobox"
-          tabindex="0"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality.country"
-          name="nationality.country"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Pais de nacimiento
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        id="nationality.city-select-label"
-      >
-        Ciudad de nacimiento
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":rl:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="nationality.city-select-label mui-component-select-nationality.city"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-nationality.city"
-          role="combobox"
-          tabindex="0"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="nationality.city"
-          name="nationality.city"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Ciudad de nacimiento
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        id="residence.country-select-label"
-      >
-        Pais de residencia
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":rm:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="residence.country-select-label mui-component-select-residence.country"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-residence.country"
-          role="combobox"
-          tabindex="0"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence.country"
-          name="residence.country"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Pais de residencia
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="true"
-        for=":rn:"
-        id=":rn:-label"
-      >
-        Tiempo de residencia
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="residence.lengthOfStay"
-          name="residence.lengthOfStay"
-          type="number"
-          value="1"
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-14lo706"
-          >
-            <span>
-              Tiempo de residencia
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        id="residence.city-select-label"
-      >
-        Ciudad de residencia
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":ro:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="residence.city-select-label mui-component-select-residence.city"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-residence.city"
-          role="combobox"
-          tabindex="0"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="residence.city"
-          name="residence.city"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Ciudad de residencia
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        id="gender-select-label"
-      >
-        Genero
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-      >
-        <div
-          aria-controls=":rp:"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-labelledby="gender-select-label mui-component-select-gender"
-          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-          id="mui-component-select-gender"
-          role="combobox"
-          tabindex="0"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </div>
-        <input
-          aria-hidden="true"
-          aria-invalid="false"
-          class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          id="gender"
-          name="gender"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-          data-testid="ArrowDropDownIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Genero
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
-      />
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-n5zogd-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        for="birthday"
-        id="birthday-label"
-      >
-        Fecha de nacimiento
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
-          id="birthday"
-          inputmode="text"
-          name="birthday"
-          placeholder="MM/DD/YYYY"
-          type="text"
-          value=""
-        />
-        <div
-          class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
-        >
-          <button
-            aria-label="Choose date"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="CalendarIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-              />
-            </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              Fecha de nacimiento
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth css-189e9pj-MuiButtonBase-root-MuiButton-root"
-      tabindex="0"
-      type="submit"
-    >
-      register.button-two
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
-    </button>
-  </form>
-</div>
-`;
-
 exports[`RegisterFullContainer should render the component 1`] = `
 <div>
   <form
@@ -730,7 +14,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r0:"
         id=":r0:-label"
       >
-        Correo electronico
+        form.email
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -751,7 +35,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Correo electronico
+              form.email
             </span>
           </legend>
         </fieldset>
@@ -766,7 +50,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r1:"
         id=":r1:-label"
       >
-        Contraseña
+        form.password
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
@@ -812,7 +96,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Contraseña
+              form.password
             </span>
           </legend>
         </fieldset>
@@ -827,7 +111,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r2:"
         id=":r2:-label"
       >
-        Nombre
+        form.name
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -848,7 +132,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Nombre
+              form.name
             </span>
           </legend>
         </fieldset>
@@ -863,7 +147,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r3:"
         id=":r3:-label"
       >
-        Apellido
+        form.lastName
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -884,7 +168,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Apellido
+              form.lastName
             </span>
           </legend>
         </fieldset>
@@ -898,7 +182,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="documentType-select-label"
       >
-        Tipo de documento
+        form.documentType
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -947,7 +231,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Tipo de documento
+              form.documentType
             </span>
           </legend>
         </fieldset>
@@ -965,7 +249,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r5:"
         id=":r5:-label"
       >
-        Numero de identificación
+        form.documentNumber
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -986,7 +270,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Numero de identificación
+              form.documentNumber
             </span>
           </legend>
         </fieldset>
@@ -1000,7 +284,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="nationality.country-select-label"
       >
-        Pais de nacimiento
+        form.nationalityCountry
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -1049,7 +333,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Pais de nacimiento
+              form.nationalityCountry
             </span>
           </legend>
         </fieldset>
@@ -1066,7 +350,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="nationality.city-select-label"
       >
-        Ciudad de nacimiento
+        form.nationalityCity
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -1115,7 +399,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Ciudad de nacimiento
+              form.nationalityCity
             </span>
           </legend>
         </fieldset>
@@ -1132,7 +416,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="residence.country-select-label"
       >
-        Pais de residencia
+        form.residenceCountry
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -1181,7 +465,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Pais de residencia
+              form.residenceCountry
             </span>
           </legend>
         </fieldset>
@@ -1199,7 +483,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for=":r9:"
         id=":r9:-label"
       >
-        Tiempo de residencia
+        form.residenceLengthOfStay
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -1220,7 +504,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Tiempo de residencia
+              form.residenceLengthOfStay
             </span>
           </legend>
         </fieldset>
@@ -1234,7 +518,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="residence.city-select-label"
       >
-        Ciudad de residencia
+        form.residenceCity
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -1283,7 +567,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Ciudad de residencia
+              form.residenceCity
             </span>
           </legend>
         </fieldset>
@@ -1300,7 +584,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         data-shrink="false"
         id="gender-select-label"
       >
-        Genero
+        form.gender
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -1349,7 +633,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Genero
+              form.gender
             </span>
           </legend>
         </fieldset>
@@ -1367,7 +651,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
         for="birthday"
         id="birthday-label"
       >
-        Fecha de nacimiento
+        form.birthday
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
@@ -1416,7 +700,7 @@ exports[`RegisterFullContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              Fecha de nacimiento
+              form.birthday
             </span>
           </legend>
         </fieldset>

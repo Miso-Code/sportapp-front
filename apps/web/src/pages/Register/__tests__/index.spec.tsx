@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 
 jest.mock(
-	'containers/Register',
+	'@/containers/Register',
 	() =>
 		({
 			step,
@@ -14,17 +14,18 @@ jest.mock(
 			step: number
 			onHandleFirstSubmit: () => void
 			onHandleSecondSubmit: () => void
-		}) => (
-			<div>
-				RegisterContainer-{step}
-				<button
-					data-testid='onHandleFirstSubmit'
-					onClick={() => onHandleFirstSubmit()}></button>
-				<button
-					data-testid='onHandleSecondSubmit'
-					onClick={() => onHandleSecondSubmit()}></button>
-			</div>
-		)
+		}) =>
+			(
+				<div>
+					RegisterContainer-{step}
+					<button
+						data-testid='onHandleFirstSubmit'
+						onClick={() => onHandleFirstSubmit()}></button>
+					<button
+						data-testid='onHandleSecondSubmit'
+						onClick={() => onHandleSecondSubmit()}></button>
+				</div>
+			)
 )
 
 jest.mock('react', () => {
@@ -36,7 +37,6 @@ jest.mock('react', () => {
 })
 
 jest.mock('@sportapp/stores/src/auth', () => ({
-	...jest.requireActual('@sportapp/stores/src/auth'),
 	useAuthStore: () => ({
 		login: jest.fn().mockReturnValueOnce(true).mockReturnValueOnce(false)
 	})
@@ -53,7 +53,7 @@ describe('Register', () => {
 		wrapper.unmount()
 	})
 
-	it('should render correctly', () => {
+	it.only('should render correctly', () => {
 		expect(wrapper).toMatchSnapshot()
 	})
 

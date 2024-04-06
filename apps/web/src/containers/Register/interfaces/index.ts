@@ -1,19 +1,20 @@
 import { FormData } from '../Default/utils/schema'
+import { FormData as FormDataFull } from '../Full/utils/schema'
 
 export interface Props {
 	step: number
 	onHandleFirstSubmit: (data: FormData) => void
 	firstDefaultValues?: DefaultValues
-	onHandleSecondSubmit: (data: unknown) => void
+	onHandleSecondSubmit: (data: FormDataFull) => void
 	secondDefaultValues?: DefaultFullValues
 }
 export interface PropsDefault {
-	onHandleSubmit: (data: unknown) => void
+	onHandleSubmit: (data: FormData) => void
 	defaultValues?: DefaultValues
 }
 
 export interface PropsFull {
-	onHandleSubmit: (data: unknown) => void
+	onHandleSubmit: (data: FormDataFull) => void
 	defaultValues?: DefaultFullValues
 }
 

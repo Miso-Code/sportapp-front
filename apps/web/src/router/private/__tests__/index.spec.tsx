@@ -1,10 +1,9 @@
 import privateRoutes from '@/router/private/routes'
-/* import { render } from '@testing-library/react'
-import {
-	MemoryRouter,
-	RouterProvider,
-	createBrowserRouter
-} from 'react-router-dom' */
+
+jest.mock('@/router/private/Layout', () => ({
+	__esModule: true,
+	default: ({ children }: { children: JSX.Element }) => <div>{children}</div>
+}))
 
 describe('Private Routes', () => {
 	it('should detect defined the private routes', () => {
@@ -51,13 +50,4 @@ describe('Private Routes', () => {
 		expect(redirectRoute?.element.props.to).toBe('/register')
 		expect(redirectRoute?.element.props.replace).toBe(true)
 	})
-
-	/* it('renders Home component when navigating to /home', () => {
-		const routesP = privateRoutes()
-		const router = createBrowserRouter([routesP])
-		const { container } = render(<RouterProvider router={router} />, {
-			wrapper: MemoryRouter
-		})
-		expect(container).toMatchSnapshot()
-	}) */
 })

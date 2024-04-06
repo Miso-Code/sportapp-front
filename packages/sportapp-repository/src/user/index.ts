@@ -43,6 +43,10 @@ export default class UserApi {
 					if (value?.toString()?.includes('User created')) {
 						return true
 					}
+
+					if (value?.toString()?.includes('User already exists')) {
+						return false
+					}
 				}
 			}
 		} catch (error) {
