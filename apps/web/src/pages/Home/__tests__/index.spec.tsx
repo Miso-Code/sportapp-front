@@ -1,5 +1,5 @@
 import { render, RenderResult } from '@testing-library/react'
-import Home from '@pages/Home'
+import Home from 'pages/Home'
 
 describe('Home', () => {
 	let wrapper: RenderResult

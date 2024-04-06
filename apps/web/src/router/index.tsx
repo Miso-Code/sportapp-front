@@ -1,4 +1,4 @@
-import App from '@pages/Home'
+import App from 'pages/Home'
 import {
 	createBrowserRouter,
 	RouteObject,
