@@ -6,7 +6,10 @@ import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schem
 import { Button } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
+import {
+	RegisterFullUserRequest,
+	RegisterUserRequest
+} from '@sportapp/sportapp-repository/src/user/interfaces'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import 'pages/Register/_index.scss'
@@ -19,7 +22,7 @@ export default function Register() {
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { register } = useAuthStore()
+	const { register, registerFull } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {
@@ -44,10 +47,23 @@ export default function Register() {
 		}
 	}
 
-	const handleSecondSubmit = (data: FormDataFull) => {
-		console.log(data)
+	const handleSecondSubmit = async (data: FormDataFull) => {
+		const payload: RegisterFullUserRequest = {
+			birth_date: data.birthday,
+			country_of_birth: data.nationality.country,
+			city_of_birth: data.nationality.city,
+			city_of_residence: data.residence.city,
+			country_of_residence: data.residence.country,
+			gender: data.gender,
+			identification_number: data.documentNumber,
+			identification_type: data.documentType,
+			residence_age: parseInt(data.residence.lengthOfStay)
+		}
 
-		navigate('/home')
+		const result = await registerFull(payload)
+
+		if (result) navigate('/home')
+		else setAlert(true)
 	}
 
 	return (

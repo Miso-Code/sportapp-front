@@ -1,12 +1,8 @@
-import { AxiosInstance, AxiosResponse } from 'axios'
+import { AxiosInstance } from 'axios'
 import { sportappApi } from '../index'
 import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
-import {
-	RegisterFullUserRequest,
-	RegisterFullUserResponse,
-	RegisterUserRequest
-} from './interfaces'
+import { RegisterFullUserRequest, RegisterUserRequest } from './interfaces'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -58,8 +54,17 @@ export default class UserApi {
 	async registerFull(
 		uuid: string,
 		data: RegisterFullUserRequest
-	): Promise<AxiosResponse<RegisterFullUserResponse>> {
+	): Promise<boolean> {
 		const endpoint = endpoints.registerFull(uuid)
-		return this.sportappApi.post(endpoint, data)
+		try {
+			const response = await this.sportappApi.patch(endpoint, data)
+
+			if (response.status === 201) {
+				return true
+			}
+		} catch (error) {
+			console.error(error)
+		}
+		return false
 	}
 }

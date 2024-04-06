@@ -3,9 +3,13 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { IAuthState, IAuthStore } from './interfaces'
 import UserApi from '@sportapp/sportapp-repository/src/user'
-import { RegisterUserRequest } from '@sportapp/sportapp-repository/src/user/interfaces'
+import {
+	RegisterFullUserRequest,
+	RegisterUserRequest
+} from '@sportapp/sportapp-repository/src/user/interfaces'
 
 export const initialAuthState: IAuthState = {
+	user: undefined,
 	isAuth: false,
 	error: undefined,
 	loading: false
@@ -13,7 +17,7 @@ export const initialAuthState: IAuthState = {
 
 export const useAuthStore = create(
 	persist<IAuthStore>(
-		(set) => ({
+		(set, get) => ({
 			...initialAuthState,
 			login: async (email, password) => {
 				// WIP login logic
@@ -29,16 +33,25 @@ export const useAuthStore = create(
 			},
 			register: async (request: RegisterUserRequest) => {
 				const userApi = new UserApi()
-				// WIP register logic
 
 				return await userApi.register(request)
+			},
+			registerFull: async (request: RegisterFullUserRequest) => {
+				const userApi = new UserApi()
+				const user = get().user
+
+				if (!user) {
+					return false
+				}
+
+				return await userApi.registerFull(user.id, request)
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading })
 		}),
 		{
 			name: 'auth-storage',
-			storage: createJSONStorage(() => localStorage)
+			storage: createJSONStorage(() => sessionStorage)
 		}
 	)
 )
