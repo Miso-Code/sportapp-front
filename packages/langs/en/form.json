@@ -1,0 +1,30 @@
+{
+	"name": "Name",
+	"lastName": "Last Name",
+	"phone": "Phone",
+	"email": "Email",
+	"password": "Password",
+	"confirmPassword": "Confirm Password",
+	"documentType": "Document Type",
+	"documentTypeValues": {
+		"CC": "Citizenship Card",
+		"CE": "Foreigner ID",
+		"PA": "Passport"
+	},
+	"documentNumber": "Document Number",
+	"nationalityCountry": "Country of Birth",
+	"nationalityCity": "City of Birth",
+	"residenceCountry": "Country of Residence",
+	"address": "Address",
+	"gender": "Gender",
+	"genderValues": {
+		"MALE": "Male",
+		"FEMALE": "FEMALE",
+		"OTHER": "Other"
+	},
+	"residenceLengthOfStay": "Length of Residence",
+	"residenceCity": "City of Residence",
+	"birthDate": "Date of Birth",
+	"other": "Other",
+	"notExist": "Not exist"
+}

@@ -1,5 +1,6 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"globalEnv": ["NODE_ENV", "VITE_SPORTAPP_API_URL"],
 	"globalDependencies": ["**/.env.*local"],
 	"pipeline": {
 		"build": {
@@ -14,7 +15,13 @@
 		},
 		"dev": {
 			"cache": false,
-			"persistent": true
+			"persistent": true,
+			"dotEnv": [
+				".env.development.local",
+				".env.development",
+				".env.local",
+				".env"
+			]
 		},
 		"test": {
 			"dependsOn": ["^test"]

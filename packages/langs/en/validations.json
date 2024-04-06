@@ -1,0 +1,9 @@
+{
+	"email": "Email is invalid",
+	"invalid": "Field is invalid",
+	"required": "Field is required",
+	"password": {
+		"required": "Password is required",
+		"restrictions": "The password must have at least 8 characters, one uppercase letter, one lowercase letter, one special character and one number."
+	}
+}

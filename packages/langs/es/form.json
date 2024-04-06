@@ -1,0 +1,30 @@
+{
+	"name": "Nombre",
+	"lastName": "Apellido",
+	"phone": "Teléfono",
+	"email": "Correo electrónico",
+	"password": "Contraseña",
+	"confirmPassword": "Confirmar contraseña",
+	"documentType": "Tipo de documento",
+	"documentTypeValues": {
+		"CC": "Cédula de ciudadanía",
+		"CE": "Cédula de extranjería",
+		"PA": "Pasaporte"
+	},
+	"documentNumber": "Número de identificación",
+	"nationalityCountry": "Pais de nacimiento",
+	"nationalityCity": "Ciudad de nacimiento",
+	"residenceCountry": "País de residencia",
+	"address": "Dirección",
+	"gender": "Género",
+	"genderValues": {
+		"MALE": "Masculino",
+		"FEMALE": "Femenino",
+		"OTHER": "Otro"
+	},
+	"residenceLengthOfStay": "Tiempo de residencia",
+	"residenceCity": "Ciudad de residencia",
+	"birthDate": "Fecha de nacimiento",
+	"other": "Otro",
+	"notExist": "No existe"
+}
