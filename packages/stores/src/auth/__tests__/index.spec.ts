@@ -5,6 +5,7 @@ import {
 	RegisterFullUserRequest
 } from '@sportapp/sportapp-repository/src/user/interfaces'
 import UserApi from '@sportapp/sportapp-repository/src/user'
+import { User } from '../interfaces'
 
 jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
@@ -91,6 +92,34 @@ describe('AuthStore', () => {
 		expect(result.current.isAuth).toBe(false)
 	})
 
+	it('should set user', async () => {
+		const { result } = renderHook(() => useAuthStore())
+		const { setUser } = result.current
+		expect(result.current.user).toBe(undefined)
+		const payload: User = {
+			id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+			email: 'test@test.com',
+			first_name: 'John',
+			last_name: 'Doe'
+		}
+		await act(async () => {
+			await setUser(payload)
+		})
+		expect(result.current.user).toStrictEqual(payload)
+	})
+
+	it('should clear state', async () => {
+		const { result } = renderHook(() => useAuthStore())
+		const { clearState } = result.current
+
+		await act(async () => {
+			await clearState()
+		})
+		expect(result.current.user).toBe(undefined)
+		expect(result.current.isAuth).toBe(false)
+		expect(result.current.error).toBe(undefined)
+	})
+
 	describe('register', () => {
 		const initialStoreState = useAuthStore.getState()
 
@@ -123,9 +152,29 @@ describe('AuthStore', () => {
 			})
 		})
 
-		it.skip('should not register and set error', async () => {
+		it('should not register and set error', async () => {
 			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
 				register: jest.fn().mockResolvedValue(false)
+			}))
+			const { result } = renderHook(() => useAuthStore())
+			const { register } = result.current
+			expect(result.current.user).toBe(undefined)
+			const payload: RegisterUserRequest = {
+				email: 'a',
+				first_name: 'b',
+				last_name: 'c',
+				password: 'd'
+			}
+			await act(async () => {
+				await register(payload)
+			})
+			expect(result.current.user).toBe(undefined)
+			expect(result.current.error).toBe('errors.register.base')
+		})
+
+		it('should not register and set error', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				register: jest.fn().mockRejectedValue(new Error('error'))
 			}))
 			const { result } = renderHook(() => useAuthStore())
 			const { register } = result.current
@@ -156,9 +205,35 @@ describe('AuthStore', () => {
 		})
 
 		it('should register full', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				registerFull: jest.fn().mockResolvedValue({
+					identification_type: 'CC',
+					identification_number: '123456789',
+					gender: 'M',
+					country_of_birth: 'CountryOfBirth',
+					city_of_birth: 'CityOfBirth',
+					country_of_residence: 'CountryOfResidence',
+					city_of_residence: 'CityOfResidence',
+					residence_age: 25,
+					birth_date: '1996-12-31'
+				})
+			}))
 			const { result } = renderHook(() => useAuthStore())
 			expect(result.current.user).toBe(undefined)
-			const { registerFull } = result.current
+
+			const { registerFull, setUser } = result.current
+
+			const userPayload: User = {
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				email: 'test@test.com',
+				first_name: 'John',
+				last_name: 'Doe'
+			}
+
+			await act(async () => {
+				await setUser(userPayload)
+			})
+
 			const payload: RegisterFullUserRequest = {
 				identification_type: 'CC',
 				identification_number: '123456789',
@@ -170,10 +245,34 @@ describe('AuthStore', () => {
 				residence_age: 25,
 				birth_date: '1996-12-31'
 			}
+			const expectedValue = { ...payload }
 			await act(async () => {
-				await registerFull(payload)
+				const result = await registerFull(payload)
+				expect(result).toStrictEqual(expectedValue)
 			})
-			expect(result.current.user).toStrictEqual({
+		})
+
+		it('should not register full', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				registerFull: jest.fn().mockResolvedValue(false)
+			}))
+			const { result } = renderHook(() => useAuthStore())
+			expect(result.current.user).toBe(undefined)
+
+			const { registerFull, setUser } = result.current
+
+			const userPayload: User = {
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				email: 'test@test.com',
+				first_name: 'John',
+				last_name: 'Doe'
+			}
+
+			await act(async () => {
+				await setUser(userPayload)
+			})
+
+			const payload: RegisterFullUserRequest = {
 				identification_type: 'CC',
 				identification_number: '123456789',
 				gender: 'M',
@@ -183,6 +282,38 @@ describe('AuthStore', () => {
 				city_of_residence: 'CityOfResidence',
 				residence_age: 25,
 				birth_date: '1996-12-31'
+			}
+			const expectedValue = false
+			await act(async () => {
+				const result = await registerFull(payload)
+				expect(result).toStrictEqual(expectedValue)
+			})
+		})
+
+		it('should not register full', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				registerFull: jest.fn().mockRejectedValue(new Error('error'))
+			}))
+			const { result } = renderHook(() => useAuthStore())
+			expect(result.current.user).toBe(undefined)
+
+			const { registerFull } = result.current
+
+			const payload: RegisterFullUserRequest = {
+				identification_type: 'CC',
+				identification_number: '123456789',
+				gender: 'M',
+				country_of_birth: 'CountryOfBirth',
+				city_of_birth: 'CityOfBirth',
+				country_of_residence: 'CountryOfResidence',
+				city_of_residence: 'CityOfResidence',
+				residence_age: 25,
+				birth_date: '1996-12-31'
+			}
+
+			await act(async () => {
+				const result = await registerFull(payload)
+				expect(result).toBe(false)
 			})
 		})
 	})

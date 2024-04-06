@@ -19,12 +19,12 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
-	const [step, setStep] = useState(1)
+	const [step, setStep] = useState(0)
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { register, registerFull } = useAuthStore()
-	const { loading, error, logout } = useAuthStore()
+	const { register, registerFull, logout } = useAuthStore()
+	const { loading, error } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {

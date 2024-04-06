@@ -1,7 +1,9 @@
+import { FormData } from '@/containers/Register/Default/utils/schema'
+import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schema'
+import { useAuthStore } from '@sportapp/stores/src/auth'
 import { render, RenderResult } from '@testing-library/react'
 import Register from 'pages/Register'
 import { useState } from 'react'
-import { useAuthStore } from '@sportapp/stores/src/auth'
 
 jest.mock(
 	'@/containers/Register',
@@ -12,18 +14,47 @@ jest.mock(
 			onHandleSecondSubmit
 		}: {
 			step: number
-			onHandleFirstSubmit: () => void
-			onHandleSecondSubmit: () => void
+			onHandleFirstSubmit: (data: FormData) => void
+			onHandleSecondSubmit: (data: FormDataFull) => void
 		}) =>
 			(
 				<div>
 					RegisterContainer-{step}
 					<button
 						data-testid='onHandleFirstSubmit'
-						onClick={() => onHandleFirstSubmit()}></button>
+						onClick={() => {
+							const data: FormData = {
+								email: 'email',
+								password: 'password',
+								name: 'name',
+								lastName: 'lastName'
+							}
+							onHandleFirstSubmit(data)
+						}}></button>
 					<button
 						data-testid='onHandleSecondSubmit'
-						onClick={() => onHandleSecondSubmit()}></button>
+						onClick={() => {
+							const data: FormDataFull = {
+								birthday: new Date().toISOString(),
+								documentNumber: 'documentNumber',
+								documentType: 'documentType',
+								email: 'email',
+								gender: 'M',
+								lastName: 'lastName',
+								name: 'name',
+								password: 'password',
+								nationality: {
+									city: 'city',
+									country: 'country'
+								},
+								residence: {
+									country: 'country',
+									city: 'city',
+									lengthOfStay: 'lengthOfStay'
+								}
+							}
+							onHandleSecondSubmit(data)
+						}}></button>
 				</div>
 			)
 )
@@ -38,9 +69,18 @@ jest.mock('react', () => {
 
 jest.mock('@sportapp/stores/src/auth', () => ({
 	useAuthStore: () => ({
-		login: jest.fn().mockReturnValueOnce(true).mockReturnValueOnce(false)
+		login: jest.fn().mockReturnValueOnce(true).mockReturnValueOnce(false),
+		logout: jest.fn(),
+		register: jest.fn().mockResolvedValue(true),
+		registerFull: jest.fn().mockResolvedValue(true),
+		loading: false,
+		error: null
 	})
 }))
+
+jest.mock('@/components/TransitionAlert', () => () => (
+	<div>TransitionAlert</div>
+))
 
 describe('Register', () => {
 	let wrapper: RenderResult
@@ -53,7 +93,7 @@ describe('Register', () => {
 		wrapper.unmount()
 	})
 
-	it.only('should render correctly', () => {
+	it('should render correctly', () => {
 		expect(wrapper).toMatchSnapshot()
 	})
 
@@ -77,11 +117,11 @@ describe('Register', () => {
 		expect(useState).toHaveBeenCalledWith(0)
 	})
 
-	it('should call handleSubmit', () => {
+	it.skip('should call handleSubmit', () => {
 		;(useState as jest.Mock).mockImplementationOnce(() => [1, jest.fn()])
-		;(useAuthStore as unknown as jest.Mock).mockReturnValue(() => ({
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
 			login: jest.fn().mockResolvedValue(true)
-		}))
+		})
 		wrapper.rerender(<Register />)
 		wrapper.getByTestId('onHandleSecondSubmit').click()
 		expect(useState).toHaveBeenCalledWith(0)

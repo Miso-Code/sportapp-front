@@ -40,7 +40,7 @@ exports[`Register should render correctly 1`] = `
               title="register.button"
               type="button"
             >
-              register.login
+              register.go
             </button>
           </div>
         </main>
@@ -57,6 +57,9 @@ exports[`Register should render correctly 1`] = `
             />
           </figure>
         </section>
+      </div>
+      <div>
+        TransitionAlert
       </div>
     </div>
   </body>,
@@ -96,7 +99,7 @@ exports[`Register should render correctly 1`] = `
             title="register.button"
             type="button"
           >
-            register.login
+            register.go
           </button>
         </div>
       </main>
@@ -113,6 +116,9 @@ exports[`Register should render correctly 1`] = `
           />
         </figure>
       </section>
+    </div>
+    <div>
+      TransitionAlert
     </div>
   </div>,
   "debug": [Function],
