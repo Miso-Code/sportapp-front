@@ -58,36 +58,36 @@ export default class UserApi {
 			while (!done) {
 				const result = await pipeThrough.read()
 				done = result.done
+
 				if (!done) {
 					const value = result.value
-
 					const jsonResponse =
 						this.convertStringToJSON<RegisterUserStreamResponse>(
 							value.toString()
 						)
 
-					if (
-						jsonResponse &&
-						jsonResponse.status === 'success' &&
-						jsonResponse.message === 'User created'
-					) {
-						return jsonResponse.data
-					}
+					if (jsonResponse) {
+						const { status, message } = jsonResponse
 
-					if (
-						jsonResponse &&
-						jsonResponse.status === 'error' &&
-						jsonResponse.message === 'User already exists'
-					) {
-						return false
+						if (
+							status === 'success' &&
+							message === 'User created'
+						) {
+							return jsonResponse.data
+						}
+
+						if (
+							status === 'error' &&
+							message === 'User already exists'
+						) {
+							return false
+						}
 					}
 				}
 			}
 		} catch (error) {
 			pipeThrough.cancel()
 			console.error(error)
-
-			// Promise.reject(error)
 		}
 	}
 

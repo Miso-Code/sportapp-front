@@ -27,5 +27,5 @@
 		"strictNullChecks": true
 	},
 	"references": [{ "path": "./tsconfig.node.json" }],
-	"include": ["src", "./config/test/jest.setup.ts"]
+	"include": ["src", "config/__test__/jest.setup.ts"]
 }

@@ -26,5 +26,5 @@
 		"noImplicitThis": true,
 		"strictNullChecks": true
 	},
-	"include": ["src", "./config/test/jest.setup.ts"]
+	"include": ["src", "config/__test__/jest.setup.ts"]
 }
