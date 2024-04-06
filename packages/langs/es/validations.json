@@ -4,6 +4,6 @@
 	"required": "El campo es requerido",
 	"password": {
 		"required": "La contraseña es requerida",
-		"restrictions": "La Contaseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un caracter especial y un número"
+		"restrictions": "La Contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un caracter especial y un número"
 	}
 }

@@ -2,7 +2,7 @@
 	"name": "@sportapp/stores",
 	"version": "1.0.0",
 	"license": "MIT",
-	"main": "scr/index.ts",
+	"main": "src/index.ts",
 	"type": "module",
 	"scripts": {
 		"format": "prettier --write \"**/*.{ts,tsx,md,js}\"",

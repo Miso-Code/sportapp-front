@@ -19,7 +19,7 @@
 	"gender": "Gender",
 	"genderValues": {
 		"MALE": "Male",
-		"FEMALE": "FEMALE",
+		"FEMALE": "Female",
 		"OTHER": "Other"
 	},
 	"residenceLengthOfStay": "Length of Residence",
