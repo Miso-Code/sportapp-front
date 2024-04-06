@@ -10,6 +10,7 @@ export interface Props<T extends FieldValues = FieldValues> {
 	formControlProps?: FormControlProps
 	inputLabelProps?: InputLabelProps
 	isTranslated?: boolean
+	isDisabled?: boolean
 }
 
 export interface Options {

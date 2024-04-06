@@ -9,7 +9,8 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 export default function RegisterDefaultContainer({
-	onHandleSubmit
+	onHandleSubmit,
+	isDisabled
 }: PropsDefault) {
 	const { t } = useTranslation()
 	const { handleSubmit, control } = useForm<FormData>({
@@ -56,7 +57,12 @@ export default function RegisterDefaultContainer({
 				name='password'
 			/>
 
-			<Button fullWidth size='large' type='submit' variant='contained'>
+			<Button
+				disabled={isDisabled}
+				fullWidth
+				size='large'
+				type='submit'
+				variant='contained'>
 				{t('register.button')}
 			</Button>
 		</form>

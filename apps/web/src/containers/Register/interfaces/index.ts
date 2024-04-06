@@ -7,15 +7,18 @@ export interface Props {
 	firstDefaultValues?: DefaultValues
 	onHandleSecondSubmit: (data: FormDataFull) => void
 	secondDefaultValues?: DefaultFullValues
+	isDisabled?: boolean
 }
 export interface PropsDefault {
 	onHandleSubmit: (data: FormData) => void
 	defaultValues?: DefaultValues
+	isDisabled?: boolean
 }
 
 export interface PropsFull {
 	onHandleSubmit: (data: FormDataFull) => void
 	defaultValues?: DefaultFullValues
+	isDisabled?: boolean
 }
 
 export interface DefaultValues {

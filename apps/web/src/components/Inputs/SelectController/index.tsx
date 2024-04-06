@@ -52,9 +52,9 @@ export default function SelectController<T extends FieldValues = FieldValues>({
 									}
 								}}
 								onChange={onChange}>
-								{options.map((option) => (
+								{options.map((option, index) => (
 									<MenuItem
-										key={option.value}
+										key={`${option.value}-${index}-${name}-value`}
 										value={option.value}>
 										{isTranslated
 											? t(option.label)

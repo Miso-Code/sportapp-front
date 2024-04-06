@@ -7,11 +7,13 @@ export default function RegisterContainer({
 	onHandleFirstSubmit,
 	onHandleSecondSubmit,
 	firstDefaultValues,
-	secondDefaultValues
+	secondDefaultValues,
+	isDisabled
 }: Props) {
 	if (step === 0) {
 		return (
 			<RegisterDefaultContainer
+				isDisabled={isDisabled}
 				defaultValues={firstDefaultValues}
 				onHandleSubmit={onHandleFirstSubmit}
 			/>
@@ -19,6 +21,7 @@ export default function RegisterContainer({
 	} else if (step === 1) {
 		return (
 			<RegisterFullContainer
+				isDisabled={isDisabled}
 				defaultValues={secondDefaultValues}
 				onHandleSubmit={onHandleSecondSubmit}
 			/>

@@ -24,5 +24,7 @@
 	},
 	"residenceLengthOfStay": "Tiempo de residencia",
 	"residenceCity": "Ciudad de residencia",
-	"birthDate": "Fecha de nacimiento"
+	"birthDate": "Fecha de nacimiento",
+	"other": "Otro",
+	"notExist": "No existe"
 }

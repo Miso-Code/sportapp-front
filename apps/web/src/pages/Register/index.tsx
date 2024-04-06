@@ -12,17 +12,19 @@ import {
 } from '@sportapp/sportapp-repository/src/user/interfaces'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
+import { format } from 'date-fns'
 import 'pages/Register/_index.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
-	const [step, setStep] = useState(0)
+	const [step, setStep] = useState(1)
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
 	const { register, registerFull } = useAuthStore()
+	const { loading, error, logout } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {
@@ -49,7 +51,7 @@ export default function Register() {
 
 	const handleSecondSubmit = async (data: FormDataFull) => {
 		const payload: RegisterFullUserRequest = {
-			birth_date: data.birthday,
+			birth_date: format(data.birthday, 'yyyy-MM-dd'),
 			country_of_birth: data.nationality.country,
 			city_of_birth: data.nationality.city,
 			city_of_residence: data.residence.city,
@@ -62,9 +64,15 @@ export default function Register() {
 
 		const result = await registerFull(payload)
 
+		console.log(result)
+
 		if (result) navigate('/home')
 		else setAlert(true)
 	}
+
+	useEffect(() => {
+		logout()
+	}, [logout])
 
 	return (
 		<>
@@ -87,6 +95,7 @@ export default function Register() {
 						</Typography>
 						<RegisterContainer
 							step={step}
+							isDisabled={loading}
 							onHandleFirstSubmit={handleFirstSubmit}
 							onHandleSecondSubmit={handleSecondSubmit}
 						/>
@@ -94,15 +103,14 @@ export default function Register() {
 							<Button
 								fullWidth
 								type='button'
+								disabled={loading}
 								onClick={() => {
-									console.log('Login', alert)
-
 									setAlert(true)
 								}}
 								variant='text'
 								title={t('register.button')}
 								className='navigation'>
-								{t('register.login')}
+								{t('register.go')}
 							</Button>
 						)}
 					</Paper>
@@ -118,7 +126,7 @@ export default function Register() {
 				containerClassName='alert-register-container'
 				isOpen={alert}
 				handleClose={setAlert}
-				message='Hello'
+				message={t(error || 'errors.register.base')}
 				severity='error'
 			/>
 		</>

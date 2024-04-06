@@ -1,5 +1,6 @@
 {
 	"default": "Register",
+	"go": "Registration",
 	"button": "Ingres",
 	"button-alt": "Ingres",
 	"button-two": "Saved",

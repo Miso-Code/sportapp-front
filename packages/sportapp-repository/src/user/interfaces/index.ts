@@ -5,7 +5,30 @@ export interface RegisterUserRequest {
 	password: string
 }
 
-export interface RegisterUserResponse {}
+export interface RegisterUserResponse {
+	id: string
+	email: string
+	first_name: string
+	last_name: string
+}
+
+export enum Status {
+	SUCCESS = 'success',
+	ERROR = 'error',
+	PROCESSING = 'processing'
+}
+
+export interface RegisterUserStreamResponse {
+	status: `${Status}`
+	message: string
+	data?: RegisterUserDataResponse
+}
+export interface RegisterUserDataResponse {
+	id: string
+	email: string
+	first_name: string
+	last_name: string
+}
 
 export interface RegisterFullUserRequest {
 	identification_type: string

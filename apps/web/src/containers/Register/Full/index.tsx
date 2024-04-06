@@ -11,7 +11,10 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 
-export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
+export default function RegisterFullContainer({
+	onHandleSubmit,
+	isDisabled
+}: PropsFull) {
 	const { t } = useTranslation()
 	const countries = getCountries
 	const { watch, handleSubmit, control } = useForm({
@@ -83,9 +86,9 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				label={t('form.documentType')}
 				name='documentType'
 				options={[
-					{ label: t('documentTypeValues.CC'), value: 'CC' },
-					{ label: t('documentTypeValues.CE'), value: 'CE' },
-					{ label: t('documentTypeValues.PP'), value: 'PP' }
+					{ label: 'form.documentTypeValues.CC', value: 'CC' },
+					{ label: 'form.documentTypeValues.CE', value: 'CE' },
+					{ label: 'form.documentTypeValues.PA', value: 'PA' }
 				]}
 			/>
 
@@ -110,7 +113,11 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				selectProps={{ fullWidth: true }}
 				label={t('form.nationalityCity')}
 				name='nationality.city'
-				options={getCitiesOfCountry(nationalityCountry)}
+				formControlProps={{ disabled: !nationalityCountry }}
+				options={[
+					...getCitiesOfCountry(nationalityCountry),
+					{ label: t('form.notExist'), value: 'notExist' }
+				]}
 				isTranslated={false}
 			/>
 
@@ -136,7 +143,11 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				selectProps={{ fullWidth: true }}
 				label={t('form.residenceCity')}
 				name='residence.city'
-				options={getCitiesOfCountry(residenceCountry)}
+				formControlProps={{ disabled: !residenceCountry }}
+				options={[
+					...getCitiesOfCountry(residenceCountry),
+					{ label: t('form.notExist'), value: 'notExist' }
+				]}
 				isTranslated={false}
 			/>
 
@@ -146,19 +157,24 @@ export default function RegisterFullContainer({ onHandleSubmit }: PropsFull) {
 				label={t('form.gender')}
 				name='gender'
 				options={[
-					{ label: t('MALE'), value: 'M' },
-					{ label: t('FEMALE'), value: 'F' },
-					{ label: t('OTHER'), value: 'O' }
+					{ label: 'form.genderValues.MALE', value: 'M' },
+					{ label: 'form.genderValues.FEMALE', value: 'F' },
+					{ label: 'form.genderValues.OTHER', value: 'O' }
 				]}
 			/>
 
 			<DatePickerController
 				control={control}
 				name='birthday'
-				label={t('form.birthday')}
+				label={t('form.birthDate')}
 			/>
 
-			<Button fullWidth size='large' type='submit' variant='contained'>
+			<Button
+				disabled={isDisabled}
+				fullWidth
+				size='large'
+				type='submit'
+				variant='contained'>
 				{t('register.button-two')}
 			</Button>
 		</form>

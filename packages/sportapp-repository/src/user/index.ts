@@ -2,7 +2,12 @@ import { AxiosInstance } from 'axios'
 import { sportappApi } from '../index'
 import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
-import { RegisterFullUserRequest, RegisterUserRequest } from './interfaces'
+import {
+	RegisterFullUserRequest,
+	RegisterUserDataResponse,
+	RegisterUserRequest,
+	RegisterUserStreamResponse
+} from './interfaces'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -10,7 +15,9 @@ export default class UserApi {
 		this.sportappApi = sportappApi
 	}
 
-	async register(data: RegisterUserRequest): Promise<boolean> {
+	async register(
+		data: RegisterUserRequest
+	): Promise<boolean | RegisterUserDataResponse> {
 		const endpoint = endpoints.register
 		try {
 			const response = await fetch(
@@ -24,31 +31,69 @@ export default class UserApi {
 				}
 			)
 
-			const reader = response
-				.body!.pipeThrough(new TextDecoderStream())
-				.getReader()
+			const pipeThrough = response.body!.pipeThrough(
+				new TextDecoderStream()
+			)
 
-			let done = false
+			const reader = pipeThrough.getReader()
 
+			const result = await this.handleReaderPipeThrough(reader)
+
+			if (result) {
+				return result
+			}
+
+			return false
+		} catch (error) {
+			Promise.reject(error)
+		}
+		return false
+	}
+
+	private async handleReaderPipeThrough(
+		pipeThrough: ReadableStreamDefaultReader
+	) {
+		let done = false
+		try {
 			while (!done) {
-				const result = await reader.read()
+				const result = await pipeThrough.read()
 				done = result.done
 				if (!done) {
 					const value = result.value
 
-					if (value?.toString()?.includes('User created')) {
-						return true
+					const jsonResponse =
+						this.convertStringToJSON<RegisterUserStreamResponse>(
+							value.toString()
+						)
+
+					if (
+						jsonResponse.status === 'success' &&
+						jsonResponse.message === 'User created'
+					) {
+						return jsonResponse.data
 					}
 
-					if (value?.toString()?.includes('User already exists')) {
+					if (
+						jsonResponse.status === 'error' &&
+						jsonResponse.message === 'User already exists'
+					) {
 						return false
 					}
 				}
 			}
 		} catch (error) {
-			console.error(error)
+			pipeThrough.cancel()
+			Promise.reject(error)
 		}
-		return false
+	}
+
+	private convertStringToJSON<StringToJSON>(value: string): StringToJSON {
+		try {
+			const str = value.replace(/\r\n\r\n.*$/, '').replace('data: ', '')
+			return JSON.parse(str) as StringToJSON
+		} catch (error) {
+			throw new Error(error)
+		}
 	}
 
 	async registerFull(
@@ -59,7 +104,7 @@ export default class UserApi {
 		try {
 			const response = await this.sportappApi.patch(endpoint, data)
 
-			if (response.status === 201) {
+			if (response.status.toString().startsWith('2')) {
 				return true
 			}
 		} catch (error) {
