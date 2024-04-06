@@ -12,14 +12,20 @@
 		"lint:js": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"pre-commit": "lint-staged",
 		"preview": "vite preview",
-		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage"
+		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.4",
 		"@emotion/styled": "^11.11.0",
 		"@fontsource/roboto": "^5.0.12",
+		"@hookform/resolvers": "^3.3.4",
+		"@mui/icons-material": "^5.15.14",
 		"@mui/material": "^5.15.14",
+		"@mui/x-date-pickers": "^7.1.0",
 		"@sportapp/langs": "*",
+		"@sportapp/stores": "*",
+		"country-state-city": "^3.2.1",
+		"date-fns": "^3.6.0",
 		"i18next": "^23.10.1",
 		"localforage": "^1.10.0",
 		"match-sorter": "^6.3.4",
@@ -28,7 +34,8 @@
 		"react-hook-form": "^7.51.2",
 		"react-i18next": "^14.1.0",
 		"react-router-dom": "^6.22.3",
-		"sort-by": "^1.2.0"
+		"sort-by": "^1.2.0",
+		"yup": "^1.4.0"
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.24.1",

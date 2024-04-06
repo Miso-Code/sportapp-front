@@ -23,10 +23,11 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./src/*"],
-			"@components/*": ["./src/components/*"],
-			"@containers/*": ["./src/containers/*"],
-			"@pages/*": ["./src/pages/*"],
-			"@screens/*": ["./src/screens/*"]
+			"config/*": ["./config/*"],
+			"components/*": ["./src/components/*"],
+			"containers/*": ["./src/containers/*"],
+			"assets/*": ["./src/assets/*"],
+			"pages/*": ["./src/pages/*"]
 		},
 
 		"esModuleInterop": true,
@@ -34,6 +35,6 @@
 		"noImplicitThis": true,
 		"strictNullChecks": true
 	},
-	"include": ["src", "src/config/test/jest.setup.ts"],
+	"include": ["src", "./config/test/jest.setup.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

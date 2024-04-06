@@ -1,7 +1,7 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import en from '@sportapp/langs/en'
 import es from '@sportapp/langs/es'
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
 
 const resources = {
 	en,
