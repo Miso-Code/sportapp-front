@@ -103,9 +103,7 @@ export default function App() {
 				type='error'
 				visible={isError}
 				testID='unauthorized-helper-text'
-				style={{
-					textAlign: 'center'
-				}}>
+				style={styles.center}>
 				Error: Invalid email or password
 			</HelperText>
 		</View>
@@ -152,5 +150,8 @@ const styles = StyleSheet.create({
 	},
 	spinner: {
 		marginTop: 16
+	},
+	center: {
+		textAlign: 'center'
 	}
 })

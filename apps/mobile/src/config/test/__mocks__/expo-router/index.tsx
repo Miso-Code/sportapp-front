@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Tabs = ({ children }) => <>{children}</>
 
 Tabs.Screen = ({ options }) => (

@@ -11,6 +11,7 @@
     "lint:ts": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage",
+    "package": "cd android && ./gradlew assembleRelease",
     "pre-commit": "lint-staged",
     "prebuild": "expo prebuild -p android --clean",
     "format": "prettier --write \"**/*.{ts,tsx,md,js}\""

@@ -4,15 +4,15 @@ import en from '@sportapp/langs/en'
 import es from '@sportapp/langs/es'
 
 const resources = {
-    en,
-    es
+	en,
+	es
 }
 
 i18n.use(initReactI18next).init({
-    compatibilityJSON: 'v3',
-    resources,
-    lng: 'es',
-    debug: true
+	compatibilityJSON: 'v3',
+	resources,
+	lng: 'es',
+	debug: true
 })
 
 export default i18n
