@@ -31,6 +31,7 @@ export default {
 		'<rootDir>/src/containers/**/*.{ts,tsx}',
 		'<rootDir>/src/pages/**/*.{ts,tsx}',
 		'<rootDir>/src/router/**/*.{ts,tsx}',
+		'<rootDir>/src/utils/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/interfaces/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],

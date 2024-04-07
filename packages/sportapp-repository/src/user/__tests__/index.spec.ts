@@ -13,7 +13,7 @@ jest.mock('../../index', () => ({
 
 jest.mock('../../utils/global-variables', () => ({
 	globalVariables: jest.fn(() => ({
-		VITE_SPORTAPP_API_URL: 'http://localhost:3000/api'
+		EXPO_PUBLIC_SPORTAPP_API_URL: 'http://localhost:3000/api'
 	}))
 }))
 const response = {

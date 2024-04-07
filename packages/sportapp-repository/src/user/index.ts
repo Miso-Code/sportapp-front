@@ -23,7 +23,7 @@ export default class UserApi {
 		const endpoint = endpoints.register
 		try {
 			const response = await fetch(
-				`${globalVariables().VITE_SPORTAPP_API_URL}${endpoint}`,
+				`${globalVariables().EXPO_PUBLIC_SPORTAPP_API_URL}${endpoint}`,
 				{
 					method: 'POST',
 					headers: {
