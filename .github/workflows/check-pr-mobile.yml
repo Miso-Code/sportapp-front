@@ -2,7 +2,7 @@ name: Check PR to MobileApp
 
 on:
   pull_request:
-    branches: [ "develop", "main" ]
+    branches: ["develop", "main"]
     paths:
       - "apps/mobile/**"
 
@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Run Yarn Install
         run: yarn install --fro-zen-lockfile
@@ -28,12 +28,20 @@ jobs:
       - name: Run the tests
         run: yarn test:mobile
 
-# TODO: Work in progress
-#  instrumented-tests:
-#    runs-on: macos-latest
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: apps/web
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # TODO: Work in progress
+  #  instrumented-tests:
+  #    runs-on: macos-latest
+  #    steps:
+  #      - name: Checkout repository
+  #        uses: actions/checkout@v4
   #      - name: Install Java
   #        uses: actions/setup-java@v3
   #        with:
@@ -48,29 +56,20 @@ jobs:
   #        run: yarn build:mobile
 
   build:
+    needs: lint-and-unit-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: adopt
-          cache: gradle
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Run Yarn Install
         run: yarn install --fro-zen-lockfile
-
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
 
       - name: Build
         run: yarn build:mobile
