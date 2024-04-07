@@ -42,8 +42,6 @@ export default function RegisterFullContainer({
 	})
 
 	const onSubmit = (data: FormData) => {
-		console.log(data)
-
 		onHandleSubmit(data)
 	}
 

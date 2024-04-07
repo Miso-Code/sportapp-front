@@ -181,7 +181,7 @@ exports[`RegisterContainer should render the component 1`] = `
       tabindex="0"
       type="submit"
     >
-      register.button
+      register.go
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
@@ -369,7 +369,7 @@ exports[`RegisterContainer should render the first step 1`] = `
       tabindex="0"
       type="submit"
     >
-      register.button
+      register.go
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />

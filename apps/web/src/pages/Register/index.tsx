@@ -64,8 +64,6 @@ export default function Register() {
 
 		const result = await registerFull(payload)
 
-		console.log(result)
-
 		if (result) navigate('/home')
 		else setAlert(true)
 	}
@@ -100,18 +98,20 @@ export default function Register() {
 							onHandleSecondSubmit={handleSecondSubmit}
 						/>
 						{step === 0 && (
-							<Button
-								fullWidth
-								type='button'
-								disabled={loading}
-								onClick={() => {
-									setAlert(true)
-								}}
-								variant='text'
-								title={t('register.button')}
-								className='navigation'>
-								{t('register.go')}
-							</Button>
+							<div className='flex items-center justify-center navigation'>
+								<Typography
+									className='card-subtitle'
+									variant='subtitle1'>
+									{t('register.login.question')}
+								</Typography>
+								<Button
+									type='button'
+									disabled={loading}
+									variant='text'
+									title={t('register.button')}>
+									{t('register.login.default')}
+								</Button>
+							</div>
 						)}
 					</Paper>
 				</main>

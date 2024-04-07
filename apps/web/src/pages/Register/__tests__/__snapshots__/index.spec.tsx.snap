@@ -34,14 +34,23 @@ exports[`Register should render correctly 1`] = `
                 data-testid="onHandleSecondSubmit"
               />
             </div>
-            <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth navigation css-10vjzfb-MuiButtonBase-root-MuiButton-root"
-              tabindex="0"
-              title="register.button"
-              type="button"
+            <div
+              class="flex items-center justify-center navigation"
             >
-              register.go
-            </button>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1 card-subtitle css-10wpov9-MuiTypography-root"
+              >
+                register.login.question
+              </h6>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                title="register.button"
+                type="button"
+              >
+                register.login.default
+              </button>
+            </div>
           </div>
         </main>
         <section
@@ -93,14 +102,23 @@ exports[`Register should render correctly 1`] = `
               data-testid="onHandleSecondSubmit"
             />
           </div>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth navigation css-10vjzfb-MuiButtonBase-root-MuiButton-root"
-            tabindex="0"
-            title="register.button"
-            type="button"
+          <div
+            class="flex items-center justify-center navigation"
           >
-            register.go
-          </button>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 card-subtitle css-10wpov9-MuiTypography-root"
+            >
+              register.login.question
+            </h6>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              title="register.button"
+              type="button"
+            >
+              register.login.default
+            </button>
+          </div>
         </div>
       </main>
       <section

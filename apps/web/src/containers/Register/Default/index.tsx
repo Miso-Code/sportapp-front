@@ -63,7 +63,7 @@ export default function RegisterDefaultContainer({
 				size='large'
 				type='submit'
 				variant='contained'>
-				{t('register.button')}
+				{t('register.go')}
 			</Button>
 		</form>
 	)
