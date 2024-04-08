@@ -1,0 +1,9 @@
+{
+	"default": "Inicio de sesión ",
+	"go": "Iniciar",
+	"register": {
+		"default": "Registro",
+		"go": "Registrarse"
+	},
+	"image": "Imagen de login"
+}

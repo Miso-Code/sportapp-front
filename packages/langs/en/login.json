@@ -1,0 +1,9 @@
+{
+	"default": "Login",
+	"go": "Log In",
+	"register": {
+		"default": "Register",
+		"go": "Sign Up"
+	},
+	"image": "Login Image"
+}
