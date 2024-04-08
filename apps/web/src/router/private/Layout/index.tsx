@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 export default function Layout() {
 	const { isAuth } = useAuthStore()
-	if (!isAuth) return <Navigate to='/register' replace />
+	if (!isAuth) return <Navigate to='/' replace />
 	return (
 		<>
 			<Suspense fallback={<CircularProgress size='large' />}>

@@ -9,7 +9,7 @@ export default function privateRoutes() {
 		element: <Layout />,
 		children: [
 			{ path: '/home', element: <Home /> },
-			{ path: '*', element: <Navigate to='/register' replace /> }
+			{ path: '*', element: <Navigate to='/' replace /> }
 		]
 	}
 }
