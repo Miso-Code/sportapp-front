@@ -4,10 +4,8 @@ import { Suspense } from 'react'
 
 export default function LayoutPublic({ children }: Props) {
 	return (
-		<>
-			<Suspense fallback={<CircularProgress size='large' />}>
-				{children}
-			</Suspense>
-		</>
+		<Suspense fallback={<CircularProgress size='large' />}>
+			{children}
+		</Suspense>
 	)
 }

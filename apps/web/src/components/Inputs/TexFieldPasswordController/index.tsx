@@ -14,45 +14,43 @@ export default function TextFieldPasswordController<
 	const handleClickShowPassword = () => setShowPassword((show) => !show)
 
 	return (
-		<>
-			<Controller
-				control={control}
-				name={name}
-				render={({
-					field: { onChange, value, ...field },
-					fieldState: { error }
-				}) => (
-					<TextField
-						{...props}
-						label={label}
-						variant={variant}
-						helperText={error?.message ? t(error.message) : ''}
-						error={!!error}
-						value={value}
-						onChange={onChange}
-						type={showPassword ? 'text' : 'password'}
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position='end'>
-									<IconButton
-										aria-label='toggle password visibility'
-										onClick={handleClickShowPassword}
-										edge='end'>
-										{showPassword ? (
-											<VisibilityOff />
-										) : (
-											<Visibility />
-										)}
-									</IconButton>
-								</InputAdornment>
-							),
-							name: name,
-							id: name
-						}}
-						{...field}
-					/>
-				)}
-			/>
-		</>
+		<Controller
+			control={control}
+			name={name}
+			render={({
+				field: { onChange, value, ...field },
+				fieldState: { error }
+			}) => (
+				<TextField
+					{...props}
+					label={label}
+					variant={variant}
+					helperText={error?.message ? t(error.message) : ''}
+					error={!!error}
+					value={value}
+					onChange={onChange}
+					type={showPassword ? 'text' : 'password'}
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position='end'>
+								<IconButton
+									aria-label='toggle password visibility'
+									onClick={handleClickShowPassword}
+									edge='end'>
+									{showPassword ? (
+										<VisibilityOff />
+									) : (
+										<Visibility />
+									)}
+								</IconButton>
+							</InputAdornment>
+						),
+						name: name,
+						id: name
+					}}
+					{...field}
+				/>
+			)}
+		/>
 	)
 }

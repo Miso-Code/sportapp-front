@@ -8,30 +8,28 @@ export default function TextFieldController<
 >({ control, name, label, variant = 'outlined', ...props }: Props<T>) {
 	const { t } = useTranslation()
 	return (
-		<>
-			<Controller
-				control={control}
-				name={name}
-				render={({
-					field: { onChange, value, ...field },
-					fieldState: { error }
-				}) => (
-					<TextField
-						{...props}
-						InputProps={{
-							name: name,
-							id: name
-						}}
-						label={label}
-						variant={variant}
-						helperText={error?.message ? t(error.message) : ''}
-						error={!!error}
-						value={value}
-						onChange={onChange}
-						{...field}
-					/>
-				)}
-			/>
-		</>
+		<Controller
+			control={control}
+			name={name}
+			render={({
+				field: { onChange, value, ...field },
+				fieldState: { error }
+			}) => (
+				<TextField
+					{...props}
+					InputProps={{
+						name: name,
+						id: name
+					}}
+					label={label}
+					variant={variant}
+					helperText={error?.message ? t(error.message) : ''}
+					error={!!error}
+					value={value}
+					onChange={onChange}
+					{...field}
+				/>
+			)}
+		/>
 	)
 }

@@ -18,7 +18,8 @@ export default defineConfig(({ mode }) => {
 		},
 		define: {
 			'process.env': {
-				EXPO_PUBLIC_SPORTAPP_API_URL: env.EXPO_PUBLIC_SPORTAPP_API_URL
+				EXPO_PUBLIC_SPORTAPP_API_URL: env.EXPO_PUBLIC_SPORTAPP_API_URL,
+				EXPO_PUBLIC_STORAGE: env.EXPO_PUBLIC_STORAGE
 			}
 		}
 	}

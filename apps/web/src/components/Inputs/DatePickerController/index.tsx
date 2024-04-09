@@ -10,35 +10,33 @@ export default function DatePickerController<
 >({ control, name, label, fullWidth = true }: Props<T>) {
 	const { t } = useTranslation()
 	return (
-		<>
-			<Controller
-				control={control}
-				name={name}
-				render={({
-					field: { onChange, name, ref, disabled },
-					fieldState: { error }
-				}) => (
-					<LocalizationProvider dateAdapter={AdapterDateFns}>
-						<DatePicker
-							onChange={onChange}
-							label={label}
-							slotProps={{
-								textField: {
-									fullWidth,
-									helperText: error?.message
-										? t(error.message)
-										: '',
-									error: !!error,
-									id: name,
-									name: name
-								}
-							}}
-							ref={ref}
-							disabled={disabled}
-						/>
-					</LocalizationProvider>
-				)}
-			/>
-		</>
+		<Controller
+			control={control}
+			name={name}
+			render={({
+				field: { onChange, name, ref, disabled },
+				fieldState: { error }
+			}) => (
+				<LocalizationProvider dateAdapter={AdapterDateFns}>
+					<DatePicker
+						onChange={onChange}
+						label={label}
+						slotProps={{
+							textField: {
+								fullWidth,
+								helperText: error?.message
+									? t(error.message)
+									: '',
+								error: !!error,
+								id: name,
+								name: name
+							}
+						}}
+						ref={ref}
+						disabled={disabled}
+					/>
+				</LocalizationProvider>
+			)}
+		/>
 	)
 }

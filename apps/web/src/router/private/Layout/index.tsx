@@ -7,10 +7,8 @@ export default function Layout() {
 	const { isAuth } = useAuthStore()
 	if (!isAuth) return <Navigate to='/' replace />
 	return (
-		<>
-			<Suspense fallback={<CircularProgress size='large' />}>
-				<Outlet />
-			</Suspense>
-		</>
+		<Suspense fallback={<CircularProgress size='large' />}>
+			<Outlet />
+		</Suspense>
 	)
 }

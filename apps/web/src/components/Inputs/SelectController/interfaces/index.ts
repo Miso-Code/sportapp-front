@@ -4,16 +4,16 @@ import { Control, FieldValues, Path } from 'react-hook-form'
 export interface Props<T extends FieldValues = FieldValues> {
 	control: Control<T> | undefined
 	name: Path<T>
-	label: string
+	readonly label: string
 	options: Options[]
 	selectProps?: SelectProps
 	formControlProps?: FormControlProps
 	inputLabelProps?: InputLabelProps
-	isTranslated?: boolean
-	isDisabled?: boolean
+	readonly isTranslated?: boolean
+	readonly isDisabled?: boolean
 }
 
 export interface Options {
-	value: string
-	label: string
+	readonly value: string
+	readonly label: string
 }

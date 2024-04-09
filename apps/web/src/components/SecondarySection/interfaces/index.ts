@@ -1,4 +1,4 @@
 export interface Props {
-	image: string
-	altImage: string
+	readonly image: string
+	readonly altImage: string
 }
