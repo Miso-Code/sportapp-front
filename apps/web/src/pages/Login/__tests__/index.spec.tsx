@@ -120,4 +120,17 @@ describe('LoginPage', () => {
 
 		await waitFor(() => expect(setAlert).toHaveBeenCalledWith(true))
 	})
+
+	it('should called navigate to register page', async () => {
+		const navigate = jest.fn()
+		;(useNavigate as jest.Mock).mockReturnValue(navigate)
+
+		wrapper.rerender(<LoginPage />)
+
+		const button = screen.getByText('login.register.go')
+
+		fireEvent.click(button)
+
+		await waitFor(() => expect(navigate).toHaveBeenCalledWith('/register'))
+	})
 })

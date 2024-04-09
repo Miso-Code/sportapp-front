@@ -22,9 +22,10 @@ export default function Register() {
 	const [step, setStep] = useState(0)
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
+
 	const { t } = useTranslation()
 	const { register, registerFull, logout } = useAuthStore()
-	const { loading, error } = useAuthStore()
+	const { loading, error, user } = useAuthStore()
 
 	const handleNext = () => {
 		if (step < 2) {
@@ -68,6 +69,10 @@ export default function Register() {
 		else setAlert(true)
 	}
 
+	const handleGoToLogin = () => {
+		navigate('/')
+	}
+
 	useEffect(() => {
 		logout()
 	}, [logout])
@@ -96,6 +101,25 @@ export default function Register() {
 							isDisabled={loading}
 							onHandleFirstSubmit={handleFirstSubmit}
 							onHandleSecondSubmit={handleSecondSubmit}
+							secondDefaultValues={{
+								documentNumber: '',
+								documentType: '',
+								email: user?.email || '',
+								name: user?.first_name || '',
+								lastName: user?.last_name || '',
+								nationality: {
+									city: '',
+									country: ''
+								},
+								residence: {
+									city: '',
+									country: '',
+									lengthOfStay: ''
+								},
+								password: '********',
+								birthday: '',
+								gender: ''
+							}}
 						/>
 						{step === 0 && (
 							<div className='flex items-center justify-center navigation'>
@@ -108,6 +132,7 @@ export default function Register() {
 									type='button'
 									disabled={loading}
 									variant='text'
+									onClick={handleGoToLogin}
 									title={t('register.button')}>
 									{t('register.login.default')}
 								</Button>

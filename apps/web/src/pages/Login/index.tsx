@@ -27,6 +27,10 @@ export default function Login() {
 		}
 	}
 
+	const handleGoToRegister = () => {
+		navigate('/register')
+	}
+
 	return (
 		<>
 			<div className='login'>
@@ -47,6 +51,7 @@ export default function Login() {
 							type='button'
 							fullWidth
 							disabled={loading}
+							onClick={handleGoToRegister}
 							variant='text'
 							className='navigation'
 							title={t('login.button')}>

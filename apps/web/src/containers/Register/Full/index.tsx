@@ -13,30 +13,31 @@ import './_index.scss'
 
 export default function RegisterFullContainer({
 	onHandleSubmit,
-	isDisabled
+	isDisabled,
+	defaultValues
 }: PropsFull) {
 	const { t } = useTranslation()
 	const countries = getCountries
 	const { watch, handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 		defaultValues: {
-			name: '',
-			lastName: '',
-			email: '',
-			password: '',
-			documentType: '',
-			documentNumber: '',
+			name: defaultValues?.name ?? '',
+			lastName: defaultValues?.lastName ?? '',
+			email: defaultValues?.email ?? '',
+			password: defaultValues?.password ?? '',
+			documentType: defaultValues?.documentType ?? '',
+			documentNumber: defaultValues?.documentNumber ?? '',
 			nationality: {
-				country: '',
-				city: ''
-			},
-			residence: {
-				country: '',
-				city: '',
-				lengthOfStay: ''
+				country: defaultValues?.nationality?.country ?? '',
+				city: defaultValues?.nationality?.city ?? ''
 			},
 			birthday: '',
-			gender: ''
+			gender: '',
+			residence: {
+				country: defaultValues?.residence?.country ?? '',
+				city: defaultValues?.residence?.city ?? '',
+				lengthOfStay: defaultValues?.residence?.lengthOfStay ?? ''
+			}
 		},
 		mode: 'onChange'
 	})
@@ -60,6 +61,7 @@ export default function RegisterFullContainer({
 			<TextFieldPasswordController
 				control={control}
 				fullWidth
+				disabled
 				label={t('form.password')}
 				name='password'
 			/>

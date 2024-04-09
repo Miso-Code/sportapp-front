@@ -1,8 +1,10 @@
 import { FormData } from '@/containers/Register/Default/utils/schema'
 import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schema'
-import { render, RenderResult } from '@testing-library/react'
+import { useAuthStore } from '@sportapp/stores/src/auth'
+import { render, RenderResult, waitFor } from '@testing-library/react'
 import Register from 'pages/Register'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 jest.mock(
 	'@/containers/Register',
@@ -67,19 +69,32 @@ jest.mock('react', () => {
 })
 
 jest.mock('@sportapp/stores/src/auth', () => ({
-	useAuthStore: () => ({
+	useAuthStore: jest.fn().mockReturnValue({
 		login: jest.fn().mockReturnValueOnce(true).mockReturnValueOnce(false),
 		logout: jest.fn(),
 		register: jest.fn().mockResolvedValue(true),
 		registerFull: jest.fn().mockResolvedValue(true),
 		loading: false,
-		error: null
+		error: null,
+		user: null
 	})
 }))
+
+jest.mock(
+	'@/components/TransitionAlert',
+	() =>
+		({ isOpen }: { isOpen: boolean }) =>
+			isOpen ? <div data-testid='alert'>Alert</div> : null
+)
 
 jest.mock('@/components/TransitionAlert', () => () => (
 	<div>TransitionAlert</div>
 ))
+
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useNavigate: jest.fn()
+}))
 
 describe('Register', () => {
 	let wrapper: RenderResult
@@ -105,6 +120,7 @@ describe('Register', () => {
 
 	it('should call onHandleSecondSubmit', () => {
 		;(useState as jest.Mock).mockImplementationOnce(() => [1, jest.fn()])
+		;(useNavigate as jest.Mock).mockReturnValue(jest.fn())
 		wrapper.rerender(<Register />)
 		wrapper.getByTestId('onHandleSecondSubmit').click()
 		expect(useState).toHaveBeenCalledWith(0)
@@ -114,5 +130,42 @@ describe('Register', () => {
 		;(useState as jest.Mock).mockImplementationOnce(() => [2, jest.fn()])
 		wrapper.rerender(<Register />)
 		expect(useState).toHaveBeenCalledWith(0)
+	})
+
+	it('should call onHandleGoToLogin', () => {
+		;(useNavigate as jest.Mock).mockReturnValue(jest.fn())
+		wrapper.rerender(<Register />)
+		wrapper.getByText('register.login.default').click()
+		expect(useNavigate).toHaveBeenCalled()
+	})
+
+	it('should not call navigate in onHandleFirstSubmit', async () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			register: jest.fn().mockResolvedValue(false),
+			logout: jest.fn()
+		})
+		const navigate = jest.fn()
+		;(useNavigate as jest.Mock).mockReturnValue(navigate)
+		wrapper.rerender(<Register />)
+		wrapper.getByTestId('onHandleFirstSubmit').click()
+
+		await waitFor(() => {
+			expect(navigate).not.toHaveBeenCalled()
+		})
+	})
+
+	it('should not call navigate in onHandleFirstSubmit', async () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			registerFull: jest.fn().mockResolvedValue(false),
+			logout: jest.fn()
+		})
+		const navigate = jest.fn()
+		;(useNavigate as jest.Mock).mockReturnValue(navigate)
+		wrapper.rerender(<Register />)
+		wrapper.getByTestId('onHandleSecondSubmit').click()
+
+		await waitFor(() => {
+			expect(navigate).not.toHaveBeenCalled()
+		})
 	})
 })

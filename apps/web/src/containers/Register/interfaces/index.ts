@@ -28,7 +28,7 @@ export interface DefaultValues {
 	password: string
 }
 
-export interface DefaultFullValues {
+export interface DefaultFullValues extends FormDataFull {
 	name: string
 	lastName: string
 	email: string
