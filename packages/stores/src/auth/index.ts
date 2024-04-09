@@ -90,10 +90,15 @@ export const useAuthStore = create(
 						}
 						set((state) => ({
 							...state,
-							user: userPayload,
-							loading: false
+							user: userPayload
 						}))
-						return true
+
+						const loginResponse = await get().login({
+							email: request.email,
+							password: request.password
+						})
+
+						return loginResponse
 					}
 
 					set((state) => ({
