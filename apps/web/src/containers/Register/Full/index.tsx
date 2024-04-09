@@ -54,6 +54,7 @@ export default function RegisterFullContainer({
 			<TextFieldController
 				control={control}
 				fullWidth
+				disabled
 				label={t('form.email')}
 				name='email'
 			/>
@@ -69,6 +70,7 @@ export default function RegisterFullContainer({
 			<TextFieldController
 				control={control}
 				fullWidth
+				disabled
 				label={t('form.name')}
 				name='name'
 			/>
@@ -76,6 +78,7 @@ export default function RegisterFullContainer({
 			<TextFieldController
 				control={control}
 				fullWidth
+				disabled
 				label={t('form.lastName')}
 				name='lastName'
 			/>
