@@ -2,10 +2,10 @@ import React from 'react'
 
 import { View, Text, StyleSheet } from 'react-native'
 
-const Profile: React.FC = () => {
+const Preferences: React.FC = () => {
 	return (
 		<View style={styles.container}>
-			<Text>Hello From Trainig</Text>
+			<Text>Hello From Preferences</Text>
 		</View>
 	)
 }
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default Profile
+export default Preferences

@@ -1,13 +1,13 @@
 import React from 'react'
 import renderer, { ReactTestRenderer } from 'react-test-renderer'
 
-import Training from '../training'
+import Notifications from '../notifications'
 
-describe('Training', () => {
+describe('Notifications', () => {
 	let component: ReactTestRenderer
 
 	beforeEach(() => {
-		component = renderer.create(<Training />)
+		component = renderer.create(<Notifications />)
 	})
 
 	afterEach(() => {

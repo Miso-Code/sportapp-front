@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Training should render correctly 1`] = `
+exports[`Premium should render correctly 1`] = `
 <View
   style={
     {
@@ -11,7 +11,7 @@ exports[`Training should render correctly 1`] = `
   }
 >
   <Text>
-    Hello From Trainig
+    Hello From Preferences
   </Text>
 </View>
 `;

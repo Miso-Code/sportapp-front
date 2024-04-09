@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppLayout should render correctly 1`] = `"Mock Screen"`;
+exports[`AppLayout should render correctly 1`] = `
+<View>
+  <View>
+    <Text>
+      Mock Screen
+    </Text>
+  </View>
+</View>
+`;

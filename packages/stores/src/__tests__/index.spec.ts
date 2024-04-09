@@ -1,4 +1,11 @@
-import { initialAuthState, useAuthStore } from '..'
+import {
+	initialAuthState,
+	useAuthStore,
+	initialSportSessionState,
+	useSportSessionStore,
+	initialSportState,
+	useSportStore
+} from '..'
 
 jest.mock('@sportapp/sportapp-repository/src/user', () => ({
 	useUserApi: jest.fn(() => ({
@@ -10,5 +17,9 @@ describe('storesExport', () => {
 	it('should export stores', () => {
 		expect(initialAuthState).toBeDefined()
 		expect(useAuthStore).toBeDefined()
+		expect(initialSportSessionState).toBeDefined()
+		expect(useSportSessionStore).toBeDefined()
+		expect(initialSportState).toBeDefined()
+		expect(useSportStore).toBeDefined()
 	})
 })

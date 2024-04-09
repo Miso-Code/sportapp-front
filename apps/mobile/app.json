@@ -17,9 +17,20 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.misoteam.sportapp"
+      "bundleIdentifier": "com.misoteam.sportapp",
+      "infoPlist": {
+        "UIBackgroundModes": ["location", "fetch"],
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to...",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses your location to...",
+        "NSLocationAlwaysUsageDescription": "This app uses your location to..."
+      }
     },
     "android": {
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_BACKGROUND_LOCATION"],
+      "backgroundLocation": {
+        "minimumIntervalMs": 1000,
+        "deferredUpdatesIntervalMs": 10000
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -31,7 +42,14 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-sensors",
+      [
+        "expo-location",
+        {
+          "isIosBackgroundLocationEnabled": true
+        }
+      ]
     ]
   }
 }

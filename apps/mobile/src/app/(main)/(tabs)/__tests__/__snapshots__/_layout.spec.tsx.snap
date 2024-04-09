@@ -1,23 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TabLayout should render correctly 1`] = `
-[
-  <div>
-    <h1>
-      Profile
-    </h1>
+<View
+  testID={true}
+>
+  <Text
+    testID="header"
+  >
+    header
+  </Text>
+  <View>
+    <Text>
+      Perfil
+    </Text>
     <Text
+      accessibilityElementsHidden={true}
       allowFontScaling={false}
+      importantForAccessibility="no-hide-descendants"
+      pointerEvents="none"
       selectable={false}
       style={
         [
           {
             "color": "blue",
-            "fontSize": 28,
+            "fontSize": 20,
           },
-          undefined,
+          [
+            {
+              "lineHeight": 20,
+              "transform": [
+                {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
           {
-            "fontFamily": "FontAwesome",
+            "fontFamily": "material-community",
             "fontStyle": "normal",
             "fontWeight": "normal",
           },
@@ -25,25 +47,40 @@ exports[`TabLayout should render correctly 1`] = `
         ]
       }
     >
-      
+      󰀄
     </Text>
-  </div>,
-  <div>
-    <h1>
+  </View>
+  <View>
+    <Text>
       Entrenamiento
-    </h1>
+    </Text>
     <Text
+      accessibilityElementsHidden={true}
       allowFontScaling={false}
+      importantForAccessibility="no-hide-descendants"
+      pointerEvents="none"
       selectable={false}
       style={
         [
           {
             "color": "blue",
-            "fontSize": 28,
+            "fontSize": 20,
           },
-          undefined,
+          [
+            {
+              "lineHeight": 20,
+              "transform": [
+                {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
           {
-            "fontFamily": "FontAwesome",
+            "fontFamily": "material-community",
             "fontStyle": "normal",
             "fontWeight": "normal",
           },
@@ -51,8 +88,90 @@ exports[`TabLayout should render correctly 1`] = `
         ]
       }
     >
-      
+      󰋑
     </Text>
-  </div>,
-]
+  </View>
+  <View>
+    <Text>
+      Notificaciones
+    </Text>
+    <Text
+      accessibilityElementsHidden={true}
+      allowFontScaling={false}
+      importantForAccessibility="no-hide-descendants"
+      pointerEvents="none"
+      selectable={false}
+      style={
+        [
+          {
+            "color": "blue",
+            "fontSize": 20,
+          },
+          [
+            {
+              "lineHeight": 20,
+              "transform": [
+                {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "fontFamily": "material-community",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          {},
+        ]
+      }
+    >
+      󰂚
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Preferenciales
+    </Text>
+    <Text
+      accessibilityElementsHidden={true}
+      allowFontScaling={false}
+      importantForAccessibility="no-hide-descendants"
+      pointerEvents="none"
+      selectable={false}
+      style={
+        [
+          {
+            "color": "blue",
+            "fontSize": 20,
+          },
+          [
+            {
+              "lineHeight": 20,
+              "transform": [
+                {
+                  "scaleX": 1,
+                },
+              ],
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "fontFamily": "material-community",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          {},
+        ]
+      }
+    >
+      󰓎
+    </Text>
+  </View>
+</View>
 `;

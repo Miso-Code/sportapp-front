@@ -9,6 +9,7 @@ const config: Config = {
 		'<rootDir>/src/components/**/*.{ts,tsx}',
 		'<rootDir>/src/containers/**/*.{ts,tsx}',
 		'<rootDir>/src/app/**/*.{ts,tsx}',
+		'<rootDir>/src/hooks/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/interfaces/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],

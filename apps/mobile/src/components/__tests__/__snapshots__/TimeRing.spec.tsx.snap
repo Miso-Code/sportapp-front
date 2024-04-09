@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimerRing should render correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      {
+        "height": 250,
+        "padding": 0,
+        "width": 250,
+      }
+    }
+  >
+    <RNSVGSvgView
+      bbHeight={250}
+      bbWidth={250}
+      focusable={false}
+      height={250}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 250,
+            "width": 250,
+          },
+        ]
+      }
+      width={250}
+    >
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
+        <RNSVGDefs>
+          <RNSVGLinearGradient
+            gradient={
+              [
+                0,
+                0,
+                1,
+                0,
+              ]
+            }
+            gradientTransform={null}
+            gradientUnits={1}
+            name="backgroundGradient"
+            x1={0}
+            x2={250}
+            y1={250}
+            y2={0}
+          />
+          <RNSVGLinearGradient
+            gradient={
+              [
+                0,
+                442978468,
+                1,
+                442978468,
+              ]
+            }
+            gradientTransform={null}
+            gradientUnits={1}
+            name="fillShadowGradientFrom"
+            x1={0}
+            x2={0}
+            y1={0}
+            y2={250}
+          />
+        </RNSVGDefs>
+        <RNSVGRect
+          fill={
+            {
+              "brushRef": "backgroundGradient",
+              "type": 1,
+            }
+          }
+          height={250}
+          propList={
+            [
+              "fill",
+            ]
+          }
+          rx={0}
+          ry={0}
+          width="100%"
+          x={0}
+          y={0}
+        />
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          matrix={
+            [
+              1,
+              0,
+              -0,
+              1,
+              125,
+              125,
+            ]
+          }
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
+            <RNSVGPath
+              d="M 0 -100 A 100 100 0 1 1 -0.628314 -99.998026 L -0.628314 -99.998026 A 100 100 0 1 0 0 -100 Z "
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 862408868,
+                  "type": 0,
+                }
+              }
+              strokeWidth={16}
+            />
+          </RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
+            <RNSVGPath
+              d="M 0 -100 A 100 100 0 0 1 58.778525 -80.901699 L 58.778525 -80.901699 A 100 100 0 0 0 0 -100 Z "
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              propList={
+                [
+                  "stroke",
+                  "strokeWidth",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                ]
+              }
+              stroke={
+                {
+                  "payload": 2154254500,
+                  "type": 0,
+                }
+              }
+              strokeLinecap={1}
+              strokeLinejoin={1}
+              strokeWidth={16}
+            />
+          </RNSVGGroup>
+        </RNSVGGroup>
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    style={
+      [
+        {
+          "textAlign": "left",
+        },
+        {
+          "color": "rgba(28, 27, 31, 1)",
+          "writingDirection": "ltr",
+        },
+        [
+          {
+            "fontFamily": "System",
+            "fontSize": 32,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 40,
+          },
+          {
+            "fontWeight": "bold",
+            "position": "absolute",
+          },
+        ],
+      ]
+    }
+  >
+    0:01
+  </Text>
+</View>
+`;

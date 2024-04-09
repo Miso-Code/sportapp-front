@@ -1,12 +1,23 @@
 import React from 'react'
+import { View, Text } from 'react-native'
 
-const Tabs = ({ children }) => <>{children}</>
-
-Tabs.Screen = ({ options }) => (
-	<div>
-		<h1>{options.title}</h1>
-		<>{options.tabBarIcon({ color: 'blue' })}</>
-	</div>
+const Tabs = ({ screenOptions, children }) => (
+	<View testID={screenOptions.headerShown}>
+		{screenOptions.headerShown && <Text testID='header'>header</Text>}
+		{children}
+	</View>
 )
 
-export { Tabs }
+Tabs.Screen = ({ options }) => (
+	<View>
+		<Text>{options.title}</Text>
+		<>{options.tabBarIcon({ color: 'blue' })}</>
+	</View>
+)
+
+const useSegments = jest.fn(() => [{ title: 'test' }])
+const router = {
+	back: jest.fn()
+}
+
+export { Tabs, useSegments, router }
