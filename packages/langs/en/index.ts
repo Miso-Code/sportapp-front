@@ -4,6 +4,8 @@ import register from './register.json'
 import form from './form.json'
 import errors from './errors.json'
 import login from './login.json'
+import profile from './profile.json'
+import navbar from './navbar.json'
 
 const defaultTranslate = {
 	translation: {
@@ -12,7 +14,9 @@ const defaultTranslate = {
 		register,
 		form,
 		login,
-		errors
+		errors,
+		profile,
+		navbar
 	}
 }
 
