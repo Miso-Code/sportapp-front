@@ -1,0 +1,23 @@
+.container-layout {
+	@apply bg-white w-full;
+
+	min-height: 100vh;
+
+	&-main-section {
+		@apply px-5;
+
+		&__full {
+			@apply flex-1;
+		}
+	}
+
+	&-secondary-section {
+		@apply flex-1 p-2;
+
+		&__full {
+			@apply flex-1;
+
+			min-width: 38rem;
+		}
+	}
+}
