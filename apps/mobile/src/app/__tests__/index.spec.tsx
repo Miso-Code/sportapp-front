@@ -10,6 +10,10 @@ jest.mock('expo-router', () => ({
 	useRootNavigationState: jest.fn().mockReturnValue({ key: 'key' })
 }))
 
+jest.mock('@sportapp/stores', () => ({
+	useAuthStore: jest.fn().mockReturnValue({ isAuth: true })
+}))
+
 describe('Index', () => {
 	let component: ReactTestRenderer
 
