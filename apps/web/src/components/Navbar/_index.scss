@@ -1,0 +1,21 @@
+.navbar {
+	@apply min-h-screen;
+
+	&-content {
+		@apply h-full bg-gray-100;
+
+		width: 6.375rem;
+
+		&-navigation {
+			@apply bg-gray-100 flex flex-col justify-start h-full gap-10 py-5;
+
+			&-button {
+				@apply p-0 h-16 flex-none;
+
+				&__end {
+					@apply mt-auto;
+				}
+			}
+		}
+	}
+}
