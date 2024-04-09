@@ -3,7 +3,8 @@
 	"globalEnv": [
 		"NODE_ENV",
 		"VITE_SPORTAPP_API_URL",
-		"EXPO_PUBLIC_SPORTAPP_API_URL"
+		"EXPO_PUBLIC_SPORTAPP_API_URL",
+		"EXPO_PUBLIC_STORAGE"
 	],
 	"globalDependencies": ["**/.env.*local"],
 	"pipeline": {

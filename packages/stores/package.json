@@ -12,6 +12,7 @@
 		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose"
 	},
 	"dependencies": {
+		"@react-native-async-storage/async-storage": "^1.23.1",
 		"@sportapp/sportapp-repository": "*",
 		"@tanstack/react-query": "^5.28.9",
 		"@testing-library/jest-dom": "^6.4.2",
