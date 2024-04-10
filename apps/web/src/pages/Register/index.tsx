@@ -104,9 +104,9 @@ export default function Register() {
 							secondDefaultValues={{
 								documentNumber: '',
 								documentType: '',
-								email: user?.email || '',
-								name: user?.first_name || '',
-								lastName: user?.last_name || '',
+								email: user?.email ?? '',
+								name: user?.first_name ?? '',
+								lastName: user?.last_name ?? '',
 								nationality: {
 									city: '',
 									country: ''
@@ -151,7 +151,7 @@ export default function Register() {
 				containerClassName='alert-register-container'
 				isOpen={alert}
 				handleClose={setAlert}
-				message={t(error || 'errors.register.base')}
+				message={t(error ?? 'errors.register.base')}
 				severity='error'
 			/>
 		</>
