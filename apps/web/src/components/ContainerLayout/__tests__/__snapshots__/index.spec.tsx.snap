@@ -33,7 +33,7 @@ exports[`ContainerLayout should render with className 1`] = `
             <span
               class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
             >
-              Recents
+              navbar.profile
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -58,7 +58,7 @@ exports[`ContainerLayout should render with className 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Entrenamiento
+              navbar.training
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -83,7 +83,7 @@ exports[`ContainerLayout should render with className 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Otros Servicios
+              navbar.otherServices
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -108,7 +108,7 @@ exports[`ContainerLayout should render with className 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Preferenciales
+              navbar.preferential
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -133,7 +133,7 @@ exports[`ContainerLayout should render with className 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Configuración
+              navbar.settings
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -187,7 +187,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
             <span
               class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
             >
-              Recents
+              navbar.profile
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -212,7 +212,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Entrenamiento
+              navbar.training
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -237,7 +237,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Otros Servicios
+              navbar.otherServices
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -262,7 +262,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Preferenciales
+              navbar.preferential
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -287,7 +287,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Configuración
+              navbar.settings
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -345,7 +345,7 @@ exports[`ContainerLayout should render without errors 1`] = `
             <span
               class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
             >
-              Recents
+              navbar.profile
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -370,7 +370,7 @@ exports[`ContainerLayout should render without errors 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Entrenamiento
+              navbar.training
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -395,7 +395,7 @@ exports[`ContainerLayout should render without errors 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Otros Servicios
+              navbar.otherServices
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -420,7 +420,7 @@ exports[`ContainerLayout should render without errors 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Preferenciales
+              navbar.preferential
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -445,7 +445,7 @@ exports[`ContainerLayout should render without errors 1`] = `
             <span
               class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
-              Configuración
+              navbar.settings
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"

@@ -11,11 +11,13 @@ import {
 } from '@mui/material'
 import './_index.scss'
 import { Props } from './interfaces'
+import { useTranslation } from 'react-i18next'
 
 export default function Navbar({
 	className = '',
 	currentNavigationStep = 0
 }: Props) {
+	const { t } = useTranslation()
 	return (
 		<Box className={`navbar ${className}`} flexGrow={0}>
 			<AppBar
@@ -27,27 +29,27 @@ export default function Navbar({
 					value={currentNavigationStep}
 					showLabels>
 					<BottomNavigationAction
-						label='Recents'
+						label={t('navbar.profile')}
 						className='navbar-content-navigation-button navbar-content-navigation-button__start'
 						icon={<PersonIcon />}
 					/>
 					<BottomNavigationAction
-						label='Entrenamiento'
+						label={t('navbar.training')}
 						className='navbar-content-navigation-button'
 						icon={<FavoriteIcon />}
 					/>
 					<BottomNavigationAction
-						label='Otros Servicios'
+						label={t('navbar.otherServices')}
 						className='navbar-content-navigation-button'
 						icon={<ShoppingIcon />}
 					/>
 					<BottomNavigationAction
-						label='Preferenciales'
+						label={t('navbar.preferential')}
 						className='navbar-content-navigation-button'
 						icon={<StartIcon />}
 					/>
 					<BottomNavigationAction
-						label='Configuración'
+						label={t('navbar.settings')}
 						className='navbar-content-navigation-button navbar-content-navigation-button__end'
 						icon={<SettingsIcon />}
 					/>

@@ -68,7 +68,7 @@ export default function Login() {
 				containerClassName='alert-register-container'
 				isOpen={alert}
 				handleClose={setAlert}
-				message={t(error || 'errors.register.base')}
+				message={t(error ?? 'errors.register.base')}
 				severity='error'
 			/>
 		</>
