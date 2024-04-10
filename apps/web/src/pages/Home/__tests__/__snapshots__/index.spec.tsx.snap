@@ -5,39 +5,737 @@ exports[`Home should render correctly 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <h1
-        class="text-9xl"
+      <div
+        class="container-layout home MuiBox-root css-1xhj18k"
       >
-        app.name
-      </h1>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Hello world
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        <div
+          class="navbar flex-1 MuiBox-root css-2uchni"
+        >
+          <header
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
+          >
+            <div
+              class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
+            >
+              <button
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="PersonIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
+                  />
+                </svg>
+                <span
+                  class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+                >
+                  navbar.profile
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="FavoriteIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"
+                  />
+                </svg>
+                <span
+                  class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+                >
+                  navbar.training
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ShoppingCartIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2M1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2"
+                  />
+                </svg>
+                <span
+                  class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+                >
+                  navbar.otherServices
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="StarIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+                <span
+                  class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+                >
+                  navbar.preferential
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SettingsIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
+                  />
+                </svg>
+                <span
+                  class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+                >
+                  navbar.settings
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </header>
+        </div>
+        <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
+        >
+          <section
+            class="home-section"
+          >
+            <h3
+              class="MuiTypography-root MuiTypography-h3 home-title css-gepadz-MuiTypography-root"
+            >
+              profile.title
+            </h3>
+            <div
+              class="mt-14 MuiBox-root css-0"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-172kgz0-MuiPaper-root"
+              >
+                <li
+                  class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                >
+                  <div
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                    >
+                      <div
+                        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-17o22dy-MuiAvatar-root"
+                      >
+                        JD
+                      </div>
+                    </div>
+                    <div
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                    />
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </div>
+                </li>
+              </div>
+              <div
+                class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded profile-menu-secondary-section css-172kgz0-MuiPaper-root"
+              >
+                <ul
+                  class="MuiList-root MuiList-padding profile-menu-secondary-section-container css-h4y409-MuiList-root"
+                >
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                  >
+                    <div
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                          data-testid="AccountCircleOutlinedIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M7.35 18.5C8.66 17.56 10.26 17 12 17s3.34.56 4.65 1.5c-1.31.94-2.91 1.5-4.65 1.5s-3.34-.56-4.65-1.5m10.79-1.38C16.45 15.8 14.32 15 12 15s-4.45.8-6.14 2.12C4.7 15.73 4 13.95 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.95-.7 3.73-1.86 5.12"
+                          />
+                          <path
+                            d="M12 6c-1.93 0-3.5 1.57-3.5 3.5S10.07 13 12 13s3.5-1.57 3.5-3.5S13.93 6 12 6m0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                        >
+                          profile.menu.personalData
+                        </span>
+                      </div>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </div>
+                  </li>
+                  <hr
+                    class="MuiDivider-root MuiDivider-fullWidth profile-menu-divider css-9mgopn-MuiDivider-root"
+                  />
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                  >
+                    <div
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                          data-testid="EmojiFoodBeverageOutlinedIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                        >
+                          profile.menu.sportData
+                        </span>
+                      </div>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </div>
+                  </li>
+                  <hr
+                    class="MuiDivider-root MuiDivider-fullWidth profile-menu-divider css-9mgopn-MuiDivider-root"
+                  />
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                  >
+                    <div
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                          data-testid="SportsBasketballOutlinedIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                      >
+                        <span
+                          class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                        >
+                          profile.menu.nutritionData
+                        </span>
+                      </div>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded profile-menu-third-section css-172kgz0-MuiPaper-root"
+              >
+                <li
+                  class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                >
+                  <div
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="SellOutlinedIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="m21.41 11.41-8.83-8.83c-.37-.37-.88-.58-1.41-.58H4c-1.1 0-2 .9-2 2v7.17c0 .53.21 1.04.59 1.41l8.83 8.83c.78.78 2.05.78 2.83 0l7.17-7.17c.78-.78.78-2.04-.01-2.83M12.83 20 4 11.17V4h7.17L20 12.83z"
+                        />
+                        <circle
+                          cx="6.5"
+                          cy="6.5"
+                          r="1.5"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                      >
+                        profile.menu.paymentPlans
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </div>
+                </li>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-secondary-section  css-1ps6pg7-MuiPaper-root"
         />
-      </button>
+      </div>
     </div>
   </body>,
   "container": <div>
-    <h1
-      class="text-9xl"
+    <div
+      class="container-layout home MuiBox-root css-1xhj18k"
     >
-      app.name
-    </h1>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
-      tabindex="0"
-      type="button"
-    >
-      Hello world
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      <div
+        class="navbar flex-1 MuiBox-root css-2uchni"
+      >
+        <header
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
+        >
+          <div
+            class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
+          >
+            <button
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="PersonIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
+                />
+              </svg>
+              <span
+                class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+              >
+                navbar.profile
+              </span>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="FavoriteIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"
+                />
+              </svg>
+              <span
+                class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+              >
+                navbar.training
+              </span>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="ShoppingCartIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2M1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2"
+                />
+              </svg>
+              <span
+                class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+              >
+                navbar.otherServices
+              </span>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="StarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                />
+              </svg>
+              <span
+                class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+              >
+                navbar.preferential
+              </span>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="SettingsIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
+                />
+              </svg>
+              <span
+                class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+              >
+                navbar.settings
+              </span>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </header>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
+      >
+        <section
+          class="home-section"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3 home-title css-gepadz-MuiTypography-root"
+          >
+            profile.title
+          </h3>
+          <div
+            class="mt-14 MuiBox-root css-0"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-172kgz0-MuiPaper-root"
+            >
+              <li
+                class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+              >
+                <div
+                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                  >
+                    <div
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-17o22dy-MuiAvatar-root"
+                    >
+                      JD
+                    </div>
+                  </div>
+                  <div
+                    class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                  />
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </div>
+              </li>
+            </div>
+            <div
+              class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded profile-menu-secondary-section css-172kgz0-MuiPaper-root"
+            >
+              <ul
+                class="MuiList-root MuiList-padding profile-menu-secondary-section-container css-h4y409-MuiList-root"
+              >
+                <li
+                  class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                >
+                  <div
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="AccountCircleOutlinedIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M7.35 18.5C8.66 17.56 10.26 17 12 17s3.34.56 4.65 1.5c-1.31.94-2.91 1.5-4.65 1.5s-3.34-.56-4.65-1.5m10.79-1.38C16.45 15.8 14.32 15 12 15s-4.45.8-6.14 2.12C4.7 15.73 4 13.95 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.95-.7 3.73-1.86 5.12"
+                        />
+                        <path
+                          d="M12 6c-1.93 0-3.5 1.57-3.5 3.5S10.07 13 12 13s3.5-1.57 3.5-3.5S13.93 6 12 6m0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                      >
+                        profile.menu.personalData
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </div>
+                </li>
+                <hr
+                  class="MuiDivider-root MuiDivider-fullWidth profile-menu-divider css-9mgopn-MuiDivider-root"
+                />
+                <li
+                  class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                >
+                  <div
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="EmojiFoodBeverageOutlinedIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                      >
+                        profile.menu.sportData
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </div>
+                </li>
+                <hr
+                  class="MuiDivider-root MuiDivider-fullWidth profile-menu-divider css-9mgopn-MuiDivider-root"
+                />
+                <li
+                  class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+                >
+                  <div
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="SportsBasketballOutlinedIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                      >
+                        profile.menu.nutritionData
+                      </span>
+                    </div>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded profile-menu-third-section css-172kgz0-MuiPaper-root"
+            >
+              <li
+                class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+              >
+                <div
+                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="SellOutlinedIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="m21.41 11.41-8.83-8.83c-.37-.37-.88-.58-1.41-.58H4c-1.1 0-2 .9-2 2v7.17c0 .53.21 1.04.59 1.41l8.83 8.83c.78.78 2.05.78 2.83 0l7.17-7.17c.78-.78.78-2.04-.01-2.83M12.83 20 4 11.17V4h7.17L20 12.83z"
+                      />
+                      <circle
+                        cx="6.5"
+                        cy="6.5"
+                        r="1.5"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                    >
+                      profile.menu.paymentPlans
+                    </span>
+                  </div>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </div>
+              </li>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-secondary-section  css-1ps6pg7-MuiPaper-root"
       />
-    </button>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
