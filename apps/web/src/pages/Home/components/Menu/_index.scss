@@ -1,0 +1,25 @@
+.profile-menu {
+	&-main-section {
+		@apply px-5;
+	}
+
+	&-secondary-section {
+		@apply mt-4;
+
+		&-container {
+			@apply py-0;
+		}
+	}
+
+	&-third-section {
+		@apply mt-4;
+	}
+
+	&-divider {
+		@apply mx-4;
+	}
+
+	&-item {
+		@apply h-14;
+	}
+}
