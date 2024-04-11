@@ -1,5 +1,5 @@
 .navbar {
-	@apply min-h-screen;
+	@apply min-h-screen max-h-screen sticky top-0 left-0;
 
 	&-content {
 		@apply h-full bg-gray-100;
