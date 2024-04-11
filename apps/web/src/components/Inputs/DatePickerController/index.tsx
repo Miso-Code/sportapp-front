@@ -7,14 +7,14 @@ import { useTranslation } from 'react-i18next'
 
 export default function DatePickerController<
 	T extends FieldValues = FieldValues
->({ control, name, label, fullWidth = true }: Props<T>) {
+>({ control, name, label, fullWidth = true, ...props }: Props<T>) {
 	const { t } = useTranslation()
 	return (
 		<Controller
 			control={control}
 			name={name}
 			render={({
-				field: { onChange, name, ref, disabled },
+				field: { onChange, name, ref },
 				fieldState: { error }
 			}) => (
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -33,7 +33,7 @@ export default function DatePickerController<
 							}
 						}}
 						ref={ref}
-						disabled={disabled}
+						{...props}
 					/>
 				</LocalizationProvider>
 			)}

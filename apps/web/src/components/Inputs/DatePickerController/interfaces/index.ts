@@ -1,6 +1,7 @@
 import { Control, FieldValues, Path } from 'react-hook-form'
-
-export interface Props<T extends FieldValues = FieldValues> {
+import { DatePickerProps } from '@mui/x-date-pickers/DatePicker'
+export interface Props<T extends FieldValues = FieldValues>
+	extends DatePickerProps<Date, boolean> {
 	control: Control<T> | undefined
 	readonly name: Path<T>
 	readonly label: string
