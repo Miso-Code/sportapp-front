@@ -1,31 +1,10 @@
+import defaultRegisterSchema from '@/containers/Register/Default/utils/schema'
+import fullRegisterSchema from '@/containers/Register/Full/utils/schema'
 import 'config/lang/form.ts'
-import { InferType, object, string } from 'yup'
+import { InferType } from 'yup'
 
-const schema = object().shape({
-	name: string().required(),
-	lastName: string().required(),
-	email: string().email().required(),
-	password: string()
-		.matches(
-			/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-			'validations.password.restrictions'
-		)
-		.required(),
-	documentType: string().required(),
-	documentNumber: string().required(),
-	nationality: object().shape({
-		country: string().required(),
-		city: string().required()
-	}),
-	residence: object().shape({
-		country: string().required(),
-		city: string().required(),
-		lengthOfStay: string().required()
-	}),
-	gender: string().required(),
-	birthday: string().required()
-})
+const personalDataSchema = defaultRegisterSchema.concat(fullRegisterSchema)
 
-export default schema
+export default personalDataSchema
 
-export type FormData = InferType<typeof schema>
+export type FormData = InferType<typeof personalDataSchema>

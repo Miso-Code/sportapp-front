@@ -10,7 +10,7 @@ import { Props } from 'containers/PersonalDataForm/interfaces'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
-import schema, { FormData } from './utils/schema'
+import personalDataSchema, { FormData } from './utils/schema'
 
 export default function PersonalDataForm({
 	className = '',
@@ -41,7 +41,7 @@ export default function PersonalDataForm({
 	const { t } = useTranslation()
 	const countries = getCountries
 	const { watch, handleSubmit, control } = useForm({
-		resolver: yupResolver(schema),
+		resolver: yupResolver(personalDataSchema),
 		defaultValues,
 		mode: 'onChange'
 	})
