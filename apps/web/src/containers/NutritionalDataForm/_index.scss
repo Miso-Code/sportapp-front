@@ -1,0 +1,11 @@
+.nutritional-data-form {
+	@apply bg-white w-full;
+
+	&-title {
+		@apply text-left;
+	}
+
+	&-container {
+		@apply flex flex-col items-center gap-4 mt-8 max-w-md;
+	}
+}
