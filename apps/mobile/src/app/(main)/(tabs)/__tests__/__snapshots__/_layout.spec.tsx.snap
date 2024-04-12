@@ -9,7 +9,7 @@ exports[`TabLayout should render correctly 1`] = `
   </Text>
   <View>
     <Text>
-      Perfil
+      navbar.profile
     </Text>
     <Text
       accessibilityElementsHidden={true}
@@ -50,7 +50,7 @@ exports[`TabLayout should render correctly 1`] = `
   </View>
   <View>
     <Text>
-      Entrenamiento
+      navbar.training
     </Text>
     <Text
       accessibilityElementsHidden={true}
@@ -91,7 +91,7 @@ exports[`TabLayout should render correctly 1`] = `
   </View>
   <View>
     <Text>
-      Notificaciones
+      navbar.notifications
     </Text>
     <Text
       accessibilityElementsHidden={true}
@@ -132,7 +132,7 @@ exports[`TabLayout should render correctly 1`] = `
   </View>
   <View>
     <Text>
-      Preferenciales
+      navbar.preferential
     </Text>
     <Text
       accessibilityElementsHidden={true}

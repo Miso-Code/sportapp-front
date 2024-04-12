@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Icon } from 'react-native-paper'
 
 import { Tabs, useSegments } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 
 const ProfileIcon = ({ color }) => (
 	<Icon size={20} source='account' color={color} />
@@ -19,9 +20,11 @@ const PremiumIcon = ({ color }) => (
 )
 
 export default function TabLayout() {
-	const [showHeader, setShowHeader] = useState(true)
+	const { t } = useTranslation()
 
 	const segments = useSegments()
+
+	const [showHeader, setShowHeader] = useState(true)
 
 	useEffect(() => {
 		setShowHeader(!(segments?.length > 3))
@@ -42,28 +45,28 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name='profile'
 				options={{
-					title: 'Perfil',
+					title: t('navbar.profile'),
 					tabBarIcon: ProfileIcon
 				}}
 			/>
 			<Tabs.Screen
 				name='training'
 				options={{
-					title: 'Entrenamiento',
+					title: t('navbar.training'),
 					tabBarIcon: TrainingIcon
 				}}
 			/>
 			<Tabs.Screen
 				name='notifications'
 				options={{
-					title: 'Notificaciones',
+					title: t('navbar.notifications'),
 					tabBarIcon: NotificationsIcon
 				}}
 			/>
 			<Tabs.Screen
 				name='premium'
 				options={{
-					title: 'Preferenciales',
+					title: t('navbar.preferential'),
 					tabBarIcon: PremiumIcon
 				}}
 			/>

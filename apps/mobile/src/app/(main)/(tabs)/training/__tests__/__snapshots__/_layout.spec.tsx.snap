@@ -191,7 +191,7 @@ exports[`TrainingLayout should render correctly 1`] = `
             ]
           }
         >
-          Iniciar Entrenamiento
+          training.startTraining
         </Text>
       </View>
     </View>
@@ -388,7 +388,7 @@ exports[`TrainingLayout should render correctly 1`] = `
             ]
           }
         >
-          Finalizar Entrenamiento
+          training.endTraining
         </Text>
       </View>
     </View>

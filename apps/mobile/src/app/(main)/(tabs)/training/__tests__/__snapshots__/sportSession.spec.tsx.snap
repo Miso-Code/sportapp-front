@@ -178,7 +178,7 @@ exports[`SportSession should render correctly 1`] = `
         </View>
       </View>
       <Text>
-        Iniciar
+        training.start
       </Text>
     </View>
   </View>

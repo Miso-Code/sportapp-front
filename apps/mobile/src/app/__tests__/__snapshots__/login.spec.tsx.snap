@@ -62,7 +62,7 @@ exports[`Login should render correctly 1`] = `
       ]
     }
   >
-    SportApp
+    app.name
   </Text>
   <View
     style={
@@ -173,7 +173,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-email-label-background"
           >
-            Correo electronico
+            form.email
           </Text>
           <Text
             collapsable={false}
@@ -212,7 +212,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-email-label-active"
           >
-            Correo electronico
+            form.email
           </Text>
           <Text
             collapsable={false}
@@ -249,7 +249,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-email-label-inactive"
           >
-            Correo electronico
+            form.email
           </Text>
         </View>
         <TextInput
@@ -323,7 +323,7 @@ exports[`Login should render correctly 1`] = `
       }
       testID="error-helper-text"
     >
-      Email address is invalid!
+      validations.email
     </Text>
     <View
       style={
@@ -428,7 +428,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-password-label-background"
           >
-            Contraseña
+            form.password
           </Text>
           <Text
             collapsable={false}
@@ -467,7 +467,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-password-label-active"
           >
-            Contraseña
+            form.password
           </Text>
           <Text
             collapsable={false}
@@ -504,7 +504,7 @@ exports[`Login should render correctly 1`] = `
             }
             testID="text-input-password-label-inactive"
           >
-            Contraseña
+            form.password
           </Text>
         </View>
         <TextInput
@@ -700,7 +700,7 @@ exports[`Login should render correctly 1`] = `
               }
               testID="button-text"
             >
-              Ingresar
+              login.go
             </Text>
           </View>
         </View>
@@ -729,7 +729,7 @@ exports[`Login should render correctly 1`] = `
     }
     testID="unauthorized-helper-text"
   >
-    Error: Invalid email or password
+    validations.emailOrPassword
   </Text>
 </View>
 `;

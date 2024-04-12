@@ -13,12 +13,15 @@ import {
 	useSportStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 
 const SportSession: React.FC = () => {
 	const { user } = useAuthStore()
 	const { startSportSession, finishSportSession, addSessionLocation } =
 		useSportSessionStore()
 	const { getSports, sports } = useSportStore()
+
+	const { t } = useTranslation()
 
 	const { isPedometerAvailable, currentStepCount } = usePedometer()
 	const { locationUpdates, isLocationAvailable } = useLocation()
@@ -98,9 +101,9 @@ const SportSession: React.FC = () => {
 		setCurrentTime(0)
 		setIsRunning(false)
 
-		if (!sessionID) {
-			return
-		}
+		// if (!sessionID) {
+		// 	return
+		// }
 
 		const payload: Parameters<typeof finishSportSession>[0] = {
 			session_id: sessionID,
@@ -175,7 +178,7 @@ const SportSession: React.FC = () => {
 							onPress={handleStart}
 							testID='startButton'
 						/>
-						<Text>Iniciar</Text>
+						<Text>{t('training.start')}</Text>
 					</View>
 				)}
 				{isRunning && !isPaused && (
@@ -187,7 +190,7 @@ const SportSession: React.FC = () => {
 							onPress={handlePause}
 							testID='pauseButton'
 						/>
-						<Text>Pausar</Text>
+						<Text>{t('training.pause')}</Text>
 					</View>
 				)}
 				{isRunning && isPaused && (
@@ -199,7 +202,7 @@ const SportSession: React.FC = () => {
 							onPress={handleContinue}
 							testID='continueButton'
 						/>
-						<Text>Reanudar</Text>
+						<Text>{t('training.resume')}</Text>
 					</View>
 				)}
 				{isRunning && (
@@ -211,7 +214,7 @@ const SportSession: React.FC = () => {
 							onPress={handleStop}
 							testID='stopButton'
 						/>
-						<Text>Parar</Text>
+						<Text>{t('training.stop')}</Text>
 					</View>
 				)}
 			</View>

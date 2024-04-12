@@ -68,13 +68,19 @@ describe('SportSessionSummary', () => {
 			component.update(<SportSessionSummary />)
 		})
 
-		const calories = component.root.findByProps({ testID: 'kpiCalorías' })
-		const duration = component.root.findByProps({ testID: 'kpiTiempo' })
-		const steps = component.root.findByProps({ testID: 'kpiPasos' })
-		const distance = component.root.findByProps({ testID: 'kpiDistancia' })
-		const speed = component.root.findByProps({ testID: 'kpiVelocidad' })
+		const calories = component.root.findByProps({
+			testID: 'kpisession.calories'
+		})
+		const duration = component.root.findByProps({
+			testID: 'kpisession.duration'
+		})
+		const steps = component.root.findByProps({ testID: 'kpisession.steps' })
+		const distance = component.root.findByProps({
+			testID: 'kpisession.distance'
+		})
+		const speed = component.root.findByProps({ testID: 'kpisession.speed' })
 		const heartRate = component.root.findByProps({
-			testID: 'kpiRitmo Cardíaco'
+			testID: 'kpisession.heartRate'
 		})
 
 		expect(calories.props.value).toBe(5)

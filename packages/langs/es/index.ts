@@ -9,6 +9,9 @@ import profile from './profile.json'
 import register from './register.json'
 import sportDataForm from './sportDataForm.json'
 import validations from './validations.json'
+import training from './training.json'
+import session from './session.json'
+
 
 const defaultTranslate = {
 	translation: {
@@ -22,7 +25,9 @@ const defaultTranslate = {
 		personalDataForm,
 		navbar,
 		sportDataForm,
-		nutritionalDataForm
+		nutritionalDataForm,
+		training,
+		session
 	}
 }
 

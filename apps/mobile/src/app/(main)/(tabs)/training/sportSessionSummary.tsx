@@ -6,9 +6,11 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useSportSessionStore } from '@sportapp/stores'
 import Kpi from '@/components/Kpi'
+import { useTranslation } from 'react-i18next'
 
 const SportSessionSummary: React.FC = () => {
 	const theme = useTheme()
+	const { t } = useTranslation()
 	const { sportSession } = useSportSessionStore()
 	return (
 		<SafeAreaProvider>
@@ -38,7 +40,7 @@ const SportSessionSummary: React.FC = () => {
 								type='progress'
 								value={sportSession.calories}
 								max={10}
-								label='Calorías'
+								label={t('session.calories')}
 								valueSuffix='kcal'
 								icon='fire'
 							/>
@@ -47,7 +49,7 @@ const SportSessionSummary: React.FC = () => {
 								type='progress'
 								value={sportSession.duration}
 								max={60}
-								label='Tiempo'
+								label={t('session.duration')}
 								valueSuffix='min'
 								icon='timer'
 							/>
@@ -56,7 +58,7 @@ const SportSessionSummary: React.FC = () => {
 								type='progress'
 								value={sportSession.steps}
 								max={115}
-								label='Pasos'
+								label={t('session.steps')}
 								valueSuffix=''
 								icon='walk'
 							/>
@@ -65,7 +67,7 @@ const SportSessionSummary: React.FC = () => {
 								type='progress'
 								value={sportSession.distance}
 								max={133}
-								label='Distancia'
+								label={t('session.distance')}
 								valueSuffix='km'
 								icon='map-marker'
 							/>
@@ -75,7 +77,7 @@ const SportSessionSummary: React.FC = () => {
 								type='progress'
 								value={sportSession.average_speed}
 								max={3}
-								label='Velocidad'
+								label={t('session.speed')}
 								valueSuffix='m/s'
 								icon='speedometer'
 							/>
@@ -84,7 +86,7 @@ const SportSessionSummary: React.FC = () => {
 								color={theme.colors.error}
 								type='lineChart'
 								labels={['min', 'avg', 'max']}
-								label='Ritmo Cardíaco'
+								label={t('session.heartRate')}
 								data={[
 									sportSession.min_heartrate,
 									sportSession.avg_heartrate,

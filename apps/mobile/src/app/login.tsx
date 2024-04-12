@@ -11,9 +11,11 @@ import SquaredButton from '@/components/SquaredButton'
 
 import { useAuthStore } from '@sportapp/stores'
 import { router } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 
 export default function App() {
 	const { login, loading, isAuth, error } = useAuthStore()
+	const { t } = useTranslation()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -55,11 +57,11 @@ export default function App() {
 					testID='logo'
 				/>
 			</View>
-			<Text style={styles.title}>SportApp</Text>
+			<Text style={styles.title}>{t('app.name')}</Text>
 			<View style={styles.inputContainer}>
 				<TextInput
 					testID='text-input-email'
-					label='Correo electronico'
+					label={t('form.email')}
 					value={email}
 					onChangeText={setEmail}
 					mode='outlined'
@@ -69,11 +71,11 @@ export default function App() {
 					type='error'
 					visible={emailHasErrors()}
 					testID='error-helper-text'>
-					Email address is invalid!
+					{t('validations.email')}
 				</HelperText>
 				<TextInput
 					testID='text-input-password'
-					label='Contraseña'
+					label={t('form.password')}
 					value={password}
 					onChangeText={setPassword}
 					secureTextEntry
@@ -82,7 +84,7 @@ export default function App() {
 					error={isError}
 				/>
 				<SquaredButton
-					value='Ingresar'
+					value={t('login.go')}
 					onPress={handleLogin}
 					disabled={
 						emailHasErrors() ||
@@ -104,7 +106,7 @@ export default function App() {
 				visible={isError}
 				testID='unauthorized-helper-text'
 				style={styles.center}>
-				Error: Invalid email or password
+				{t('validations.emailOrPassword')}
 			</HelperText>
 		</View>
 	)

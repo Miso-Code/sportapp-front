@@ -51,7 +51,7 @@ describe('Login', () => {
 	it('should render a button with the text "Ingresar"', () => {
 		expect(
 			component.root.findByProps({ testID: 'button-text' }).props.children
-		).toBe('Ingresar')
+		).toBe('login.go')
 	})
 
 	it('should render a logo', () => {

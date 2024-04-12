@@ -1,5 +1,6 @@
 {
 	"email": "Email is invalid",
+	"emailOrPassword": "Email or password is invalid",
 	"invalid": "Field is invalid",
 	"required": "Field is required",
 	"password": {

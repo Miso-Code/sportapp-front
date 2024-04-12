@@ -6,6 +6,7 @@ import { useAuthStore } from '@sportapp/stores'
 
 const Index: React.FC = () => {
 	const { isAuth } = useAuthStore()
+
 	const rootNavigationState = useRootNavigationState()
 
 	useEffect(() => {

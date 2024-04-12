@@ -7,23 +7,25 @@ import { List } from 'react-native-paper'
 import ListItem from '@/components/ListItem'
 
 import { router } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 
 const Training: React.FC = () => {
+	const { t } = useTranslation()
 	return (
 		<View style={styles.container}>
 			<List.Section>
 				<ListItem
-					title='Iniciar Entrenamiento'
+					title={t('training.startTraining')}
 					icon='heart'
 					onPress={() => router.push('training/sportSession')}
 				/>
+				<ListItem title={t('training.history')} icon='calendar-blank' />
 				<ListItem
-					title='Entrenamientos y eventos'
-					icon='calendar-blank'
+					title={t('training.nutritionalPlan')}
+					icon='receipt'
 				/>
-				<ListItem title='Plan alimenticio' icon='receipt' />
-				<ListItem title='Otros servicios' icon='cart' />
-				<ListItem title='Preferenciales' icon='star' />
+				<ListItem title={t('training.others')} icon='cart' />
+				<ListItem title={t('training.preferentials')} icon='star' />
 			</List.Section>
 		</View>
 	)

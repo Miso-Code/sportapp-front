@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { List, ListIconProps } from 'react-native-paper'
 
-const LeftIcon = (props, icon) => <List.Icon {...props} icon={icon} />
+const LeftIcon = ({ icon, ...props }) => <List.Icon {...props} icon={icon} />
 const RightIcon = (props) => <List.Icon {...props} icon='chevron-right' />
 
 const ListItem: React.FC<{

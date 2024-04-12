@@ -1,12 +1,16 @@
 import React, { ComponentProps } from 'react'
 import { Stack } from 'expo-router/stack'
 import Header from '@/components/Header'
+import { useTranslation } from 'react-i18next'
 
 export default function TrainingStack() {
 	const screenOptions: ComponentProps<typeof Stack.Screen>['options'] = {
 		headerTransparent: true,
 		header: Header
 	}
+
+	const { t } = useTranslation()
+
 	return (
 		<Stack>
 			<Stack.Screen
@@ -15,11 +19,14 @@ export default function TrainingStack() {
 			/>
 			<Stack.Screen
 				name='sportSession'
-				options={{ ...screenOptions, title: 'Iniciar Entrenamiento' }}
+				options={{
+					...screenOptions,
+					title: t('training.startTraining')
+				}}
 			/>
 			<Stack.Screen
-				name='sportSessionEnd'
-				options={{ ...screenOptions, title: 'Finalizar Entrenamiento' }}
+				name='sportSessionSummary'
+				options={{ ...screenOptions, title: t('training.endTraining') }}
 			/>
 		</Stack>
 	)

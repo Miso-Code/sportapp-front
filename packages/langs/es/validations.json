@@ -1,5 +1,6 @@
 {
 	"email": "El correo electrónico es invalido",
+	"emailOrPassword": "El correo electrónico o la contraseña son incorrectos",
 	"invalid": "El campo no es válido",
 	"required": "El campo es requerido",
 	"password": {
