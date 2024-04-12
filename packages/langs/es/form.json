@@ -30,16 +30,10 @@
 	"favouriteSport": "Deporte que practicas o deseas practicar",
 	"trainingObjective": "Objetivo de entrenamiento",
 	"trainingObjectiveValue": {
-		"cardiovascularImprovement": "Mejora de la resistencia cardiovascular",
-		"muscularStrengthIncrease": "Aumento de la fuerza muscular",
-		"bodyFatReduction": "Reducción del porcentaje de grasa corporal",
-		"flexibilityAndMobilityImprovement": "Mejora de la flexibilidad y movilidad",
-		"increaseLeanMuscleMass": "Incremento de la masa muscular magra",
-		"balanceAndCoordinationEnhancement": "Mejora del equilibrio y la coordinación",
-		"stressAndAnxietyReduction": "Reducción del estrés y la ansiedad",
-		"boneHealthImprovement": "Mejora de la salud ósea",
-		"energyAndVitalityIncrease": "Aumento de la energía y vitalidad",
-		"postureImprovementAndInjuryPrevention": "Mejora de la postura y prevención de lesiones"
+		"build_muscle_mass": "Aumento de masa muscular",
+		"lose_weight": "Pérdida de peso",
+		"tone_up": "Tonificación",
+		"maintain_fitness": "Mantener la forma física"
 	},
 	"trainingFrequency": "Frecuencia de entrenamiento",
 	"trainingFrequencyValues": {

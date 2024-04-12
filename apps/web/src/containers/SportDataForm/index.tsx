@@ -78,44 +78,20 @@ export default function SportDataForm({
 					formControlProps={{ disabled: inputsDisabled }}
 					options={[
 						{
-							label: 'form.trainingObjectiveValue.cardiovascularImprovement',
-							value: 'Mejora de la resistencia cardiovascular'
+							label: 'form.trainingObjectiveValue.build_muscle_mass',
+							value: 'Aumento de masa muscular'
 						},
 						{
-							label: 'form.trainingObjectiveValue.muscularStrengthIncrease',
-							value: 'Aumento de la fuerza muscular'
+							label: 'form.trainingObjectiveValue.lose_weight',
+							value: 'Pérdida de peso'
 						},
 						{
-							label: 'form.trainingObjectiveValue.bodyFatReduction',
-							value: 'Reducción del porcentaje de grasa corporal'
+							label: 'form.trainingObjectiveValue.tone_up',
+							value: 'Tonificación'
 						},
 						{
-							label: 'form.trainingObjectiveValue.flexibilityAndMobilityImprovement',
-							value: 'Mejora de la flexibilidad y movilidad'
-						},
-						{
-							label: 'form.trainingObjectiveValue.increaseLeanMuscleMass',
-							value: 'Incremento de la masa muscular magra'
-						},
-						{
-							label: 'form.trainingObjectiveValue.balanceAndCoordinationEnhancement',
-							value: 'Mejora del equilibrio y la coordinación'
-						},
-						{
-							label: 'form.trainingObjectiveValue.stressAndAnxietyReduction',
-							value: 'Reducción del estrés y la ansiedad'
-						},
-						{
-							label: 'form.trainingObjectiveValue.boneHealthImprovement',
-							value: 'Mejora de la salud ósea'
-						},
-						{
-							label: 'form.trainingObjectiveValue.energyAndVitalityIncrease',
-							value: 'Aumento de la energía y vitalidad'
-						},
-						{
-							label: 'form.trainingObjectiveValue.postureImprovementAndInjuryPrevention',
-							value: 'Mejora de la postura y prevención de lesiones'
+							label: 'form.trainingObjectiveValue.maintain_fitness',
+							value: 'Mantener la forma física'
 						}
 					]}
 				/>

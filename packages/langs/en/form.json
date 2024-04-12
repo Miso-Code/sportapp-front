@@ -29,17 +29,11 @@
 	"notExist": "Not exist",
 	"favouriteSport": "Favourite Sport",
 	"trainingObjective": "Training Objective",
-	"trainingObjectiveValues": {
-		"cardiovascularImprovement": "Improvement of cardiovascular endurance",
-		"muscularStrengthIncrease": "Increase in muscular strength",
-		"bodyFatReduction": "Reduction of body fat percentage",
-		"flexibilityAndMobilityImprovement": "Improvement of flexibility and mobility",
-		"increaseLeanMuscleMass": "Increase in lean muscle mass",
-		"balanceAndCoordinationEnhancement": "Enhancement of balance and coordination",
-		"stressAndAnxietyReduction": "Reduction of stress and anxiety",
-		"boneHealthImprovement": "Improvement of bone health",
-		"energyAndVitalityIncrease": "Increase in energy and vitality",
-		"postureImprovementAndInjuryPrevention": "Improvement of posture and injury prevention"
+	"trainingObjectiveValue": {
+		"build_muscle_mass": "Build Muscle Mass",
+		"lose_weight": "Lose Weight",
+		"tone_up": "Tone Up",
+		"maintain_fitness": "Maintain Fitness"
 	},
 	"trainingFrequency": "Training Frequency",
 	"trainingFrequencyValues": {
