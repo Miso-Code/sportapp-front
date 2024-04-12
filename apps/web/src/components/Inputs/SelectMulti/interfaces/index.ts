@@ -15,7 +15,7 @@ export interface Props {
 	inputLabelProps?: InputLabelProps
 	isTranslated?: boolean
 	isDisabled?: boolean
-	error?: FieldError | undefined
+	error?: FieldError
 	onChange: (event: SelectChangeEvent<string | string[]>) => void
 	value: string | string[]
 }

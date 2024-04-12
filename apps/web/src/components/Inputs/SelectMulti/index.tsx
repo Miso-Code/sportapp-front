@@ -29,7 +29,7 @@ function SelectMultiComponent(
 ) {
 	const { t } = useTranslation()
 
-	const [currentValue, setCurrentValue] = useState(value)
+	const [currentValue, setCurrentValue] = useState<string | string[]>(value)
 
 	useEffect(() => {
 		setCurrentValue(value)
