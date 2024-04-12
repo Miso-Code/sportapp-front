@@ -8,7 +8,7 @@ exports[`SportDataForm should render the component 1`] = `
     <h3
       class="MuiTypography-root MuiTypography-h3 personal-data-form-title css-gepadz-MuiTypography-root"
     >
-      Sport
+      sportDataForm.title
     </h3>
     <form
       class="personal-data-form-container"
@@ -21,7 +21,7 @@ exports[`SportDataForm should render the component 1`] = `
           data-shrink="false"
           id="favouriteSportId-select-label"
         >
-          Deporte que practica o desea practicar
+          form.favouriteSport
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -70,7 +70,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Deporte que practica o desea practicar
+                form.favouriteSport
               </span>
             </legend>
           </fieldset>
@@ -87,7 +87,7 @@ exports[`SportDataForm should render the component 1`] = `
           data-shrink="false"
           id="trainingObjective-select-label"
         >
-          Objetivos principales para hacer deporte
+          form.trainingObjective
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -136,7 +136,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Objetivos principales para hacer deporte
+                form.trainingObjective
               </span>
             </legend>
           </fieldset>
@@ -153,7 +153,7 @@ exports[`SportDataForm should render the component 1`] = `
           data-shrink="false"
           id="trainingFrequency-select-label"
         >
-          Frecuencia de entrenamiento
+          form.trainingFrequency
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -202,7 +202,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Frecuencia de entrenamiento
+                form.trainingFrequency
               </span>
             </legend>
           </fieldset>
@@ -219,7 +219,7 @@ exports[`SportDataForm should render the component 1`] = `
           data-shrink="false"
           id="limitations-select-label"
         >
-          Limitaciones:
+          form.limitations
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -268,7 +268,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Limitaciones:
+                form.limitations
               </span>
             </legend>
           </fieldset>
@@ -289,7 +289,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r4:"
           id=":r4:-label"
         >
-          Tiempo para entrenar
+          form.availableTrainingHoursPerWeek
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -310,7 +310,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Tiempo para entrenar
+                form.availableTrainingHoursPerWeek
               </span>
             </legend>
           </fieldset>
@@ -325,7 +325,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r5:"
           id=":r5:-label"
         >
-          Peso
+          form.weight
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -346,7 +346,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Peso
+                form.weight
               </span>
             </legend>
           </fieldset>
@@ -361,7 +361,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r6:"
           id=":r6:-label"
         >
-          Altura
+          form.height
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -382,7 +382,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Altura
+                form.height
               </span>
             </legend>
           </fieldset>
@@ -397,7 +397,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r7:"
           id=":r7:-label"
         >
-          porcentaje de IMC
+          form.imc
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -419,7 +419,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                porcentaje de IMC
+                form.imc
               </span>
             </legend>
           </fieldset>
@@ -431,7 +431,7 @@ exports[`SportDataForm should render the component 1`] = `
         tabindex="0"
         type="submit"
       >
-        register.button-two
+        sportDataForm.save
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
