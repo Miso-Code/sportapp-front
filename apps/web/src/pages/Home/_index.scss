@@ -4,4 +4,12 @@
 	&-section {
 		@apply mt-10;
 	}
+
+	&-custom-button {
+		@apply mt-4;
+
+		&__max-w-md {
+			@apply max-w-md;
+		}
+	}
 }

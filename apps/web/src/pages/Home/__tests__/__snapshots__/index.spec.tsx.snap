@@ -18,7 +18,7 @@ exports[`Home should render correctly 1`] = `
               class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
             >
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -40,10 +40,12 @@ exports[`Home should render correctly 1`] = `
                 </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                >
+                  -1
+                </span>
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -65,10 +67,12 @@ exports[`Home should render correctly 1`] = `
                 </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                >
+                  -1
+                </span>
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -90,10 +94,12 @@ exports[`Home should render correctly 1`] = `
                 </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                >
+                  -1
+                </span>
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -115,10 +121,12 @@ exports[`Home should render correctly 1`] = `
                 </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                >
+                  -1
+                </span>
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -140,7 +148,9 @@ exports[`Home should render correctly 1`] = `
                 </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                >
+                  -1
+                </span>
               </button>
             </div>
           </header>
@@ -166,7 +176,7 @@ exports[`Home should render correctly 1`] = `
                   class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                 >
                   <div
-                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
                     tabindex="0"
                   >
@@ -180,11 +190,24 @@ exports[`Home should render correctly 1`] = `
                       </div>
                     </div>
                     <div
-                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-                    />
+                      class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+                    >
+                      <span
+                        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                      >
+                        Jhon Doe
+                      </span>
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                      >
+                        jdoe@gmail.com
+                      </p>
+                    </div>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
+                    >
+                      -1
+                    </span>
                   </div>
                 </li>
               </div>
@@ -198,7 +221,7 @@ exports[`Home should render correctly 1`] = `
                     class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                   >
                     <div
-                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                       role="button"
                       tabindex="0"
                     >
@@ -242,7 +265,9 @@ exports[`Home should render correctly 1`] = `
                       </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
+                      >
+                        -1
+                      </span>
                     </div>
                   </li>
                   <hr
@@ -252,7 +277,7 @@ exports[`Home should render correctly 1`] = `
                     class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                   >
                     <div
-                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                       role="button"
                       tabindex="1"
                     >
@@ -293,7 +318,9 @@ exports[`Home should render correctly 1`] = `
                       </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
+                      >
+                        -1
+                      </span>
                     </div>
                   </li>
                   <hr
@@ -303,7 +330,7 @@ exports[`Home should render correctly 1`] = `
                     class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                   >
                     <div
-                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                       role="button"
                       tabindex="2"
                     >
@@ -344,7 +371,9 @@ exports[`Home should render correctly 1`] = `
                       </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
+                      >
+                        -1
+                      </span>
                     </div>
                   </li>
                 </ul>
@@ -356,7 +385,7 @@ exports[`Home should render correctly 1`] = `
                   class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                 >
                   <div
-                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
                     tabindex="3"
                   >
@@ -402,7 +431,9 @@ exports[`Home should render correctly 1`] = `
                     </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
+                    >
+                      -1
+                    </span>
                   </div>
                 </li>
               </div>
@@ -429,7 +460,7 @@ exports[`Home should render correctly 1`] = `
             class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
           >
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -451,10 +482,12 @@ exports[`Home should render correctly 1`] = `
               </span>
               <span
                 class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
+              >
+                -1
+              </span>
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -476,10 +509,12 @@ exports[`Home should render correctly 1`] = `
               </span>
               <span
                 class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
+              >
+                -1
+              </span>
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -501,10 +536,12 @@ exports[`Home should render correctly 1`] = `
               </span>
               <span
                 class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
+              >
+                -1
+              </span>
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -526,10 +563,12 @@ exports[`Home should render correctly 1`] = `
               </span>
               <span
                 class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
+              >
+                -1
+              </span>
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -551,7 +590,9 @@ exports[`Home should render correctly 1`] = `
               </span>
               <span
                 class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
+              >
+                -1
+              </span>
             </button>
           </div>
         </header>
@@ -577,7 +618,7 @@ exports[`Home should render correctly 1`] = `
                 class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
               >
                 <div
-                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                   role="button"
                   tabindex="0"
                 >
@@ -591,11 +632,24 @@ exports[`Home should render correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-                  />
+                    class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                    >
+                      Jhon Doe
+                    </span>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                    >
+                      jdoe@gmail.com
+                    </p>
+                  </div>
                   <span
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
+                  >
+                    -1
+                  </span>
                 </div>
               </li>
             </div>
@@ -609,7 +663,7 @@ exports[`Home should render correctly 1`] = `
                   class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                 >
                   <div
-                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
                     tabindex="0"
                   >
@@ -653,7 +707,9 @@ exports[`Home should render correctly 1`] = `
                     </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
+                    >
+                      -1
+                    </span>
                   </div>
                 </li>
                 <hr
@@ -663,7 +719,7 @@ exports[`Home should render correctly 1`] = `
                   class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                 >
                   <div
-                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
                     tabindex="1"
                   >
@@ -704,7 +760,9 @@ exports[`Home should render correctly 1`] = `
                     </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
+                    >
+                      -1
+                    </span>
                   </div>
                 </li>
                 <hr
@@ -714,7 +772,7 @@ exports[`Home should render correctly 1`] = `
                   class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
                 >
                   <div
-                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                    class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
                     tabindex="2"
                   >
@@ -755,7 +813,9 @@ exports[`Home should render correctly 1`] = `
                     </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
+                    >
+                      -1
+                    </span>
                   </div>
                 </li>
               </ul>
@@ -767,7 +827,7 @@ exports[`Home should render correctly 1`] = `
                 class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
               >
                 <div
-                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                  class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters Mui-focusVisible MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                   role="button"
                   tabindex="3"
                 >
@@ -813,7 +873,9 @@ exports[`Home should render correctly 1`] = `
                   </svg>
                   <span
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
+                  >
+                    -1
+                  </span>
                 </div>
               </li>
             </div>
