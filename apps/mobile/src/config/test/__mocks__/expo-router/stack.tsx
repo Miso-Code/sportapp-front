@@ -6,17 +6,25 @@ const Stack = ({ children }) => <View>{children}</View>
 Stack.Screen = ({ options }) => {
 	const defaultOptions = { headerShown: true, header: null }
 	const optionsFinal = { ...defaultOptions, ...options }
-	return (
-		<View>
-			{optionsFinal.headerShown && !optionsFinal.header && (
+	const { headerShown, header } = optionsFinal
+
+	const shouldRenderDefaultHeader = headerShown && header === null
+
+	if (shouldRenderDefaultHeader) {
+		return (
+			<View>
 				<Text testID='default-header'>Header</Text>
-			)}
-			{optionsFinal.headerShown &&
-				optionsFinal.header &&
-				optionsFinal.header({ back: true, options: optionsFinal })}
+				<Text>Mock Screen</Text>
+			</View>
+		)
+	}
+
+	return headerShown ? (
+		<View>
+			{optionsFinal.header({ back: true, options: optionsFinal })}
 			<Text>Mock Screen</Text>
 		</View>
-	)
+	) : null
 }
 
 export { Stack }

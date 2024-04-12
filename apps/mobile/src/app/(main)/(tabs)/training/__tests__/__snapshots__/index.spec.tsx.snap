@@ -7,7 +7,6 @@ exports[`Training should render correctly 1`] = `
       "flex": 1,
       "justifyContent": "flex-start",
       "marginHorizontal": 15,
-      "marginTop": 100,
     }
   }
 >
@@ -260,44 +259,7 @@ exports[`Training should render correctly 1`] = `
               },
             ]
           }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no-hide-descendants"
-            pointerEvents="none"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "rgba(73, 69, 79, 1)",
-                  "fontSize": 24,
-                },
-                [
-                  {
-                    "lineHeight": 24,
-                    "transform": [
-                      {
-                        "scaleX": 1,
-                      },
-                    ],
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "fontFamily": "material-community",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            󰋑
-          </Text>
-        </View>
+        />
         <View
           style={
             [
@@ -476,44 +438,7 @@ exports[`Training should render correctly 1`] = `
               },
             ]
           }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no-hide-descendants"
-            pointerEvents="none"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "rgba(73, 69, 79, 1)",
-                  "fontSize": 24,
-                },
-                [
-                  {
-                    "lineHeight": 24,
-                    "transform": [
-                      {
-                        "scaleX": 1,
-                      },
-                    ],
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "fontFamily": "material-community",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            󰃮
-          </Text>
-        </View>
+        />
         <View
           style={
             [
@@ -692,44 +617,7 @@ exports[`Training should render correctly 1`] = `
               },
             ]
           }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no-hide-descendants"
-            pointerEvents="none"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "rgba(73, 69, 79, 1)",
-                  "fontSize": 24,
-                },
-                [
-                  {
-                    "lineHeight": 24,
-                    "transform": [
-                      {
-                        "scaleX": 1,
-                      },
-                    ],
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "fontFamily": "material-community",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            󰑉
-          </Text>
-        </View>
+        />
         <View
           style={
             [
@@ -908,44 +796,7 @@ exports[`Training should render correctly 1`] = `
               },
             ]
           }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no-hide-descendants"
-            pointerEvents="none"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "rgba(73, 69, 79, 1)",
-                  "fontSize": 24,
-                },
-                [
-                  {
-                    "lineHeight": 24,
-                    "transform": [
-                      {
-                        "scaleX": 1,
-                      },
-                    ],
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "fontFamily": "material-community",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            󰄐
-          </Text>
-        </View>
+        />
         <View
           style={
             [
@@ -1124,44 +975,7 @@ exports[`Training should render correctly 1`] = `
               },
             ]
           }
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no-hide-descendants"
-            pointerEvents="none"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "rgba(73, 69, 79, 1)",
-                  "fontSize": 24,
-                },
-                [
-                  {
-                    "lineHeight": 24,
-                    "transform": [
-                      {
-                        "scaleX": 1,
-                      },
-                    ],
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "fontFamily": "material-community",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            󰓎
-          </Text>
-        </View>
+        />
         <View
           style={
             [

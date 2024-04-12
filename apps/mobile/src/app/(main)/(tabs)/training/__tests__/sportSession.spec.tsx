@@ -1,10 +1,12 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
+import { router } from 'expo-router'
 import { useSportSessionStore, useSportStore } from '@sportapp/stores'
 import { useLocation } from '@/hooks/useLocation'
 
 import SportSession from '../sportSession'
 
+jest.mock('expo-router')
 jest.mock('@sportapp/stores', () => {
 	return {
 		useAuthStore: jest.fn().mockReturnValue({
@@ -119,6 +121,8 @@ describe('SportSession', () => {
 		).toBe(0)
 
 		expect(useSportSessionStore().finishSportSession).toHaveBeenCalled()
+
+		expect(router.push).toHaveBeenCalledWith('training/sportSessionSummary')
 	})
 
 	it('should update the location when there is an update', async () => {
@@ -522,6 +526,19 @@ describe('SportSession', () => {
 			})
 
 			expect(useSportSessionStore().finishSportSession).toHaveBeenCalled()
+		})
+
+		it('should natigate to the sport session summary when the timer is stopped', () => {
+			const stopButton = component.root.findByProps({
+				testID: 'stopButton'
+			})
+			act(() => {
+				stopButton.props.onPress()
+			})
+
+			expect(router.push).toHaveBeenCalledWith(
+				'training/sportSessionSummary'
+			)
 		})
 	})
 })

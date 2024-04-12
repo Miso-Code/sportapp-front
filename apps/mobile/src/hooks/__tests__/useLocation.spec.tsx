@@ -75,6 +75,7 @@ describe('useLocation', () => {
 			status: 'denied'
 		})
 		act(() => {
+			component.unmount()
 			component = create(<TestComponent />)
 		})
 
@@ -90,7 +91,7 @@ describe('useLocation', () => {
 			new Error('error')
 		)
 		act(() => {
-			component = create(<TestComponent />)
+			component.update(<TestComponent />)
 		})
 
 		await act(async () => {

@@ -12,6 +12,7 @@ import {
 	useSportSessionStore,
 	useSportStore
 } from '@sportapp/stores'
+import { router } from 'expo-router'
 
 const SportSession: React.FC = () => {
 	const { user } = useAuthStore()
@@ -97,7 +98,9 @@ const SportSession: React.FC = () => {
 		setCurrentTime(0)
 		setIsRunning(false)
 
-		if (!sessionID) return
+		if (!sessionID) {
+			return
+		}
 
 		const payload: Parameters<typeof finishSportSession>[0] = {
 			session_id: sessionID,
@@ -108,6 +111,8 @@ const SportSession: React.FC = () => {
 			payload.steps = currentStepCount
 		}
 		await finishSportSession(payload)
+
+		router.push('training/sportSessionSummary')
 	}, [
 		timer,
 		currentTime,

@@ -3,6 +3,8 @@ import renderer, { ReactTestRenderer } from 'react-test-renderer'
 
 import Training from '..'
 
+jest.mock('expo-router')
+
 describe('Training', () => {
 	let component: ReactTestRenderer
 

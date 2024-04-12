@@ -32,11 +32,12 @@ export default function TabLayout() {
 			screenOptions={{
 				headerShown: showHeader,
 				headerTitleAlign: 'left',
-				headerTransparent: true,
+				headerTransparent: false,
 				headerTitleStyle: {
 					fontWeight: 'normal',
 					fontSize: 34
-				}
+				},
+				headerBackground: () => null
 			}}>
 			<Tabs.Screen
 				name='profile'

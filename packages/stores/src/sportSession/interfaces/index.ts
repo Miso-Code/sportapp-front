@@ -11,7 +11,11 @@ export interface ISportSessionStore
 	extends ISportSessionState,
 		ISportSessionActions {}
 
-export interface ISportSessionState {}
+interface SportSession extends FullSportSessionResponse {}
+
+export interface ISportSessionState {
+	sportSession?: SportSession
+}
 
 export interface ISportSessionActions {
 	startSportSession: (

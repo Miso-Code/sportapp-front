@@ -57,6 +57,7 @@ describe('SportSessionStore', () => {
 			await clearState()
 		})
 		expect(result.current).toStrictEqual({
+			sportSession: undefined,
 			startSportSession: expect.any(Function),
 			addSessionLocation: expect.any(Function),
 			finishSportSession: expect.any(Function),
@@ -185,6 +186,45 @@ describe('SportSessionStore', () => {
 					max_heartrate: 1,
 					avg_heartrate: 1
 				})
+			})
+		})
+
+		it('should set the sport session', async () => {
+			const { result } = renderHook(() => useSportSessionStore())
+
+			const { finishSportSession } = result.current
+
+			const finishSessionPayload: Parameters<
+				typeof finishSportSession
+			>[0] = {
+				session_id: 'session_id',
+				duration: 1,
+				distance: 1,
+				steps: 1,
+				calories: 1,
+				average_speed: 1,
+				min_heartrate: 1,
+				max_heartrate: 1,
+				avg_heartrate: 1
+			}
+
+			await act(async () => {
+				await finishSportSession(finishSessionPayload)
+			})
+
+			expect(result.current.sportSession).toStrictEqual({
+				session_id: 'session_id',
+				sport_id: 'sport_id',
+				user_id: 'user_id',
+				started_at: 'started_at',
+				duration: 1,
+				distance: 1,
+				steps: 1,
+				calories: 1,
+				average_speed: 1,
+				min_heartrate: 1,
+				max_heartrate: 1,
+				avg_heartrate: 1
 			})
 		})
 	})

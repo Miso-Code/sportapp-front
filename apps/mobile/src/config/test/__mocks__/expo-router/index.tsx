@@ -2,7 +2,8 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 const Tabs = ({ screenOptions, children }) => (
-	<View testID={screenOptions.headerShown}>
+	<View>
+		{screenOptions.headerBackground && screenOptions.headerBackground()}
 		{screenOptions.headerShown && <Text testID='header'>header</Text>}
 		{children}
 	</View>
@@ -15,9 +16,14 @@ Tabs.Screen = ({ options }) => (
 	</View>
 )
 
+const Slot = ({ children }) => <>{children}</>
+
 const useSegments = jest.fn(() => [{ title: 'test' }])
+const useRootNavigationState = jest.fn().mockReturnValue({ key: 'key' })
 const router = {
-	back: jest.fn()
+	push: jest.fn(),
+	back: jest.fn(),
+	navigate: jest.fn()
 }
 
-export { Tabs, useSegments, router }
+export { Tabs, Slot, useSegments, router, useRootNavigationState }

@@ -52,12 +52,10 @@ describe('usePedometer', () => {
 
 	it('should return when is not available', async () => {
 		;(Pedometer.isAvailableAsync as jest.Mock).mockResolvedValueOnce(false)
-		act(() => {
-			component = create(<TestComponent />)
-		})
-
 		// Wait for the async effects to complete
 		await act(async () => {
+			component.unmount()
+			component = create(<TestComponent />)
 			await Promise.resolve()
 		})
 
@@ -94,14 +92,13 @@ describe('usePedometer', () => {
 	})
 
 	it('should not call functions when is not available', async () => {
-		;(Pedometer.isAvailableAsync as jest.Mock).mockResolvedValueOnce(false)
+		act(() => component.unmount())
 		jest.resetAllMocks()
-		act(() => {
-			component = create(<TestComponent />)
-		})
+		;(Pedometer.isAvailableAsync as jest.Mock).mockResolvedValueOnce(false)
 
 		// Wait for the async effects to complete
 		await act(async () => {
+			component = create(<TestComponent />)
 			await Promise.resolve()
 		})
 
