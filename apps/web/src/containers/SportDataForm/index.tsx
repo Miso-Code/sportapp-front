@@ -130,19 +130,21 @@ export default function SportDataForm({
 					formControlProps={{ disabled: inputsDisabled }}
 					options={[
 						{
-							label: 'form.trainingFrequencyValues.DAILY',
+							label: t('form.trainingFrequencyValues.DAILY'),
 							value: 'daily'
 						},
 						{
-							label: 'form.trainingFrequencyValues.EVERY_OTHER_DAY',
+							label: t(
+								'form.trainingFrequencyValues.EVERY_OTHER_DAY'
+							),
 							value: 'every_other_day'
 						},
 						{
-							label: 'form.trainingFrequencyValues.WEEKLY',
+							label: t('form.trainingFrequencyValues.WEEKLY'),
 							value: 'weekly'
 						},
 						{
-							label: 'form.trainingFrequencyValues.MONTHLY',
+							label: t('form.trainingFrequencyValues.MONTHLY'),
 							value: 'monthly'
 						}
 					]}

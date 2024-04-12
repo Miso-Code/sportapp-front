@@ -323,7 +323,7 @@ exports[`SelectMultiComponent should render correctly with value and multiple se
       class="mt-2"
     >
       <div
-        class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-deletable MuiChip-deletableColorDefault MuiChip-filledDefault css-38raov-MuiButtonBase-root-MuiChip-root"
+        class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorWarning MuiChip-deletable MuiChip-deletableColorWarning MuiChip-filledWarning css-n9md71-MuiButtonBase-root-MuiChip-root"
         role="button"
         tabindex="0"
       >
@@ -334,7 +334,7 @@ exports[`SelectMultiComponent should render correctly with value and multiple se
         </span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorDefault MuiChip-deleteIconFilledColorDefault css-i4bv87-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorWarning MuiChip-deleteIconFilledColorWarning css-i4bv87-MuiSvgIcon-root"
           data-testid="CancelIcon"
           focusable="false"
           viewBox="0 0 24 24"

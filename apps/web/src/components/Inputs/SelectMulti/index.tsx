@@ -104,6 +104,7 @@ function SelectMultiComponent(
 						value.map((valueCurrent) => (
 							<Chip
 								key={valueCurrent}
+								color='warning'
 								label={
 									options.find(
 										(option) =>

@@ -53,43 +53,43 @@ export default function NutritionalDataForm({
 					options={[
 						{
 							value: 'gluten',
-							label: 'form.allergyTypeValue.gluten'
+							label: t('form.allergyTypeValue.gluten')
 						},
 						{
 							value: 'lactose',
-							label: 'form.allergyTypeValue.lactose'
+							label: t('form.allergyTypeValue.lactose')
 						},
 						{
 							value: 'peanuts',
-							label: 'form.allergyTypeValue.peanuts'
+							label: t('form.allergyTypeValue.peanuts')
 						},
 						{
 							value: 'treeNuts',
-							label: 'form.allergyTypeValue.treeNuts'
+							label: t('form.allergyTypeValue.treeNuts')
 						},
 						{
 							value: 'shellfish',
-							label: 'form.allergyTypeValue.shellfish'
+							label: t('form.allergyTypeValue.shellfish')
 						},
 						{
 							value: 'fish',
-							label: 'form.allergyTypeValue.fish'
+							label: t('form.allergyTypeValue.fish')
 						},
 						{
 							value: 'soy',
-							label: 'form.allergyTypeValue.soy'
+							label: t('form.allergyTypeValue.soy')
 						},
 						{
 							value: 'egg',
-							label: 'form.allergyTypeValue.egg'
+							label: t('form.allergyTypeValue.egg')
 						},
 						{
 							value: 'wheat',
-							label: 'form.allergyTypeValue.wheat'
+							label: t('form.allergyTypeValue.wheat')
 						},
 						{
 							value: 'corn',
-							label: 'form.allergyTypeValue.corn'
+							label: t('form.allergyTypeValue.corn')
 						}
 					]}
 				/>
