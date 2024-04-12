@@ -60,5 +60,10 @@
 		"wheat": "Wheat",
 		"corn": "Corn"
 	},
-	"foodPreferences": "Food Preferences"
+	"foodPreferences": "Food Preferences",
+	"foodPreferenceValues": {
+		"VEGAN": "Vegan",
+		"VEGETARIAN": "Vegetarian",
+		"EVERYTHING": "Everything(No restrictions)"
+	}
 }

@@ -60,5 +60,10 @@
 		"wheat": "Trigo",
 		"corn": "Maíz"
 	},
-	"foodPreferences": "Preferencias alimenticias"
+	"foodPreferences": "Preferencias alimenticias",
+	"foodPreferenceValues": {
+		"VEGAN": "Vegano",
+		"VEGETARIAN": "Vegetariano",
+		"EVERYTHING": "Omnívoro(no tengo restricciones dietéticas)"
+	}
 }
