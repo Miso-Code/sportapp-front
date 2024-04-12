@@ -179,6 +179,32 @@ describe('UserApi', () => {
 				data
 			)
 		})
+
+		it('should return undefined if the request fails', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data: RegisterFullUserRequest = {
+				birth_date: '1990-01-01',
+				city_of_birth: 'test',
+				city_of_residence: 'test',
+				country_of_birth: 'test',
+				country_of_residence: 'test',
+				gender: 'M',
+				identification_number: '12345678',
+				identification_type: 'CC',
+				residence_age: 1
+			}
+
+			const uuid = '1234'
+
+			try {
+				await userApi.registerFull(uuid, data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
 	})
 
 	describe('login', () => {
@@ -223,6 +249,197 @@ describe('UserApi', () => {
 			const response = await userApi.login(data)
 
 			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the login fails', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'email@example.com',
+				password: 'password'
+			}
+
+			try {
+				await userApi.login(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('getPersonalProfile', () => {
+		it('should call the getPersonalProfile endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						email: 'jdoe2@gmail.com',
+						first_name: 'John2',
+						last_name: 'Doe2',
+						identification_type: 'CC',
+						identification_number: '123456788',
+						gender: 'F',
+						country_of_birth: 'CountryOfBirth2',
+						city_of_birth: 'CityOfBirth2',
+						country_of_residence: 'CountryOfResidence2',
+						city_of_residence: 'CityOfResidence2',
+						residence_age: 25,
+						birth_date: '1996-12-30'
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getPersonalProfile({})
+
+			expect(response).toStrictEqual({
+				email: 'jdoe2@gmail.com',
+				first_name: 'John2',
+				last_name: 'Doe2',
+				identification_type: 'CC',
+				identification_number: '123456788',
+				gender: 'F',
+				country_of_birth: 'CountryOfBirth2',
+				city_of_birth: 'CityOfBirth2',
+				country_of_residence: 'CountryOfResidence2',
+				city_of_residence: 'CityOfResidence2',
+				residence_age: 25,
+				birth_date: '1996-12-30'
+			})
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getPersonalProfile({ options: {} })
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+
+			try {
+				await userApi.getPersonalProfile()
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('updatePersonalProfile', () => {
+		it('should call the updatePersonalProfile endpoint', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						email: 'jdoe2@gmail.com',
+						first_name: 'John2',
+						last_name: 'Doe2',
+						identification_type: 'CC',
+						identification_number: '123456788',
+						gender: 'F',
+						country_of_birth: 'CountryOfBirth2',
+						city_of_birth: 'CityOfBirth2',
+						country_of_residence: 'CountryOfResidence2',
+						city_of_residence: 'CityOfResidence2',
+						residence_age: 25,
+						birth_date: '1996-12-30'
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'jdoe2@gmail.com',
+				first_name: 'John2',
+				last_name: 'Doe2',
+				identification_type: 'CC',
+				identification_number: '123456788',
+				gender: 'F',
+				country_of_birth: 'CountryOfBirth2',
+				city_of_birth: 'CityOfBirth2',
+				country_of_residence: 'CountryOfResidence2',
+				city_of_residence: 'CityOfResidence2',
+				residence_age: 25,
+				birth_date: '1996-12-30'
+			}
+			const response = await userApi.updatePersonalProfile(data)
+
+			expect(response).toStrictEqual({
+				email: 'jdoe2@gmail.com',
+				first_name: 'John2',
+				last_name: 'Doe2',
+				identification_type: 'CC',
+				identification_number: '123456788',
+				gender: 'F',
+				country_of_birth: 'CountryOfBirth2',
+				city_of_birth: 'CityOfBirth2',
+				country_of_residence: 'CountryOfResidence2',
+				city_of_residence: 'CityOfResidence2',
+				residence_age: 25,
+				birth_date: '1996-12-30'
+			})
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'jdoe2@gmail.com',
+				first_name: 'John2',
+				last_name: 'Doe2',
+				identification_type: 'CC',
+				identification_number: '123456788',
+				gender: 'F',
+				country_of_birth: 'CountryOfBirth2',
+				city_of_birth: 'CityOfBirth2',
+				country_of_residence: 'CountryOfResidence2',
+				city_of_residence: 'CityOfResidence2',
+				residence_age: 25,
+				birth_date: '1996-12-30'
+			}
+			const response = await userApi.updatePersonalProfile(data)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data = {
+				email: 'jdoe2@gmail.com',
+				first_name: 'John2',
+				last_name: 'Doe2',
+				identification_type: 'CC',
+				identification_number: '123456788',
+				gender: 'F',
+				country_of_birth: 'CountryOfBirth2',
+				city_of_birth: 'CityOfBirth2',
+				country_of_residence: 'CountryOfResidence2',
+				city_of_residence: 'CityOfResidence2',
+				residence_age: 25,
+				birth_date: '1996-12-30'
+			}
+
+			try {
+				await userApi.updatePersonalProfile(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
 		})
 	})
 })
