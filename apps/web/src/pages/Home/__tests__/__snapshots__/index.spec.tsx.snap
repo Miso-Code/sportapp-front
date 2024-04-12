@@ -229,6 +229,17 @@ exports[`Home should render correctly 1`] = `
                           profile.menu.personalData
                         </span>
                       </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                        data-testid="ChevronRightIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                        />
+                      </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                       />
@@ -243,7 +254,7 @@ exports[`Home should render correctly 1`] = `
                     <div
                       class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                       role="button"
-                      tabindex="0"
+                      tabindex="1"
                     >
                       <div
                         class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -269,6 +280,17 @@ exports[`Home should render correctly 1`] = `
                           profile.menu.sportData
                         </span>
                       </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                        data-testid="ChevronRightIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                        />
+                      </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                       />
@@ -283,7 +305,7 @@ exports[`Home should render correctly 1`] = `
                     <div
                       class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                       role="button"
-                      tabindex="0"
+                      tabindex="2"
                     >
                       <div
                         class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -309,6 +331,17 @@ exports[`Home should render correctly 1`] = `
                           profile.menu.nutritionData
                         </span>
                       </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                        data-testid="ChevronRightIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                        />
+                      </svg>
                       <span
                         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                       />
@@ -325,7 +358,7 @@ exports[`Home should render correctly 1`] = `
                   <div
                     class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
-                    tabindex="0"
+                    tabindex="3"
                   >
                     <div
                       class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -356,6 +389,17 @@ exports[`Home should render correctly 1`] = `
                         profile.menu.paymentPlans
                       </span>
                     </div>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                      data-testid="ChevronRightIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                      />
+                    </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
@@ -596,6 +640,17 @@ exports[`Home should render correctly 1`] = `
                         profile.menu.personalData
                       </span>
                     </div>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                      data-testid="ChevronRightIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                      />
+                    </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
@@ -610,7 +665,7 @@ exports[`Home should render correctly 1`] = `
                   <div
                     class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
-                    tabindex="0"
+                    tabindex="1"
                   >
                     <div
                       class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -636,6 +691,17 @@ exports[`Home should render correctly 1`] = `
                         profile.menu.sportData
                       </span>
                     </div>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                      data-testid="ChevronRightIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                      />
+                    </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
@@ -650,7 +716,7 @@ exports[`Home should render correctly 1`] = `
                   <div
                     class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                     role="button"
-                    tabindex="0"
+                    tabindex="2"
                   >
                     <div
                       class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -676,6 +742,17 @@ exports[`Home should render correctly 1`] = `
                         profile.menu.nutritionData
                       </span>
                     </div>
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                      data-testid="ChevronRightIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                      />
+                    </svg>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
@@ -692,7 +769,7 @@ exports[`Home should render correctly 1`] = `
                 <div
                   class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters profile-menu-item css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
                   role="button"
-                  tabindex="0"
+                  tabindex="3"
                 >
                   <div
                     class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
@@ -723,6 +800,17 @@ exports[`Home should render correctly 1`] = `
                       profile.menu.paymentPlans
                     </span>
                   </div>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-colorAction MuiSvgIcon-fontSizeMedium css-11pbyhm-MuiSvgIcon-root"
+                    data-testid="ChevronRightIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                    />
+                  </svg>
                   <span
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                   />
