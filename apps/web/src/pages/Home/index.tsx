@@ -7,6 +7,7 @@ import { Button, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
+import { handleEdit } from './components/Menu/utils'
 
 function Home() {
 	const { t } = useTranslation()
@@ -18,20 +19,13 @@ function Home() {
 		true
 	])
 
-	const handleEdit = (index: number) => {
-		const newIsEditing = isEditing.map((value, i) => {
-			if (i === index) return !value
-			return value
-		})
-		setIsEditing(newIsEditing)
-	}
-
 	useEffect(() => {
 		setIsEditing([true, true, true, true])
 	}, [selected])
 
 	const selectedViews = [
 		<PersonalDataForm
+			key='personalDataForm'
 			customSubmit={
 				isEditing[0] && (
 					<Button
@@ -39,19 +33,20 @@ function Home() {
 						size='large'
 						type='submit'
 						className='home-custom-button home-custom-button__max-w-md'
-						onClick={() => handleEdit(0)}
+						onClick={() => handleEdit(0, isEditing, setIsEditing)}
 						variant='contained'>
 						{t('personalDataForm.edit')}
 					</Button>
 				)
 			}
 			handleCustomSubmit={() => {
-				handleEdit(0)
+				handleEdit(0, isEditing, setIsEditing)
 			}}
 			inputsDisabled={isEditing[0]}
 			className='mt-10 px-3'
 		/>,
 		<SportDataForm
+			key='sportDataForm'
 			customSubmit={
 				isEditing[1] && (
 					<Button
@@ -59,7 +54,7 @@ function Home() {
 						size='large'
 						type='submit'
 						className='home-custom-button home-custom-button__max-w-md'
-						onClick={() => handleEdit(1)}
+						onClick={() => handleEdit(1, isEditing, setIsEditing)}
 						variant='contained'>
 						{t('sportDataForm.edit')}
 					</Button>
@@ -67,12 +62,13 @@ function Home() {
 			}
 			isRequired
 			handleCustomSubmit={() => {
-				handleEdit(1)
+				handleEdit(1, isEditing, setIsEditing)
 			}}
 			inputsDisabled={isEditing[1]}
 			className='mt-10 px-3'
 		/>,
 		<NutritionalDataForm
+			key='nutritionalDataForm'
 			customSubmit={
 				isEditing[2] && (
 					<Button
@@ -80,7 +76,7 @@ function Home() {
 						size='large'
 						type='submit'
 						className='home-custom-button home-custom-button__max-w-md'
-						onClick={() => handleEdit(2)}
+						onClick={() => handleEdit(2, isEditing, setIsEditing)}
 						variant='contained'>
 						{t('nutritionalDataForm.edit')}
 					</Button>
@@ -88,7 +84,7 @@ function Home() {
 			}
 			isRequired
 			handleCustomSubmit={() => {
-				handleEdit(2)
+				handleEdit(2, isEditing, setIsEditing)
 			}}
 			inputsDisabled={isEditing[2]}
 			className='mt-10 px-3'
