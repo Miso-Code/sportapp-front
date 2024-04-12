@@ -10,7 +10,7 @@ export function hexToRgb(hex: string) {
 			.replace(/rgba?\(/g, '')
 			.replace(')', '')
 			.split(',')
-			.map((val) => parseInt(val))
+			.map((val) => parseInt(val, 10))
 		return { r, g, b }
 	}
 

@@ -43,7 +43,7 @@ export const useLocation = () => {
 					}
 				)
 			} catch (error) {
-				console.error(error)
+				console.error('Error starting location updates', error) // eslint-disable-line no-console
 				setIsLocationAvailable(false)
 			}
 		}
