@@ -1,11 +1,14 @@
-import es from './es.json'
-import validations from './validations.json'
-import register from './register.json'
-import form from './form.json'
 import errors from './errors.json'
+import es from './es.json'
+import form from './form.json'
 import login from './login.json'
-import profile from './profile.json'
 import navbar from './navbar.json'
+import nutritionalDataForm from './nutritionalDataForm.json'
+import personalDataForm from './personalDataForm.json'
+import profile from './profile.json'
+import register from './register.json'
+import sportDataForm from './sportDataForm.json'
+import validations from './validations.json'
 
 const defaultTranslate = {
 	translation: {
@@ -16,7 +19,10 @@ const defaultTranslate = {
 		login,
 		errors,
 		profile,
-		navbar
+		personalDataForm,
+		navbar,
+		sportDataForm,
+		nutritionalDataForm
 	}
 }
 

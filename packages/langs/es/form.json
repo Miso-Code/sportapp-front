@@ -26,5 +26,45 @@
 	"residenceCity": "Ciudad de residencia",
 	"birthDate": "Fecha de nacimiento",
 	"other": "Otro",
-	"notExist": "No existe"
+	"notExist": "No existe",
+	"favouriteSport": "Deporte que practicas o deseas practicar",
+	"trainingObjective": "Objetivo de entrenamiento",
+	"trainingObjectiveValue": {
+		"cardiovascularImprovement": "Mejora de la resistencia cardiovascular",
+		"muscularStrengthIncrease": "Aumento de la fuerza muscular",
+		"bodyFatReduction": "Reducción del porcentaje de grasa corporal",
+		"flexibilityAndMobilityImprovement": "Mejora de la flexibilidad y movilidad",
+		"increaseLeanMuscleMass": "Incremento de la masa muscular magra",
+		"balanceAndCoordinationEnhancement": "Mejora del equilibrio y la coordinación",
+		"stressAndAnxietyReduction": "Reducción del estrés y la ansiedad",
+		"boneHealthImprovement": "Mejora de la salud ósea",
+		"energyAndVitalityIncrease": "Aumento de la energía y vitalidad",
+		"postureImprovementAndInjuryPrevention": "Mejora de la postura y prevención de lesiones"
+	},
+	"trainingFrequency": "Frecuencia de entrenamiento",
+	"trainingFrequencyValues": {
+		"DAILY": "Diario",
+		"WEEKLY": "Semanal",
+		"MONTHLY": "Mensual",
+		"EVERY_OTHER_DAY": "Día de por medio"
+	},
+	"limitations": "Limitaciones",
+	"availableTrainingHoursPerWeek": "Tiempo para entrenar",
+	"weight": "Peso",
+	"height": "Altura",
+	"imc": "Porcentaje de IMC",
+	"allergyType": "Tipo de alergia",
+	"allergyTypeValue": {
+		"gluten": "Gluten",
+		"lactose": "Lactosa",
+		"peanuts": "Cacahuetes",
+		"treeNuts": "Frutos secos",
+		"shellfish": "Mariscos",
+		"fish": "Pescado",
+		"soy": "Soja",
+		"egg": "Huevo",
+		"wheat": "Trigo",
+		"corn": "Maíz"
+	},
+	"foodPreferences": "Preferencias alimenticias"
 }

@@ -26,5 +26,45 @@
 	"residenceCity": "City of Residence",
 	"birthDate": "Date of Birth",
 	"other": "Other",
-	"notExist": "Not exist"
+	"notExist": "Not exist",
+	"favouriteSport": "Favourite Sport",
+	"trainingObjective": "Training Objective",
+	"trainingObjectiveValues": {
+		"cardiovascularImprovement": "Improvement of cardiovascular endurance",
+		"muscularStrengthIncrease": "Increase in muscular strength",
+		"bodyFatReduction": "Reduction of body fat percentage",
+		"flexibilityAndMobilityImprovement": "Improvement of flexibility and mobility",
+		"increaseLeanMuscleMass": "Increase in lean muscle mass",
+		"balanceAndCoordinationEnhancement": "Enhancement of balance and coordination",
+		"stressAndAnxietyReduction": "Reduction of stress and anxiety",
+		"boneHealthImprovement": "Improvement of bone health",
+		"energyAndVitalityIncrease": "Increase in energy and vitality",
+		"postureImprovementAndInjuryPrevention": "Improvement of posture and injury prevention"
+	},
+	"trainingFrequency": "Training Frequency",
+	"trainingFrequencyValues": {
+		"DAILY": "Daily",
+		"WEEKLY": "Weekly",
+		"MONTHLY": "Monthly",
+		"EVERY_OTHER_DAY": "Every other day"
+	},
+	"limitations": "Limitations",
+	"availableTrainingHoursPerWeek": "Available Training Time",
+	"weight": "Weight",
+	"height": "Height",
+	"imc": "IMC Perncentage",
+	"allergyType": "Allergy Type",
+	"allergyTypeValue": {
+		"gluten": "Gluten",
+		"lactose": "Lactose",
+		"peanuts": "Peanuts",
+		"treeNuts": "Tree Nuts",
+		"shellfish": "Shellfish",
+		"fish": "Fish",
+		"soy": "Soy",
+		"egg": "Egg",
+		"wheat": "Wheat",
+		"corn": "Corn"
+	},
+	"foodPreferences": "Food Preferences"
 }
