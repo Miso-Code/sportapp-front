@@ -1,5 +1,5 @@
 import 'config/lang/form.ts'
-import { InferType, number, object, string } from 'yup'
+import { InferType, array, number, object, string } from 'yup'
 
 export const schemaBase = object().shape({
 	favouriteSportId: number(),
@@ -8,7 +8,8 @@ export const schemaBase = object().shape({
 	weight: number(),
 	height: number(),
 	availableTrainingHoursPerWeek: number(),
-	limitations: string()
+	limitations: array().of(string()),
+	imc: number()
 })
 
 export const schemaRequired = object().shape({
@@ -18,7 +19,8 @@ export const schemaRequired = object().shape({
 	weight: number().required(),
 	height: number().required(),
 	availableTrainingHoursPerWeek: number().required(),
-	limitations: string().required()
+	limitations: array().of(string()).required(),
+	imc: number()
 })
 
 export type FormDataBase = InferType<typeof schemaBase>

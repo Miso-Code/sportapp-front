@@ -26,7 +26,9 @@ export default function SportDataForm({
 	const { t } = useTranslation()
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(isRequired ? schemaRequired : schemaBase),
-		defaultValues,
+		defaultValues: {
+			...defaultValues
+		},
 		mode: 'onChange'
 	})
 
@@ -67,6 +69,7 @@ export default function SportDataForm({
 						}
 					]}
 				/>
+
 				<SelectController
 					control={control}
 					selectProps={{ fullWidth: true }}
@@ -92,6 +95,7 @@ export default function SportDataForm({
 						}
 					]}
 				/>
+
 				<SelectController
 					control={control}
 					selectProps={{ fullWidth: true }}
@@ -105,19 +109,37 @@ export default function SportDataForm({
 					]}
 				/>
 
-				<TextFieldController
+				<SelectController
 					control={control}
-					fullWidth
-					disabled={inputsDisabled}
-					label={'Limitaciones'}
+					selectProps={{ fullWidth: true, multiple: true }}
+					label={'Limitaciones:'}
 					name='limitations'
+					formControlProps={{ disabled: inputsDisabled }}
+					options={[
+						{
+							label: 'form.trainingFrequencyValues.DAILY',
+							value: 'daily'
+						},
+						{
+							label: 'form.trainingFrequencyValues.EVERY_OTHER_DAY',
+							value: 'every_other_day'
+						},
+						{
+							label: 'form.trainingFrequencyValues.WEEKLY',
+							value: 'weekly'
+						},
+						{
+							label: 'form.trainingFrequencyValues.MONTHLY',
+							value: 'monthly'
+						}
+					]}
 				/>
 
 				<TextFieldController
 					control={control}
 					fullWidth
 					disabled={inputsDisabled}
-					label={t('form.residenceLengthOfStay')}
+					label={t('Tiempo para entrenar')}
 					name='availableTrainingHoursPerWeek'
 					type='number'
 				/>
@@ -126,7 +148,7 @@ export default function SportDataForm({
 					control={control}
 					fullWidth
 					disabled={inputsDisabled}
-					label={t('form.residenceLengthOfStay')}
+					label={t('Peso')}
 					name='weight'
 					type='number'
 				/>
@@ -135,7 +157,7 @@ export default function SportDataForm({
 					control={control}
 					fullWidth
 					disabled={inputsDisabled}
-					label={t('form.residenceLengthOfStay')}
+					label={t('Altura')}
 					name='height'
 					type='number'
 				/>
@@ -143,9 +165,9 @@ export default function SportDataForm({
 				<TextFieldController
 					control={control}
 					fullWidth
-					disabled={inputsDisabled}
-					label={t('form.residenceLengthOfStay')}
-					name='trainingObjective'
+					disabled
+					label={t('porcentaje de IMC')}
+					name='imc'
 					type='number'
 				/>
 

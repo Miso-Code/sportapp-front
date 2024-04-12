@@ -212,27 +212,54 @@ exports[`SportDataForm should render the component 1`] = `
         />
       </div>
       <div
-        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for=":r3:"
-          id=":r3:-label"
+          id="limitations-select-label"
         >
-          Limitaciones
+          Limitaciones:
         </label>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         >
+          <div
+            aria-controls=":r3:"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-labelledby="limitations-select-label mui-component-select-limitations"
+            class="MuiSelect-select MuiSelect-outlined MuiSelect-multiple MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+            id="mui-component-select-limitations"
+            role="combobox"
+            tabindex="0"
+          >
+            <span
+              class="notranslate"
+            >
+              ​
+            </span>
+          </div>
           <input
+            aria-hidden="true"
             aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+            class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             id="limitations"
             name="limitations"
-            type="text"
+            tabindex="-1"
             value=""
           />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+            data-testid="ArrowDropDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
           <fieldset
             aria-hidden="true"
             class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
@@ -241,11 +268,17 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                Limitaciones
+                Limitaciones:
               </span>
             </legend>
           </fieldset>
         </div>
+        <div
+          class="mt-2"
+        />
+        <p
+          class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
+        />
       </div>
       <div
         class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
@@ -256,7 +289,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r4:"
           id=":r4:-label"
         >
-          form.residenceLengthOfStay
+          Tiempo para entrenar
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -277,7 +310,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                form.residenceLengthOfStay
+                Tiempo para entrenar
               </span>
             </legend>
           </fieldset>
@@ -292,7 +325,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r5:"
           id=":r5:-label"
         >
-          form.residenceLengthOfStay
+          Peso
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -313,7 +346,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                form.residenceLengthOfStay
+                Peso
               </span>
             </legend>
           </fieldset>
@@ -328,7 +361,7 @@ exports[`SportDataForm should render the component 1`] = `
           for=":r6:"
           id=":r6:-label"
         >
-          form.residenceLengthOfStay
+          Altura
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -349,7 +382,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                form.residenceLengthOfStay
+                Altura
               </span>
             </legend>
           </fieldset>
@@ -359,21 +392,22 @@ exports[`SportDataForm should render the component 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-disabled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
           for=":r7:"
           id=":r7:-label"
         >
-          form.residenceLengthOfStay
+          porcentaje de IMC
         </label>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
         >
           <input
             aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-            id="trainingObjective"
-            name="trainingObjective"
+            class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+            disabled=""
+            id="imc"
+            name="imc"
             type="number"
             value=""
           />
@@ -385,7 +419,7 @@ exports[`SportDataForm should render the component 1`] = `
               class="css-yjsfm1"
             >
               <span>
-                form.residenceLengthOfStay
+                porcentaje de IMC
               </span>
             </legend>
           </fieldset>
