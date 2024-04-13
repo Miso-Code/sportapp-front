@@ -16,6 +16,11 @@ import {
 	PersonalProfileUpdateRequest,
 	PersonalProfileUpdateResponse
 } from './interfaces/api/personalProfile'
+import {
+	SportProfileRequestPayload,
+	SportProfileResponse,
+	SportProfileUpdateRequest
+} from './interfaces/api/sportProfile'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -182,6 +187,44 @@ export default class UserApi {
 					data,
 					options
 				)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async getSportProfile(
+		options?: SportProfileRequestPayload
+	): Promise<SportProfileResponse | undefined> {
+		const endpoint = endpoints.getSportProfile
+		try {
+			const response = await this.sportappApi.get<SportProfileResponse>(
+				endpoint,
+				options?.options
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async updateSportProfile(
+		data: SportProfileUpdateRequest,
+		options?: AxiosRequestConfig
+	): Promise<SportProfileResponse | undefined> {
+		const endpoint = endpoints.updateSportProfile
+		try {
+			const response = await this.sportappApi.patch<SportProfileResponse>(
+				endpoint,
+				data,
+				options
+			)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

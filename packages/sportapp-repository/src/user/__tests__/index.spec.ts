@@ -1,6 +1,7 @@
+import { sportappApi } from '../../index'
 import UserApi from '../index'
 import { RegisterFullUserRequest, RegisterUserRequest } from '../interfaces'
-import { sportappApi } from '../../index'
+import { SportProfileUpdateRequest } from '../interfaces/api/sportProfile'
 
 jest.mock('../../index', () => ({
 	sportappApi: {
@@ -437,6 +438,172 @@ describe('UserApi', () => {
 
 			try {
 				await userApi.updatePersonalProfile(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('getSportProfile', () => {
+		it('should call the getSportProfile endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						training_objective: 'build_muscle_mass',
+						weight: 101,
+						height: 1.7,
+						available_training_hours: 10,
+						training_frequency: 'daily',
+						training_limitations: [
+							'85e444a0-91cc-45cb-a8dd-a84ca18e4224'
+						],
+						bmi: 34.95
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getSportProfile({})
+
+			expect(response).toStrictEqual({
+				training_objective: 'build_muscle_mass',
+				weight: 101,
+				height: 1.7,
+				available_training_hours: 10,
+				training_frequency: 'daily',
+				training_limitations: ['85e444a0-91cc-45cb-a8dd-a84ca18e4224'],
+				bmi: 34.95
+			})
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getSportProfile({ options: {} })
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+
+			try {
+				await userApi.getSportProfile()
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('updateSportProfile', () => {
+		it('should call the updateSportProfile endpoint', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						training_objective: 'build_muscle_mass',
+						weight: 101,
+						height: 1.7,
+						available_training_hours: 10,
+						training_frequency: 'daily',
+						training_limitations: [
+							'85e444a0-91cc-45cb-a8dd-a84ca18e4224'
+						],
+						bmi: 34.95
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data: SportProfileUpdateRequest = {
+				available_training_hours: 1,
+				favourite_sport_id: '1234',
+				height: 1,
+				training_frequency: '3 times a week',
+				training_limitations: [],
+				training_objective: 'test',
+				weight: 1
+			}
+			const response = await userApi.updateSportProfile(data)
+
+			expect(response).toStrictEqual({
+				training_objective: 'build_muscle_mass',
+				weight: 101,
+				height: 1.7,
+				available_training_hours: 10,
+				training_frequency: 'daily',
+				training_limitations: ['85e444a0-91cc-45cb-a8dd-a84ca18e4224'],
+				bmi: 34.95
+			})
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data: SportProfileUpdateRequest = {
+				available_training_hours: 1,
+				favourite_sport_id: '1234',
+				height: 1,
+				training_frequency: '3 times a week',
+				training_limitations: [],
+				training_objective: 'test',
+				weight: 1
+			}
+
+			const response = await userApi.updateSportProfile(data)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data: SportProfileUpdateRequest = {
+				available_training_hours: 1,
+				favourite_sport_id: '1234',
+				height: 1,
+				training_frequency: '3 times a week',
+				training_limitations: [],
+				training_objective: 'test',
+				weight: 1
+			}
+
+			try {
+				await userApi.updateSportProfile(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data: SportProfileUpdateRequest = {
+				available_training_hours: 1,
+				favourite_sport_id: '1234',
+				height: 1,
+				training_frequency: '3 times a week',
+				training_limitations: [],
+				training_objective: 'test',
+				weight: 1
+			}
+
+			try {
+				await userApi.updateSportProfile(data)
 			} catch (error) {
 				expect(error).toMatch('error')
 			}
