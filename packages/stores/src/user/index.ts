@@ -100,6 +100,86 @@ export const useUserStore = create(
 						error: 'errors.user.base'
 					}))
 				}
+			},
+			getSport: async () => {
+				const userApi = new UserApi()
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken = useAuthStore.getState().authToken
+					const response = await userApi.getSportProfile({
+						options: {
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						}
+					})
+
+					if (response) {
+						set((state) => ({
+							...state,
+							user: {
+								sportData: response
+							},
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.user.base',
+						loading: false
+					}))
+
+					return undefined
+				} catch (e) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.user.base'
+					}))
+					return undefined
+				}
+			},
+			updateSport: async (data) => {
+				const userApi = new UserApi()
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken = useAuthStore.getState().authToken
+					const response = await userApi.updateSportProfile(data, {
+						headers: {
+							Authorization: `Bearer ${authToken}`
+						}
+					})
+
+					if (response) {
+						set((state) => ({
+							...state,
+							user: {
+								sportData: response
+							},
+							loading: false
+						}))
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.user.base',
+						loading: false
+					}))
+				} catch (e) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.user.base'
+					}))
+				}
 			}
 		}),
 		{

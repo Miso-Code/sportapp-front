@@ -2,6 +2,7 @@ import { act, renderHook } from '@testing-library/react'
 import { useUserStore } from '../index'
 import { User } from '../interfaces'
 import UserApi from '@sportapp/sportapp-repository/src/user'
+import { SportProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/sportProfile'
 
 jest.mock('@sportapp/sportapp-repository/src/user', () => {
 	return {
@@ -243,6 +244,125 @@ describe('UserStore', () => {
 			const { updateProfile } = result.current
 			await act(async () => {
 				await updateProfile(payload)
+			})
+			expect(result.current.user).toBe(undefined)
+			expect(result.current.error).toBe('errors.user.base')
+		})
+	})
+
+	describe('getSport', () => {
+		it('should get sport', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				getSportProfile: jest.fn().mockResolvedValue({
+					sport: 'Soccer',
+					team: 'Real Madrid',
+					position: 'Forward',
+					foot: 'Right',
+					weight: 80,
+					height: 180,
+					profile_picture: 'profile_picture'
+				})
+			}))
+			const { result } = renderHook(() => useUserStore())
+			const { getSport } = result.current
+			expect(result.current.user).toBe(undefined)
+			await act(async () => {
+				await getSport()
+			})
+			expect(result.current.user).not.toBe(undefined)
+		})
+
+		it('should not get sport and generate error', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				getSportProfile: jest.fn().mockRejectedValue(new Error('error'))
+			}))
+			const { result } = renderHook(() => useUserStore())
+			expect(result.current.user).toBe(undefined)
+			const { getSport } = result.current
+			await act(async () => {
+				await getSport()
+			})
+			expect(result.current.user).toBe(undefined)
+			expect(result.current.error).toBe('errors.user.base')
+		})
+
+		it('should not get sport and not generate error', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				getSportProfile: jest.fn().mockResolvedValue(undefined)
+			}))
+			const { result } = renderHook(() => useUserStore())
+			expect(result.current.user).toBe(undefined)
+			const { getSport } = result.current
+			await act(async () => {
+				await getSport()
+			})
+
+			expect(result.current.user).toBe(undefined)
+			expect(result.current.error).toBe('errors.user.base')
+		})
+	})
+
+	describe('updateSport', () => {
+		it('should update sport', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				updateSportProfile: jest.fn().mockResolvedValue({
+					sport: 'Soccer',
+					team: 'Real Madrid',
+					position: 'Forward',
+					foot: 'Right',
+					weight: 80,
+					height: 180,
+					profile_picture: 'profile_picture'
+				})
+			}))
+			const { result } = renderHook(() => useUserStore())
+			const { updateSport } = result.current
+			expect(result.current.user).toBe(undefined)
+			const payload: SportProfileUpdateRequest = {
+				available_training_hours: 10,
+				favourite_sport_id: '1',
+				height: 180,
+				training_frequency: '3',
+				training_limitations: [
+					{
+						name: 'test',
+						description: 'test'
+					}
+				],
+				training_objective: 'lose_weight',
+				weight: 80
+			}
+			await act(async () => {
+				await updateSport(payload)
+			})
+			expect(result.current.user).not.toBe(undefined)
+		})
+
+		it('should not update sport and generate error', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				updateSportProfile: jest
+					.fn()
+					.mockRejectedValue(new Error('error'))
+			}))
+			const { result } = renderHook(() => useUserStore())
+			expect(result.current.user).toBe(undefined)
+			const payload: SportProfileUpdateRequest = {
+				available_training_hours: 10,
+				favourite_sport_id: '1',
+				height: 180,
+				training_frequency: '3',
+				training_limitations: [
+					{
+						name: 'test',
+						description: 'test'
+					}
+				],
+				training_objective: 'lose_weight',
+				weight: 80
+			}
+			const { updateSport } = result.current
+			await act(async () => {
+				await updateSport(payload)
 			})
 			expect(result.current.user).toBe(undefined)
 			expect(result.current.error).toBe('errors.user.base')
