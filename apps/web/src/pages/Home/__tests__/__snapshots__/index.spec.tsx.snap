@@ -9,7 +9,7 @@ exports[`Home should render correctly 1`] = `
         class="container-layout home MuiBox-root css-1xhj18k"
       >
         <div
-          class="navbar flex-1 MuiBox-root css-2uchni"
+          class="navbar  MuiBox-root css-2uchni"
         >
           <header
             class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
@@ -451,7 +451,7 @@ exports[`Home should render correctly 1`] = `
       class="container-layout home MuiBox-root css-1xhj18k"
     >
       <div
-        class="navbar flex-1 MuiBox-root css-2uchni"
+        class="navbar  MuiBox-root css-2uchni"
       >
         <header
           class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"

@@ -6,7 +6,7 @@ exports[`ContainerLayout should render with className 1`] = `
     class="container-layout test-class MuiBox-root css-1xhj18k"
   >
     <div
-      class="navbar flex-1 MuiBox-root css-2uchni"
+      class="navbar  MuiBox-root css-2uchni"
     >
       <header
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
@@ -160,7 +160,7 @@ exports[`ContainerLayout should render with secondary section 1`] = `
     class="container-layout  MuiBox-root css-1xhj18k"
   >
     <div
-      class="navbar flex-1 MuiBox-root css-2uchni"
+      class="navbar  MuiBox-root css-2uchni"
     >
       <header
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
@@ -318,7 +318,7 @@ exports[`ContainerLayout should render without errors 1`] = `
     class="container-layout  MuiBox-root css-1xhj18k"
   >
     <div
-      class="navbar flex-1 MuiBox-root css-2uchni"
+      class="navbar  MuiBox-root css-2uchni"
     >
       <header
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"

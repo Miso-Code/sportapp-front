@@ -20,7 +20,7 @@ export default function ContainerLayout({
 			className={`container-layout ${className}`}
 			display='flex'
 			flexDirection='row'>
-			<Navbar className='flex-1' />
+			<Navbar />
 			<Paper className='container-layout-main-section container-layout-main-section__full'>
 				{children}
 			</Paper>
