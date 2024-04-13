@@ -7,6 +7,8 @@ describe('DatePickerController', () => {
 
 	beforeEach(() => {
 		const { result } = renderHook(() => useForm())
+		result.current.register('date')
+		result.current.setValue('date', '1996-07-20')
 		wrapper = render(
 			<DatePickerController
 				control={result.current.control}
@@ -21,6 +23,18 @@ describe('DatePickerController', () => {
 	})
 
 	it('should render the component', () => {
+		expect(wrapper.container).toMatchSnapshot()
+	})
+
+	it('should render with incorrect date', () => {
+		const { result } = renderHook(() => useForm())
+		wrapper = render(
+			<DatePickerController
+				control={result.current.control}
+				name='date'
+				label='Date'
+			/>
+		)
 		expect(wrapper.container).toMatchSnapshot()
 	})
 
