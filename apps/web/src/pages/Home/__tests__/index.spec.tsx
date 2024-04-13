@@ -35,6 +35,14 @@ jest.mock(
 		)
 )
 
+jest.mock('@sportapp/stores/src/user', () => ({
+	useUserStore: jest.fn().mockReturnValue({
+		getProfile: jest.fn(),
+		updateProfile: jest.fn(),
+		user: {}
+	})
+}))
+
 jest.mock(
 	'@/containers/PersonalDataForm',
 	() =>
