@@ -43,6 +43,7 @@ export const useAuthStore = create(
 									response.refresh_token_expires_minutes
 							}
 						}))
+						return true
 					}
 
 					set((state) => ({
