@@ -19,7 +19,11 @@ const Training: React.FC = () => {
 					icon='heart'
 					onPress={() => router.push('training/sportSession')}
 				/>
-				<ListItem title={t('training.history')} icon='calendar-blank' />
+				<ListItem
+					title={t('training.history')}
+					icon='calendar-blank'
+					onPress={() => router.push('training/sportSessionHistory')}
+				/>
 				<ListItem
 					title={t('training.nutritionalPlan')}
 					icon='receipt'

@@ -8,5 +8,17 @@
 	"start": "Iniciar",
 	"pause": "Pausar",
 	"continue": "Reanudar",
-	"stop": "Parar"
+	"stop": "Parar",
+	"trainings": "Entrenamientos",
+	"calendar": "Calendario",
+	"month": "Mes",
+	"week": "Semana",
+	"day": "Día",
+	"schedule": "Agenda",
+	"nextTrainings": "Próximos Entrenamientos",
+	"nextTrainingsEmpty": "No hay entrenamientos próximos",
+	"nextEvents": "Próximos Eventos",
+	"nextEventsEmpty": "No hay eventos próximos",
+	"today": "Hoy",
+	"upcoming": "Próximo"
 }

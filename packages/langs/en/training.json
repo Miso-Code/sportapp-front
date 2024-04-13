@@ -8,5 +8,17 @@
 	"start": "Start",
 	"pause": "Pause",
 	"continue": "Resume",
-	"stop": "Stop"
+	"stop": "Stop",
+	"trainings": "Trainings",
+	"calendar": "Calendar",
+	"month": "Month",
+	"week": "Week",
+	"day": "Day",
+	"schedule": "Schedule",
+	"nextTrainings": "Next Trainings",
+	"nextTrainingsEmpty": "No upcoming trainings found",
+	"nextEvents": "Next Events",
+	"nextEventsEmpty": "No upcoming events found",
+	"today": "Today",
+	"upcoming":  "Upcoming"
 }

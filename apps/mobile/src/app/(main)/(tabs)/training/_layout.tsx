@@ -26,7 +26,17 @@ export default function TrainingStack() {
 			/>
 			<Stack.Screen
 				name='sportSessionSummary'
-				options={{ ...screenOptions, title: t('training.endTraining') }}
+				options={{
+					...screenOptions,
+					title: t('training.endTraining')
+				}}
+			/>
+			<Stack.Screen
+				name='sportSessionHistory'
+				options={{
+					...screenOptions,
+					title: t('training.trainings')
+				}}
 			/>
 		</Stack>
 	)

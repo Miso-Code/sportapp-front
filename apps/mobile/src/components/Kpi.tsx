@@ -38,7 +38,11 @@ export default function Kpi(props: KpiProps) {
 				<>
 					<ProgressChart
 						data={{
-							data: [props.value / props.max]
+							data: [
+								(props.value < props.max
+									? props.value
+									: props.max) / props.max
+							]
 						}}
 						width={200}
 						height={200}
