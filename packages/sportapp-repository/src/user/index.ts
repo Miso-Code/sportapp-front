@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { sportappApi } from '../index'
 import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
@@ -171,14 +171,16 @@ export default class UserApi {
 	}
 
 	async updatePersonalProfile(
-		data: PersonalProfileUpdateRequest
+		data: PersonalProfileUpdateRequest,
+		options?: AxiosRequestConfig
 	): Promise<PersonalProfileUpdateResponse | undefined> {
 		const endpoint = endpoints.updatePersonalProfile
 		try {
 			const response =
 				await this.sportappApi.patch<PersonalProfileUpdateResponse>(
 					endpoint,
-					data
+					data,
+					options
 				)
 
 			if (response.status.toString().startsWith('2')) {
