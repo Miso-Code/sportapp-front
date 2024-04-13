@@ -10,8 +10,6 @@ export interface SportProfileBase {
 	bmi: number
 }
 
-export interface SportProfileRequest {}
-
 export interface SportProfileRequestPayload {
 	options?: AxiosRequestConfig
 }

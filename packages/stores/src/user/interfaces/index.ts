@@ -5,7 +5,7 @@ import {
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
 import {
 	SportProfileBase,
-	SportProfileRequest,
+	SportProfileResponse,
 	SportProfileUpdateRequest
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/sportProfile'
 
@@ -29,6 +29,6 @@ export interface IUserActions {
 	clearState: () => void
 	getProfile: () => Promise<PersonalProfileResponse | undefined>
 	updateProfile: (data: PersonalProfileUpdateRequest) => void
-	getSport: () => Promise<SportProfileRequest | undefined>
+	getSport: () => Promise<SportProfileResponse | undefined>
 	updateSport: (data: SportProfileUpdateRequest) => void
 }
