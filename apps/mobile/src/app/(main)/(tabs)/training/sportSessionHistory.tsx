@@ -2,12 +2,18 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/en' // import English locale
 import 'dayjs/locale/es' // import French locale
 
-import React, { ComponentProps, useEffect, useState } from 'react'
+import React, { ComponentProps, useEffect, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { View, StyleSheet, LayoutChangeEvent } from 'react-native'
 import { Calendar, ICalendarEventBase } from 'react-native-big-calendar'
-import { Switch, SegmentedButtons, Text, useTheme } from 'react-native-paper'
+import {
+	Switch,
+	SegmentedButtons,
+	Text,
+	useTheme,
+	ActivityIndicator
+} from 'react-native-paper'
 
 import {
 	useSportSessionStore,
@@ -45,8 +51,12 @@ const CalendarHeader: React.FC<{
 	const { i18n, t } = useTranslation()
 	const { sportSessions } = useSportSessionStore()
 
-	const sportSessionEvents = sportSessions.map((session) =>
-		sportSessionToCalendarEvent(session, t('navbar.training'))
+	const sportSessionEvents = useMemo(
+		() =>
+			sportSessions.map((session) =>
+				sportSessionToCalendarEvent(session, t('navbar.training'))
+			),
+		[sportSessions, t]
 	)
 
 	const sorted = sportSessionEvents.sort(
@@ -86,16 +96,22 @@ const SportSessionHistory: React.FC = () => {
 	const theme = useTheme()
 	const { t, i18n } = useTranslation()
 
-	const { sportSessions, setSportSession } = useSportSessionStore()
+	const { sportSessions, setSportSession, getSportSessions } =
+		useSportSessionStore()
 
+	const [isLoading, setIsLoading] = useState(true)
 	const [isCalendarActive, setIsCalendarActive] = useState(true)
 	const [calendarHeight, setCalendarHeight] = useState(0)
 	const [calendarMode, setCalendarMode] =
 		useState<ComponentProps<typeof Calendar>['mode']>('month')
 	const [calendarHeader, setCalendarHeader] = useState<Date>(new Date())
 
-	const sportSessionEvents = sportSessions.map((session) =>
-		sportSessionToCalendarEvent(session, t('navbar.training'))
+	const sportSessionEvents = useMemo(
+		() =>
+			sportSessions.map((session) =>
+				sportSessionToCalendarEvent(session, t('navbar.training'))
+			),
+		[sportSessions, t]
 	)
 
 	const updateCalendarHeight = (event: LayoutChangeEvent) => {
@@ -117,42 +133,56 @@ const SportSessionHistory: React.FC = () => {
 
 	useEffect(() => {
 		if (!isCalendarActive) setCalendarHeader(new Date())
-		else if (calendarMode == 'schedule')
+		else if (calendarMode === 'schedule' && sportSessionEvents.length > 0)
 			setCalendarHeader(sportSessionEvents[0].start)
 	}, [calendarMode, isCalendarActive, sportSessionEvents])
 
+	useEffect(() => {
+		getSportSessions()
+		setIsLoading(false)
+	}, [getSportSessions])
+
 	return (
 		<View style={styles.container}>
-			<View style={styles.actions}>
-				<View style={styles.horizontalContainer}>
-					<Switch
-						value={isCalendarActive}
-						onValueChange={setIsCalendarActive}
-					/>
-					<Text>{t('training.calendar')}</Text>
-				</View>
-				{isCalendarActive && (
-					<>
-						<SegmentedButtons
-							value={calendarMode}
-							onValueChange={(mode: typeof calendarMode) =>
-								setCalendarMode(mode)
-							}
-							buttons={[
-								{ value: 'month', label: t('training.month') },
-								{ value: 'week', label: t('training.week') },
-								{ value: 'day', label: t('training.day') },
-								{
-									value: 'schedule',
-									label: t('training.schedule')
-								}
-							]}
+			{isLoading && <ActivityIndicator animating size={'large'} />}
+			{!isLoading && (
+				<View style={styles.actions}>
+					<View style={styles.horizontalContainer}>
+						<Switch
+							value={isCalendarActive}
+							onValueChange={setIsCalendarActive}
 						/>
-						<CalendarHeader date={calendarHeader} />
-					</>
-				)}
-			</View>
-			{isCalendarActive && (
+						<Text>{t('training.calendar')}</Text>
+					</View>
+					{isCalendarActive && (
+						<>
+							<SegmentedButtons
+								value={calendarMode}
+								onValueChange={(mode: typeof calendarMode) =>
+									setCalendarMode(mode)
+								}
+								buttons={[
+									{
+										value: 'month',
+										label: t('training.month')
+									},
+									{
+										value: 'week',
+										label: t('training.week')
+									},
+									{ value: 'day', label: t('training.day') },
+									{
+										value: 'schedule',
+										label: t('training.schedule')
+									}
+								]}
+							/>
+							<CalendarHeader date={calendarHeader} />
+						</>
+					)}
+				</View>
+			)}
+			{!isLoading && isCalendarActive && (
 				<View
 					style={styles.calendarContainer}
 					onLayout={updateCalendarHeight}>
@@ -173,7 +203,7 @@ const SportSessionHistory: React.FC = () => {
 					/>
 				</View>
 			)}
-			{!isCalendarActive && (
+			{!isLoading && !isCalendarActive && (
 				<View style={styles.eventsContainer}>
 					<Text variant='headlineSmall'>
 						{t('training.nextTrainings')}

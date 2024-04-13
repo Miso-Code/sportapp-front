@@ -120,4 +120,17 @@ export default class sportSessionApi {
 			console.error(error)
 		}
 	}
+
+	async getAllSportSessions() {
+		try {
+			const endpoint = endpoints.getAllSessions
+			const response = await this.sportappApi.get(endpoint)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
 }

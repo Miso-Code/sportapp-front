@@ -4,7 +4,8 @@ const endpoints = {
 	startSession: `${BASE_URL}/`,
 	addSessionLocation: (sessionId: string) =>
 		`${BASE_URL}/${sessionId}/location`,
-	finishSession: (sessionId: string) => `${BASE_URL}/${sessionId}`
+	finishSession: (sessionId: string) => `${BASE_URL}/${sessionId}`,
+	getAllSessions: `${BASE_URL}/`
 }
 
 export default endpoints
