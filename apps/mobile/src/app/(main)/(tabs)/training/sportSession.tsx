@@ -101,9 +101,9 @@ const SportSession: React.FC = () => {
 		setCurrentTime(0)
 		setIsRunning(false)
 
-		// if (!sessionID) {
-		// 	return
-		// }
+		if (!sessionID) {
+			return
+		}
 
 		const payload: Parameters<typeof finishSportSession>[0] = {
 			session_id: sessionID,

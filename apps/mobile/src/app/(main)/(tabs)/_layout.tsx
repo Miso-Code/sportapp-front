@@ -27,7 +27,7 @@ export default function TabLayout() {
 	const [showHeader, setShowHeader] = useState(true)
 
 	useEffect(() => {
-		setShowHeader(!(segments?.length > 3))
+		setShowHeader(segments?.length <= 3)
 	}, [segments?.length])
 
 	return (

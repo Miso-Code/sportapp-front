@@ -14,10 +14,9 @@ const ListItem: React.FC<{
 		<List.Item
 			testID='list-item'
 			title={title}
-			//FIXME
 			/* eslint-disable react/no-unstable-nested-components*/
-			left={(props) => <LeftIcon {...props} icon={icon} />}
-			right={(props) => <RightIcon {...props} />}
+			left={(props) => <LeftIcon {...props} icon={icon} key='leftIcon' />}
+			right={(props) => <RightIcon {...props} key='rightIcon' />}
 			/* eslint-enable react/no-unstable-nested-components*/
 			onPress={onPress}
 			style={styles.listItem}

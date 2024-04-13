@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useTheme, Text } from 'react-native-paper'
 
@@ -35,7 +35,7 @@ interface TimeRingProps {
 	maxTime: number
 }
 
-export default function TimerRing({ currentTime, maxTime }: TimeRingProps) {
+const TimerRing: FC<TimeRingProps> = ({ currentTime, maxTime }) => {
 	const theme = useTheme()
 	const primaryRGB = hexToRgb(theme.colors.primary)
 
@@ -75,3 +75,5 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	}
 })
+
+export default TimerRing

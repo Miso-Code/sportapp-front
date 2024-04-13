@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 const Tabs = ({ screenOptions, children }) => (
 	<View>
-		{screenOptions.headerBackground && screenOptions.headerBackground()}
+		{screenOptions.headerBackground?.()}
 		{screenOptions.headerShown && <Text testID='header'>header</Text>}
 		{children}
 	</View>
