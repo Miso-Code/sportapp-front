@@ -72,7 +72,7 @@ export default function PersonalDataForm({
 				<TextFieldPasswordController
 					control={control}
 					fullWidth
-					disabled={inputsDisabled}
+					disabled
 					label={t('form.password')}
 					name='password'
 				/>
