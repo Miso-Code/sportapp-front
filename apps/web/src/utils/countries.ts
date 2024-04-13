@@ -16,6 +16,6 @@ export const getCitiesOfCountry = (countryCode: string) => {
 		? cities.map((city) => ({
 				label: city.name,
 				value: city.name
-		  }))
+			}))
 		: []
 }
