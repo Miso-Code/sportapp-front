@@ -2,7 +2,7 @@ const BASE_URL = '/users'
 const BASE_PROFILE_URL = `${BASE_URL}/profiles`
 
 const endpoints = {
-	register: BASE_URL,
+	register: `${BASE_URL}/registration`,
 	registerFull: (uuid: string) => `${BASE_URL}/${uuid}/complete-registration`,
 	login: `${BASE_URL}/login`,
 	getPersonalProfile: `${BASE_PROFILE_URL}/personal`,

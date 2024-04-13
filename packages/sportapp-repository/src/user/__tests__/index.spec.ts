@@ -48,7 +48,7 @@ describe('UserApi', () => {
 			await userApi.register(data)
 
 			expect(fetch).toHaveBeenCalledWith(
-				'http://localhost:3000/api/users',
+				'http://localhost:3000/api/users/registration',
 				{
 					method: 'POST',
 					headers: {

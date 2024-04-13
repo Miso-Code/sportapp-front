@@ -25,7 +25,7 @@ describe('User endpoints', () => {
 	})
 
 	it('should return the correct endpoint from register', () => {
-		expect(endpoints.register).toBe('/users')
+		expect(endpoints.register).toBe('/users/registration')
 	})
 
 	it('should return the correct endpoint from login', () => {
