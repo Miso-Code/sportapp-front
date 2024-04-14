@@ -23,7 +23,7 @@ import {
 } from '@/containers/NutritionalDataForm/utils/schema'
 import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 
-function Home() {
+function HomePage() {
 	const { t } = useTranslation()
 	const {
 		getProfile,
@@ -55,13 +55,13 @@ function Home() {
 				first_name: data.name,
 				last_name: data.lastName,
 				birth_date: format(data.birthday, 'yyyy-MM-dd'),
-				city_of_birth: data.nationality.city ?? '',
-				country_of_birth: data.nationality.country ?? '',
-				city_of_residence: data.residence.city ?? '',
-				country_of_residence: data.residence.country ?? '',
-				gender: data.gender ?? '',
-				identification_number: data.documentNumber ?? '',
-				identification_type: data.documentType ?? '',
+				city_of_birth: data.nationality.city,
+				country_of_birth: data.nationality.country,
+				city_of_residence: data.residence.city,
+				country_of_residence: data.residence.country,
+				gender: data.gender,
+				identification_number: data.documentNumber,
+				identification_type: data.documentType,
 				residence_age: parseInt(data.residence.lengthOfStay)
 			}
 			await updateProfile(payload)
@@ -152,7 +152,7 @@ function Home() {
 				residence: {
 					city: user?.profileData?.city_of_residence ?? '',
 					country: user?.profileData?.country_of_residence ?? '',
-					lengthOfStay: `${user?.profileData?.residence_age}` ?? ''
+					lengthOfStay: `${user?.profileData?.residence_age}`
 				},
 				email: user?.profileData?.email ?? '',
 				password: '*********'
@@ -248,4 +248,4 @@ function Home() {
 	)
 }
 
-export default Home
+export default HomePage

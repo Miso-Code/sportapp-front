@@ -35,11 +35,11 @@ export interface IUserActions {
 	setUser: (user: User) => void
 	clearState: () => void
 	getProfile: () => Promise<PersonalProfileResponse | undefined>
-	updateProfile: (data: PersonalProfileUpdateRequest) => void
+	updateProfile: (data: PersonalProfileUpdateRequest) => Promise<void>
 	getSport: () => Promise<SportProfileResponse | undefined>
-	updateSport: (data: SportProfileUpdateRequest) => void
+	updateSport: (data: SportProfileUpdateRequest) => Promise<void>
 	getNutrition: () => Promise<NutritionalProfileResponse | undefined>
-	updateNutrition: (data: NutritionalProfileUpdateRequest) => void
+	updateNutrition: (data: NutritionalProfileUpdateRequest) => Promise<void>
 	getAllNutritionalLimitations: () => Promise<
 		NutritionalLimitations[] | undefined
 	>
