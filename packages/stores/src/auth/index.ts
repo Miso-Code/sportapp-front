@@ -42,6 +42,10 @@ export const useAuthStore = create(
 								refreshToken: response.refresh_token, // TODO: this is not safe to be stored in the client this way
 								refreshTokenExpirationMinutes:
 									response.refresh_token_expires_minutes
+							},
+							user:{
+								...state.user!,
+								id:response.user_id // TODO: Crafty
 							}
 						}))
 						return true

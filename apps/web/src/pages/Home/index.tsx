@@ -44,8 +44,7 @@ function Home() {
 				identification_type: data.documentType,
 				residence_age: parseInt(data.residence.lengthOfStay)
 			}
-			const response = await updateProfile(payload)
-			console.log('response', response)
+			await updateProfile(payload)
 		},
 		[updateProfile]
 	)

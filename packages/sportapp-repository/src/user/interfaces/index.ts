@@ -64,6 +64,7 @@ export interface LoginUserRequest {
 }
 
 export interface LoginUserResponse {
+	user_id: string
 	access_token: string
 	access_token_expires_minutes: number
 	refresh_token: string
@@ -99,7 +100,7 @@ export interface AddSportSessionLocationRequest
 }
 
 export interface AddSportSessionLocationResponse
-	extends AddSportSessionLocationRequest {}
+	extends AddSportSessionLocationRequest { }
 
 export interface FinishSportSessionRequest {
 	session_id: string
@@ -115,4 +116,4 @@ export interface FinishSportSessionRequest {
 
 export interface FullSportSessionResponse
 	extends FinishSportSessionRequest,
-		StartSportSessionResponse {}
+	StartSportSessionResponse { }

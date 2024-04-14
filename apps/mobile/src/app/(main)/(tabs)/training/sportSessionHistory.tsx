@@ -36,8 +36,8 @@ const sportSessionToCalendarEvent = (
 	return {
 		id: session.session_id,
 		title: title,
-		start: dayjs(session.start_date).toDate(),
-		end: dayjs(session.start_date)
+		start: dayjs(session.started_at).toDate(),
+		end: dayjs(session.started_at)
 			.add(session.duration, 'seconds')
 			.toDate(),
 		type: type

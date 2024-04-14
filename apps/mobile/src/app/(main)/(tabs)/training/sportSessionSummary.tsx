@@ -38,7 +38,7 @@ const SportSessionSummary: React.FC = () => {
 							<Kpi
 								color={theme.colors.error}
 								type='progress'
-								value={sportSession.calories}
+								value={sportSession.calories ?? 0}
 								max={10}
 								label={t('session.calories')}
 								valueSuffix='kcal'
@@ -47,7 +47,7 @@ const SportSessionSummary: React.FC = () => {
 							<Kpi
 								color={theme.colors.secondary}
 								type='progress'
-								value={sportSession.duration}
+								value={sportSession.duration ?? 0}
 								max={60}
 								label={t('session.duration')}
 								valueSuffix='min'
@@ -56,7 +56,7 @@ const SportSessionSummary: React.FC = () => {
 							<Kpi
 								color={theme.colors.primary}
 								type='progress'
-								value={sportSession.steps}
+								value={sportSession.steps ?? 0}
 								max={115}
 								label={t('session.steps')}
 								valueSuffix=''
@@ -65,7 +65,7 @@ const SportSessionSummary: React.FC = () => {
 							<Kpi
 								color={theme.colors.inversePrimary}
 								type='progress'
-								value={sportSession.distance}
+								value={sportSession.distance ?? 0}
 								max={133}
 								label={t('session.distance')}
 								valueSuffix='km'
@@ -75,7 +75,7 @@ const SportSessionSummary: React.FC = () => {
 							<Kpi
 								color={theme.colors.tertiary}
 								type='progress'
-								value={sportSession.average_speed}
+								value={sportSession.average_speed ?? 0}
 								max={3}
 								label={t('session.speed')}
 								valueSuffix='m/s'
@@ -88,9 +88,9 @@ const SportSessionSummary: React.FC = () => {
 								labels={['min', 'avg', 'max']}
 								label={t('session.heartRate')}
 								data={[
-									sportSession.min_heartrate,
-									sportSession.avg_heartrate,
-									sportSession.max_heartrate
+									sportSession.min_heartrate ?? 0,
+									sportSession.avg_heartrate ?? 0,
+									sportSession.max_heartrate ?? 0
 								]}
 							/>
 						</View>

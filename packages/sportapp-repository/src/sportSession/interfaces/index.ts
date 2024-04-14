@@ -18,7 +18,7 @@ export interface StartSportSessionResponse {
 	session_id: string
 	sport_id: string
 	user_id: string
-	start_date: string
+	started_at: string
 }
 
 export interface AddSportSessionLocationRequest

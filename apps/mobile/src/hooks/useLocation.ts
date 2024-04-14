@@ -36,6 +36,7 @@ const startLocationUpdates = async (
 		)
 	} catch (error) {
 		console.error('Error starting location updates', error) // eslint-disable-line no-console
+		setIsLocationAvailable(false)
 	}
 }
 
