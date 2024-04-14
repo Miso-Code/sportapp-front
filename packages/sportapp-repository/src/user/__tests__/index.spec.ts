@@ -203,11 +203,10 @@ describe('UserApi', () => {
 				identification_type: 'CC',
 				residence_age: 1
 			}
-			const uuid = '1234'
-			await userApi.registerFull(uuid, data)
+			await userApi.registerFull(data)
 
 			expect(sportappApi.patch).toHaveBeenCalledWith(
-				`/users/${uuid}/complete-registration`,
+				`/users/complete-registration`,
 				data,
 				undefined
 			)
@@ -230,10 +229,8 @@ describe('UserApi', () => {
 				residence_age: 1
 			}
 
-			const uuid = '1234'
-
 			try {
-				await userApi.registerFull(uuid, data)
+				await userApi.registerFull(data)
 			} catch (error) {
 				expect(error).toMatch('error')
 			}
@@ -708,13 +705,7 @@ describe('UserApi', () => {
 			const userApi = new UserApi()
 			const data: NutritionalProfileUpdateRequest = {
 				food_preference: '',
-				nutritional_limitations: [
-					{
-						description: 'description',
-						limitation_id: 'limitation_id',
-						name: 'name'
-					}
-				]
+				nutritional_limitations: ['uuid']
 			}
 			const response = await userApi.updateNutritionalProfile(data)
 
@@ -735,13 +726,7 @@ describe('UserApi', () => {
 			const userApi = new UserApi()
 			const data: NutritionalProfileUpdateRequest = {
 				food_preference: '',
-				nutritional_limitations: [
-					{
-						description: 'description',
-						limitation_id: 'limitation_id',
-						name: 'name'
-					}
-				]
+				nutritional_limitations: ['uuid']
 			}
 			const response = await userApi.updateNutritionalProfile(data)
 
@@ -755,13 +740,7 @@ describe('UserApi', () => {
 			const userApi = new UserApi()
 			const data: NutritionalProfileUpdateRequest = {
 				food_preference: '',
-				nutritional_limitations: [
-					{
-						description: 'description',
-						limitation_id: 'limitation_id',
-						name: 'name'
-					}
-				]
+				nutritional_limitations: ['uuid']
 			}
 
 			try {

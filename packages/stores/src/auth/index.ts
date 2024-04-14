@@ -134,7 +134,7 @@ export const useAuthStore = create(
 					isAuth: true
 				}))
 
-				return await userApi.registerFull(user.id, request, {
+				return await userApi.registerFull(request, {
 					headers: {
 						Authorization: `Bearer ${get().authToken?.accessToken}`
 					}

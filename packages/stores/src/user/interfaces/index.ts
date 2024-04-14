@@ -1,4 +1,5 @@
 import {
+	NutritionalLimitations,
 	NutritionalProfileResponse,
 	NutritionalProfileUpdateRequest
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
@@ -24,6 +25,8 @@ export interface IUserState {
 export interface User {
 	profileData?: PersonalProfileBase
 	sportData?: SportProfileBase
+	nutritionData?: NutritionalProfileResponse
+	nutritionalLimitations?: NutritionalLimitations[]
 }
 
 export interface IUserActions {
@@ -37,4 +40,7 @@ export interface IUserActions {
 	updateSport: (data: SportProfileUpdateRequest) => void
 	getNutrition: () => Promise<NutritionalProfileResponse | undefined>
 	updateNutrition: (data: NutritionalProfileUpdateRequest) => void
+	getAllNutritionalLimitations: () => Promise<
+		NutritionalLimitations[] | undefined
+	>
 }

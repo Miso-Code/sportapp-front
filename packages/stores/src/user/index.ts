@@ -1,10 +1,12 @@
 import UserApi from '@sportapp/sportapp-repository/src/user'
+import { NutritionalLimitations } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
+import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+import { useAuthStore } from '../auth'
 import { customStorage } from '../utils/storages'
 import { IUserState, IUserStore } from './interfaces'
-import { useAuthStore } from '../auth'
 
 export const initialUserState: IUserState = {
 	user: undefined,
@@ -275,6 +277,53 @@ export const useUserStore = create(
 						error: 'errors.user.base'
 					}))
 				}
+			},
+			getAllNutritionalLimitations: async (): Promise<
+				NutritionalLimitations[] | undefined
+			> => {
+				const userApi = new UserApi()
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
+					const response = await userApi.getAllNutritionalLimitations(
+						{
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						}
+					)
+
+					if (response) {
+						set((state) => ({
+							...state,
+							user: {
+								...state.user,
+								nutritionalLimitations: response
+							},
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.user.base',
+						loading: false
+					}))
+
+					return undefined
+				} catch (e) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.user.base'
+					}))
+					return undefined
+				}
 			}
 		}),
 		{
@@ -283,3 +332,7 @@ export const useUserStore = create(
 		}
 	)
 )
+
+if (process.env.NODE_ENV === 'development') {
+	mountStoreDevtool('UserStore', useUserStore)
+}

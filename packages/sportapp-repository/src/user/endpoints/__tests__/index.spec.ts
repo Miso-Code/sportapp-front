@@ -5,7 +5,7 @@ describe('User endpoints', () => {
 		expect(endpoints).toEqual(
 			expect.objectContaining({
 				register: expect.any(String),
-				registerFull: expect.any(Function),
+				registerFull: expect.any(String),
 				login: expect.any(String),
 				getPersonalProfile: expect.any(String),
 				updatePersonalProfile: expect.any(String),
@@ -19,9 +19,7 @@ describe('User endpoints', () => {
 	})
 
 	it('should return the correct endpoint from registerFull', () => {
-		expect(endpoints.registerFull('123')).toBe(
-			'/users/123/complete-registration'
-		)
+		expect(endpoints.registerFull).toBe('/users/complete-registration')
 	})
 
 	it('should return the correct endpoint from register', () => {

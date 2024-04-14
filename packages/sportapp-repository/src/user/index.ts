@@ -128,11 +128,10 @@ export default class UserApi {
 	}
 
 	async registerFull(
-		uuid: string,
 		data: RegisterFullUserRequest,
 		options?: AxiosRequestConfig
 	): Promise<boolean> {
-		const endpoint = endpoints.registerFull(uuid)
+		const endpoint = endpoints.registerFull
 		try {
 			const response = await this.sportappApi.patch(
 				endpoint,

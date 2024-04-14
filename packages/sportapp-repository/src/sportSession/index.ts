@@ -127,10 +127,10 @@ export default class sportSessionApi {
 		}
 	}
 
-	async getAllSportSessions() {
+	async getAllSportSessions(options?: AxiosRequestConfig) {
 		try {
 			const endpoint = endpoints.getAllSessions
-			const response = await this.sportappApi.get(endpoint)
+			const response = await this.sportappApi.get(endpoint, options)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

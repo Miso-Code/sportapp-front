@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from 'axios'
 
 export interface NutritionalProfileBase {
 	food_preference: string
-	nutritional_limitations: NutritionalLimitations[]
+	nutritional_limitations: string[]
 }
 
 export interface NutritionalLimitations {
@@ -19,7 +19,7 @@ export interface NutritionalProfileResponse extends NutritionalProfileBase {}
 
 export interface NutritionalProfileUpdateRequest {
 	food_preference: string
-	nutritional_limitations: NutritionalLimitations[]
+	nutritional_limitations: string[]
 }
 
 export interface NutritionalProfileUpdateResponse
