@@ -1,5 +1,6 @@
 import React from 'react'
 import renderer, { ReactTestRenderer } from 'react-test-renderer'
+import { router } from 'expo-router'
 
 import Training from '..'
 
@@ -18,5 +19,16 @@ describe('Training', () => {
 
 	it('should render correctly', () => {
 		expect(component.toJSON()).toMatchSnapshot()
+	})
+
+	it('shold call router.push when lit item is pressed and item has onPress', () => {
+		const listItems = component.root.findAllByProps({ testID: 'list-item' })
+
+		for (const listItem of listItems) {
+			listItem.props.onPress?.()
+		}
+
+		expect(router.push).toHaveBeenCalledWith('training/sportSession')
+		expect(router.push).toHaveBeenCalledWith('training/sportSessionHistory')
 	})
 })

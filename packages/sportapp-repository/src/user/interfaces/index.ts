@@ -91,7 +91,7 @@ export interface StartSportSessionResponse {
 	session_id: string
 	sport_id: string
 	user_id: string
-	start_date: string
+	started_at: string
 }
 
 export interface AddSportSessionLocationRequest
@@ -100,7 +100,7 @@ export interface AddSportSessionLocationRequest
 }
 
 export interface AddSportSessionLocationResponse
-	extends AddSportSessionLocationRequest { }
+	extends AddSportSessionLocationRequest {}
 
 export interface FinishSportSessionRequest {
 	session_id: string
@@ -116,4 +116,4 @@ export interface FinishSportSessionRequest {
 
 export interface FullSportSessionResponse
 	extends FinishSportSessionRequest,
-	StartSportSessionResponse { }
+		StartSportSessionResponse {}

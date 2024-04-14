@@ -52,7 +52,7 @@ jest.mock('@sportapp/stores', () => ({
 				session_id: '1',
 				sport_id: '1',
 				user_id: '1',
-				start_date: new Date().toISOString(),
+				started_at: new Date().toISOString(),
 				duration: 60,
 				steps: 85,
 				distance: 70,
@@ -66,7 +66,7 @@ jest.mock('@sportapp/stores', () => ({
 				session_id: '2',
 				sport_id: '1',
 				user_id: '1',
-				start_date: new Date().toISOString(),
+				started_at: new Date().toISOString(),
 				duration: 60,
 				steps: 85,
 				distance: 70,
@@ -155,7 +155,7 @@ describe('SportSessionHistory', () => {
 			component.root.findByProps({ testID: 'calendarHeader' }).props
 				.children
 		).toBe(
-			useSportSessionStore().sportSessions[0].start_date.substring(0, 6)
+			useSportSessionStore().sportSessions[0].started_at.substring(0, 6)
 		)
 	})
 	it('should hide the calendar on switch off', async () => {
@@ -261,7 +261,7 @@ describe('SportSessionHistory', () => {
 				session_id: '1',
 				sport_id: '1',
 				user_id: '1',
-				start_date: yesterday.toISOString(),
+				started_at: yesterday.toISOString(),
 				duration: 60,
 				steps: 85,
 				distance: 70,
@@ -275,7 +275,7 @@ describe('SportSessionHistory', () => {
 				session_id: '2',
 				sport_id: '1',
 				user_id: '1',
-				start_date: today.toISOString(),
+				started_at: today.toISOString(),
 				duration: 60,
 				steps: 85,
 				distance: 70,
@@ -289,7 +289,7 @@ describe('SportSessionHistory', () => {
 				session_id: '3',
 				sport_id: '1',
 				user_id: '1',
-				start_date: inOneYear.toISOString(),
+				started_at: inOneYear.toISOString(),
 				duration: 60,
 				steps: 85,
 				distance: 70,

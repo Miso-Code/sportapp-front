@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { useSportSessionStore } from '../index'
+import { FullSportSessionResponse } from '@sportapp/sportapp-repository/src/sportSession/interfaces'
 
 jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
@@ -292,19 +293,19 @@ describe('SportSessionStore', () => {
 
 			const { setSportSession } = result.current
 
-			const sportSession = {
+			const sportSession: FullSportSessionResponse = {
+				duration: 1,
 				session_id: 'session_id',
 				sport_id: 'sport_id',
+				started_at: 'started_at',
 				user_id: 'user_id',
-				start_date: 'started_at',
-				duration: 1,
-				distance: 1,
-				steps: 1,
-				calories: 1,
 				average_speed: 1,
-				min_heartrate: 1,
+				avg_heartrate: 1,
+				calories: 1,
+				distance: 1,
 				max_heartrate: 1,
-				avg_heartrate: 1
+				min_heartrate: 1,
+				steps: 1
 			}
 
 			await act(async () => {
