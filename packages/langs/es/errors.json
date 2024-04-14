@@ -1,5 +1,8 @@
 {
 	"register": {
 		"base": "A ocurrido un error al registrar al usuario"
+	},
+	"login": {
+		"base": "Ha ocurrido un error al iniciar sesión"
 	}
 }

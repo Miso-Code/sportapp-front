@@ -1,5 +1,7 @@
 {
 	"app": {
 		"name": "SportApp"
-	}
+	},
+	"Athletics": "Athletics",
+	"Cycling": "Cycling"
 }
