@@ -8,6 +8,7 @@ export interface SportProfileBase {
 	training_frequency: string
 	training_limitations: string[]
 	bmi: number
+	favourite_sport_id: string
 }
 
 export interface SportProfileRequestPayload {

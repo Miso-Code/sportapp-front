@@ -21,6 +21,12 @@ import {
 	SportProfileResponse,
 	SportProfileUpdateRequest
 } from './interfaces/api/sportProfile'
+import {
+	NutritionalProfileRequestPayload,
+	NutritionalProfileResponse,
+	NutritionalProfileUpdateRequest,
+	NutritionalProfileUpdateResponse
+} from './interfaces/api/nutritionalProfile'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -74,26 +80,29 @@ export default class UserApi {
 
 				if (!done) {
 					const value = result.value
-					const jsonResponse =
-						this.convertStringToJSON<RegisterUserStreamResponse>(
-							value.toString()
-						)
+					const split = value.split('\r\n\r\n')
+					for (let index = 0; index < split.length; index++) {
+						const jsonResponse =
+							this.convertStringToJSON<RegisterUserStreamResponse>(
+								split[index]
+							)
 
-					if (jsonResponse) {
-						const { status, message } = jsonResponse
+						if (jsonResponse) {
+							const { status, message } = jsonResponse
 
-						if (
-							status === 'success' &&
-							message === 'User created'
-						) {
-							return jsonResponse.data
-						}
+							if (
+								status === 'success' &&
+								message === 'User created'
+							) {
+								return jsonResponse.data
+							}
 
-						if (
-							status === 'error' &&
-							message === 'User already exists'
-						) {
-							return false
+							if (
+								status === 'error' &&
+								message === 'User already exists'
+							) {
+								return false
+							}
 						}
 					}
 				}
@@ -119,11 +128,16 @@ export default class UserApi {
 
 	async registerFull(
 		uuid: string,
-		data: RegisterFullUserRequest
+		data: RegisterFullUserRequest,
+		options?: AxiosRequestConfig
 	): Promise<boolean> {
 		const endpoint = endpoints.registerFull(uuid)
 		try {
-			const response = await this.sportappApi.patch(endpoint, data)
+			const response = await this.sportappApi.patch(
+				endpoint,
+				data,
+				options
+			)
 
 			if (response.status.toString().startsWith('2')) {
 				return true
@@ -225,6 +239,46 @@ export default class UserApi {
 				data,
 				options
 			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async getNutritionalProfile(
+		options?: NutritionalProfileRequestPayload
+	): Promise<NutritionalProfileResponse | undefined> {
+		const endpoint = endpoints.getNutritionalProfile
+		try {
+			const response =
+				await this.sportappApi.get<NutritionalProfileResponse>(
+					endpoint,
+					options?.options
+				)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async updateNutritionalProfile(
+		data: NutritionalProfileUpdateRequest,
+		options?: AxiosRequestConfig
+	): Promise<NutritionalProfileResponse | undefined> {
+		const endpoint = endpoints.updateNutritionalProfile
+		try {
+			const response =
+				await this.sportappApi.patch<NutritionalProfileUpdateResponse>(
+					endpoint,
+					data,
+					options
+				)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios'
+import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { sportappApi } from '../index'
 import endpoints from './endpoints'
 import {
@@ -16,14 +16,15 @@ export default class sportSessionApi {
 		this.sportappApi = sportappApi
 	}
 
-	async createSportSession({
-		user_id,
-		started_at,
-		sport_id,
-		initial_location
-	}: StartSportSessionRequest): Promise<
-		StartSportSessionResponse | undefined
-	> {
+	async createSportSession(
+		{
+			user_id,
+			started_at,
+			sport_id,
+			initial_location
+		}: StartSportSessionRequest,
+		options?: AxiosRequestConfig
+	): Promise<StartSportSessionResponse | undefined> {
 		try {
 			const endpoint = endpoints.startSession
 
@@ -35,7 +36,8 @@ export default class sportSessionApi {
 						started_at,
 						sport_id,
 						initial_location
-					}
+					},
+					options
 				)
 
 			if (response.status.toString().startsWith('2')) {
@@ -46,18 +48,19 @@ export default class sportSessionApi {
 		}
 	}
 
-	async addSportSessionLocation({
-		latitude,
-		longitude,
-		accuracy,
-		altitude,
-		altitude_accuracy,
-		heading,
-		speed,
-		session_id
-	}: AddSportSessionLocationRequest): Promise<
-		AddSportSessionLocationResponse | undefined
-	> {
+	async addSportSessionLocation(
+		{
+			latitude,
+			longitude,
+			accuracy,
+			altitude,
+			altitude_accuracy,
+			heading,
+			speed,
+			session_id
+		}: AddSportSessionLocationRequest,
+		options?: AxiosRequestConfig
+	): Promise<AddSportSessionLocationResponse | undefined> {
 		try {
 			const endpoint = endpoints.addSessionLocation(session_id)
 			const response =
@@ -71,7 +74,8 @@ export default class sportSessionApi {
 						altitude_accuracy,
 						heading,
 						speed
-					}
+					},
+					options
 				)
 
 			if (response.status.toString().startsWith('2')) {
@@ -82,19 +86,20 @@ export default class sportSessionApi {
 		}
 	}
 
-	async finishSportSession({
-		session_id,
-		duration,
-		steps,
-		distance,
-		calories,
-		average_speed,
-		min_heartrate,
-		max_heartrate,
-		avg_heartrate
-	}: FinishSportSessionRequest): Promise<
-		FullSportSessionResponse | undefined
-	> {
+	async finishSportSession(
+		{
+			session_id,
+			duration,
+			steps,
+			distance,
+			calories,
+			average_speed,
+			min_heartrate,
+			max_heartrate,
+			avg_heartrate
+		}: FinishSportSessionRequest,
+		options?: AxiosRequestConfig
+	): Promise<FullSportSessionResponse | undefined> {
 		try {
 			const endpoint = endpoints.finishSession(session_id)
 
@@ -110,7 +115,8 @@ export default class sportSessionApi {
 						min_heartrate,
 						max_heartrate,
 						avg_heartrate
-					}
+					},
+					options
 				)
 
 			if (response.status.toString().startsWith('2')) {

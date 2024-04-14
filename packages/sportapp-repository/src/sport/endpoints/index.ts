@@ -1,4 +1,4 @@
-const BASE_URL = '/sport-session'
+const BASE_URL = '/sports'
 
 const endpoints = {
 	getAllSports: `${BASE_URL}/`,
