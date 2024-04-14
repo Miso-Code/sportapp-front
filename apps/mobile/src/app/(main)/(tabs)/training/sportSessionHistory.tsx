@@ -79,6 +79,7 @@ const CalendarHeader: React.FC<{
 		const shouldRender =
 			dayjs(nextDate).format('YYYY-MM') !==
 			dayjs(leadingItem[leadingItem.length - 1].start).format('YYYY-MM')
+
 		if (!shouldRender) return null
 		formattedDate = dayjs(nextDate)
 			.locale(i18n.language)
@@ -86,7 +87,10 @@ const CalendarHeader: React.FC<{
 	}
 
 	return (
-		<Text style={styles.calendarHeader} variant='titleLarge'>
+		<Text
+			style={styles.calendarHeader}
+			variant='titleLarge'
+			testID='calendarHeader'>
 			{formattedDate}
 		</Text>
 	)
@@ -120,7 +124,7 @@ const SportSessionHistory: React.FC = () => {
 
 	const navigateToSession = (event: SportSessionHistoryEvent) => {
 		const session = sportSessions.find(
-			(session) => session.session_id === event.id
+			(sportSession) => sportSession.session_id === event.id
 		)
 		setSportSession(session)
 		router.push({
@@ -138,17 +142,26 @@ const SportSessionHistory: React.FC = () => {
 	}, [calendarMode, isCalendarActive, sportSessionEvents])
 
 	useEffect(() => {
-		getSportSessions()
-		setIsLoading(false)
+		;(async () => {
+			await getSportSessions()
+			setIsLoading(false)
+		})()
 	}, [getSportSessions])
 
 	return (
 		<View style={styles.container}>
-			{isLoading && <ActivityIndicator animating size={'large'} />}
+			{isLoading && (
+				<ActivityIndicator
+					animating
+					size={'large'}
+					testID='progressBar'
+				/>
+			)}
 			{!isLoading && (
-				<View style={styles.actions}>
+				<View style={styles.actions} testID='actionsContainer'>
 					<View style={styles.horizontalContainer}>
 						<Switch
+							testID='calendarSwitch'
 							value={isCalendarActive}
 							onValueChange={setIsCalendarActive}
 						/>
@@ -157,6 +170,7 @@ const SportSessionHistory: React.FC = () => {
 					{isCalendarActive && (
 						<>
 							<SegmentedButtons
+								data-testid='calendarMode'
 								value={calendarMode}
 								onValueChange={(mode: typeof calendarMode) =>
 									setCalendarMode(mode)
@@ -184,9 +198,11 @@ const SportSessionHistory: React.FC = () => {
 			)}
 			{!isLoading && isCalendarActive && (
 				<View
+					testID='calendarContainer'
 					style={styles.calendarContainer}
 					onLayout={updateCalendarHeight}>
 					<CustomCalendar
+						data-testid='calendar'
 						events={sportSessionEvents}
 						height={calendarHeight}
 						mode={calendarMode}
@@ -204,7 +220,7 @@ const SportSessionHistory: React.FC = () => {
 				</View>
 			)}
 			{!isLoading && !isCalendarActive && (
-				<View style={styles.eventsContainer}>
+				<View style={styles.eventsContainer} testID='upcoming'>
 					<Text variant='headlineSmall'>
 						{t('training.nextTrainings')}
 					</Text>

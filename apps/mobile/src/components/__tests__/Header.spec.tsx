@@ -61,4 +61,19 @@ describe('Header', () => {
 		component.root.findByProps({ testID: 'back' }).props.onPress()
 		expect(router.back).toHaveBeenCalled()
 	})
+
+	it('should render a title if provided by route params', () => {
+		act(() => {
+			component.update(
+				<Header
+					options={{ title: 'Title' }}
+					route={{ key: '', name: '', params: { title: 'test' } }}
+					navigation={undefined}
+				/>
+			)
+		})
+		expect(
+			component.root.findByProps({ testID: 'title' }).props.children
+		).toBe('test')
+	})
 })

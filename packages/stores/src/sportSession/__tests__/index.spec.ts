@@ -38,7 +38,23 @@ jest.mock('@sportapp/sportapp-repository/src/sportSession', () => {
 				min_heartrate: 1,
 				max_heartrate: 1,
 				avg_heartrate: 1
-			})
+			}),
+			getAllSportSessions: jest.fn().mockResolvedValue([
+				{
+					session_id: 'session_id',
+					sport_id: 'sport_id',
+					user_id: 'user_id',
+					started_at: 'started_at',
+					duration: 1,
+					distance: 1,
+					steps: 1,
+					calories: 1,
+					average_speed: 1,
+					min_heartrate: 1,
+					max_heartrate: 1,
+					avg_heartrate: 1
+				}
+			])
 		}))
 	}
 })
@@ -58,9 +74,12 @@ describe('SportSessionStore', () => {
 		})
 		expect(result.current).toStrictEqual({
 			sportSession: undefined,
+			sportSessions: [],
+			setSportSession: expect.any(Function),
 			startSportSession: expect.any(Function),
 			addSessionLocation: expect.any(Function),
 			finishSportSession: expect.any(Function),
+			getSportSessions: expect.any(Function),
 			clearState: expect.any(Function)
 		})
 	})
@@ -226,6 +245,73 @@ describe('SportSessionStore', () => {
 				max_heartrate: 1,
 				avg_heartrate: 1
 			})
+		})
+	})
+	describe('getSportSessions', () => {
+		const initialStoreState = useSportSessionStore.getState()
+
+		beforeEach(() => {
+			useSportSessionStore.setState(initialStoreState)
+		})
+
+		it('should get all sport sessions', async () => {
+			const { result } = renderHook(() => useSportSessionStore())
+
+			const { getSportSessions } = result.current
+
+			await act(async () => {
+				const response = await getSportSessions()
+				expect(response).toStrictEqual([
+					{
+						session_id: 'session_id',
+						sport_id: 'sport_id',
+						user_id: 'user_id',
+						started_at: 'started_at',
+						duration: 1,
+						distance: 1,
+						steps: 1,
+						calories: 1,
+						average_speed: 1,
+						min_heartrate: 1,
+						max_heartrate: 1,
+						avg_heartrate: 1
+					}
+				])
+			})
+		})
+	})
+	describe('setSportSession', () => {
+		const initialStoreState = useSportSessionStore.getState()
+
+		beforeEach(() => {
+			useSportSessionStore.setState(initialStoreState)
+		})
+
+		it('should set the sport session', async () => {
+			const { result } = renderHook(() => useSportSessionStore())
+
+			const { setSportSession } = result.current
+
+			const sportSession = {
+				session_id: 'session_id',
+				sport_id: 'sport_id',
+				user_id: 'user_id',
+				start_date: 'started_at',
+				duration: 1,
+				distance: 1,
+				steps: 1,
+				calories: 1,
+				average_speed: 1,
+				min_heartrate: 1,
+				max_heartrate: 1,
+				avg_heartrate: 1
+			}
+
+			await act(async () => {
+				await setSportSession(sportSession)
+			})
+
+			expect(result.current.sportSession).toStrictEqual(sportSession)
 		})
 	})
 })

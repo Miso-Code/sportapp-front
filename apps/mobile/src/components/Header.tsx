@@ -14,7 +14,7 @@ const Header = ({
 	ComponentProps<typeof Stack.Screen>['options']['header']
 >) => {
 	const title =
-		(route.params as { title: string } | undefined)?.title || options.title
+		(route?.params as { title: string } | undefined)?.title || options.title
 	return (
 		<SafeAreaProvider style={styles.safeArea}>
 			<View style={styles.header} testID='header'>
@@ -27,6 +27,7 @@ const Header = ({
 					/>
 				)}
 				<Text
+					testID='title'
 					variant='displaySmall'
 					style={styles.headerTitle}
 					numberOfLines={1}

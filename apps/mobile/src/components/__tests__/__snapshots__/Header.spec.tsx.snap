@@ -46,6 +46,7 @@ exports[`Header should render correctly 1`] = `
           ],
         ]
       }
+      testID="title"
     />
   </View>
 </View>

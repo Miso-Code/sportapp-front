@@ -204,4 +204,44 @@ describe('SportSessionApi', () => {
 			expect(response).toBeUndefined()
 		})
 	})
+	describe('getAllSportSessions', () => {
+		it('should call the getAllSportSessions endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: [
+						{
+							session_id: 'session_id',
+							sport_id: 'sport_id',
+							user_id: 'user_id',
+							started_at: 'started_at'
+						}
+					]
+				})
+			)
+			const api = new SportSessionApi()
+			const response = await api.getAllSportSessions()
+
+			expect(response).toStrictEqual([
+				{
+					session_id: 'session_id',
+					sport_id: 'sport_id',
+					user_id: 'user_id',
+					started_at: 'started_at'
+				}
+			])
+		})
+
+		it('should return undefined if the getAllSportSessions fails', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const api = new SportSessionApi()
+			const response = await api.getAllSportSessions()
+
+			expect(response).toBeUndefined()
+		})
+	})
 })

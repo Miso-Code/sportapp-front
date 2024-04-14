@@ -190,6 +190,7 @@ exports[`TrainingLayout should render correctly 1`] = `
               ],
             ]
           }
+          testID="title"
         >
           training.startTraining
         </Text>
@@ -387,8 +388,207 @@ exports[`TrainingLayout should render correctly 1`] = `
               ],
             ]
           }
+          testID="title"
         >
           training.endTraining
+        </Text>
+      </View>
+    </View>
+    <Text>
+      Mock Screen
+    </Text>
+  </View>
+  <View>
+    <View>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#f2f2f2",
+            "flex": 1,
+            "flexDirection": "row",
+            "gap": 5,
+            "justifyContent": "flex-start",
+            "marginTop": 45,
+          }
+        }
+        testID="header"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "backgroundColor": "transparent",
+              "borderRadius": 25.5,
+              "height": 51,
+              "margin": 6,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0,
+              "shadowRadius": 0,
+              "width": 51,
+            }
+          }
+          testID="back-container-outer-layer"
+        >
+          <View
+            collapsable={false}
+            style={
+              {
+                "backgroundColor": "transparent",
+                "borderColor": "rgba(121, 116, 126, 1)",
+                "borderRadius": 25.5,
+                "borderWidth": 0,
+                "elevation": 0,
+                "flex": 1,
+                "overflow": "hidden",
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 0,
+                  "width": 0,
+                },
+                "shadowOpacity": 0,
+                "shadowRadius": 0,
+              }
+            }
+            testID="back-container"
+          >
+            <View
+              accessibilityComponentType="button"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityTraits="button"
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              centered={true}
+              collapsable={false}
+              focusable={true}
+              hitSlop={
+                {
+                  "bottom": 6,
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                }
+              }
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexGrow": 1,
+                      "justifyContent": "center",
+                    },
+                    {
+                      "borderRadius": 25.5,
+                    },
+                  ],
+                ]
+              }
+              testID="back"
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                selectable={false}
+                style={
+                  [
+                    {
+                      "color": "rgba(73, 69, 79, 1)",
+                      "fontSize": 35,
+                    },
+                    [
+                      {
+                        "lineHeight": 35,
+                        "transform": [
+                          {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    {
+                      "fontFamily": "material-community",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
+                }
+              >
+                󰅁
+              </Text>
+            </View>
+          </View>
+        </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "fontFamily": "System",
+                  "fontSize": 36,
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 44,
+                },
+                {
+                  "flex": 1,
+                  "fontSize": 34,
+                  "fontWeight": "normal",
+                  "height": 50,
+                  "maxWidth": "70%",
+                },
+              ],
+            ]
+          }
+          testID="title"
+        >
+          training.trainings
         </Text>
       </View>
     </View>
