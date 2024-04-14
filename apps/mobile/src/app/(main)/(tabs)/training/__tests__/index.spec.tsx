@@ -21,7 +21,7 @@ describe('Training', () => {
 		expect(component.toJSON()).toMatchSnapshot()
 	})
 
-	it('shold call router.push when lit item is pressed and item has onPress', () => {
+	it('should call router.push when list item is pressed and item has onPress', () => {
 		const listItems = component.root.findAllByProps({ testID: 'list-item' })
 
 		for (const listItem of listItems) {
