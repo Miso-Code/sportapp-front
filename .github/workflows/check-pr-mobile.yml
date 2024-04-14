@@ -20,7 +20,7 @@ jobs:
           cache: "yarn"
 
       - name: Run Yarn Install
-        run: yarn install --fro-zen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint:mobile

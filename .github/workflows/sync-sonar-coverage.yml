@@ -1,0 +1,62 @@
+name: Sync SonarCloud Coverage information
+
+on:
+  workflow_dispatch: { }
+  push:
+    branches: [ "develop", "main" ]
+    paths:
+      - 'apps/**'
+      - '.github/workflows/sync-sonar-coverage.yml'
+
+jobs:
+
+  get-branch:
+    runs-on: ubuntu-latest
+    env:
+      REF_NAME: ${{ github.ref_name }}
+    outputs:
+      branch: ${{ steps.tag.outputs.tag }}
+    steps:
+      - id: tag
+        run: |
+          echo "branch=$REF_NAME" >> $GITHUB_OUTPUT
+
+  update-sonarcloud-coverage-report:
+    needs: get-branch
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [ "web", "mobile" ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - name: Run Yarn Install
+        run: yarn install --frozen-lockfile
+
+      - name: Run the tests
+        env:
+          APP: ${{ matrix.app }}
+        run: yarn test:$APP
+
+      - name: Add branch name to properties file
+        env:
+          APP: ${{ matrix.app }}
+          BRANCH: ${{ needs.get-branch.outputs.branch }}
+        run: |
+          echo "sonar.branch.name=$BRANCH" >> apps/$APP/sonar-project.properties
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          APP: ${{ matrix.app }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: apps/$APP
