@@ -133,6 +133,36 @@ describe('UserApi', () => {
 				expect(error).toMatch('error')
 			}
 		})
+
+		it('should return false if there is an error', async () => {
+			const data: RegisterUserRequest = {
+				email: 'tests@correo.com',
+				first_name: 'test',
+				last_name: 'test',
+				password: '1234567Uu*'
+			}
+			const response = {
+				pipeThrough: jest.fn(() => ({
+					getReader: jest.fn(() => ({
+						read: jest.fn(() =>
+							Promise.resolve({
+								done: false,
+								value: `data: \r\n\r\n data: \r\n\r\ndata: {"status": "error", "message": "User already exists"}`
+							})
+						)
+					}))
+				}))
+			}
+
+			;(fetch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({ body: response })
+			)
+			const userApi = new UserApi()
+
+			const result = await userApi.register(data)
+
+			expect(result).toBe(false)
+		})
 	})
 
 	describe('registerFull', () => {
@@ -736,6 +766,58 @@ describe('UserApi', () => {
 
 			try {
 				await userApi.updateNutritionalProfile(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('getAllNutritionalLimitations', () => {
+		it('should call the getAllNutritionalLimitations endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: [
+						{
+							description: 'description',
+							limitation_id: 'limitation_id',
+							name: 'name'
+						}
+					]
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getAllNutritionalLimitations()
+
+			expect(response).toStrictEqual([
+				{
+					description: 'description',
+					limitation_id: 'limitation_id',
+					name: 'name'
+				}
+			])
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const response = await userApi.getAllNutritionalLimitations()
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+
+			try {
+				await userApi.getAllNutritionalLimitations()
 			} catch (error) {
 				expect(error).toMatch('error')
 			}

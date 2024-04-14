@@ -22,6 +22,7 @@ import {
 	SportProfileUpdateRequest
 } from './interfaces/api/sportProfile'
 import {
+	NutritionalLimitations,
 	NutritionalProfileRequestPayload,
 	NutritionalProfileResponse,
 	NutritionalProfileUpdateRequest,
@@ -279,6 +280,23 @@ export default class UserApi {
 					data,
 					options
 				)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async getAllNutritionalLimitations(
+		options?: AxiosRequestConfig
+	): Promise<NutritionalLimitations[] | undefined> {
+		const endpoint = endpoints.getAllNutritionalLimitations
+		try {
+			const response = await this.sportappApi.get<
+				NutritionalLimitations[]
+			>(endpoint, options)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data
