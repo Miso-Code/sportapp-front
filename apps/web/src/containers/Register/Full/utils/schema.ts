@@ -1,5 +1,5 @@
 import 'config/lang/form.ts'
-import { InferType, object, string } from 'yup'
+import { InferType, date, object, string } from 'yup'
 
 const schema = object().shape({
 	name: string().notRequired(),
@@ -18,7 +18,7 @@ const schema = object().shape({
 		lengthOfStay: string().required()
 	}),
 	gender: string().required(),
-	birthday: string().required()
+	birthday: date().required()
 })
 
 export default schema

@@ -5,7 +5,7 @@ import { FormData } from '@/containers/Login/utils/schema'
 import { Button, Paper, Typography } from '@mui/material'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import './_index.scss'
@@ -14,7 +14,7 @@ export default function Login() {
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { loading, error } = useAuthStore()
+	const { loading, error, logout } = useAuthStore()
 	const { login } = useAuthStore()
 
 	const handleSubmit = async (data: FormData) => {
@@ -30,6 +30,10 @@ export default function Login() {
 	const handleGoToRegister = () => {
 		navigate('/register')
 	}
+
+	useEffect(() => {
+		logout()
+	}, [logout])
 
 	return (
 		<>

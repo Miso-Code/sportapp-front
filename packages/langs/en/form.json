@@ -43,27 +43,32 @@
 		"EVERY_OTHER_DAY": "Every other day"
 	},
 	"limitations": "Limitations",
+	"limitation": "Limitations",
+	"limitationsLabels": {
+		"name": "Limitation Name",
+		"description": "Limitation Description",
+		"add": "Add Limitation",
+		"remove": "Remove Limitation"
+	},
 	"availableTrainingHoursPerWeek": "Available Training Time",
 	"weight": "Weight",
 	"height": "Height",
 	"imc": "IMC Perncentage",
 	"allergyType": "Allergy Type",
 	"allergyTypeValue": {
-		"gluten": "Gluten",
-		"lactose": "Lactose",
-		"peanuts": "Peanuts",
-		"treeNuts": "Tree Nuts",
-		"shellfish": "Shellfish",
-		"fish": "Fish",
-		"soy": "Soy",
-		"egg": "Egg",
-		"wheat": "Wheat",
-		"corn": "Corn"
+		"lactose": "No lactose",
+		"seafood": "No seafood",
+		"nuts": "No nuts",
+		"sugar": "No sugar",
+		"gluten": "No gluten"
 	},
 	"foodPreferences": "Food Preferences",
 	"foodPreferenceValues": {
 		"VEGAN": "Vegan",
 		"VEGETARIAN": "Vegetarian",
 		"EVERYTHING": "Everything(No restrictions)"
-	}
+	},
+	"add": "Add",
+	"remove": "Remove",
+	"save": "Save"
 }

@@ -18,21 +18,21 @@ jest.mock(
 			onHandleSubmit
 		}: {
 			onHandleSubmit: (data: { email: string; password: string }) => void
-		}) =>
-			(
-				<button
-					data-testid='login-button'
-					onClick={() => {
-						onHandleSubmit({ email: 'test', password: 'test' })
-					}}>
-					Login
-				</button>
-			)
+		}) => (
+			<button
+				data-testid='login-button'
+				onClick={() => {
+					onHandleSubmit({ email: 'test', password: 'test' })
+				}}>
+				Login
+			</button>
+		)
 )
 
 jest.mock('@sportapp/stores/src/auth', () => ({
 	useAuthStore: jest.fn().mockReturnValue({
 		login: jest.fn().mockReturnValue(true),
+		logout: jest.fn(),
 		loading: false,
 		error: null,
 		isAuth: false
@@ -106,6 +106,7 @@ describe('LoginPage', () => {
 		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
 			login: jest.fn().mockReturnValue(false),
 			loading: false,
+			logout: jest.fn(),
 			error: null,
 			isAuth: false
 		})

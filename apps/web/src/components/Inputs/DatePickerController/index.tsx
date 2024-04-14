@@ -2,7 +2,7 @@ import { Props } from '@/components/Inputs/DatePickerController/interfaces'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { parse, isValid } from 'date-fns'
+import { isValid } from 'date-fns'
 import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -34,11 +34,7 @@ export default function DatePickerController<
 								name: name
 							}
 						}}
-						value={
-							isValid(new Date(value))
-								? parse(value, 'yyyy-MM-dd', new Date())
-								: null
-						}
+						value={isValid(new Date(value)) ? value : null}
 						ref={ref}
 						{...props}
 					/>

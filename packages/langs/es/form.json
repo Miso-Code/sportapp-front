@@ -43,27 +43,32 @@
 		"EVERY_OTHER_DAY": "Día de por medio"
 	},
 	"limitations": "Limitaciones",
+	"limitation": "Limitacion",
+	"limitationsLabels": {
+		"name": "Nombre de la limitacion",
+		"description": "Descripción de la limitacion",
+		"add": "Agregar limitacion",
+		"remove": "Eliminar limitacion"
+	},
 	"availableTrainingHoursPerWeek": "Tiempo para entrenar",
 	"weight": "Peso",
 	"height": "Altura",
 	"imc": "Porcentaje de IMC",
 	"allergyType": "Tipo de alergia",
 	"allergyTypeValue": {
-		"gluten": "Gluten",
-		"lactose": "Lactosa",
-		"peanuts": "Cacahuetes",
-		"treeNuts": "Frutos secos",
-		"shellfish": "Mariscos",
-		"fish": "Pescado",
-		"soy": "Soja",
-		"egg": "Huevo",
-		"wheat": "Trigo",
-		"corn": "Maíz"
+		"lactose": "Sin lactosa",
+		"seafood": "Sin mariscos",
+		"nuts": "Sin frutos secos",
+		"sugar": "Sin azúcar",
+		"gluten": "Sin gluten"
 	},
 	"foodPreferences": "Preferencias alimenticias",
 	"foodPreferenceValues": {
 		"VEGAN": "Vegano",
 		"VEGETARIAN": "Vegetariano",
 		"EVERYTHING": "Omnívoro(no tengo restricciones dietéticas)"
-	}
+	},
+	"add": "Agregar",
+	"remove": "Eliminar",
+	"save": "Guardar"
 }

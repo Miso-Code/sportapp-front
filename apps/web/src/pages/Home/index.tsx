@@ -1,20 +1,38 @@
 import ContainerLayout from '@/components/ContainerLayout'
 import NutritionalDataForm from '@/containers/NutritionalDataForm'
 import PersonalDataForm from '@/containers/PersonalDataForm'
+import { FormData as PersonalFormData } from '@/containers/PersonalDataForm/utils/schema'
 import SportDataForm from '@/containers/SportDataForm'
+import {
+	FormDataBase as SportDataBase,
+	FormDataRequired as SportFormData
+} from '@/containers/SportDataForm/utils/schema'
 import ProfileMenu from '@/pages/Home/components/Menu'
 import { Button, Typography } from '@mui/material'
+import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
+import { SportProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/sportProfile'
+import { useUserStore } from '@sportapp/stores/src/user'
+import { format } from 'date-fns'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import { handleEdit } from './components/Menu/utils'
-import { useUserStore } from '@sportapp/stores/src/user'
-import { FormData as PersonalFormData } from '@/containers/PersonalDataForm/utils/schema'
-import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
+import {
+	FormDataRequired as NutritionalFormData,
+	FormDataBase as NutritionalBaseFormData
+} from '@/containers/NutritionalDataForm/utils/schema'
+import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 
-function Home() {
+function HomePage() {
 	const { t } = useTranslation()
-	const { getProfile, updateProfile } = useUserStore()
+	const {
+		getProfile,
+		updateProfile,
+		getSport,
+		updateSport,
+		getNutrition,
+		updateNutrition
+	} = useUserStore()
 	const { user } = useUserStore()
 	const [selected, setSelected] = useState(-1)
 	const [isEditing, setIsEditing] = useState<boolean[]>([
@@ -24,21 +42,23 @@ function Home() {
 		true
 	])
 
-	const handleGetProfileData = useCallback(async () => {
+	const handleAllAsyncProfileData = useCallback(async () => {
 		await getProfile()
-	}, [getProfile])
+		await getSport()
+		await getNutrition()
+	}, [getNutrition, getProfile, getSport])
 
 	const handleUpdateProfile = useCallback(
 		async (data: PersonalFormData) => {
 			const payload: PersonalProfileUpdateRequest = {
-				birth_date: data.birthday,
+				email: data.email,
+				first_name: data.name,
+				last_name: data.lastName,
+				birth_date: format(data.birthday, 'yyyy-MM-dd'),
 				city_of_birth: data.nationality.city,
 				country_of_birth: data.nationality.country,
 				city_of_residence: data.residence.city,
 				country_of_residence: data.residence.country,
-				email: data.email,
-				first_name: data.name,
-				last_name: data.lastName,
 				gender: data.gender,
 				identification_number: data.documentNumber,
 				identification_type: data.documentType,
@@ -49,9 +69,54 @@ function Home() {
 		[updateProfile]
 	)
 
+	const handleUpdateSportProfile = useCallback(
+		async (data: SportFormData) => {
+			const heightPayload = data.height > 0 ? data.height * 10 : 0
+
+			const payload: SportProfileUpdateRequest = {
+				available_training_hours: data.availableTrainingHoursPerWeek,
+				favourite_sport_id: data.favouriteSportId,
+				height: heightPayload,
+				training_frequency: data.trainingFrequency,
+				training_limitations: data.limitations.map((limitation) => {
+					if (!limitation.limitation_id) {
+						return {
+							description: limitation.description,
+							name: limitation.name
+						}
+					}
+
+					return {
+						description: limitation.description,
+						name: limitation.name,
+						limitation_id: limitation.limitation_id
+					}
+				}),
+				training_objective: data.trainingObjective,
+				weight: data.weight
+			}
+
+			await updateSport(payload)
+			handleEdit(1, isEditing, setIsEditing)
+		},
+		[isEditing, updateSport]
+	)
+
+	const handleUpdateNutritionalProfile = useCallback(
+		async (data: NutritionalFormData) => {
+			const payload: NutritionalProfileUpdateRequest = {
+				food_preference: data.foodPreferences ?? '',
+				nutritional_limitations: data.allergyType as string[]
+			}
+			await updateNutrition(payload)
+			handleEdit(2, isEditing, setIsEditing)
+		},
+		[isEditing, updateNutrition]
+	)
+
 	useEffect(() => {
-		handleGetProfileData()
-	}, [handleGetProfileData])
+		handleAllAsyncProfileData()
+	}, [handleAllAsyncProfileData])
 
 	useEffect(() => {
 		setIsEditing([true, true, true, true])
@@ -74,7 +139,7 @@ function Home() {
 				)
 			}
 			defaultValues={{
-				birthday: '',
+				birthday: new Date(user?.profileData?.birth_date ?? ''),
 				documentNumber: user?.profileData?.identification_number ?? '',
 				documentType: user?.profileData?.identification_type ?? '',
 				gender: user?.profileData?.gender ?? '',
@@ -87,8 +152,7 @@ function Home() {
 				residence: {
 					city: user?.profileData?.city_of_residence ?? '',
 					country: user?.profileData?.country_of_residence ?? '',
-					lengthOfStay:
-						user?.profileData?.residence_age.toString() ?? ''
+					lengthOfStay: `${user?.profileData?.residence_age}`
 				},
 				email: user?.profileData?.email ?? '',
 				password: '*********'
@@ -112,10 +176,24 @@ function Home() {
 					</Button>
 				)
 			}
-			isRequired
-			handleCustomSubmit={() => {
-				handleEdit(1, isEditing, setIsEditing)
+			defaultValues={{
+				weight: user?.sportData?.weight ?? 0,
+				height: (user?.sportData?.height ?? 0) / 10,
+				trainingFrequency: user?.sportData?.training_frequency ?? '',
+				imc: user?.sportData?.bmi ?? 0,
+				trainingObjective:
+					user?.sportData?.training_objective ?? 'BUILD_MUSCLE_MASS',
+				favouriteSportId: user?.sportData?.favourite_sport_id ?? '',
+				availableTrainingHoursPerWeek:
+					user?.sportData?.available_training_hours ?? 0,
+				limitations: user?.sportData?.training_limitations ?? []
 			}}
+			isRequired
+			handleCustomSubmit={
+				handleUpdateSportProfile as (
+					data: SportDataBase | SportFormData
+				) => void
+			}
 			inputsDisabled={isEditing[1]}
 			className='mt-10 px-3'
 		/>,
@@ -135,9 +213,15 @@ function Home() {
 				)
 			}
 			isRequired
-			handleCustomSubmit={() => {
-				handleEdit(2, isEditing, setIsEditing)
+			defaultValues={{
+				allergyType: user?.nutritionData?.nutritional_limitations ?? [],
+				foodPreferences: user?.nutritionData?.food_preference ?? ''
 			}}
+			handleCustomSubmit={
+				handleUpdateNutritionalProfile as (
+					data: NutritionalFormData | NutritionalBaseFormData
+				) => void
+			}
 			inputsDisabled={isEditing[2]}
 			className='mt-10 px-3'
 		/>,
@@ -164,4 +248,4 @@ function Home() {
 	)
 }
 
-export default Home
+export default HomePage

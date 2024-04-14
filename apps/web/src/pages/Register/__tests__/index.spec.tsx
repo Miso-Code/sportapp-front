@@ -17,47 +17,46 @@ jest.mock(
 			step: number
 			onHandleFirstSubmit: (data: FormData) => void
 			onHandleSecondSubmit: (data: FormDataFull) => void
-		}) =>
-			(
-				<div>
-					RegisterContainer-{step}
-					<button
-						data-testid='onHandleFirstSubmit'
-						onClick={() => {
-							const data: FormData = {
-								email: 'email',
-								password: 'password',
-								name: 'name',
-								lastName: 'lastName'
+		}) => (
+			<div>
+				RegisterContainer-{step}
+				<button
+					data-testid='onHandleFirstSubmit'
+					onClick={() => {
+						const data: FormData = {
+							email: 'email',
+							password: 'password',
+							name: 'name',
+							lastName: 'lastName'
+						}
+						onHandleFirstSubmit(data)
+					}}></button>
+				<button
+					data-testid='onHandleSecondSubmit'
+					onClick={() => {
+						const data: FormDataFull = {
+							birthday: new Date(),
+							documentNumber: 'documentNumber',
+							documentType: 'documentType',
+							email: 'email',
+							gender: 'M',
+							lastName: 'lastName',
+							name: 'name',
+							password: 'password',
+							nationality: {
+								city: 'city',
+								country: 'country'
+							},
+							residence: {
+								country: 'country',
+								city: 'city',
+								lengthOfStay: 'lengthOfStay'
 							}
-							onHandleFirstSubmit(data)
-						}}></button>
-					<button
-						data-testid='onHandleSecondSubmit'
-						onClick={() => {
-							const data: FormDataFull = {
-								birthday: new Date().toISOString(),
-								documentNumber: 'documentNumber',
-								documentType: 'documentType',
-								email: 'email',
-								gender: 'M',
-								lastName: 'lastName',
-								name: 'name',
-								password: 'password',
-								nationality: {
-									city: 'city',
-									country: 'country'
-								},
-								residence: {
-									country: 'country',
-									city: 'city',
-									lengthOfStay: 'lengthOfStay'
-								}
-							}
-							onHandleSecondSubmit(data)
-						}}></button>
-				</div>
-			)
+						}
+						onHandleSecondSubmit(data)
+					}}></button>
+			</div>
+		)
 )
 
 jest.mock('react', () => {

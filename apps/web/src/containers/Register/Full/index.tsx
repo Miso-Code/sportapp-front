@@ -31,7 +31,7 @@ export default function RegisterFullContainer({
 				country: defaultValues?.nationality?.country ?? '',
 				city: defaultValues?.nationality?.city ?? ''
 			},
-			birthday: '',
+			birthday: '' as unknown as Date,
 			gender: '',
 			residence: {
 				country: defaultValues?.residence?.country ?? '',

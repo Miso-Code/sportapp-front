@@ -25,13 +25,13 @@ exports[`DatePickerController should render the component 1`] = `
         name="date"
         placeholder="MM/DD/YYYY"
         type="text"
-        value="07/20/1996"
+        value="01/01/1996"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
       >
         <button
-          aria-label="Choose date, selected date is Jul 20, 1996"
+          aria-label="Choose date, selected date is Jul 19, 1996"
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
@@ -75,8 +75,8 @@ exports[`DatePickerController should render with incorrect date 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-n5zogd-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-      data-shrink="false"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+      data-shrink="true"
       for="date"
       id="date-label"
     >
@@ -94,13 +94,13 @@ exports[`DatePickerController should render with incorrect date 1`] = `
         name="date"
         placeholder="MM/DD/YYYY"
         type="text"
-        value=""
+        value="01/01/1996"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
       >
         <button
-          aria-label="Choose date"
+          aria-label="Choose date, selected date is Jan 1, 1996"
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
@@ -126,7 +126,7 @@ exports[`DatePickerController should render with incorrect date 1`] = `
         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-yjsfm1"
+          class="css-14lo706"
         >
           <span>
             Date

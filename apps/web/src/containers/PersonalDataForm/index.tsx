@@ -23,7 +23,7 @@ export default function PersonalDataForm({
 		lastName: '',
 		documentType: '',
 		documentNumber: '',
-		birthday: '',
+		birthday: new Date(),
 		gender: '',
 		nationality: {
 			country: '',

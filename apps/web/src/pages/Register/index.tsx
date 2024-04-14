@@ -117,7 +117,7 @@ export default function Register() {
 									lengthOfStay: ''
 								},
 								password: '********',
-								birthday: '',
+								birthday: new Date(),
 								gender: ''
 							}}
 						/>

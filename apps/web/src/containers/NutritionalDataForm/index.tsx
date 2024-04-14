@@ -13,6 +13,8 @@ import {
 	schemaBase,
 	schemaRequired
 } from './utils/schema'
+import { useCallback, useEffect, useMemo } from 'react'
+import { useUserStore } from '@sportapp/stores/src/user'
 
 export default function NutritionalDataForm({
 	className = '',
@@ -24,6 +26,8 @@ export default function NutritionalDataForm({
 	handleCustomSubmit
 }: Props) {
 	const { t } = useTranslation()
+	const { getAllNutritionalLimitations } = useUserStore()
+	const { user } = useUserStore()
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(isRequired ? schemaRequired : schemaBase),
 		defaultValues: {
@@ -32,9 +36,26 @@ export default function NutritionalDataForm({
 		mode: 'onChange'
 	})
 
+	const handleGetAsyncData = useCallback(async () => {
+		await getAllNutritionalLimitations()
+	}, [getAllNutritionalLimitations])
+
 	const onSubmit = (data: FormDataRequired | FormDataBase) => {
 		handleCustomSubmit(data)
 	}
+
+	const getFormatNutritionalLimitations = useMemo(() => {
+		if (Array.isArray(user?.nutritionalLimitations))
+			return user?.nutritionalLimitations.map((limitation) => ({
+				label: t(`form.allergyTypeValue.${limitation.name}`),
+				value: limitation.limitation_id
+			}))
+		else return []
+	}, [t, user?.nutritionalLimitations])
+
+	useEffect(() => {
+		handleGetAsyncData()
+	}, [handleGetAsyncData])
 
 	return (
 		<div className={`nutritional-data-form ${className}`}>
@@ -50,48 +71,7 @@ export default function NutritionalDataForm({
 					label={t('form.allergyType')}
 					name='allergyType'
 					formControlProps={{ disabled: inputsDisabled }}
-					options={[
-						{
-							value: 'gluten',
-							label: t('form.allergyTypeValue.gluten')
-						},
-						{
-							value: 'lactose',
-							label: t('form.allergyTypeValue.lactose')
-						},
-						{
-							value: 'peanuts',
-							label: t('form.allergyTypeValue.peanuts')
-						},
-						{
-							value: 'treeNuts',
-							label: t('form.allergyTypeValue.treeNuts')
-						},
-						{
-							value: 'shellfish',
-							label: t('form.allergyTypeValue.shellfish')
-						},
-						{
-							value: 'fish',
-							label: t('form.allergyTypeValue.fish')
-						},
-						{
-							value: 'soy',
-							label: t('form.allergyTypeValue.soy')
-						},
-						{
-							value: 'egg',
-							label: t('form.allergyTypeValue.egg')
-						},
-						{
-							value: 'wheat',
-							label: t('form.allergyTypeValue.wheat')
-						},
-						{
-							value: 'corn',
-							label: t('form.allergyTypeValue.corn')
-						}
-					]}
+					options={getFormatNutritionalLimitations}
 				/>
 
 				<RadioButtonController

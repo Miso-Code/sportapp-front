@@ -6,7 +6,7 @@ export interface SportProfileBase {
 	height: number
 	available_training_hours: number
 	training_frequency: string
-	training_limitations: string[]
+	training_limitations: TrainingLimitation[]
 	bmi: number
 	favourite_sport_id: string
 }
@@ -24,10 +24,17 @@ export interface SportProfileUpdateRequest {
 	height: number
 	available_training_hours: number
 	training_frequency: string
-	training_limitations: Traininglimitation[]
+	training_limitations: TrainingLimitationRequest[]
 }
 
-export interface Traininglimitation {
+export interface TrainingLimitation {
+	limitation_id: string
+	name: string
+	description: string
+}
+
+export interface TrainingLimitationRequest {
+	limitation_id?: string
 	name: string
 	description: string
 }
