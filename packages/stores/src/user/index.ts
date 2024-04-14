@@ -28,7 +28,8 @@ export const useUserStore = create(
 						...state,
 						loading: true
 					}))
-					const authToken = useAuthStore.getState().authToken
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
 					const response = await userApi.getPersonalProfile({
 						options: {
 							headers: {
@@ -41,6 +42,7 @@ export const useUserStore = create(
 						set((state) => ({
 							...state,
 							user: {
+								...state.user,
 								profileData: response
 							},
 							loading: false
@@ -71,7 +73,8 @@ export const useUserStore = create(
 						...state,
 						loading: true
 					}))
-					const authToken = useAuthStore.getState().authToken
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
 					const response = await userApi.updatePersonalProfile(data, {
 						headers: {
 							Authorization: `Bearer ${authToken}`
@@ -82,6 +85,7 @@ export const useUserStore = create(
 						set((state) => ({
 							...state,
 							user: {
+								...state.user,
 								profileData: response
 							},
 							loading: false
@@ -108,7 +112,8 @@ export const useUserStore = create(
 						...state,
 						loading: true
 					}))
-					const authToken = useAuthStore.getState().authToken
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
 					const response = await userApi.getSportProfile({
 						options: {
 							headers: {
@@ -121,6 +126,7 @@ export const useUserStore = create(
 						set((state) => ({
 							...state,
 							user: {
+								...state.user,
 								sportData: response
 							},
 							loading: false
@@ -151,7 +157,8 @@ export const useUserStore = create(
 						...state,
 						loading: true
 					}))
-					const authToken = useAuthStore.getState().authToken
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
 					const response = await userApi.updateSportProfile(data, {
 						headers: {
 							Authorization: `Bearer ${authToken}`
@@ -162,7 +169,95 @@ export const useUserStore = create(
 						set((state) => ({
 							...state,
 							user: {
+								...state.user,
 								sportData: response
+							},
+							loading: false
+						}))
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.user.base',
+						loading: false
+					}))
+				} catch (e) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.user.base'
+					}))
+				}
+			},
+			getNutrition: async () => {
+				const userApi = new UserApi()
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
+					const response = await userApi.getNutritionalProfile({
+						options: {
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						}
+					})
+
+					if (response) {
+						set((state) => ({
+							...state,
+							user: {
+								...state.user,
+								nutritionData: response
+							},
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.user.base',
+						loading: false
+					}))
+
+					return undefined
+				} catch (e) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.user.base'
+					}))
+					return undefined
+				}
+			},
+			updateNutrition: async (data) => {
+				const userApi = new UserApi()
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						useAuthStore.getState().authToken?.accessToken
+					const response = await userApi.updateNutritionalProfile(
+						data,
+						{
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						}
+					)
+
+					if (response) {
+						set((state) => ({
+							...state,
+							user: {
+								...state.user,
+								nutritionData: response
 							},
 							loading: false
 						}))

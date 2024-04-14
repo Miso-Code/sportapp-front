@@ -13,7 +13,8 @@ export const initialAuthState: IAuthState = {
 	user: undefined,
 	isAuth: false,
 	error: undefined,
-	loading: false
+	loading: false,
+	authToken: undefined
 }
 
 export const useAuthStore = create(
@@ -69,7 +70,8 @@ export const useAuthStore = create(
 					user: undefined,
 					isAuth: false,
 					loading: false,
-					error: undefined
+					error: undefined,
+					authToken: undefined
 				}))
 			},
 			register: async (request: RegisterUserRequest) => {
@@ -132,7 +134,11 @@ export const useAuthStore = create(
 					isAuth: true
 				}))
 
-				return await userApi.registerFull(user.id, request)
+				return await userApi.registerFull(user.id, request, {
+					headers: {
+						Authorization: `Bearer ${get().authToken?.accessToken}`
+					}
+				})
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading }),

@@ -4,6 +4,7 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
 // import { createJSONStorage, persist } from 'zustand/middleware'
 import { ISportSessionState, ISportSessionStore } from './interfaces'
+import { useAuthStore } from '..'
 
 export const initialSportSessionState: ISportSessionState = {
 	sportSession: undefined,
@@ -19,23 +20,46 @@ export const useSportSessionStore = create<ISportSessionStore>(
 
 		startSportSession: async (request) => {
 			const sessionApi = new sportSessionApi()
-
-			return await sessionApi.createSportSession({
-				...request
-			})
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			return await sessionApi.createSportSession(
+				{
+					...request
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
+				}
+			)
 		},
 		addSessionLocation: async (request) => {
 			const sessionApi = new sportSessionApi()
-			return await sessionApi.addSportSessionLocation({
-				...request
-			})
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			return await sessionApi.addSportSessionLocation(
+				{
+					...request
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
+				}
+			)
 		},
 
 		finishSportSession: async (request) => {
 			const sessionApi = new sportSessionApi()
-			const sportSession = await sessionApi.finishSportSession({
-				...request
-			})
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			const sportSession = await sessionApi.finishSportSession(
+				{
+					...request
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
+				}
+			)
 
 			if (!sportSession) return
 			set((state) => ({ ...state, sportSession }))

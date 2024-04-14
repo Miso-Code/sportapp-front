@@ -1,4 +1,8 @@
 import {
+	NutritionalProfileResponse,
+	NutritionalProfileUpdateRequest
+} from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
+import {
 	PersonalProfileBase,
 	PersonalProfileResponse,
 	PersonalProfileUpdateRequest
@@ -31,4 +35,6 @@ export interface IUserActions {
 	updateProfile: (data: PersonalProfileUpdateRequest) => void
 	getSport: () => Promise<SportProfileResponse | undefined>
 	updateSport: (data: SportProfileUpdateRequest) => void
+	getNutrition: () => Promise<NutritionalProfileResponse | undefined>
+	updateNutrition: (data: NutritionalProfileUpdateRequest) => void
 }

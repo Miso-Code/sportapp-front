@@ -340,5 +340,78 @@ describe('AuthStore', () => {
 
 			expect(result.current.isAuth).toBe(true)
 		})
+
+		it('should not login', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				login: jest.fn().mockResolvedValue(false)
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { login } = result.current
+
+			const loginPayload = {
+				email: 'test@email.com',
+				password: 'password'
+			}
+
+			await act(async () => {
+				await login(loginPayload)
+			})
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+		})
+	})
+
+	describe('logout', () => {
+		const initialStoreState = useAuthStore.getState()
+
+		beforeEach(() => {
+			useAuthStore.setState(initialStoreState)
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should logout', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				login: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				})
+			}))
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { login, logout } = result.current
+
+			const loginPayload = {
+				email: 'test@email.com',
+				password: 'password'
+			}
+
+			await act(async () => {
+				await login(loginPayload)
+			})
+
+			expect(result.current.authToken).not.toBe(undefined)
+			expect(result.current.isAuth).toBe(true)
+
+			await act(async () => {
+				await logout()
+			})
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+		})
 	})
 })

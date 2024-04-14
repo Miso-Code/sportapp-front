@@ -4,6 +4,7 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
 // import { createJSONStorage, persist } from 'zustand/middleware'
 import { ISportState, ISportStore } from './interfaces'
+import { useAuthStore } from '..'
 
 export const initialSportState: ISportState = {
 	sports: []
@@ -15,15 +16,23 @@ export const useSportStore = create<ISportStore>(
 		...initialSportState,
 		getSports: async () => {
 			const api = new sportApi()
-
-			const sports = await api.getAllSports()
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			const sports = await api.getAllSports({
+				headers: {
+					Authorization: `Bearer ${authToken}`
+				}
+			})
 			set({ sports })
 			return sports
 		},
 		getSport(sport_id) {
 			const api = new sportApi()
-
-			return api.getSportById(sport_id)
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			return api.getSportById(sport_id, {
+				headers: {
+					Authorization: `Bearer ${authToken}`
+				}
+			})
 		},
 		clearState: () => set((state) => ({ ...state, ...initialSportState }))
 	})
