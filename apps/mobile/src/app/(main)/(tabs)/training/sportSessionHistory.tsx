@@ -53,21 +53,19 @@ const CalendarHeader: React.FC<{
 
 	const sportSessionEvents = useMemo(
 		() =>
-			sportSessions.map((session) =>
-				sportSessionToCalendarEvent(session, t('navbar.training'))
-			),
+			sportSessions
+				.map((session) =>
+					sportSessionToCalendarEvent(session, t('navbar.training'))
+				)
+				.sort((a, b) => a.start.getTime() - b.start.getTime()),
 		[sportSessions, t]
-	)
-
-	const sorted = sportSessionEvents.sort(
-		(a, b) => a.start.getTime() - b.start.getTime()
 	)
 
 	let formattedDate = dayjs(date).locale(i18n.language).format('MMMM YYYY')
 
-	if (leadingItem && leadingItem.length) {
+	if (leadingItem?.length) {
 		let lastKey = null
-		const nextDateMap = sorted.reduce((acc, curr) => {
+		const nextDateMap = sportSessionEvents.reduce((acc, curr) => {
 			const key = curr.start.toISOString()
 			const result = { ...acc, [key]: null, [lastKey]: key }
 			lastKey = key

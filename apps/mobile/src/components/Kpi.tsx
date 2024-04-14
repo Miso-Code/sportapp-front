@@ -29,7 +29,7 @@ type KpiProps = ProgressKpiProps | LineChartKpiProps
 
 export default function Kpi(props: KpiProps) {
 	const theme = useTheme()
-	const colorRGB = hexToRgb(props.color || theme.colors.primary)
+	const colorRGB = hexToRgb(props.color ?? theme.colors.primary)
 	const textColorRGB = hexToRgb(theme.colors.onBackground)
 
 	return (
@@ -39,9 +39,12 @@ export default function Kpi(props: KpiProps) {
 					<ProgressChart
 						data={{
 							data: [
-								(props.value < props.max
-									? props.value
-									: props.max) / props.max
+								Math.max(
+									0,
+									props.value < props.max
+										? props.value
+										: props.max
+								) / props.max
 							]
 						}}
 						width={200}
@@ -62,7 +65,7 @@ export default function Kpi(props: KpiProps) {
 							<Icon
 								source={props.icon}
 								size={35}
-								color={props.color || theme.colors.primary}
+								color={props.color ?? theme.colors.primary}
 								testID='icon'
 							/>
 						)}
