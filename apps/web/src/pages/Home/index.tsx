@@ -1,5 +1,9 @@
 import ContainerLayout from '@/components/ContainerLayout'
 import NutritionalDataForm from '@/containers/NutritionalDataForm'
+import {
+	FormDataBase as NutritionalBaseFormData,
+	FormDataRequired as NutritionalFormData
+} from '@/containers/NutritionalDataForm/utils/schema'
 import PersonalDataForm from '@/containers/PersonalDataForm'
 import { FormData as PersonalFormData } from '@/containers/PersonalDataForm/utils/schema'
 import SportDataForm from '@/containers/SportDataForm'
@@ -9,6 +13,7 @@ import {
 } from '@/containers/SportDataForm/utils/schema'
 import ProfileMenu from '@/pages/Home/components/Menu'
 import { Button, Typography } from '@mui/material'
+import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
 import { SportProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/sportProfile'
 import { useUserStore } from '@sportapp/stores/src/user'
@@ -17,11 +22,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import { handleEdit } from './components/Menu/utils'
-import {
-	FormDataRequired as NutritionalFormData,
-	FormDataBase as NutritionalBaseFormData
-} from '@/containers/NutritionalDataForm/utils/schema'
-import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 
 function HomePage() {
 	const { t } = useTranslation()
@@ -65,13 +65,15 @@ function HomePage() {
 				residence_age: parseInt(data.residence.lengthOfStay)
 			}
 			await updateProfile(payload)
+			await getProfile()
+			handleEdit(0, isEditing, setIsEditing)
 		},
-		[updateProfile]
+		[getProfile, isEditing, updateProfile]
 	)
 
 	const handleUpdateSportProfile = useCallback(
 		async (data: SportFormData) => {
-			const heightPayload = data.height > 0 ? data.height * 10 : 0
+			const heightPayload = data.height > 0 ? data.height : 0
 
 			const payload: SportProfileUpdateRequest = {
 				available_training_hours: data.availableTrainingHoursPerWeek,
@@ -97,9 +99,10 @@ function HomePage() {
 			}
 
 			await updateSport(payload)
+			await getSport()
 			handleEdit(1, isEditing, setIsEditing)
 		},
-		[isEditing, updateSport]
+		[getSport, isEditing, updateSport]
 	)
 
 	const handleUpdateNutritionalProfile = useCallback(
@@ -109,9 +112,10 @@ function HomePage() {
 				nutritional_limitations: data.allergyType as string[]
 			}
 			await updateNutrition(payload)
+			await getNutrition()
 			handleEdit(2, isEditing, setIsEditing)
 		},
-		[isEditing, updateNutrition]
+		[getNutrition, isEditing, updateNutrition]
 	)
 
 	useEffect(() => {
@@ -178,7 +182,7 @@ function HomePage() {
 			}
 			defaultValues={{
 				weight: user?.sportData?.weight ?? 0,
-				height: (user?.sportData?.height ?? 0) / 10,
+				height: (user?.sportData?.height ?? 0) * 10,
 				trainingFrequency: user?.sportData?.training_frequency ?? '',
 				imc: user?.sportData?.bmi ?? 0,
 				trainingObjective:
@@ -238,8 +242,8 @@ function HomePage() {
 				</Typography>
 				<ProfileMenu
 					className='mt-14'
-					fullName='Jhon Doe'
-					email='jdoe@gmail.com'
+					fullName={`${user?.profileData?.first_name} ${user?.profileData?.last_name}`}
+					email={user?.profileData?.email}
 					selected={selected}
 					setSelected={setSelected}
 				/>

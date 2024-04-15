@@ -39,7 +39,9 @@ export default function ProfileMenu({
 				<ListItem disablePadding>
 					<ListItemButton>
 						<ListItemIcon>
-							<Avatar>JD</Avatar>
+							<Avatar>
+								{fullName?.split(' ').map((name) => name[0])}
+							</Avatar>
 						</ListItemIcon>
 						<ListItemText primary={fullName} secondary={email} />
 					</ListItemButton>
@@ -72,7 +74,7 @@ export default function ProfileMenu({
 							tabIndex={1}
 							className='profile-menu-item'>
 							<ListItemIcon>
-								<EmojiFoodBeverageIcon />
+								<SportsBasketballIcon />
 							</ListItemIcon>
 							<ListItemText
 								primary={t('profile.menu.sportData')}
@@ -88,7 +90,7 @@ export default function ProfileMenu({
 							onClick={() => handleSelected(2)}
 							className='profile-menu-item'>
 							<ListItemIcon>
-								<SportsBasketballIcon />
+								<EmojiFoodBeverageIcon />
 							</ListItemIcon>
 							<ListItemText
 								primary={t('profile.menu.nutritionData')}

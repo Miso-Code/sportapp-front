@@ -154,6 +154,7 @@ export default function PersonalDataForm({
 					fullWidth
 					disabled={inputsDisabled}
 					label={t('form.residenceLengthOfStay')}
+					inputProps={{ endAdornment: t('form.years.endLabel') }}
 					name='residence.lengthOfStay'
 					type='number'
 				/>
