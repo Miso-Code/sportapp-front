@@ -138,6 +138,7 @@ export default function RegisterFullContainer({
 				fullWidth
 				label={t('form.residenceLengthOfStay')}
 				name='residence.lengthOfStay'
+				inputProps={{ endAdornment: t('form.years.endLabel') }}
 				type='number'
 			/>
 

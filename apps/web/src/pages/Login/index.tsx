@@ -18,7 +18,11 @@ export default function Login() {
 	const { login } = useAuthStore()
 
 	const handleSubmit = async (data: FormData) => {
-		const result = await login(data)
+		const payload = {
+			email: data.email.toLowerCase(),
+			password: data.password
+		}
+		const result = await login(payload)
 
 		if (result) {
 			navigate('/home')

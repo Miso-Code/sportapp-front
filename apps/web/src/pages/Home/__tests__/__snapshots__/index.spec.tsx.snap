@@ -186,22 +186,18 @@ exports[`Home should render correctly 1`] = `
                       <div
                         class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-17o22dy-MuiAvatar-root"
                       >
-                        JD
+                        u
+                        u
                       </div>
                     </div>
                     <div
-                      class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+                      class="MuiListItemText-root css-tlelie-MuiListItemText-root"
                     >
                       <span
                         class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                       >
-                        Jhon Doe
+                        undefined undefined
                       </span>
-                      <p
-                        class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-                      >
-                        jdoe@gmail.com
-                      </p>
                     </div>
                     <span
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -287,12 +283,12 @@ exports[`Home should render correctly 1`] = `
                         <svg
                           aria-hidden="true"
                           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="EmojiFoodBeverageOutlinedIcon"
+                          data-testid="SportsBasketballOutlinedIcon"
                           focusable="false"
                           viewBox="0 0 24 24"
                         >
                           <path
-                            d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
                           />
                         </svg>
                       </div>
@@ -340,12 +336,12 @@ exports[`Home should render correctly 1`] = `
                         <svg
                           aria-hidden="true"
                           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="SportsBasketballOutlinedIcon"
+                          data-testid="EmojiFoodBeverageOutlinedIcon"
                           focusable="false"
                           viewBox="0 0 24 24"
                         >
                           <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
+                            d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
                           />
                         </svg>
                       </div>
@@ -628,22 +624,18 @@ exports[`Home should render correctly 1`] = `
                     <div
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-17o22dy-MuiAvatar-root"
                     >
-                      JD
+                      u
+                      u
                     </div>
                   </div>
                   <div
-                    class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+                    class="MuiListItemText-root css-tlelie-MuiListItemText-root"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                     >
-                      Jhon Doe
+                      undefined undefined
                     </span>
-                    <p
-                      class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-                    >
-                      jdoe@gmail.com
-                    </p>
                   </div>
                   <span
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -729,12 +721,12 @@ exports[`Home should render correctly 1`] = `
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                        data-testid="EmojiFoodBeverageOutlinedIcon"
+                        data-testid="SportsBasketballOutlinedIcon"
                         focusable="false"
                         viewBox="0 0 24 24"
                       >
                         <path
-                          d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
                         />
                       </svg>
                     </div>
@@ -782,12 +774,12 @@ exports[`Home should render correctly 1`] = `
                       <svg
                         aria-hidden="true"
                         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                        data-testid="SportsBasketballOutlinedIcon"
+                        data-testid="EmojiFoodBeverageOutlinedIcon"
                         focusable="false"
                         viewBox="0 0 24 24"
                       >
                         <path
-                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2M5.23 7.75C6.1 8.62 6.7 9.74 6.91 11H4.07c.15-1.18.56-2.28 1.16-3.25M4.07 13h2.84c-.21 1.26-.81 2.38-1.68 3.25-.6-.97-1.01-2.07-1.16-3.25M11 19.93c-1.73-.22-3.29-1-4.49-2.14 1.3-1.24 2.19-2.91 2.42-4.79H11zM11 11H8.93C8.69 9.12 7.81 7.44 6.5 6.2 7.71 5.06 9.27 4.29 11 4.07zm8.93 0h-2.84c.21-1.26.81-2.38 1.68-3.25.6.97 1.01 2.07 1.16 3.25M13 4.07c1.73.22 3.29.99 4.5 2.13-1.31 1.24-2.19 2.92-2.43 4.8H13zm0 15.86V13h2.07c.24 1.88 1.12 3.55 2.42 4.79-1.2 1.14-2.76 1.92-4.49 2.14m5.77-3.68c-.87-.86-1.46-1.99-1.68-3.25h2.84c-.15 1.18-.56 2.28-1.16 3.25"
+                          d="M2 19h18v2H2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-4 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h3v1.4L7.19 7.85c-.12.09-.19.24-.19.39v4.26c0 .28.22.5.5.5h4c.28 0 .5-.22.5-.5V8.24c0-.15-.07-.3-.19-.39L10 6.4V5h6zM9.5 7.28l1.5 1.2V12H8V8.48zM20 8h-2V5h2z"
                         />
                       </svg>
                     </div>

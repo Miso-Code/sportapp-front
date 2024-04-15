@@ -70,5 +70,6 @@
 	},
 	"add": "Add",
 	"remove": "Remove",
-	"save": "Save"
+	"save": "Save",
+	"years": { "endLabel": "years" }
 }

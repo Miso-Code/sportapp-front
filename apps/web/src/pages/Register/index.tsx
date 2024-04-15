@@ -35,7 +35,7 @@ export default function Register() {
 
 	const handleFirstSubmit = async (data: FormData) => {
 		const payload: RegisterUserRequest = {
-			email: data.email,
+			email: data.email.toLowerCase(),
 			password: data.password,
 			first_name: data.name,
 			last_name: data.lastName
