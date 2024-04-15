@@ -676,13 +676,13 @@ exports[`PersonalDataForm should render the component 1`] = `
             name="birthday"
             placeholder="MM/DD/YYYY"
             type="text"
-            value="04/14/2024"
+            value="01/01/1996"
           />
           <div
             class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
           >
             <button
-              aria-label="Choose date, selected date is Apr 14, 2024"
+              aria-label="Choose date, selected date is Jul 19, 1996"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
               tabindex="0"
               type="button"
