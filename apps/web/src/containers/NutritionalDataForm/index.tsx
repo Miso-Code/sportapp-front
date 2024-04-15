@@ -26,19 +26,24 @@ export default function NutritionalDataForm({
 	handleCustomSubmit
 }: Props) {
 	const { t } = useTranslation()
-	const { getAllNutritionalLimitations } = useUserStore()
+	const { getAllNutritionalLimitations, getNutrition } = useUserStore()
 	const { user } = useUserStore()
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(isRequired ? schemaRequired : schemaBase),
 		defaultValues: {
 			...defaultValues
 		},
+		values: {
+			allergyType: user?.nutritionData?.nutritional_limitations ?? [],
+			foodPreferences: user?.nutritionData?.food_preference ?? ''
+		},
 		mode: 'onChange'
 	})
 
 	const handleGetAsyncData = useCallback(async () => {
 		await getAllNutritionalLimitations()
-	}, [getAllNutritionalLimitations])
+		await getNutrition()
+	}, [getAllNutritionalLimitations, getNutrition])
 
 	const onSubmit = (data: FormDataRequired | FormDataBase) => {
 		handleCustomSubmit(data)

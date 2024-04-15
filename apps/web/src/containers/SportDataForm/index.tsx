@@ -24,6 +24,7 @@ import {
 	schemaBase,
 	schemaRequired
 } from './utils/schema'
+import { useUserStore } from '@sportapp/stores/src/user'
 
 export default function SportDataForm({
 	className = '',
@@ -36,11 +37,24 @@ export default function SportDataForm({
 }: Props) {
 	const { t } = useTranslation()
 	const { getSports } = useSportStore()
+	const { user } = useUserStore()
 	const { sports } = useSportStore()
 	const { handleSubmit, control, register } = useForm({
 		resolver: yupResolver(isRequired ? schemaRequired : schemaBase),
 		defaultValues: {
 			...defaultValues
+		},
+		values: {
+			weight: user?.sportData?.weight ?? 0,
+			height: user?.sportData?.height ?? 0,
+			trainingFrequency: user?.sportData?.training_frequency ?? '',
+			imc: user?.sportData?.bmi ?? 0,
+			trainingObjective:
+				user?.sportData?.training_objective ?? 'BUILD_MUSCLE_MASS',
+			favouriteSportId: user?.sportData?.favourite_sport_id ?? '',
+			availableTrainingHoursPerWeek:
+				user?.sportData?.available_training_hours ?? 0,
+			limitations: user?.sportData?.training_limitations ?? []
 		},
 		mode: 'onChange'
 	})
@@ -139,34 +153,6 @@ export default function SportDataForm({
 					]}
 				/>
 
-				{/* <SelectController
-					control={control}
-					selectProps={{ fullWidth: true, multiple: true }}
-					label={t('form.limitations')}
-					name='limitations'
-					formControlProps={{ disabled: inputsDisabled }}
-					options={[
-						{
-							label: t('form.trainingFrequencyValues.DAILY'),
-							value: 'daily'
-						},
-						{
-							label: t(
-								'form.trainingFrequencyValues.EVERY_OTHER_DAY'
-							),
-							value: 'every_other_day'
-						},
-						{
-							label: t('form.trainingFrequencyValues.WEEKLY'),
-							value: 'weekly'
-						},
-						{
-							label: t('form.trainingFrequencyValues.MONTHLY'),
-							value: 'monthly'
-						}
-					]}
-				/> */}
-
 				<Card className='w-full'>
 					<CardContent>
 						<Typography
@@ -187,7 +173,9 @@ export default function SportDataForm({
 												: 'InfoText'
 										}
 										className='mb-2'>
-										{`${t('form.limitation').toLowerCase()} #${index + 1}:`}
+										{`${t(
+											'form.limitation'
+										).toLowerCase()} #${index + 1}:`}
 									</Typography>
 									<ListItem className='pl-4 flex-col'>
 										<div
@@ -221,7 +209,9 @@ export default function SportDataForm({
 											type='button'
 											disabled={inputsDisabled}
 											onClick={() => remove(index)}>
-											{`${t('form.limitationsLabels.remove')} #${index + 1}`}
+											{`${t(
+												'form.limitationsLabels.remove'
+											)} #${index + 1}`}
 										</Button>
 									</ListItem>
 								</>
@@ -245,6 +235,7 @@ export default function SportDataForm({
 					fullWidth
 					disabled={inputsDisabled}
 					label={t('form.availableTrainingHoursPerWeek')}
+					inputProps={{ endAdornment: 'h' }}
 					name='availableTrainingHoursPerWeek'
 					type='number'
 				/>
@@ -254,6 +245,7 @@ export default function SportDataForm({
 					fullWidth
 					disabled={inputsDisabled}
 					label={t('form.weight')}
+					inputProps={{ endAdornment: 'kg' }}
 					name='weight'
 					type='number'
 				/>
@@ -262,6 +254,7 @@ export default function SportDataForm({
 					control={control}
 					fullWidth
 					disabled={inputsDisabled}
+					inputProps={{ endAdornment: 'm' }}
 					label={t('form.height')}
 					name='height'
 					type='number'
@@ -271,6 +264,7 @@ export default function SportDataForm({
 					control={control}
 					fullWidth
 					disabled
+					inputProps={{ endAdornment: '%' }}
 					label={t('form.imc')}
 					name='imc'
 					type='number'
