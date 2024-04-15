@@ -10,47 +10,6 @@ on:
         required: true
 
 jobs:
-  build-web:
-    name: Build Web App
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Setup Yarn
-        run: npm i -g yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build
-        run: yarn build:web
-
-  build-mobile:
-    name: Build Mobile App
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: adopt
-          cache: gradle
-
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Build
-        run: yarn build:mobile
-
   generate-release:
     name: Generate Release
     runs-on: ubuntu-latest
@@ -58,26 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: adopt
-          cache: gradle
-
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Build mobile code
-        run: yarn build:mobile
-
-      - name: Generate APK
-        run: yarn build:mobile
-
       - name: Resolve bump strategy
         id: bump_strategy
         env:
-          BUMP_STRATEGY: ${{ github.event.inputs.BUMP_STRATEGY }}
+          BUMP_STRATEGY: "${{ github.event.inputs.BUMP_STRATEGY }}"
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             ## Validate input
@@ -88,13 +31,7 @@ jobs:
             # echo "{name}={value}" >> $GITHUB_OUTPUT
             echo "strategy=$BUMP_STRATEGY" >> $GITHUB_OUTPUT
           else
-            if [[ "${{ github.event.head_commit.message }}" == *"[MAJOR]"* ]]; then
-              echo "strategy=major" >> $GITHUB_OUTPUT
-            elif [[ "${{ github.event.head_commit.message }}" == *"[MINOR]"* ]]; then
-              echo "strategy=minor" >> $GITHUB_OUTPUT
-            else
-              echo "strategy=patch" >> $GITHUB_OUTPUT
-            fi
+            echo "strategy=major" >> $GITHUB_OUTPUT
           fi
 
       - name: Get latest tag
@@ -111,7 +48,7 @@ jobs:
 
       - name: Build Changelog
         id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v3
+        uses: mikepenz/release-changelog-builder-action@v4.2.0
         with:
           fromTag: ${{ steps.get_latest_tag.outputs.tag }}
           toTag: ${{ steps.tag_version.outputs.new_tag }}
@@ -140,20 +77,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Rename APK
-        id: rename_apk
-        run: |
-          mv apps/mobile/android/app/build/outputs/apk/release/app-release.apk apps/mobile/android/app/build/outputs/apk/release/SportApp-${{ steps.tag_version.outputs.new_tag }}.apk
-          mv apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk apps/mobile/android/app/build/outputs/apk/debug/SportApp_debug-${{ steps.tag_version.outputs.new_tag }}.apk
-          echo "apk_debug=apps/mobile/android/app/build/outputs/apk/debug/SportApp_debug-${{ steps.tag_version.outputs.new_tag }}.apk" >> $GITHUB_OUTPUT
-          echo "apk_release=apps/mobile/android/app/build/outputs/apk/release/SportApp-${{ steps.tag_version.outputs.new_tag }}.apk" >> $GITHUB_OUTPUT
-
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.build_changelog.outputs.changelog }}
-          artifacts: |
-            ${{ steps.rename_apk.outputs.apk_debug }},${{ steps.rename_apk.outputs.apk_release }}
-          artifactContentType: application/vnd.android.package-archive
