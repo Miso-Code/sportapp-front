@@ -1,0 +1,37 @@
+{
+	"name": "@sportapp/sportapp-repository",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"format": "prettier --write \"**/*.{ts,tsx,md,js}\"",
+		"lint": "yarn lint:js",
+		"lint:js": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"pre-commit": "lint-staged",
+		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose"
+	},
+	"dependencies": {
+		"@tanstack/react-query": "^5.28.9",
+		"axios": "^1.6.8",
+		"zustand": "^4.5.2"
+	},
+	"devDependencies": {
+		"@sportapp/eslint-config": "*",
+		"@sportapp/prettier-config": "*",
+		"@sportapp/typescript-config": "*",
+		"@testing-library/jest-dom": "^6.4.2",
+		"@testing-library/react": "^14.2.2",
+		"@types/jest": "^29.5.12",
+		"babel-jest": "^29.7.0",
+		"jest": "^29.7.0",
+		"jest-environment-node": "^29.7.0",
+		"prettier": "^3.2.5",
+		"ts-jest": "^29.1.2",
+		"eslint": "^8.19.0",
+		"lint-staged": "^15.2.2",
+		"simple-zustand-devtools": "^1.1.0",
+		"ts-node": "^10.9.2",
+		"ts-jest-mock-import-meta": "^1.2.0"
+	}
+}

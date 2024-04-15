@@ -1,0 +1,74 @@
+{
+	"name": "Nombre",
+	"lastName": "Apellido",
+	"phone": "Teléfono",
+	"email": "Correo electrónico",
+	"password": "Contraseña",
+	"confirmPassword": "Confirmar contraseña",
+	"documentType": "Tipo de documento",
+	"documentTypeValues": {
+		"CC": "Cédula de ciudadanía",
+		"CE": "Cédula de extranjería",
+		"PA": "Pasaporte"
+	},
+	"documentNumber": "Número de identificación",
+	"nationalityCountry": "Pais de nacimiento",
+	"nationalityCity": "Ciudad de nacimiento",
+	"residenceCountry": "País de residencia",
+	"address": "Dirección",
+	"gender": "Género",
+	"genderValues": {
+		"MALE": "Masculino",
+		"FEMALE": "Femenino",
+		"OTHER": "Otro"
+	},
+	"residenceLengthOfStay": "Tiempo de residencia",
+	"residenceCity": "Ciudad de residencia",
+	"birthDate": "Fecha de nacimiento",
+	"other": "Otro",
+	"notExist": "No existe",
+	"favouriteSport": "Deporte que practicas o deseas practicar",
+	"trainingObjective": "Objetivo de entrenamiento",
+	"trainingObjectiveValue": {
+		"build_muscle_mass": "Aumento de masa muscular",
+		"lose_weight": "Pérdida de peso",
+		"tone_up": "Tonificación",
+		"maintain_fitness": "Mantener la forma física"
+	},
+	"trainingFrequency": "Frecuencia de entrenamiento",
+	"trainingFrequencyValues": {
+		"DAILY": "Diario",
+		"WEEKLY": "Semanal",
+		"MONTHLY": "Mensual",
+		"EVERY_OTHER_DAY": "Día de por medio"
+	},
+	"limitations": "Limitaciones",
+	"limitation": "Limitacion",
+	"limitationsLabels": {
+		"name": "Nombre de la limitacion",
+		"description": "Descripción de la limitacion",
+		"add": "Agregar limitacion",
+		"remove": "Eliminar limitacion"
+	},
+	"availableTrainingHoursPerWeek": "Tiempo para entrenar",
+	"weight": "Peso",
+	"height": "Altura",
+	"imc": "Porcentaje de IMC",
+	"allergyType": "Tipo de alergia",
+	"allergyTypeValue": {
+		"lactose": "Sin lactosa",
+		"seafood": "Sin mariscos",
+		"nuts": "Sin frutos secos",
+		"sugar": "Sin azúcar",
+		"gluten": "Sin gluten"
+	},
+	"foodPreferences": "Preferencias alimenticias",
+	"foodPreferenceValues": {
+		"VEGAN": "Vegano",
+		"VEGETARIAN": "Vegetariano",
+		"EVERYTHING": "Omnívoro(no tengo restricciones dietéticas)"
+	},
+	"add": "Agregar",
+	"remove": "Eliminar",
+	"save": "Guardar"
+}

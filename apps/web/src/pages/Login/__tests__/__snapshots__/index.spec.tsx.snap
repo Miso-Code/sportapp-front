@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage should render the component 1`] = `
+<div>
+  <div
+    class="login"
+  >
+    <main
+      class="section-main"
+    >
+      <h1
+        class="MuiTypography-root MuiTypography-h1 title css-o2w69a-MuiTypography-root"
+      >
+        app.name
+      </h1>
+      <div
+        class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded card-login css-172kgz0-MuiPaper-root"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-h6 card-title css-2ulfj5-MuiTypography-root"
+        >
+          login.default
+        </h6>
+        <button
+          data-testid="login-button"
+        >
+          Login
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth navigation css-10vjzfb-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          title="login.button"
+          type="button"
+        >
+          login.register.go
+        </button>
+      </div>
+    </main>
+    <section
+      class="section-secondary"
+    >
+      <figure
+        class="container-image"
+      >
+        <img
+          alt="login.image"
+          class="image-register"
+          src="mocked-file-content"
+        />
+      </figure>
+    </section>
+  </div>
+</div>
+`;

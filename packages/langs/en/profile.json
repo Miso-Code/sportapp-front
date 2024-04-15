@@ -1,0 +1,9 @@
+{
+	"title": "Profile",
+	"menu": {
+		"personalData": "Personal Data",
+		"sportData": "Sport Data",
+		"nutritionData": "Nutritional Data",
+		"paymentPlans": "Payment Plans"
+	}
+}

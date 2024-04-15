@@ -1,0 +1,8 @@
+{
+	"register": {
+		"base": "An error occurred while registering the user"
+	},
+	"login": {
+		"base": "An error occurred while logging in"
+	}
+}

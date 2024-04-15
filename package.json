@@ -1,38 +1,46 @@
 {
 	"name": "sportapp",
 	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"lint": "turbo lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"prepare": "husky install",
-		"pre-commit": "turbo pre-commit"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^19.2.1",
-		"@commitlint/config-conventional": "^19.1.0",
-		"@repo/eslint-config": "*",
-		"@repo/typescript-config": "*",
-		"husky": "^8.0.0",
-		"lint-staged": "^15.2.2",
-		"prettier": "^3.2.5",
-		"turbo": "latest"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "yarn@1.22.22",
 	"workspaces": {
 		"packages": [
 			"apps/*",
 			"packages/*"
-		],
-		"nohoist": [
-			"**/react-native",
-			"**/react-native/**",
-			"**/@react-native",
-			"**/@react-native/**"
 		]
+	},
+	"scripts": {
+		"build": "turbo build",
+		"build:web": "turbo build --filter=@sportapp/web",
+		"build:mobile": "turbo build --filter=@sportapp/mobile",
+		"prebuild:android": "turbo prebuild --filter=@sportapp/mobile",
+		"package:mobile": "turbo package --filter=@sportapp/mobile",
+		"dev": "turbo dev",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"lint": "turbo lint",
+		"lint:web":  "turbo lint --filter=@sportapp/web",
+		"lint:mobile":  "turbo lint --filter=@sportapp/mobile",
+		"test": "turbo test",
+		"test:web":  "turbo test --filter=@sportapp/web",
+		"test:mobile":  "turbo test --filter=@sportapp/mobile",
+		"pre-commit": "turbo pre-commit",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"i18next": "^23.10.1",
+		"react-i18next": "^14.1.0",
+		"typescript": "5.3.3"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.2.1",
+		"@commitlint/config-conventional": "^19.1.0",
+		"@sportapp/eslint-config": "*",
+		"@sportapp/prettier-config": "*",
+		"@sportapp/typescript-config": "*",
+		"husky": "^8.0.0",
+		"lint-staged": "^15.2.2",
+		"turbo": "latest"
+	},
+	"packageManager": "yarn@1.22.22",
+	"engines": {
+		"node": ">=18"
 	}
 }

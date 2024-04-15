@@ -1,0 +1,74 @@
+{
+	"name": "Name",
+	"lastName": "Last Name",
+	"phone": "Phone",
+	"email": "Email",
+	"password": "Password",
+	"confirmPassword": "Confirm Password",
+	"documentType": "Document Type",
+	"documentTypeValues": {
+		"CC": "Citizenship Card",
+		"CE": "Foreigner ID",
+		"PA": "Passport"
+	},
+	"documentNumber": "Document Number",
+	"nationalityCountry": "Country of Birth",
+	"nationalityCity": "City of Birth",
+	"residenceCountry": "Country of Residence",
+	"address": "Address",
+	"gender": "Gender",
+	"genderValues": {
+		"MALE": "Male",
+		"FEMALE": "Female",
+		"OTHER": "Other"
+	},
+	"residenceLengthOfStay": "Length of Residence",
+	"residenceCity": "City of Residence",
+	"birthDate": "Date of Birth",
+	"other": "Other",
+	"notExist": "Not exist",
+	"favouriteSport": "Favourite Sport",
+	"trainingObjective": "Training Objective",
+	"trainingObjectiveValue": {
+		"build_muscle_mass": "Build Muscle Mass",
+		"lose_weight": "Lose Weight",
+		"tone_up": "Tone Up",
+		"maintain_fitness": "Maintain Fitness"
+	},
+	"trainingFrequency": "Training Frequency",
+	"trainingFrequencyValues": {
+		"DAILY": "Daily",
+		"WEEKLY": "Weekly",
+		"MONTHLY": "Monthly",
+		"EVERY_OTHER_DAY": "Every other day"
+	},
+	"limitations": "Limitations",
+	"limitation": "Limitations",
+	"limitationsLabels": {
+		"name": "Limitation Name",
+		"description": "Limitation Description",
+		"add": "Add Limitation",
+		"remove": "Remove Limitation"
+	},
+	"availableTrainingHoursPerWeek": "Available Training Time",
+	"weight": "Weight",
+	"height": "Height",
+	"imc": "IMC Perncentage",
+	"allergyType": "Allergy Type",
+	"allergyTypeValue": {
+		"lactose": "No lactose",
+		"seafood": "No seafood",
+		"nuts": "No nuts",
+		"sugar": "No sugar",
+		"gluten": "No gluten"
+	},
+	"foodPreferences": "Food Preferences",
+	"foodPreferenceValues": {
+		"VEGAN": "Vegan",
+		"VEGETARIAN": "Vegetarian",
+		"EVERYTHING": "Everything(No restrictions)"
+	},
+	"add": "Add",
+	"remove": "Remove",
+	"save": "Save"
+}

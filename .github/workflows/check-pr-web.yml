@@ -1,0 +1,56 @@
+name: Check PR to Web App
+
+on:
+    pull_request:
+        branches: ['develop', 'main']
+        paths:
+            - 'apps/web/**'
+
+jobs:
+    lint-and-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'yarn'
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Lint
+              run: yarn lint:web
+
+            - name: Run the tests
+              run: yarn test:web
+
+            - name: SonarCloud Scan
+              uses: SonarSource/sonarcloud-github-action@master
+              with:
+                  projectBaseDir: apps/web
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    build:
+        runs-on: ubuntu-latest
+        needs: lint-and-test
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'yarn'
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build web app
+              run: yarn build:web

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router should render the app 1`] = `
+<div>
+  <div>
+    Home
+  </div>
+</div>
+`;

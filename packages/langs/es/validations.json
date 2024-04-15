@@ -1,0 +1,10 @@
+{
+	"email": "El correo electrónico es invalido",
+	"emailOrPassword": "El correo electrónico o la contraseña son incorrectos",
+	"invalid": "El campo no es válido",
+	"required": "El campo es requerido",
+	"password": {
+		"required": "La contraseña es requerida",
+		"restrictions": "La Contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un caracter especial y un número"
+	}
+}

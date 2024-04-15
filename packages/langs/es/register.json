@@ -1,0 +1,13 @@
+{
+	"default": "Registro",
+	"go": "Registrarse",
+	"button": "Ingresar",
+	"button-alt": "Boton de Ingresar",
+	"button-two": "Guardar",
+	"login": {
+		"default": "Inicia sesión",
+		"question": "¿Ya tienes usuario? "
+	},
+	"image": "Imagen de Registro",
+	"full": "Ya casi acabamos tu registro, por favor llena los siguientes datos, para poder usar todas las funcionalidades."
+}
