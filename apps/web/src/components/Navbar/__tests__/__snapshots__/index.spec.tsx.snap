@@ -12,7 +12,7 @@ exports[`Navbar should render with className 1`] = `
         class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
       >
         <button
-          class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+          class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
           tabindex="0"
           type="button"
         >
@@ -28,7 +28,7 @@ exports[`Navbar should render with className 1`] = `
             />
           </svg>
           <span
-            class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+            class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
           >
             navbar.profile
           </span>
@@ -112,7 +112,7 @@ exports[`Navbar should render with className 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+          class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
           tabindex="0"
           type="button"
         >
@@ -128,7 +128,7 @@ exports[`Navbar should render with className 1`] = `
             />
           </svg>
           <span
-            class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+            class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
           >
             navbar.settings
           </span>
@@ -142,10 +142,10 @@ exports[`Navbar should render with className 1`] = `
 </div>
 `;
 
-exports[`Navbar should render with currentNavigationStep 1`] = `
+exports[`Navbar should render with config step 1`] = `
 <div>
   <div
-    class="navbar  MuiBox-root css-2uchni"
+    class="navbar test-class MuiBox-root css-2uchni"
   >
     <header
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
@@ -284,10 +284,10 @@ exports[`Navbar should render with currentNavigationStep 1`] = `
 </div>
 `;
 
-exports[`Navbar should render with currentNavigationStep and className 1`] = `
+exports[`Navbar should render with home step 1`] = `
 <div>
   <div
-    class="navbar test-class MuiBox-root css-2uchni"
+    class="navbar  MuiBox-root css-2uchni"
   >
     <header
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
@@ -438,7 +438,7 @@ exports[`Navbar should render without errors 1`] = `
         class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
       >
         <button
-          class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+          class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
           tabindex="0"
           type="button"
         >
@@ -454,7 +454,7 @@ exports[`Navbar should render without errors 1`] = `
             />
           </svg>
           <span
-            class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+            class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
           >
             navbar.profile
           </span>
@@ -538,7 +538,7 @@ exports[`Navbar should render without errors 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+          class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
           tabindex="0"
           type="button"
         >
@@ -554,7 +554,7 @@ exports[`Navbar should render without errors 1`] = `
             />
           </svg>
           <span
-            class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+            class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
           >
             navbar.settings
           </span>

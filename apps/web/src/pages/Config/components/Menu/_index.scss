@@ -1,0 +1,32 @@
+.config-menu {
+	@apply mt-14;
+
+	&-section {
+		@apply mt-4;
+
+		&-container {
+			@apply py-0;
+		}
+
+		&__main {
+			@apply mt-0;
+		}
+	}
+
+	&-divider {
+		@apply mx-4;
+	}
+
+	&-item {
+		@apply h-14;
+
+		/* stylelint-disable-next-line selector-class-pattern */
+		&.Mui-selected {
+			background-color: #ebebeb;
+
+			&:hover {
+				background-color: #ddd;
+			}
+		}
+	}
+}
