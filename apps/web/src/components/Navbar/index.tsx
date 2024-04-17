@@ -9,15 +9,30 @@ import {
 	BottomNavigationAction,
 	Box
 } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './_index.scss'
 import { Props } from './interfaces'
-import { useTranslation } from 'react-i18next'
+import { useMemo } from 'react'
 
-export default function Navbar({
-	className = '',
-	currentNavigationStep = 0
-}: Props) {
+export default function Navbar({ className = '' }: Props) {
 	const { t } = useTranslation()
+	const navigate = useNavigate()
+	const location = useLocation()
+
+	const currentPath = location.pathname
+
+	const currentStep = useMemo(() => {
+		switch (currentPath) {
+			case '/home':
+				return 0
+			case '/config':
+				return 4
+			default:
+				return 0
+		}
+	}, [currentPath])
+
 	return (
 		<Box className={`navbar ${className}`} flexGrow={0}>
 			<AppBar
@@ -26,30 +41,37 @@ export default function Navbar({
 				position='relative'>
 				<BottomNavigation
 					className='navbar-content-navigation'
-					value={currentNavigationStep}
+					value={currentStep}
 					showLabels>
 					<BottomNavigationAction
 						label={t('navbar.profile')}
+						LinkComponent={'a'}
+						onClick={() => navigate('/home')}
 						className='navbar-content-navigation-button navbar-content-navigation-button__start'
 						icon={<PersonIcon />}
 					/>
 					<BottomNavigationAction
 						label={t('navbar.training')}
+						LinkComponent={'a'}
 						className='navbar-content-navigation-button'
 						icon={<FavoriteIcon />}
 					/>
 					<BottomNavigationAction
 						label={t('navbar.otherServices')}
+						LinkComponent={'a'}
 						className='navbar-content-navigation-button'
 						icon={<ShoppingIcon />}
 					/>
 					<BottomNavigationAction
 						label={t('navbar.preferential')}
+						LinkComponent={'a'}
 						className='navbar-content-navigation-button'
 						icon={<StartIcon />}
 					/>
 					<BottomNavigationAction
 						label={t('navbar.settings')}
+						LinkComponent={'a'}
+						onClick={() => navigate('/config')}
 						className='navbar-content-navigation-button navbar-content-navigation-button__end'
 						icon={<SettingsIcon />}
 					/>
