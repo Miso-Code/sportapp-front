@@ -17,5 +17,8 @@ jest.mock('react-i18next', () => ({
 
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
-	useNavigate: () => jest.fn()
+	useNavigate: () => jest.fn(),
+	useLocation: () => ({
+		pathname: '/'
+	})
 }))
