@@ -1,10 +1,8 @@
-import { lazy } from 'react'
-import { Navigate } from 'react-router-dom'
 import LayoutPublic from '@/router/public/Layout'
+import { Navigate } from 'react-router-dom'
+import { LoginLazy, RegisterLazy } from './lazy-pages'
 
 export default function routes() {
-	const LoginLazy = lazy(() => import('@/pages/Login'))
-	const RegisterLazy = lazy(() => import('@/pages/Register'))
 	return [
 		{
 			path: '/register',

@@ -1,14 +1,13 @@
 import Layout from '@/router/private/Layout'
-import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
+import { ConfigLazy, HomeLazy } from '@/router/private/lazy-pages'
 
 export default function privateRoutes() {
-	const Home = lazy(() => import('pages/Home'))
-
 	return {
 		element: <Layout />,
 		children: [
-			{ path: '/home', element: <Home /> },
+			{ path: '/home', element: <HomeLazy /> },
+			{ path: '/config', element: <ConfigLazy /> },
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]
 	}
