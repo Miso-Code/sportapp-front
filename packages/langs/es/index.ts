@@ -1,4 +1,5 @@
 import errors from './errors.json'
+import config from './config.json'
 import es from './es.json'
 import form from './form.json'
 import login from './login.json'
@@ -11,7 +12,6 @@ import sportDataForm from './sportDataForm.json'
 import validations from './validations.json'
 import training from './training.json'
 import session from './session.json'
-
 
 const defaultTranslate = {
 	translation: {
@@ -27,7 +27,8 @@ const defaultTranslate = {
 		sportDataForm,
 		nutritionalDataForm,
 		training,
-		session
+		session,
+		config
 	}
 }
 

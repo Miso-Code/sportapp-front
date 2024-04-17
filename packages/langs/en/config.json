@@ -1,0 +1,11 @@
+{
+	"title": "Configuration",
+	"menu": {
+		"language": "Language",
+		"logout": "Logout"
+	},
+	"language": {
+		"en": "English",
+		"es": "Spanish"
+	}
+}
