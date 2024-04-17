@@ -2,7 +2,7 @@ import { FormData } from '@/containers/Register/Default/utils/schema'
 import { FormData as FormDataFull } from '@/containers/Register/Full/utils/schema'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import { render, RenderResult, waitFor } from '@testing-library/react'
-import Register from 'pages/Register'
+import Register from '@/pages/User/Register'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,46 +17,47 @@ jest.mock(
 			step: number
 			onHandleFirstSubmit: (data: FormData) => void
 			onHandleSecondSubmit: (data: FormDataFull) => void
-		}) => (
-			<div>
-				RegisterContainer-{step}
-				<button
-					data-testid='onHandleFirstSubmit'
-					onClick={() => {
-						const data: FormData = {
-							email: 'email',
-							password: 'password',
-							name: 'name',
-							lastName: 'lastName'
-						}
-						onHandleFirstSubmit(data)
-					}}></button>
-				<button
-					data-testid='onHandleSecondSubmit'
-					onClick={() => {
-						const data: FormDataFull = {
-							birthday: new Date(),
-							documentNumber: 'documentNumber',
-							documentType: 'documentType',
-							email: 'email',
-							gender: 'M',
-							lastName: 'lastName',
-							name: 'name',
-							password: 'password',
-							nationality: {
-								city: 'city',
-								country: 'country'
-							},
-							residence: {
-								country: 'country',
-								city: 'city',
-								lengthOfStay: 'lengthOfStay'
+		}) =>
+			(
+				<div>
+					RegisterContainer-{step}
+					<button
+						data-testid='onHandleFirstSubmit'
+						onClick={() => {
+							const data: FormData = {
+								email: 'email',
+								password: 'password',
+								name: 'name',
+								lastName: 'lastName'
 							}
-						}
-						onHandleSecondSubmit(data)
-					}}></button>
-			</div>
-		)
+							onHandleFirstSubmit(data)
+						}}></button>
+					<button
+						data-testid='onHandleSecondSubmit'
+						onClick={() => {
+							const data: FormDataFull = {
+								birthday: new Date(),
+								documentNumber: 'documentNumber',
+								documentType: 'documentType',
+								email: 'email',
+								gender: 'M',
+								lastName: 'lastName',
+								name: 'name',
+								password: 'password',
+								nationality: {
+									city: 'city',
+									country: 'country'
+								},
+								residence: {
+									country: 'country',
+									city: 'city',
+									lengthOfStay: 'lengthOfStay'
+								}
+							}
+							onHandleSecondSubmit(data)
+						}}></button>
+				</div>
+			)
 )
 
 jest.mock('react', () => {
