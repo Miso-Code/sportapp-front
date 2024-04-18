@@ -11,7 +11,7 @@ import {
 	FormDataBase as SportDataBase,
 	FormDataRequired as SportFormData
 } from '@/containers/SportDataForm/utils/schema'
-import ProfileMenu from '@/pages/Home/components/Menu'
+import ProfileMenu from '@/pages/User/Home/components/Menu'
 import { Button, Typography } from '@mui/material'
 import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'

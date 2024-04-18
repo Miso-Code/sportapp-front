@@ -18,15 +18,16 @@ jest.mock(
 			onHandleSubmit
 		}: {
 			onHandleSubmit: (data: { email: string; password: string }) => void
-		}) => (
-			<button
-				data-testid='login-button'
-				onClick={() => {
-					onHandleSubmit({ email: 'test', password: 'test' })
-				}}>
-				Login
-			</button>
-		)
+		}) =>
+			(
+				<button
+					data-testid='login-button'
+					onClick={() => {
+						onHandleSubmit({ email: 'test', password: 'test' })
+					}}>
+					Login
+				</button>
+			)
 )
 
 jest.mock('@sportapp/stores/src/auth', () => ({

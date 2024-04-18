@@ -5,6 +5,7 @@
 	"email": "Correo electrónico",
 	"password": "Contraseña",
 	"confirmPassword": "Confirmar contraseña",
+	"companyName": "Nombre de la empresa",
 	"documentType": "Tipo de documento",
 	"documentTypeValues": {
 		"CC": "Cédula de ciudadanía",

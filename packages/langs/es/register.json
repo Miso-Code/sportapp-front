@@ -9,5 +9,8 @@
 		"question": "¿Ya tienes usuario? "
 	},
 	"image": "Imagen de Registro",
-	"full": "Ya casi acabamos tu registro, por favor llena los siguientes datos, para poder usar todas las funcionalidades."
+	"full": "Ya casi acabamos tu registro, por favor llena los siguientes datos, para poder usar todas las funcionalidades.",
+	"partner": {
+		"title": "Registro de Socio de Negocio"
+	}
 }

@@ -2,7 +2,7 @@ import { FormDataRequired as NutritionalFormData } from '@/containers/Nutritiona
 import { FormData as PersonalFormData } from '@/containers/PersonalDataForm/utils/schema'
 import { FormDataRequired as SportFormData } from '@/containers/SportDataForm/utils/schema'
 import { RenderResult, render } from '@testing-library/react'
-import HomePage from 'pages/Home'
+import HomePage from '@/pages/User/Home'
 import { ReactNode, useState } from 'react'
 
 jest.mock(

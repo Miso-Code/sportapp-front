@@ -13,10 +13,10 @@ import {
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import { format } from 'date-fns'
-import 'pages/Register/_index.scss'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import './_index.scss'
 
 export default function Register() {
 	const [step, setStep] = useState(0)
