@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RegisterDefaultContainer should render the component 1`] = `
+exports[`RegisterPartnerContainer should render the component 1`] = `
 <div>
   <form
     class="register-form"
@@ -14,7 +14,7 @@ exports[`RegisterDefaultContainer should render the component 1`] = `
         for=":r0:"
         id=":r0:-label"
       >
-        form.name
+        form.companyName
       </label>
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -22,8 +22,8 @@ exports[`RegisterDefaultContainer should render the component 1`] = `
         <input
           aria-invalid="false"
           class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="name"
-          name="name"
+          id="companyName"
+          name="companyName"
           type="text"
           value=""
         />
@@ -35,7 +35,7 @@ exports[`RegisterDefaultContainer should render the component 1`] = `
             class="css-yjsfm1"
           >
             <span>
-              form.name
+              form.companyName
             </span>
           </legend>
         </fieldset>
@@ -49,42 +49,6 @@ exports[`RegisterDefaultContainer should render the component 1`] = `
         data-shrink="false"
         for=":r1:"
         id=":r1:-label"
-      >
-        form.lastName
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
-      >
-        <input
-          aria-invalid="false"
-          class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          id="lastName"
-          name="lastName"
-          type="text"
-          value=""
-        />
-        <fieldset
-          aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="css-yjsfm1"
-          >
-            <span>
-              form.lastName
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-    </div>
-    <div
-      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-        data-shrink="false"
-        for=":r2:"
-        id=":r2:-label"
       >
         form.email
       </label>
@@ -119,8 +83,8 @@ exports[`RegisterDefaultContainer should render the component 1`] = `
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="false"
-        for=":r3:"
-        id=":r3:-label"
+        for=":r2:"
+        id=":r2:-label"
       >
         form.password
       </label>

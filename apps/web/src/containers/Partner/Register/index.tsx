@@ -10,13 +10,16 @@ import './_index.scss'
 
 export default function RegisterPartnerContainer({
 	onHandleSubmit,
-	isDisabled,
-	defaultValues
+	isDisabled
 }: Props) {
 	const { t } = useTranslation()
 	const { handleSubmit, control } = useForm<FormData>({
 		resolver: yupResolver(schema),
-		defaultValues,
+		defaultValues: {
+			companyName: '',
+			email: '',
+			password: ''
+		},
 		mode: 'onChange'
 	})
 

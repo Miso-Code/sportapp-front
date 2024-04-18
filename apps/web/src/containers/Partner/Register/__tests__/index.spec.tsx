@@ -2,15 +2,18 @@ import {
 	RenderResult,
 	fireEvent,
 	render,
-	waitFor
+	waitFor,
+	act
 } from '@testing-library/react'
-import DefaultRegister from 'containers/Register/Default'
+import RegisterPartnerContainer from 'containers/Partner/Register'
 
-describe('RegisterDefaultContainer', () => {
+describe('RegisterPartnerContainer', () => {
 	let wrapper: RenderResult
 
 	beforeEach(() => {
-		wrapper = render(<DefaultRegister onHandleSubmit={jest.fn()} />)
+		wrapper = render(
+			<RegisterPartnerContainer onHandleSubmit={jest.fn()} />
+		)
 	})
 
 	afterEach(() => {
@@ -23,35 +26,29 @@ describe('RegisterDefaultContainer', () => {
 
 	it('should call onHandleSubmit', async () => {
 		const onHandleSubmit = jest.fn()
-		wrapper.rerender(<DefaultRegister onHandleSubmit={onHandleSubmit} />)
+		wrapper.rerender(
+			<RegisterPartnerContainer onHandleSubmit={onHandleSubmit} />
+		)
 
-		let inputName = wrapper.container.querySelector('#name')
-		let inputLastName = wrapper.container.querySelector('#lastName')
-		let inputEmail = wrapper.container.querySelector('#email')
-		let inputPassword = wrapper.container.querySelector('#password')
+		const inputCompanyName = wrapper.container.querySelector('#companyName')
+		const inputEmail = wrapper.container.querySelector('#email')
+		const inputPassword = wrapper.container.querySelector('#password')
 		const button = wrapper.container.querySelector('button[type="submit"]')
 
-		fireEvent.change(inputName as Element, {
-			target: { value: 'John' }
+		act(() => {
+			fireEvent.change(inputCompanyName as Element, {
+				target: { value: 'John Doe' }
+			})
+			fireEvent.change(inputEmail as Element, {
+				target: { value: 'test@correo.com' }
+			})
+			fireEvent.change(inputPassword as Element, {
+				target: { value: '123456uU*' }
+			})
+			fireEvent.submit(button as Element)
 		})
-		fireEvent.change(inputLastName as Element, {
-			target: { value: 'Doe' }
-		})
-		fireEvent.change(inputEmail as Element, {
-			target: { value: 'test@correo.com' }
-		})
-		fireEvent.change(inputPassword as Element, {
-			target: { value: '123456uU*' }
-		})
-		fireEvent.submit(button as Element)
 
-		inputName = wrapper.container.querySelector('#name')
-		inputLastName = wrapper.container.querySelector('#lastName')
-		inputEmail = wrapper.container.querySelector('#email')
-		inputPassword = wrapper.container.querySelector('#password')
-
-		expect(inputName).toHaveValue('John')
-		expect(inputLastName).toHaveValue('Doe')
+		expect(inputCompanyName).toHaveValue('John Doe')
 		expect(inputEmail).toHaveValue('test@correo.com')
 		expect(inputPassword).toHaveValue('123456uU*')
 
