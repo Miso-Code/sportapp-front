@@ -5,6 +5,7 @@
 	"email": "Email",
 	"password": "Password",
 	"confirmPassword": "Confirm Password",
+	"companyName": "Company Name",
 	"documentType": "Document Type",
 	"documentTypeValues": {
 		"CC": "Citizenship Card",

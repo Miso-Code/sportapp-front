@@ -9,5 +9,8 @@
 		"question": "Already have an account? "
 	},
 	"image": "Register image",
-	"full": "We are almost finished with your registration, please fill in the following information, in order to be able to use all the functionalities."
+	"full": "We are almost finished with your registration, please fill in the following information, in order to be able to use all the functionalities.",
+	"partner": {
+		"title": "Register as a partner"
+	}
 }
