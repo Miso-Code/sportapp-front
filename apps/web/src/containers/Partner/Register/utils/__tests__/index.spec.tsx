@@ -1,10 +1,9 @@
-import schema from 'containers/Register/Default/utils/schema'
+import schema from 'containers/Partner/Register/utils/schema'
 
 describe('schema default register', () => {
 	it('should validate the schema', async () => {
 		const data = {
-			name: 'John',
-			lastName: 'Doe',
+			companyName: 'test',
 			email: 'test@gmail.com',
 			password: '123456uU*'
 		}
@@ -14,8 +13,7 @@ describe('schema default register', () => {
 
 	it('should not validate the schema', async () => {
 		const data = {
-			name: '',
-			lastName: '',
+			companyName: '',
 			email: '',
 			password: ''
 		}

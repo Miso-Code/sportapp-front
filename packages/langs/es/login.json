@@ -1,9 +1,12 @@
 {
-	"default": "Inicio de sesión ",
+	"default": "Inicio de sesión",
 	"go": "Iniciar",
 	"register": {
 		"default": "Registro",
 		"go": "Registrarse"
+	},
+	"partner": {
+		"title": "Inicio de sesión de Socio de Negocio"
 	},
 	"image": "Imagen de login"
 }
