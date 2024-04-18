@@ -1,6 +1,6 @@
 import LayoutPublic from '@/router/public/Layout'
 import { Navigate } from 'react-router-dom'
-import { LoginLazy, RegisterLazy } from './lazy-pages'
+import { LoginLazy, RegisterLazy, RegisterPartnerLazy } from './lazy-pages'
 
 export default function routes() {
 	return [
@@ -17,6 +17,14 @@ export default function routes() {
 			element: (
 				<LayoutPublic>
 					<LoginLazy />
+				</LayoutPublic>
+			)
+		},
+		{
+			path: '/partner/register',
+			element: (
+				<LayoutPublic>
+					<RegisterPartnerLazy />
 				</LayoutPublic>
 			)
 		},
