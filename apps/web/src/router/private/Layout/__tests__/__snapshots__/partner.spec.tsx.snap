@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Layout should render the component 1`] = `
+exports[`LayoutPartner should render the component 1`] = `
 <div>
   <div>
     Navigate
@@ -8,7 +8,7 @@ exports[`Layout should render the component 1`] = `
 </div>
 `;
 
-exports[`Layout should return navigate component 1`] = `
+exports[`LayoutPartner should return navigate component 1`] = `
 <div>
   <div>
     Navigate
