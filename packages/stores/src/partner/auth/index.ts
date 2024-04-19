@@ -135,7 +135,7 @@ export const usePartnerAuthStore = create(
 				set((state) => ({ ...state, ...initialAuthState }))
 		}),
 		{
-			name: 'auth-storage',
+			name: 'auth-partner-storage',
 			storage: createJSONStorage(() => customStorage())
 		}
 	)
