@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeyboardAvoidingDialog should render correctly 1`] = `
+<View
+  accessibilityLiveRegion="polite"
+  accessibilityViewIsModal={true}
+  collapsable={false}
+  onAccessibilityEscape={[Function]}
+  pointerEvents="auto"
+  style={
+    {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  testID="dialog"
+>
+  <View
+    accessibilityLabel="Close modal"
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    importantForAccessibility="no"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(50, 47, 55, 0.4)",
+        "flex": 1,
+        "opacity": 1,
+      }
+    }
+    testID="dialog-backdrop"
+  />
+  <View
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "bottom": 0,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        {
+          "marginBottom": 0,
+          "marginTop": 0,
+        },
+        undefined,
+      ]
+    }
+    testID="dialog-wrapper"
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(255, 255, 255, 1)",
+          "borderRadius": 0,
+          "bottom": 0,
+          "marginHorizontal": 26,
+          "marginVertical": 0,
+          "opacity": 1,
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 3,
+        }
+      }
+      testID="dialog-surface-outer-layer"
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderRadius": 0,
+            "elevation": 24,
+            "flex": undefined,
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.3,
+            "shadowRadius": 1,
+          }
+        }
+        testID="dialog-surface"
+      >
+        <Text
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": undefined,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "marginTop": 24,
+                },
+                undefined,
+              ],
+            ]
+          }
+          testID="content"
+        >
+          Test
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

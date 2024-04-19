@@ -28,7 +28,11 @@ const Training: React.FC = () => {
 					title={t('training.nutritionalPlan')}
 					icon='receipt'
 				/>
-				<ListItem title={t('training.others')} icon='cart' />
+				<ListItem
+					title={t('training.others')}
+					icon='cart'
+					onPress={() => router.push('training/servicesAndProducts')}
+				/>
 				<ListItem title={t('training.preferentials')} icon='star' />
 			</List.Section>
 		</View>

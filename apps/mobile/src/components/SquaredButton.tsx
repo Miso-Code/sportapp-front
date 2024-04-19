@@ -11,7 +11,7 @@ export default function SquaredButton({
 		<Button
 			mode='contained'
 			onPress={onPress}
-			style={styles.button}
+			style={{ ...props.style, ...styles.button }}
 			{...props}>
 			{value}
 		</Button>

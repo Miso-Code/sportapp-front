@@ -1,0 +1,684 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ServicesAndProductsCheckout should render correctly 1`] = `
+[
+  <View
+    testID="modalProcessing"
+    visible={false}
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "gap": 10,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        accessibilityRole="progressbar"
+        accessibilityState={
+          {
+            "busy": true,
+          }
+        }
+        accessible={true}
+        style={
+          [
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "height": 48,
+              "opacity": 1,
+              "width": 48,
+            }
+          }
+        >
+          <View
+            collapsable={false}
+            style={
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "height": 48,
+                  "transform": [
+                    {
+                      "rotate": "45deg",
+                    },
+                  ],
+                  "width": 48,
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "height": 24,
+                    "overflow": "hidden",
+                    "width": 48,
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "height": 48,
+                      "transform": [
+                        {
+                          "translateY": 0,
+                        },
+                        {
+                          "rotate": "-165deg",
+                        },
+                      ],
+                      "width": 48,
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    style={
+                      {
+                        "height": 24,
+                        "overflow": "hidden",
+                        "width": 48,
+                      }
+                    }
+                  >
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "borderColor": "rgba(103, 80, 164, 1)",
+                          "borderRadius": 24,
+                          "borderWidth": 4.8,
+                          "height": 48,
+                          "width": 48,
+                        }
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            collapsable={false}
+            style={
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "height": 48,
+                  "transform": [
+                    {
+                      "rotate": "45deg",
+                    },
+                  ],
+                  "width": 48,
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "height": 24,
+                    "overflow": "hidden",
+                    "top": 24,
+                    "width": 48,
+                  }
+                }
+              >
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "height": 48,
+                      "transform": [
+                        {
+                          "translateY": -24,
+                        },
+                        {
+                          "rotate": "345deg",
+                        },
+                      ],
+                      "width": 48,
+                    }
+                  }
+                >
+                  <View
+                    collapsable={false}
+                    style={
+                      {
+                        "height": 24,
+                        "overflow": "hidden",
+                        "width": 48,
+                      }
+                    }
+                  >
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "borderColor": "rgba(103, 80, 164, 1)",
+                          "borderRadius": 24,
+                          "borderWidth": 4.8,
+                          "height": 48,
+                          "width": 48,
+                        }
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <Text
+        style={
+          [
+            {
+              "textAlign": "left",
+            },
+            {
+              "color": "rgba(28, 27, 31, 1)",
+              "writingDirection": "ltr",
+            },
+            [
+              {
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0.15,
+                "lineHeight": 24,
+              },
+              undefined,
+            ],
+          ]
+        }
+      >
+        Procesando el Pago
+      </Text>
+    </View>
+  </View>,
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignItems": "center",
+        "gap": 20,
+        "justifyContent": "center",
+        "marginHorizontal": 15,
+        "paddingBottom": 110,
+        "paddingTop": 110,
+      }
+    }
+    contentInsetAdjustmentBehavior="automatic"
+  >
+    <View>
+      <View
+        category="category"
+        image="image_url"
+        price={100}
+        priceFrequency="payment_frequency"
+        testID="productCard"
+        title="name"
+      />
+      <View>
+        <View
+          style={{}}
+        >
+          <View
+            style={
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "justifyContent": "flex-start",
+                "marginBottom": 10,
+                "marginTop": 10,
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              style={{}}
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    {},
+                  ]
+                }
+              >
+                description
+              </Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+      <TextInput
+        keyboardType="numeric"
+        label="Cantidad"
+        mode="outlined"
+        onChangeText={[Function]}
+        style={
+          {
+            "width": "100%",
+          }
+        }
+        testID="quantity"
+        value="10"
+      />
+      <TextInput
+        keyboardType="numeric"
+        label="Card Number"
+        left={
+          <TextInput.Icon
+            forceTextInputFocus={true}
+            icon="credit-card-outline"
+          />
+        }
+        mode="outlined"
+        onChangeText={[Function]}
+        style={
+          {
+            "width": "100%",
+          }
+        }
+        testID="cardNumber"
+      />
+      <TextInput
+        label="Card Holder"
+        left={
+          <TextInput.Icon
+            forceTextInputFocus={true}
+            icon="account"
+          />
+        }
+        mode="outlined"
+        onChangeText={[Function]}
+        style={
+          {
+            "width": "100%",
+          }
+        }
+        testID="cardHolder"
+        value=""
+      />
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "width": "100%",
+          }
+        }
+      >
+        <TextInput
+          keyboardType="numeric"
+          label="Expiration Date"
+          left={
+            <TextInput.Icon
+              forceTextInputFocus={true}
+              icon="calendar"
+            />
+          }
+          mode="outlined"
+          onChangeText={[Function]}
+          testID="expirationDate"
+        />
+        <TextInput
+          keyboardType="numeric"
+          label="CVV/CVV2"
+          left={
+            <TextInput.Icon
+              forceTextInputFocus={true}
+              icon="lock"
+            />
+          }
+          mode="outlined"
+          onChangeText={[Function]}
+          testID="cvv"
+          value=""
+        />
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "backgroundColor": "rgba(28, 27, 31, 0.12)",
+            "borderRadius": 5,
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
+            "width": "100%",
+          }
+        }
+        testID="payButton-container-outer-layer"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "backgroundColor": "rgba(28, 27, 31, 0.12)",
+              "borderColor": "transparent",
+              "borderRadius": 5,
+              "borderStyle": "solid",
+              "borderWidth": 0,
+              "flex": undefined,
+              "minWidth": 64,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0,
+              "shadowRadius": 0,
+            }
+          }
+          testID="payButton-container"
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "overflow": "hidden",
+                },
+                {
+                  "borderRadius": 5,
+                },
+              ]
+            }
+            testID="payButton"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                selectable={false}
+                style={
+                  [
+                    {
+                      "textAlign": "left",
+                    },
+                    {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "writingDirection": "ltr",
+                    },
+                    [
+                      {
+                        "fontFamily": "System",
+                        "fontSize": 14,
+                        "fontWeight": "500",
+                        "letterSpacing": 0.1,
+                        "lineHeight": 20,
+                      },
+                      [
+                        {
+                          "marginHorizontal": 16,
+                          "marginVertical": 9,
+                          "textAlign": "center",
+                        },
+                        false,
+                        {
+                          "marginHorizontal": 24,
+                          "marginVertical": 10,
+                        },
+                        undefined,
+                        false,
+                        {
+                          "color": "rgba(28, 27, 31, 0.38)",
+                          "fontFamily": "System",
+                          "fontSize": 14,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.1,
+                          "lineHeight": 20,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                testID="payButton-text"
+              >
+                Pagar
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "backgroundColor": "transparent",
+            "borderRadius": 5,
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
+            "width": "100%",
+          }
+        }
+        testID="cancelButton-container-outer-layer"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "rgba(121, 116, 126, 1)",
+              "borderRadius": 5,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flex": undefined,
+              "minWidth": 64,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0,
+              "shadowRadius": 0,
+            }
+          }
+          testID="cancelButton-container"
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "overflow": "hidden",
+                },
+                {
+                  "borderRadius": 5,
+                },
+              ]
+            }
+            testID="cancelButton"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                selectable={false}
+                style={
+                  [
+                    {
+                      "textAlign": "left",
+                    },
+                    {
+                      "color": "rgba(28, 27, 31, 1)",
+                      "writingDirection": "ltr",
+                    },
+                    [
+                      {
+                        "fontFamily": "System",
+                        "fontSize": 14,
+                        "fontWeight": "500",
+                        "letterSpacing": 0.1,
+                        "lineHeight": 20,
+                      },
+                      [
+                        {
+                          "marginHorizontal": 16,
+                          "marginVertical": 9,
+                          "textAlign": "center",
+                        },
+                        false,
+                        {
+                          "marginHorizontal": 24,
+                          "marginVertical": 10,
+                        },
+                        undefined,
+                        false,
+                        {
+                          "color": "rgba(103, 80, 164, 1)",
+                          "fontFamily": "System",
+                          "fontSize": 14,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.1,
+                          "lineHeight": 20,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                testID="cancelButton-text"
+              >
+                Cancelar
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
+]
+`;
