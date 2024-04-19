@@ -7,3 +7,4 @@ export const RegisterLazy = lazy(() => import('@/pages/User/Register'))
 export const RegisterPartnerLazy = lazy(
 	() => import('@/pages/Partner/Register')
 )
+export const LoginPartnerLazy = lazy(() => import('@/pages/Partner/Login'))
