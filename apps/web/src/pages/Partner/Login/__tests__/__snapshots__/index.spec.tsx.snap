@@ -3,7 +3,7 @@
 exports[`LoginPage should render the component 1`] = `
 <div>
   <div
-    class="login"
+    class="login-partner"
   >
     <main
       class="section-main"
@@ -14,7 +14,7 @@ exports[`LoginPage should render the component 1`] = `
         app.name
       </h1>
       <div
-        class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded card-login css-172kgz0-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded card-login-partner css-172kgz0-MuiPaper-root"
       >
         <h6
           class="MuiTypography-root MuiTypography-h6 card-title css-2ulfj5-MuiTypography-root"
@@ -27,7 +27,8 @@ exports[`LoginPage should render the component 1`] = `
           Login
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth navigation css-10vjzfb-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-fullWidth navigation-login-partner-register css-10vjzfb-MuiButtonBase-root-MuiButton-root"
+          id="go-to-register"
           tabindex="0"
           title="login.button"
           type="button"

@@ -41,12 +41,12 @@ export default function LoginPartner() {
 
 	return (
 		<>
-			<div className='login'>
+			<div className='login-partner'>
 				<main className='section-main'>
 					<Typography className='title' variant='h1'>
 						{t('app.name')}
 					</Typography>
-					<Paper variant='outlined' className='card-login'>
+					<Paper variant='outlined' className='card-login-partner'>
 						<Typography className='card-title' variant='h6'>
 							{t('login.partner.title')}
 						</Typography>
@@ -57,11 +57,12 @@ export default function LoginPartner() {
 
 						<Button
 							type='button'
+							id='go-to-register'
 							fullWidth
 							disabled={loading}
 							onClick={handleGoToRegister}
 							variant='text'
-							className='navigation'
+							className='navigation-login-partner-register'
 							title={t('login.button')}>
 							{t('login.register.go')}
 						</Button>
@@ -73,7 +74,7 @@ export default function LoginPartner() {
 				/>
 			</div>
 			<TransitionAlert
-				containerClassName='alert-register-container'
+				containerClassName='alert-partner-login-container'
 				isOpen={alert}
 				handleClose={setAlert}
 				message={t(error ?? 'errors.register.base')}

@@ -1,4 +1,4 @@
-.login {
+.login-partner {
 	@apply flex;
 
 	min-height: 100vh;
@@ -13,12 +13,12 @@
 		}
 	}
 
-	.navigation {
+	.navigation-login-partner-register {
 		@apply mt-4;
 	}
 
 	.card {
-		&-login {
+		&-login-partner {
 			@apply w-full p-7 pb-4 border;
 
 			min-width: 18.75rem;
@@ -35,6 +35,6 @@
 	}
 }
 
-.alert-register-container {
+.alert-partner-login-container {
 	@apply absolute top-0 left-0 w-full;
 }
