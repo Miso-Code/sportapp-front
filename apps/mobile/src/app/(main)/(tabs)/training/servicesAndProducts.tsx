@@ -172,8 +172,11 @@ const ServiceAndProducts: React.FC = () => {
 						onPress={() => setSelectedProduct(product)}
 						title={product.name}
 						price={product.price}
-						priceFrequency={product.payment_frequency}
-						description={product.sumary}
+						priceFrequency={
+							product.payment_type === 'periodic' &&
+							product.payment_frequency
+						}
+						description={product.summary}
 						category={product.category}
 						image={product.image_url}
 					/>

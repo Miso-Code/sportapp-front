@@ -20,7 +20,7 @@
 		"lint:mobile":  "turbo lint --filter=@sportapp/mobile",
 		"test": "turbo test",
 		"test:web":  "turbo test --filter=@sportapp/web",
-		"test:mobile":  "turbo test --filter=@sportapp/mobile",
+		"test:mobile":  "turbo test --filter=@sportapp/mobile -- --silent",
 		"pre-commit": "turbo pre-commit",
 		"prepare": "husky install"
 	},

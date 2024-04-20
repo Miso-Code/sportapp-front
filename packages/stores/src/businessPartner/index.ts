@@ -1,4 +1,4 @@
-import busissenessPartnerApi from '@sportapp/sportapp-repository/src/businessPartner'
+import businessPartnerApi from '@sportapp/sportapp-repository/src/businessPartner'
 
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { create } from 'zustand'
@@ -15,7 +15,7 @@ export const useBusinessPartnerStore = create<IBusinessPartnerStore>(
 	(set) => ({
 		...initialBusinessPartnerState,
 		getAvailableProducts(request) {
-			const api = new busissenessPartnerApi()
+			const api = new businessPartnerApi()
 			const authToken = useAuthStore.getState().authToken?.accessToken
 			return api.getAvailableProducts(request, {
 				headers: {

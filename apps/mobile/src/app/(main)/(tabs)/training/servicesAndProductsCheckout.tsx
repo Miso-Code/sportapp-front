@@ -51,12 +51,18 @@ const ServiceAndProductsCheckout: React.FC = () => {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
 		setIsLoading(false)
 
-		const isError = Math.random() > 0.5
+		if (cardNumber === '4242424242424242') {
+			setAlert({
+				type: 'success',
+				message: 'Pago Realizado con Éxito'
+			})
+		} else {
+			setAlert({
+				type: 'error',
+				message: 'Error al Procesar el Pago'
+			})
+		}
 
-		setAlert({
-			type: isError ? 'error' : 'success',
-			message: 'Pago Realizado con Éxito'
-		})
 		router.back()
 	}
 
@@ -71,8 +77,14 @@ const ServiceAndProductsCheckout: React.FC = () => {
 	}
 
 	useEffect(() => {
-		if (!productToCheckout) router.back()
-	}, [productToCheckout])
+		if (!productToCheckout) {
+			setAlert({
+				type: 'error',
+				message: 'No se ha seleccionado un producto'
+			})
+			router.back()
+		}
+	}, [productToCheckout, setAlert])
 
 	return (
 		<>
@@ -95,7 +107,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 							title={productToCheckout.name}
 							price={productToCheckout.price}
 							priceFrequency={productToCheckout.payment_frequency}
-							description={productToCheckout.sumary}
+							description={productToCheckout.summary}
 							category={productToCheckout.category}
 							image={productToCheckout.image_url}
 						/>
@@ -120,7 +132,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 					keyboardType='numeric'
 					value={formatCardNumber(cardNumber)}
 					onChangeText={(val) =>
-						setCardNumber(val.replace(' ', '').slice(0, 16))
+						setCardNumber(val.replaceAll(' ', '').slice(0, 16))
 					}
 					style={styles.input}
 					left={<TextInput.Icon icon='credit-card-outline' />}

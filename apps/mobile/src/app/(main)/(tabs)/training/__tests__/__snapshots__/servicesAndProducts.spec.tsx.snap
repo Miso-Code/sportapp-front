@@ -765,7 +765,7 @@ exports[`ServicesAndProducts should render correctly 1`] = `
         image="image_url"
         onPress={[Function]}
         price={100}
-        priceFrequency="payment_frequency"
+        priceFrequency={false}
         testID="productCard"
         title="name"
       />
@@ -774,7 +774,7 @@ exports[`ServicesAndProducts should render correctly 1`] = `
         image="image_url2"
         onPress={[Function]}
         price={200}
-        priceFrequency="payment_frequency2"
+        priceFrequency={false}
         testID="productCard"
         title="name2"
       />

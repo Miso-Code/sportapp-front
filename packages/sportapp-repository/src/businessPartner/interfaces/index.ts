@@ -1,15 +1,28 @@
 export interface Product {
 	product_id: string
 	business_partner_id: string
-	category: string
+	category:
+		| 'equipement'
+		| 'apparel'
+		| 'nutrition'
+		| 'training_services'
+		| 'wellness'
+		| 'sports_technology'
+		| 'medical_services'
 	name: string
 	url: string
 	price: number
-	payment_type: string
-	payment_frequency: string
+	payment_type: 'unique' | 'periodic'
+	payment_frequency:
+		| 'other'
+		| 'weekly'
+		| 'monthly'
+		| 'annually'
+		| 'bi_annually'
+		| 'quarterly'
 	image_url: string
 	description: string
-	sumary: string
+	summary: string
 	active: boolean
 }
 
