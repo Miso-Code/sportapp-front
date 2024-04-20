@@ -43,8 +43,7 @@ export default defineConfig(({ mode }) => {
 						react: ['react', 'react-dom'],
 						material: ['@mui/material', '@mui/icons-material'],
 						i18next: ['i18next', 'react-i18next'],
-						router: ['react-router-dom'],
-						emotion: ['@emotion/react', '@emotion/styled']
+						router: ['react-router-dom']
 					}
 				}
 			}
