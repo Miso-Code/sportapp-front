@@ -7,7 +7,7 @@
 	"preferentials": "Preferenciales",
 	"start": "Iniciar",
 	"pause": "Pausar",
-	"continue": "Reanudar",
+	"resume": "Reanudar",
 	"stop": "Parar",
 	"trainings": "Entrenamientos",
 	"calendar": "Calendario",
@@ -20,5 +20,6 @@
 	"nextEvents": "Próximos Eventos",
 	"nextEventsEmpty": "No hay eventos próximos",
 	"today": "Hoy",
-	"upcoming": "Próximo"
+	"upcoming": "Próximo",
+	"search": "Buscar"
 }

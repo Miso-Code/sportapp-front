@@ -233,7 +233,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
           ]
         }
       >
-        Procesando el Pago
+        productService.processingPayment
       </Text>
     </View>
   </View>,
@@ -295,7 +295,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
       </View>
       <TextInput
         keyboardType="numeric"
-        label="Cantidad"
+        label="productService.quantity"
         mode="outlined"
         onChangeText={[Function]}
         style={
@@ -308,7 +308,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
       />
       <TextInput
         keyboardType="numeric"
-        label="Card Number"
+        label="productService.cardNumber"
         left={
           <TextInput.Icon
             forceTextInputFocus={true}
@@ -325,7 +325,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
         testID="cardNumber"
       />
       <TextInput
-        label="Card Holder"
+        label="productService.cardHolder"
         left={
           <TextInput.Icon
             forceTextInputFocus={true}
@@ -354,7 +354,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
       >
         <TextInput
           keyboardType="numeric"
-          label="Expiration Date"
+          label="productService.expirationDate"
           left={
             <TextInput.Icon
               forceTextInputFocus={true}
@@ -523,7 +523,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
                 }
                 testID="payButton-text"
               >
-                Pagar
+                productService.pay
               </Text>
             </View>
           </View>
@@ -672,7 +672,7 @@ exports[`ServicesAndProductsCheckout should render correctly 1`] = `
                 }
                 testID="cancelButton-text"
               >
-                Cancelar
+                productService.cancel
               </Text>
             </View>
           </View>

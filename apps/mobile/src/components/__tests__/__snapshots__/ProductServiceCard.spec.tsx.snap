@@ -314,12 +314,15 @@ exports[`ProductServiceCard should render correctly 1`] = `
                             },
                             {
                               "color": "rgba(33, 0, 93, 1)",
+                              "textTransform": "capitalize",
                             },
                           ],
                         ],
                       ]
                     }
-                  />
+                  >
+                    productService.undefined
+                  </Text>
                 </View>
               </View>
             </View>
@@ -474,7 +477,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
                       ]
                     }
                   >
-                    COPNaN / undefined
+                    COPNaN
                   </Text>
                 </View>
               </View>

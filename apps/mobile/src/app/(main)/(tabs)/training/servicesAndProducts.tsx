@@ -29,6 +29,7 @@ import ProductServiceCard from '@/components/ProductServiceCard'
 import KeyboardAvoidingDialog from '@/components/KeyboardAvoidingDialog'
 
 import { useDebounce } from '@/hooks/useDebounce'
+import { useTranslation } from 'react-i18next'
 
 const ServiceAndProducts: React.FC = () => {
 	const [isLoading, setIsLoading] = useState(true)
@@ -45,6 +46,8 @@ const ServiceAndProducts: React.FC = () => {
 	const scrollViewRef = useRef<ScrollView>(null)
 
 	const theme = useTheme()
+
+	const { t } = useTranslation()
 
 	const debouncedValue = useDebounce(searchQuery)
 
@@ -115,7 +118,7 @@ const ServiceAndProducts: React.FC = () => {
 
 						<TextInput
 							testID='quantity'
-							label='Cantidad'
+							label={t('productService.quantity')}
 							mode='outlined'
 							keyboardType='numeric'
 							value={quantity}
@@ -126,7 +129,7 @@ const ServiceAndProducts: React.FC = () => {
 								testID='cancelButton'
 								textColor={theme.colors.error}
 								onPress={() => setSelectedProduct(null)}>
-								Cerrar
+								{t('productService.close')}
 							</Button>
 							<Button
 								disabled={!quantity}
@@ -142,7 +145,7 @@ const ServiceAndProducts: React.FC = () => {
 									})
 									setSelectedProduct(null)
 								}}>
-								Adquirir
+								{t('productService.buy')}
 							</Button>
 						</View>
 					</View>
@@ -161,7 +164,7 @@ const ServiceAndProducts: React.FC = () => {
 				scrollEventThrottle={400}>
 				<Searchbar
 					testID='search'
-					placeholder='Search'
+					placeholder={t('productService.search')}
 					onChangeText={setSearchQuery}
 					value={searchQuery}
 					style={styles.search}

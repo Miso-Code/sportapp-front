@@ -13,9 +13,11 @@ import ProductServiceCard from '@/components/ProductServiceCard'
 import KeyboardAvoidingDialog from '@/components/KeyboardAvoidingDialog'
 import { useAlertStore, useBusinessPartnerStore } from '@sportapp/stores'
 import Markdown from 'react-native-markdown-display'
+import { useTranslation } from 'react-i18next'
 
 const ServiceAndProductsCheckout: React.FC = () => {
 	const params = useLocalSearchParams()
+	const { t } = useTranslation()
 	const { setAlert } = useAlertStore()
 
 	const [isLoading, setIsLoading] = useState(false)
@@ -54,12 +56,12 @@ const ServiceAndProductsCheckout: React.FC = () => {
 		if (cardNumber === '4242424242424242') {
 			setAlert({
 				type: 'success',
-				message: 'Pago Realizado con Éxito'
+				message: t('productService.paymentSuccess')
 			})
 		} else {
 			setAlert({
 				type: 'error',
-				message: 'Error al Procesar el Pago'
+				message: t('productService.paymentFailed')
 			})
 		}
 
@@ -94,7 +96,9 @@ const ServiceAndProductsCheckout: React.FC = () => {
 					visible={isLoading}>
 					<View style={styles.center}>
 						<ActivityIndicator size='large' />
-						<Text variant='bodyLarge'>Procesando el Pago</Text>
+						<Text variant='bodyLarge'>
+							{t('productService.processingPayment')}
+						</Text>
 					</View>
 				</KeyboardAvoidingDialog>
 			</Portal>
@@ -118,7 +122,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 				)}
 				<TextInput
 					testID='quantity'
-					label='Cantidad'
+					label={t('productService.quantity')}
 					mode='outlined'
 					keyboardType='numeric'
 					value={quantity}
@@ -127,7 +131,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 				/>
 				<TextInput
 					testID='cardNumber'
-					label='Card Number'
+					label={t('productService.cardNumber')}
 					mode='outlined'
 					keyboardType='numeric'
 					value={formatCardNumber(cardNumber)}
@@ -139,7 +143,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 				/>
 				<TextInput
 					testID='cardHolder'
-					label='Card Holder'
+					label={t('productService.cardHolder')}
 					mode='outlined'
 					value={cardHolder}
 					onChangeText={(val) => setCardHolder(val.toUpperCase())}
@@ -149,7 +153,7 @@ const ServiceAndProductsCheckout: React.FC = () => {
 				<View style={styles.row}>
 					<TextInput
 						testID='expirationDate'
-						label='Expiration Date'
+						label={t('productService.expirationDate')}
 						mode='outlined'
 						keyboardType='numeric'
 						value={formatExpirationDate(expirationDate)}
@@ -174,14 +178,14 @@ const ServiceAndProductsCheckout: React.FC = () => {
 					style={styles.button}
 					onPress={processPayment}
 					disabled={!isReadyToProcess()}>
-					Pagar
+					{t('productService.pay')}
 				</Button>
 				<Button
 					testID='cancelButton'
 					mode='outlined'
 					style={styles.button}
 					onPress={() => router.back()}>
-					Cancelar
+					{t('productService.cancel')}
 				</Button>
 			</ScrollView>
 		</>

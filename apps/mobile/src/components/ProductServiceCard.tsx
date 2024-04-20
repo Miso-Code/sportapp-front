@@ -24,14 +24,14 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 }) => {
 	const theme = useTheme()
 	const styles = createStyles(theme)
-	const { i18n } = useTranslation()
+	const { i18n, t } = useTranslation()
 
 	const formattedPrice =
 		new Intl.NumberFormat(i18n.language || 'en-US', {
 			style: 'currency',
 			currency: 'COP'
 		}).format(price) +
-		(priceFrequency === 'unique' ? '' : ` / ${priceFrequency}`)
+		(priceFrequency ? ` / ${t('productService.' + priceFrequency)}` : '')
 
 	return (
 		<Card elevation={1} style={styles.card} {...props}>
@@ -43,7 +43,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 				<Text variant='bodyMedium'>{description}</Text>
 				<View style={styles.chipContainer}>
 					<Chip textStyle={styles.chip} style={styles.chipBackground}>
-						{category}
+						{t(`productService.${category}`)}
 					</Chip>
 					<Chip
 						textStyle={styles.chipCost}
@@ -80,7 +80,8 @@ const createStyles = (theme: MD3Theme) =>
 			backgroundColor: theme.colors.surfaceVariant
 		},
 		chip: {
-			color: theme.colors.onPrimaryContainer
+			color: theme.colors.onPrimaryContainer,
+			textTransform: 'capitalize'
 		},
 		chipCostBackground: {
 			backgroundColor: theme.colors.tertiaryContainer
