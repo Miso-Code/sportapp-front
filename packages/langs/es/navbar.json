@@ -4,5 +4,15 @@
 	"otherServices": "Otros servicios",
 	"preferential": "Preferenciales",
 	"settings": "Configuraciones",
-	"notifications": "Notificaciones"
+	"notifications": "Notificaciones",
+	"partner": {
+		"menu": "Menú",
+		"getProducts": "Ver Productos",
+		"createProduct": "Crear Producto",
+		"purchasedProducts": "Productos Comprados",
+		"open": {
+			"profile": "Perfil"
+		},
+		"logout": "Cerrar Sesión"
+	}
 }

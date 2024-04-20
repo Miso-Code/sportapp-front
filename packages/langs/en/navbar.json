@@ -4,5 +4,14 @@
 	"otherServices": "Other Services",
 	"preferential": "Preferential",
 	"settings": "Settings",
-	"notifications": "Notifications"
+	"notifications": "Notifications",
+	"partner": {
+		"getProducts": "Get Products",
+		"createProduct": "Create Product",
+		"purchasedProducts": "Purchased Products",
+		"open": {
+			"profile": "Profile"
+		},
+		"logout": "Logout"
+	}
 }
