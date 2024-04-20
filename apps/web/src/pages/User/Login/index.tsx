@@ -14,8 +14,8 @@ export default function Login() {
 	const [alert, setAlert] = useState(false)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { loading, error, logout } = useAuthStore()
-	const { login } = useAuthStore()
+	const { loading, error } = useAuthStore()
+	const { login, logout } = useAuthStore()
 
 	const handleSubmit = async (data: FormData) => {
 		const payload = {

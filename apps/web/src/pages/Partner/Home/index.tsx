@@ -1,3 +1,9 @@
+import NavbarTop from '@/components/NavbarTop'
+
 export default function HomePartner() {
-	return <div>HomePartner</div>
+	return (
+		<div>
+			<NavbarTop /> HomePartner
+		</div>
+	)
 }
