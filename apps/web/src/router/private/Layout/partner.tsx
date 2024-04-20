@@ -6,7 +6,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 export default function LayoutPartner() {
 	const { isAuth } = usePartnerAuthStore()
-	if (!isAuth) return <Navigate to='/' replace />
+	if (!isAuth) return <Navigate to='/partner/login' replace />
 	return (
 		<Suspense
 			fallback={
