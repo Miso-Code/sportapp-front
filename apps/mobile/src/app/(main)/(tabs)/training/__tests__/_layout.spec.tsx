@@ -21,9 +21,9 @@ describe('TrainingLayout', () => {
 		expect(component.toJSON()).toMatchSnapshot()
 	})
 
-	it('should render 3 components with header', () => {
+	it('should render 5 components with header', () => {
 		const header = component.root.findAllByProps({ testID: 'header' })
-		expect(header.length).toBe(6) // react native tests make it two per instance
+		expect(header.length).toBe(10) // react native makes it two per instance
 	})
 
 	it('should navigate back on back button press', () => {

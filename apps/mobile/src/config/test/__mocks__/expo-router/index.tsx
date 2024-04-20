@@ -26,4 +26,13 @@ const router = {
 	navigate: jest.fn()
 }
 
-export { Tabs, Slot, useSegments, router, useRootNavigationState }
+const useLocalSearchParams = jest.fn()
+
+export {
+	Tabs,
+	Slot,
+	useSegments,
+	router,
+	useRootNavigationState,
+	useLocalSearchParams
+}

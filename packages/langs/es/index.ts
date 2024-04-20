@@ -12,6 +12,7 @@ import sportDataForm from './sportDataForm.json'
 import validations from './validations.json'
 import training from './training.json'
 import session from './session.json'
+import productService from './productService.json'
 
 const defaultTranslate = {
 	translation: {
@@ -28,7 +29,8 @@ const defaultTranslate = {
 		nutritionalDataForm,
 		training,
 		session,
-		config
+		config,
+		productService
 	}
 }
 
