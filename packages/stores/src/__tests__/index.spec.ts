@@ -9,7 +9,7 @@ import {
 	initialAuthStatePartner,
 	initialUserState,
 	useUserStore,
-	initialProducPartnerState,
+	initialProductPartnerState,
 	usePartnerProductStore
 } from '..'
 
@@ -31,7 +31,7 @@ describe('storesExport', () => {
 		expect(initialAuthStatePartner).toBeDefined()
 		expect(initialUserState).toBeDefined()
 		expect(useUserStore).toBeDefined()
-		expect(initialProducPartnerState).toBeDefined()
+		expect(initialProductPartnerState).toBeDefined()
 		expect(usePartnerProductStore).toBeDefined()
 	})
 })

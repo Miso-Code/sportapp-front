@@ -8,7 +8,7 @@ import { Product } from '@sportapp/sportapp-repository/src/business-partner/inte
 import BusinessPartnerApi from '@sportapp/sportapp-repository/src/business-partner'
 import { usePartnerAuthStore } from '../auth'
 
-export const initialProducPartnerState: IProductState = {
+export const initialProductPartnerState: IProductState = {
 	products: undefined,
 	error: undefined,
 	loading: false,
@@ -18,7 +18,7 @@ export const initialProducPartnerState: IProductState = {
 export const usePartnerProductStore = create(
 	persist<IProductStore>(
 		(set) => ({
-			...initialProducPartnerState,
+			...initialProductPartnerState,
 			setError: (error) => {
 				set((state) => ({
 					...state,
@@ -33,7 +33,7 @@ export const usePartnerProductStore = create(
 			},
 			clearState: () => {
 				set(() => ({
-					...initialProducPartnerState
+					...initialProductPartnerState
 				}))
 			},
 			setProducts: (products: Product[]) => {
