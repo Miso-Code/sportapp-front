@@ -192,4 +192,290 @@ describe('BusinessPartnerApi', () => {
 			expect(result).toEqual(false)
 		})
 	})
+
+	describe('createProduct', () => {
+		it('should create a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '200'
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).post.mockResolvedValue(response)
+			const result = await businessPartnerApi.createProduct(data)
+			expect(result).toEqual(true)
+		})
+
+		it('should not create a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).post.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.createProduct(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not create a product and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).post.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.createProduct(data)
+			expect(result).toEqual(false)
+		})
+	})
+
+	describe('deleteProduct', () => {
+		it('should delete a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '200',
+				data: {
+					message: 'success'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).delete.mockResolvedValue(response)
+			const result = await businessPartnerApi.deleteProduct(data)
+			expect(result).toEqual(true)
+		})
+
+		it('should not delete a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).delete.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.deleteProduct(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not delete a product and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).delete.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.deleteProduct(data)
+			expect(result).toEqual(false)
+		})
+	})
+
+	describe('getProducts', () => {
+		it('should get products', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '200',
+				data: [
+					{
+						product_id: '1',
+						business_partner_id: '1',
+						category: 'test',
+						name: 'test',
+						summary: 'test',
+						url: 'test',
+						price: 100,
+						payment_type: 'test',
+						payment_frequency: 'test',
+						image_url: 'test',
+						description: 'test',
+						active: true
+					}
+				]
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+			const result = await businessPartnerApi.getAllProducts(data)
+			expect(result).toEqual(response.data)
+		})
+
+		it('should not get products', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.getAllProducts(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not get products and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.getAllProducts(data)
+			expect(result).toEqual(false)
+		})
+	})
 })
