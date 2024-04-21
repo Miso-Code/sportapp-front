@@ -69,7 +69,7 @@ export default function CreateProductPartnerPage() {
 							variant='outlined'
 							className='p-8 max-w-4xl mx-auto'>
 							<Typography className='mb-4' variant='h4'>
-								{t('app.name')}
+								{t('productCreate.title')}
 							</Typography>
 
 							<CreateProduct

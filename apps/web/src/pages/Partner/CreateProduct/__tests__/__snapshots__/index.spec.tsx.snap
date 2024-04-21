@@ -115,7 +115,7 @@ exports[`CreateProductPartnerPage should render the component 1`] = `
           <h4
             class="MuiTypography-root MuiTypography-h4 mb-4 css-5lbw0b-MuiTypography-root"
           >
-            app.name
+            productCreate.title
           </h4>
           <div>
             CreateProduct
