@@ -13,6 +13,8 @@ import sportDataForm from './sportDataForm.json'
 import training from './training.json'
 import validations from './validations.json'
 import productService from './productService.json'
+import productCreate from './productCreate.json'
+import productObtain from './productObtain.json'
 
 const defaultTranslate = {
 	translation: {
@@ -30,7 +32,9 @@ const defaultTranslate = {
 		training,
 		session,
 		config,
-		productService
+		productService,
+		productCreate,
+		productObtain
 	}
 }
 
