@@ -108,6 +108,15 @@ export default function HomePartner() {
 												<div
 													onClick={(event) => {
 														event.stopPropagation()
+													}}
+													onKeyDown={(event) => {
+														if (
+															event.key ===
+																'Enter' ||
+															event.key === ' '
+														) {
+															event.stopPropagation()
+														}
 													}}>
 													<Switch
 														defaultChecked={
