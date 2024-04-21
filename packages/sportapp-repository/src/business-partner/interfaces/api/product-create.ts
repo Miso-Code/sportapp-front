@@ -7,7 +7,7 @@ type BaseProductCreateRequest = {
 	url: string
 	price: number
 	payment_type: string
-	payment_frequency: string
+	payment_frequency?: string
 	description: string
 }
 

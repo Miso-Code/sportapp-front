@@ -100,7 +100,8 @@
 		"monthly": "Mensual",
 		"annually": "Anual",
 		"bi_annually": "Semestral",
-		"quarterly": "Trimestral"
+		"quarterly": "Trimestral",
+		"other": "Otro"
 	},
 	"productImageType": "Cargar imagen del producto mediante",
 	"imageTypeValues": {
