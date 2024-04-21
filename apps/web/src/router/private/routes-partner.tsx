@@ -1,5 +1,10 @@
 import Layout from '@/router/private/Layout/partner'
-import { CreateProductPartnerLazy, HomePartnerLazy, PurchasedProductPartnerLazy } from '@/router/private/lazy-pages'
+import {
+	CreateProductPartnerLazy,
+	HomePartnerLazy,
+	PurchasedProductPartnerLazy,
+	UpdateProductPartnerLazy
+} from '@/router/private/lazy-pages'
 import { Navigate } from 'react-router-dom'
 
 export default function privateRoutesUser() {
@@ -14,6 +19,10 @@ export default function privateRoutesUser() {
 			{
 				path: '/partner/product/purchased',
 				element: <PurchasedProductPartnerLazy />
+			},
+			{
+				path: '/partner/product/update',
+				element: <UpdateProductPartnerLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]
