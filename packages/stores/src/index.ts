@@ -11,3 +11,7 @@ export {
 	initialBusinessPartnerState
 } from './businessPartner'
 export { useAlertStore, initialAlertState } from './alert'
+export {
+	initialProductPartnerState,
+	usePartnerProductStore
+} from './partner/products'

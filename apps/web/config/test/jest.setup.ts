@@ -22,3 +22,14 @@ jest.mock('react-router-dom', () => ({
 		pathname: '/'
 	})
 }))
+
+jest.mock('@uiw/react-md-editor', () => ({
+	__esModule: true,
+	default: () => "MD_EDITOR"
+}))
+
+jest.mock('rehype-sanitize', () => ({
+	__esModule: true,
+	default: jest.fn()
+}))
+

@@ -4,7 +4,13 @@ import {
 	initialSportSessionState,
 	useSportSessionStore,
 	initialSportState,
-	useSportStore
+	useSportStore,
+	usePartnerAuthStore,
+	initialAuthStatePartner,
+	initialUserState,
+	useUserStore,
+	initialProductPartnerState,
+	usePartnerProductStore
 } from '..'
 
 jest.mock('@sportapp/sportapp-repository/src/user', () => ({
@@ -21,5 +27,11 @@ describe('storesExport', () => {
 		expect(useSportSessionStore).toBeDefined()
 		expect(initialSportState).toBeDefined()
 		expect(useSportStore).toBeDefined()
+		expect(usePartnerAuthStore).toBeDefined()
+		expect(initialAuthStatePartner).toBeDefined()
+		expect(initialUserState).toBeDefined()
+		expect(useUserStore).toBeDefined()
+		expect(initialProductPartnerState).toBeDefined()
+		expect(usePartnerProductStore).toBeDefined()
 	})
 })
