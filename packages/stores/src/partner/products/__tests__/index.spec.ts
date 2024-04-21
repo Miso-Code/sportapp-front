@@ -10,7 +10,7 @@ jest.mock('simple-zustand-devtools', () => ({
 
 jest.mock('../../auth', () => {
 	return {
-		useAuthStore: {
+		usePartnerAuthStore: {
 			getState: jest.fn().mockReturnValue({
 				authToken: {
 					accessToken: 'access'
