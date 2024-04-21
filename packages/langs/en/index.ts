@@ -15,6 +15,7 @@ import validations from './validations.json'
 import productService from './productService.json'
 import productCreate from './productCreate.json'
 import productObtain from './productObtain.json'
+import productUpdate from './productUpdate.json'
 
 const defaultTranslate = {
 	translation: {
@@ -34,7 +35,8 @@ const defaultTranslate = {
 		config,
 		productService,
 		productCreate,
-		productObtain
+		productObtain,
+		productUpdate
 	}
 }
 
