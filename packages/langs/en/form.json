@@ -72,5 +72,48 @@
 	"add": "Add",
 	"remove": "Remove",
 	"save": "Save",
-	"years": { "endLabel": "years" }
+	"years": { "endLabel": "years" },
+	"productCategory": "Product Category",
+	"productCategoryValues": {
+		"equipment": "Equipment",
+		"apparel": "Apparel",
+		"nutrition": "Nutrition",
+		"training_services": "Training Services",
+		"wellness": "Wellness",
+		"sports_technology": "Sports Technology",
+		"medical_services": "Medical Services"
+	},
+	"productName": "Product Name",
+	"productDescription": "Product Description",
+	"productSummary": "Product Summary",
+	"productPrice": "Product Price",
+	"productStock": "Product Stock",
+	"productUrl": "Product URL",
+	"paymentType": "Payment Type",
+	"paymentTypeValues": {
+		"unique": "One-time Payment",
+		"periodic": "Periodic Payment"
+	},
+	"paymentFrequency": "Payment Frequency",
+	"paymentFrequencyValues": {
+		"weekly": "Weekly",
+		"monthly": "Monthly",
+		"annually": "Annually",
+		"bi_annually": "Bi-annually",
+		"quarterly": "Quarterly"
+	},
+	"productImageType": "Upload Product Image Via",
+	"imageTypeValues": {
+		"url": "URL",
+		"file": "File"
+	},
+	"productImageUrl": "Image URL",
+	"productImageFile": "Image File",
+	"file": {
+		"select": "Select File",
+		"upload": "Upload File",
+		"remove": "Remove File",
+		"placeholder": "Drag and drop the product image here, or click to select the product image"
+	},
+	"createProduct": "Create Product"
 }

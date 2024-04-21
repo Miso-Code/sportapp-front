@@ -72,5 +72,48 @@
 	"add": "Agregar",
 	"remove": "Eliminar",
 	"save": "Guardar",
-	"years": { "endLabel": "años" }
+	"years": { "endLabel": "años" },
+	"productCategory": "Categoría de producto",
+	"productCategoryValues": {
+		"equipment": "Equipos",
+		"apparel": "Ropa",
+		"nutrition": "Nutrición",
+		"training_services": "Servicios de entrenamiento",
+		"wellness": "Bienestar",
+		"sports_technology": "Tecnología deportiva",
+		"medical_services": "Servicios médicos"
+	},
+	"productName": "Nombre del producto",
+	"productDescription": "Descripción del producto",
+	"productSummary": "Resumen del producto",
+	"productPrice": "Precio del producto",
+	"productStock": "Stock del producto",
+	"productUrl": "URL del producto",
+	"paymentType": "Tipo de pago",
+	"paymentTypeValues": {
+		"unique": "Pago único",
+		"periodic": "Pago periódico"
+	},
+	"paymentFrequency": "Frecuencia de pago",
+	"paymentFrequencyValues": {
+		"weekly": "Semanal",
+		"monthly": "Mensual",
+		"annually": "Anual",
+		"bi_annually": "Semestral",
+		"quarterly": "Trimestral"
+	},
+	"productImageType": "Cargar imagen del producto mediante",
+	"imageTypeValues": {
+		"url": "URL",
+		"file": "Archivo"
+	},
+	"productImageUrl": "URL de la imagen",
+	"productImageFile": "Archivo de la imagen",
+	"file": {
+		"select": "Seleccionar archivo",
+		"upload": "Subir archivo",
+		"remove": "Eliminar archivo",
+		"placeholder": "Arrastre y suelte la imagen del producto aquí, o haga clic para seleccionar la imagen del producto"
+	},
+	"createProduct": "Crear producto"
 }
