@@ -1,6 +1,7 @@
 import NavbarTop from '@/components/NavbarTop'
 import Spinner from '@/components/Spinner'
 import TransitionAlert from '@/components/TransitionAlert'
+import SearchOffIcon from '@mui/icons-material/SearchOff'
 import {
 	Avatar,
 	Box,
@@ -15,9 +16,13 @@ import { Product } from '@sportapp/sportapp-repository/src/business-partner/inte
 import { usePartnerProductStore } from '@sportapp/stores'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function HomePartner() {
 	const { t } = useTranslation()
+	const navigate = useNavigate()
+	const location = useLocation()
+	const search = location.search
 	const { getProducts } = usePartnerProductStore()
 	const { loading, error } = usePartnerProductStore()
 	const [alert, setAlert] = useState(false)
@@ -28,6 +33,15 @@ export default function HomePartner() {
 
 		if (response) setProducts(response)
 	}, [getProducts])
+
+	const handleGoToUpdateProduct = (productId: string) => {
+		navigate({
+			pathname: `/partner/product/update`,
+			search: search
+				? `${search}&productId=${productId}`
+				: `?productId=${productId}`
+		})
+	}
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -69,41 +83,79 @@ export default function HomePartner() {
 								marginTop: '2rem',
 								paddingBottom: '2rem'
 							}}>
-							{products.map((product) => (
-								<Card key={product.product_id}>
-									<CardContent>
-										<div className='flex justify-between'>
-											<div className='flex'>
-												<Avatar variant='square'>
-													{product.name[0]}
-												</Avatar>
-												<Typography
-													className='ml-4'
-													variant='h6'>
-													{t(product.name)}
-												</Typography>
+							{products.length > 0 ? (
+								products.map((product) => (
+									<Card
+										key={product.product_id}
+										className='cursor-pointer'
+										onClick={() =>
+											handleGoToUpdateProduct(
+												product.product_id
+											)
+										}>
+										<CardContent>
+											<div className='flex justify-between'>
+												<div className='flex'>
+													<Avatar variant='square'>
+														{product.name[0]}
+													</Avatar>
+													<Typography
+														className='ml-4'
+														variant='h6'>
+														{t(product.name)}
+													</Typography>
+												</div>
+												<div
+													onClick={(event) => {
+														event.stopPropagation()
+													}}
+													onKeyDown={(event) => {
+														if (
+															event.key ===
+																'Enter' ||
+															event.key === ' '
+														) {
+															event.stopPropagation()
+														}
+													}}>
+													<Switch
+														defaultChecked={
+															product.active
+														}
+													/>
+												</div>
 											</div>
-											<Switch
-												defaultChecked={product.active}
-											/>
-										</div>
-									</CardContent>
-									<CardContent>
-										<Typography
-											style={{
-												height: '4rem',
-												overflow: 'hidden',
-												textOverflow: 'ellipsis',
-												display: '-webkit-box',
-												WebkitLineClamp: 3,
-												WebkitBoxOrient: 'vertical'
-											}}
-											variant='caption'>
-											{product.summary}
-										</Typography>
-									</CardContent>
-								</Card>
-							))}
+										</CardContent>
+										<CardContent>
+											<Typography
+												style={{
+													height: '4rem',
+													overflow: 'hidden',
+													textOverflow: 'ellipsis',
+													display: '-webkit-box',
+													WebkitLineClamp: 3,
+													WebkitBoxOrient: 'vertical'
+												}}
+												variant='caption'>
+												{product.summary}
+											</Typography>
+										</CardContent>
+									</Card>
+								))
+							) : (
+								<Box className='flex flex-col items-center col-span-full'>
+									<SearchOffIcon
+										color='action'
+										style={{
+											width: '6rem',
+											height: '6rem'
+										}}
+									/>
+									<Typography color='GrayText'>
+										{t('productObtain.noProducts')}
+									</Typography>
+								</Box>
+							)}
 						</Box>
 					)}
 				</Container>
