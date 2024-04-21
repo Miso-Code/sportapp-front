@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarckDownController should render the component 1`] = `
+<div>
+  <div
+    class="w-full"
+    data-color-mode="light"
+  >
+    <label
+      class="MuiTypography-root MuiTypography-body1 text-[#00000099] leading-8 css-ahj2mt-MuiTypography-root"
+    >
+      Test
+    </label>
+    <div
+      class="wmde-markdown-var"
+    >
+       
+    </div>
+    <div>
+      MarkdownEditor
+    </div>
+  </div>
+</div>
+`;
