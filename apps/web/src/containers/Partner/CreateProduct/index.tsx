@@ -59,7 +59,11 @@ export default function CreateProduct({
 	}
 
 	const handleShowPreview = async (file: File) => {
-		return await toBase64(file)
+		try {
+			return await toBase64(file)
+		} catch {
+			return ''
+		}
 	}
 
 	useEffect(() => {

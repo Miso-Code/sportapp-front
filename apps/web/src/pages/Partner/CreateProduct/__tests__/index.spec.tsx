@@ -6,7 +6,8 @@ jest.mock('@sportapp/stores', () => ({
 	usePartnerProductStore: jest.fn().mockReturnValue({
 		createProduct: jest.fn(),
 		error: undefined,
-		loading: false
+		loading: false,
+		setError: jest.fn()
 	}),
 	usePartnerAuthStore: () => ({
 		user: {

@@ -17,14 +17,19 @@ import { useNavigate } from 'react-router-dom'
 export default function CreateProductPartnerPage() {
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const { createProduct } = usePartnerProductStore()
+	const { createProduct, setError } = usePartnerProductStore()
 	const { loading, error } = usePartnerProductStore()
 	const [alert, setAlert] = useState(false)
 
 	const onSubmit = async (data: FormData) => {
-		const image64 = data.image_base64
-			? await toBase64(data.image_base64 as File)
-			: ''
+		let image64 = ''
+		try {
+			image64 = data.image_base64
+				? await toBase64(data.image_base64 as File)
+				: ''
+		} catch (error) {
+			setError('errors.partner.createProduct.image')
+		}
 
 		const payload: ProductCreateRequest =
 			data.typeImage === 'true'
@@ -38,7 +43,7 @@ export default function CreateProductPartnerPage() {
 						payment_frequency: data.paymentFrequency,
 						description: data.description,
 						image_base64: image64
-					} as WithBase64Image)
+				  } as WithBase64Image)
 				: ({
 						category: data.category,
 						name: data.name,
@@ -49,7 +54,8 @@ export default function CreateProductPartnerPage() {
 						payment_frequency: data.paymentFrequency,
 						description: data.description,
 						image_url: data.imageUrl
-					} as WithUrlImage)
+				  } as WithUrlImage)
+
 		const result = await createProduct(payload)
 		if (result) navigate('/partner/home')
 	}
