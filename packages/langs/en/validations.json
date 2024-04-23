@@ -6,5 +6,9 @@
 	"password": {
 		"required": "Password is required",
 		"restrictions": "The password must have at least 8 characters, one uppercase letter, one lowercase letter, one special character and one number."
+	},
+	"min": {
+		"string": "The field doesn't meet the minimum length of characters",
+		"array": "The field doesn't meet the minimum length of items"
 	}
 }

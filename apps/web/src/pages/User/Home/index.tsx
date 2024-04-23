@@ -76,10 +76,11 @@ function HomePage() {
 			const heightPayload = data.height > 0 ? data.height : 0
 
 			const payload: SportProfileUpdateRequest = {
-				available_training_hours: data.availableTrainingHoursPerWeek,
+				available_training_hours: data.availableTrainingHoursPerDay,
+				available_weekdays: data.weekdays as SportProfileUpdateRequest['available_weekdays'],
+				preferred_training_start_time: data.preferedTrainingStartTime,
 				favourite_sport_id: data.favouriteSportId,
 				height: heightPayload,
-				training_frequency: data.trainingFrequency,
 				training_limitations: data.limitations.map((limitation) => {
 					if (!limitation.limitation_id) {
 						return {
@@ -183,12 +184,14 @@ function HomePage() {
 			defaultValues={{
 				weight: user?.sportData?.weight ?? 0,
 				height: (user?.sportData?.height ?? 0) * 10,
-				trainingFrequency: user?.sportData?.training_frequency ?? '',
 				imc: user?.sportData?.bmi ?? 0,
 				trainingObjective:
 					user?.sportData?.training_objective ?? 'BUILD_MUSCLE_MASS',
+				weekdays: user?.sportData?.available_weekdays ?? [],
+				preferedTrainingStartTime:
+					user?.sportData?.preferred_training_start_time ?? '',
 				favouriteSportId: user?.sportData?.favourite_sport_id ?? '',
-				availableTrainingHoursPerWeek:
+				availableTrainingHoursPerDay:
 					user?.sportData?.available_training_hours ?? 0,
 				limitations: user?.sportData?.training_limitations ?? []
 			}}

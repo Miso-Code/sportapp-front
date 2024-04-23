@@ -2,6 +2,7 @@ import SelectController from '@/components/Inputs/SelectController'
 import TextFieldController from '@/components/Inputs/TexFieldController'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoadingButton from '@mui/lab/LoadingButton'
+
 import {
 	Button,
 	Card,
@@ -25,6 +26,8 @@ import {
 	schemaRequired
 } from './utils/schema'
 import { useUserStore } from '@sportapp/stores/src/user'
+import TimePickerController from '@/components/Inputs/TimePickerController'
+import DaysOfTheWeekController from '@/components/Inputs/DaysOfTheWeekController'
 
 export default function SportDataForm({
 	className = '',
@@ -47,12 +50,13 @@ export default function SportDataForm({
 		values: {
 			weight: user?.sportData?.weight ?? 0,
 			height: user?.sportData?.height ?? 0,
-			trainingFrequency: user?.sportData?.training_frequency ?? '',
 			imc: user?.sportData?.bmi ?? 0,
-			trainingObjective:
-				user?.sportData?.training_objective ?? 'BUILD_MUSCLE_MASS',
+			weekdays: user?.sportData?.available_weekdays ?? [],
+			preferedTrainingStartTime:
+				user?.sportData?.preferred_training_start_time ?? '',
+			trainingObjective: user?.sportData?.training_objective ?? '',
 			favouriteSportId: user?.sportData?.favourite_sport_id ?? '',
-			availableTrainingHoursPerWeek:
+			availableTrainingHoursPerDay:
 				user?.sportData?.available_training_hours ?? 0,
 			limitations: user?.sportData?.training_limitations ?? []
 		},
@@ -127,30 +131,58 @@ export default function SportDataForm({
 					]}
 				/>
 
-				<SelectController
+				<DaysOfTheWeekController
 					control={control}
-					selectProps={{ fullWidth: true }}
-					label={t('form.trainingFrequency')}
-					name='trainingFrequency'
-					formControlProps={{ disabled: inputsDisabled }}
-					options={[
-						{
-							label: 'form.trainingFrequencyValues.DAILY',
-							value: 'daily'
-						},
-						{
-							label: 'form.trainingFrequencyValues.EVERY_OTHER_DAY',
-							value: 'every_other_day'
-						},
-						{
-							label: 'form.trainingFrequencyValues.WEEKLY',
-							value: 'weekly'
-						},
-						{
-							label: 'form.trainingFrequencyValues.MONTHLY',
-							value: 'monthly'
-						}
-					]}
+					disabled={inputsDisabled}
+					name='weekdays'
+					label={t('form.daysOfTheWeek')}
+				/>
+
+				<TimePickerController
+					control={control}
+					disabled={inputsDisabled}
+					name='preferedTrainingStartTime'
+					label={t('form.preferedTrainingStartTime')}
+				/>
+
+				<TextFieldController
+					control={control}
+					fullWidth
+					disabled={inputsDisabled}
+					label={t('form.availableTrainingHoursPerDay')}
+					inputProps={{ endAdornment: 'h' }}
+					name='availableTrainingHoursPerDay'
+					type='number'
+				/>
+
+				<TextFieldController
+					control={control}
+					fullWidth
+					disabled={inputsDisabled}
+					label={t('form.weight')}
+					inputProps={{ endAdornment: 'kg' }}
+					name='weight'
+					type='number'
+				/>
+
+				<TextFieldController
+					control={control}
+					fullWidth
+					disabled={inputsDisabled}
+					inputProps={{ endAdornment: 'm' }}
+					label={t('form.height')}
+					name='height'
+					type='number'
+				/>
+
+				<TextFieldController
+					control={control}
+					fullWidth
+					disabled
+					inputProps={{ endAdornment: '%' }}
+					label={t('form.imc')}
+					name='imc'
+					type='number'
 				/>
 
 				<Card className='w-full'>
@@ -229,46 +261,6 @@ export default function SportDataForm({
 						</Button>
 					</CardContent>
 				</Card>
-
-				<TextFieldController
-					control={control}
-					fullWidth
-					disabled={inputsDisabled}
-					label={t('form.availableTrainingHoursPerWeek')}
-					inputProps={{ endAdornment: 'h' }}
-					name='availableTrainingHoursPerWeek'
-					type='number'
-				/>
-
-				<TextFieldController
-					control={control}
-					fullWidth
-					disabled={inputsDisabled}
-					label={t('form.weight')}
-					inputProps={{ endAdornment: 'kg' }}
-					name='weight'
-					type='number'
-				/>
-
-				<TextFieldController
-					control={control}
-					fullWidth
-					disabled={inputsDisabled}
-					inputProps={{ endAdornment: 'm' }}
-					label={t('form.height')}
-					name='height'
-					type='number'
-				/>
-
-				<TextFieldController
-					control={control}
-					fullWidth
-					disabled
-					inputProps={{ endAdornment: '%' }}
-					label={t('form.imc')}
-					name='imc'
-					type='number'
-				/>
 
 				{!!customSubmit || (
 					<LoadingButton

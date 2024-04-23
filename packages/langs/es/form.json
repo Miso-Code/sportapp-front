@@ -43,6 +43,17 @@
 		"MONTHLY": "Mensual",
 		"EVERY_OTHER_DAY": "Día de por medio"
 	},
+	"daysOfTheWeek": "Días de la semana disponibles para entrenar",
+	"daysOfTheWeekValues": {
+		"MONDAY": "Lu",
+		"TUESDAY": "Ma",
+		"WEDNESDAY": "Mi",
+		"THURSDAY": "Ju",
+		"FRIDAY": "Vi",
+		"SATURDAY": "Sá",
+		"SUNDAY": "Do"
+	},
+	"preferedTrainingStartTime": "Hora de inicio preferida para entrenar",
 	"limitations": "Limitaciones",
 	"limitation": "Limitacion",
 	"limitationsLabels": {
@@ -51,7 +62,7 @@
 		"add": "Agregar limitacion",
 		"remove": "Eliminar limitacion"
 	},
-	"availableTrainingHoursPerWeek": "Tiempo para entrenar",
+	"availableTrainingHoursPerDay": "Tiempo disponible para entrenar por día",
 	"weight": "Peso",
 	"height": "Altura",
 	"imc": "Porcentaje de IMC",
