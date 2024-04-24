@@ -1,0 +1,15 @@
+.payment-plan-form {
+	@apply bg-white;
+
+	&-title {
+		@apply text-left;
+	}
+
+	&-container {
+		@apply flex flex-col items-start gap-4 mt-8;
+	}
+
+	.payment-card {
+		@apply cursor-pointer hover:border-[#146b5548] hover:shadow-lg hover:border-solid hover:border-4;
+	}
+}
