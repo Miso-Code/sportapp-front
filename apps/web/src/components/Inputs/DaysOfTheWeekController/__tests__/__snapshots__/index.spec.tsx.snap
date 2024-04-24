@@ -11,7 +11,7 @@ exports[`DaysOfTheWeekController should render disabled component 1`] = `
       Week Day
     </h6>
     <div
-      class="css-iglq0z"
+      class="css-kv5pbo"
     >
       <div
         aria-label="Days of the week"
@@ -112,7 +112,7 @@ exports[`DaysOfTheWeekController should render monday first if locale is startin
       Week Day
     </h6>
     <div
-      class="css-iglq0z"
+      class="css-kv5pbo"
     >
       <div
         aria-label="Days of the week"
@@ -227,7 +227,7 @@ exports[`DaysOfTheWeekController should render the component 1`] = `
       Week Day
     </h6>
     <div
-      class="css-iglq0z"
+      class="css-kv5pbo"
     >
       <div
         aria-label="Days of the week"

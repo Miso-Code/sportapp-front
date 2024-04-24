@@ -49,7 +49,7 @@ jest.mock('react-native-big-calendar', () => {
 jest.mock('react-native-paper', () => {
 	return {
 		...jest.requireActual('react-native-paper'),
-		Portal: jest.fn(({ children }) => children),
+		Portal: jest.fn(({ children }) => children)
 	}
 })
 
@@ -114,7 +114,7 @@ jest.mock('@sportapp/stores', () => ({
 				strength: 0.525,
 				cool_down: 0.175,
 				user_id: '1'
-			},
+			}
 		],
 		getTrainingPlan: jest.fn()
 	})
@@ -231,7 +231,9 @@ describe('SportSessionHistory', () => {
 
 		const cards = component.root.findAllByProps({ testID: 'trainingCard' })
 		expect(cards.length).toBe(10) // not more than 5 entries are rendered (2x react bug)
-		expect(new Date(cards[0].props.children).getTime()).toBeGreaterThanOrEqual(new Date(cards[1].props.children).getTime())
+		expect(
+			new Date(cards[0].props.children).getTime()
+		).toBeGreaterThanOrEqual(new Date(cards[1].props.children).getTime())
 	})
 
 	it('should show the calendar on switch on', async () => {
@@ -284,10 +286,14 @@ describe('SportSessionHistory', () => {
 		await act(async () => {
 			await Promise.resolve()
 		})
-		const eventButtons = component.root.findAllByProps({ testID: 'testButton' })
-		const button = eventButtons[Math.floor(eventButtons.length/2)]
+		const eventButtons = component.root.findAllByProps({
+			testID: 'testButton'
+		})
+		const button = eventButtons[Math.floor(eventButtons.length / 2)]
 		button.props.onPress()
-		const trainingModal = component.root.findByProps({ testID: 'trainingModal' })
+		const trainingModal = component.root.findByProps({
+			testID: 'trainingModal'
+		})
 		expect(trainingModal.props.visible).toBe(true)
 	})
 

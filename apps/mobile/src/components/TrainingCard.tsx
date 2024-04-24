@@ -4,9 +4,11 @@ import { StyleSheet, View } from 'react-native'
 import { Card, Text, Chip, useTheme, MD3Theme } from 'react-native-paper'
 import { useTranslation } from 'react-i18next'
 
-import { useTrainingPlanStore } from "@sportapp/stores";
+import { useTrainingPlanStore } from '@sportapp/stores'
 
-type TrainingPlanSession = Parameters<Parameters<typeof useTrainingPlanStore>[0]>[0]["trainingPlanSessions"][number];
+type TrainingPlanSession = Parameters<
+	Parameters<typeof useTrainingPlanStore>[0]
+>[0]['trainingPlanSessions'][number]
 
 interface TrainingCardProps {
 	date: Date
@@ -36,19 +38,17 @@ const TrianingCard: React.FC<TrainingCardProps> = ({
 				</Text>
 				<View style={styles.trainingInfo}>
 					<View style={styles.trainingDetail}>
-						<Text variant='titleSmall'>
-							{t('training.warmUp')}
-						</Text>
+						<Text variant='titleSmall'>{t('training.warmUp')}</Text>
 						<Text variant='bodyMedium'>
-							{(trainingSession?.warm_up * 60).toFixed(0)} {t('training.minutes')}
+							{(trainingSession?.warm_up * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
 						</Text>
 					</View>
 					<View style={styles.trainingDetail}>
-						<Text variant='titleSmall'>
-							{t('training.cardio')}
-						</Text>
+						<Text variant='titleSmall'>{t('training.cardio')}</Text>
 						<Text variant='bodyMedium'>
-							{(trainingSession?.cardio * 60).toFixed(0)} {t('training.minutes')}
+							{(trainingSession?.cardio * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
 						</Text>
 					</View>
 					<View style={styles.trainingDetail}>
@@ -56,7 +56,8 @@ const TrianingCard: React.FC<TrainingCardProps> = ({
 							{t('training.strength')}
 						</Text>
 						<Text variant='bodyMedium'>
-							{(trainingSession?.strength * 60).toFixed(0)} {t('training.minutes')}
+							{(trainingSession?.strength * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
 						</Text>
 					</View>
 					<View style={styles.trainingDetail}>
@@ -64,7 +65,8 @@ const TrianingCard: React.FC<TrainingCardProps> = ({
 							{t('training.coolDown')}
 						</Text>
 						<Text variant='bodyMedium'>
-							{(trainingSession?.cool_down * 60).toFixed(0)} {t('training.minutes')}
+							{(trainingSession?.cool_down * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
 						</Text>
 					</View>
 					<View style={styles.trainingDetail}>
@@ -72,10 +74,13 @@ const TrianingCard: React.FC<TrainingCardProps> = ({
 							{t('training.totalDuration')}
 						</Text>
 						<Text variant='bodyLarge'>
-							{(trainingSession?.cardio +
+							{(
+								trainingSession?.cardio +
 								trainingSession?.cool_down +
 								trainingSession?.strength +
-								trainingSession?.warm_up).toFixed(1)} {t('training.hours')}
+								trainingSession?.warm_up
+							).toFixed(1)}{' '}
+							{t('training.hours')}
 						</Text>
 					</View>
 				</View>
@@ -133,7 +138,7 @@ const createStyles = (theme: MD3Theme) =>
 			color: theme.colors.error
 		},
 		trainingInfo: {
-			marginVertical: 10,
+			marginVertical: 10
 		},
 		trainingDetail: {
 			flexDirection: 'row',

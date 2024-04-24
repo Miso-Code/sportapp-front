@@ -154,7 +154,7 @@ exports[`SportDataForm should render the component 1`] = `
           form.daysOfTheWeek
         </h6>
         <div
-          class="css-iglq0z"
+          class="css-kv5pbo"
         >
           <div
             aria-label="Days of the week"

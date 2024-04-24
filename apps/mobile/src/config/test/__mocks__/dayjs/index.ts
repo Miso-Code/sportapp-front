@@ -2,7 +2,7 @@ class DayJs {
 	private date: string
 
 	constructor(date: string | Date = new Date()) {
-		this.date = new Date(date).toISOString().slice(0,-7)+"00Z"
+		this.date = new Date(date).toISOString().slice(0, -7) + '00Z'
 	}
 
 	toDate() {
@@ -14,44 +14,33 @@ class DayJs {
 			const date = new Date(this.date)
 			date.setDate(date.getDate() + _duration)
 			this.date = new Date(date).toISOString()
-		}
-		else if (_unit === 'years') {
+		} else if (_unit === 'years') {
 			const date = new Date(this.date)
 			date.setFullYear(date.getFullYear() + _duration)
 			this.date = new Date(date).toISOString()
-		}
-		else if (_unit === 'months') {
+		} else if (_unit === 'months') {
 			const date = new Date(this.date)
 			date.setMonth(date.getMonth() + _duration)
 			this.date = new Date(date).toISOString()
-		}
-
-		else if (_unit === 'hours') {
+		} else if (_unit === 'hours') {
 			const date = new Date(this.date)
-			date.setHours(date.getHours() + _duration,0,0,0)
+			date.setHours(date.getHours() + _duration, 0, 0, 0)
 			this.date = new Date(date).toISOString()
-		}
-
-		else if (_unit === 'minutes') {
+		} else if (_unit === 'minutes') {
 			const date = new Date(this.date)
 			date.setMinutes(date.getMinutes() + _duration, 0, 0)
 			this.date = new Date(date).toISOString()
-		}
-
-		else if (_unit === 'seconds') {
+		} else if (_unit === 'seconds') {
 			const date = new Date(this.date)
 			date.setSeconds(date.getSeconds() + _duration, 0)
 			this.date = new Date(date).toISOString()
-		}
-
-		else if (_unit === 'week') {
+		} else if (_unit === 'week') {
 			const date = new Date(this.date)
 			const day = date.getDay()
-			if (day + _duration*7 > 31) {
+			if (day + _duration * 7 > 31) {
 				date.setMonth(date.getMonth() + 1)
 				date.setDate(1)
-			}
-			else{
+			} else {
 				date.setDate(date.getDate() + _duration * 7)
 			}
 			this.date = new Date(date).toISOString()
@@ -104,25 +93,25 @@ class DayJs {
 
 	startOf(_unit: string) {
 		const date = new Date(this.date)
-		date.setHours(0,0,0,0)
+		date.setHours(0, 0, 0, 0)
 		return this
 	}
 
 	hour(hour: number) {
 		const date = new Date(this.date)
-		date.setHours(hour,0,0,0)
+		date.setHours(hour, 0, 0, 0)
 		this.date = new Date(date).toISOString()
 		return this
 	}
 
 	minute(minute: number) {
 		const date = new Date(this.date)
-		date.setMinutes(minute,0,0)
+		date.setMinutes(minute, 0, 0)
 		this.date = new Date(date).toISOString()
 		return this
 	}
 
-	weekday(day=1) {
+	weekday(day = 1) {
 		const date = new Date(this.date).setDate(day)
 		this.date = new Date(date).toISOString()
 		return this
