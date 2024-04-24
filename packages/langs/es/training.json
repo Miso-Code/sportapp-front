@@ -21,5 +21,13 @@
 	"nextEventsEmpty": "No hay eventos próximos",
 	"today": "Hoy",
 	"upcoming": "Próximo",
-	"search": "Buscar"
+	"search": "Buscar",
+	"minutes": "Minutos",
+	"hours": "Horas",
+	"warmUp": "Calentamiento",
+	"cardio": "Cardio",
+	"strength": "Resistencia",
+	"coolDown": "Enfriamiento",
+	"totalDuration": "Duración Total",
+	"upcomingTraining": "Próximo Entrenamiento"
 }

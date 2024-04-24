@@ -43,6 +43,17 @@
 		"MONTHLY": "Monthly",
 		"EVERY_OTHER_DAY": "Every other day"
 	},
+	"daysOfTheWeek": "Days of the week available for training",
+	"daysOfTheWeekValues": {
+		"MONDAY": "Mo",
+		"TUESDAY": "Tu",
+		"WEDNESDAY": "We",
+		"THURSDAY": "Th",
+		"FRIDAY": "Fr",
+		"SATURDAY": "Sa",
+		"SUNDAY": "Su"
+	},
+	"preferedTrainingStartTime": "Preferred Training Start Time",
 	"limitations": "Limitations",
 	"limitation": "Limitations",
 	"limitationsLabels": {
@@ -51,7 +62,7 @@
 		"add": "Add Limitation",
 		"remove": "Remove Limitation"
 	},
-	"availableTrainingHoursPerWeek": "Available Training Time",
+	"availableTrainingHoursPerDay": "Available Training Time per Day",
 	"weight": "Weight",
 	"height": "Height",
 	"imc": "IMC Perncentage",

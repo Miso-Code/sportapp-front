@@ -20,5 +20,13 @@
 	"nextEvents": "Next Events",
 	"nextEventsEmpty": "No upcoming events found",
 	"today": "Today",
-	"upcoming":  "Upcoming"
+	"upcoming":  "Upcoming",
+	"minutes": "Minutes",
+	"hours": "Hours",
+	"warmUp": "Warm Up",
+	"cardio": "Cardio",
+	"strength": "Strength",
+	"coolDown": "Cool Down",
+	"totalDuration": "Total Duration",
+	"upcomingTraining": "Upcoming Training"
 }

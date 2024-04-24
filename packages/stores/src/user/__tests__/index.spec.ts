@@ -323,7 +323,8 @@ describe('UserStore', () => {
 				available_training_hours: 10,
 				favourite_sport_id: '1',
 				height: 180,
-				training_frequency: '3',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [
 					{
 						name: 'test',
@@ -351,7 +352,8 @@ describe('UserStore', () => {
 				available_training_hours: 10,
 				favourite_sport_id: '1',
 				height: 180,
-				training_frequency: '3',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [
 					{
 						name: 'test',

@@ -483,7 +483,8 @@ describe('UserApi', () => {
 						weight: 101,
 						height: 1.7,
 						available_training_hours: 10,
-						training_frequency: 'daily',
+						available_week_days: ['monday'],
+						preferred_training_start_time: '10:00 AM',
 						training_limitations: [
 							'85e444a0-91cc-45cb-a8dd-a84ca18e4224'
 						],
@@ -499,7 +500,8 @@ describe('UserApi', () => {
 				weight: 101,
 				height: 1.7,
 				available_training_hours: 10,
-				training_frequency: 'daily',
+				available_week_days: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: ['85e444a0-91cc-45cb-a8dd-a84ca18e4224'],
 				bmi: 34.95
 			})
@@ -541,7 +543,8 @@ describe('UserApi', () => {
 						weight: 101,
 						height: 1.7,
 						available_training_hours: 10,
-						training_frequency: 'daily',
+						available_week_days: ['monday'],
+						preferred_training_start_time: '10:00 AM',
 						training_limitations: [
 							'85e444a0-91cc-45cb-a8dd-a84ca18e4224'
 						],
@@ -554,7 +557,8 @@ describe('UserApi', () => {
 				available_training_hours: 1,
 				favourite_sport_id: '1234',
 				height: 1,
-				training_frequency: '3 times a week',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [],
 				training_objective: 'test',
 				weight: 1
@@ -566,7 +570,8 @@ describe('UserApi', () => {
 				weight: 101,
 				height: 1.7,
 				available_training_hours: 10,
-				training_frequency: 'daily',
+				available_week_days: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: ['85e444a0-91cc-45cb-a8dd-a84ca18e4224'],
 				bmi: 34.95
 			})
@@ -583,7 +588,8 @@ describe('UserApi', () => {
 				available_training_hours: 1,
 				favourite_sport_id: '1234',
 				height: 1,
-				training_frequency: '3 times a week',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [],
 				training_objective: 'test',
 				weight: 1
@@ -603,7 +609,8 @@ describe('UserApi', () => {
 				available_training_hours: 1,
 				favourite_sport_id: '1234',
 				height: 1,
-				training_frequency: '3 times a week',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [],
 				training_objective: 'test',
 				weight: 1
@@ -625,7 +632,8 @@ describe('UserApi', () => {
 				available_training_hours: 1,
 				favourite_sport_id: '1234',
 				height: 1,
-				training_frequency: '3 times a week',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [],
 				training_objective: 'test',
 				weight: 1

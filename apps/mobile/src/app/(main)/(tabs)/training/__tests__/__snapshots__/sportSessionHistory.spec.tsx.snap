@@ -1,57 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SportSessionHistory should render correctly 1`] = `
-<View
-  style={
-    {
-      "alignItems": "center",
-      "flex": 1,
-      "gap": 10,
-      "justifyContent": "flex-start",
-      "marginTop": 110,
-    }
-  }
->
+[
   <View
-    accessibilityRole="progressbar"
-    accessibilityState={
+    style={
       {
-        "busy": true,
+        "minHeight": 250,
       }
     }
-    accessible={true}
+  />,
+  <View
     style={
-      [
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-        },
-        undefined,
-      ]
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "gap": 10,
+        "justifyContent": "flex-start",
+        "marginTop": 110,
+      }
     }
-    testID="progressBar"
   >
     <View
-      collapsable={false}
-      style={
+      accessibilityRole="progressbar"
+      accessibilityState={
         {
-          "height": 48,
-          "opacity": 1,
-          "width": 48,
+          "busy": true,
         }
       }
+      accessible={true}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+      testID="progressBar"
     >
       <View
         collapsable={false}
         style={
           {
-            "alignItems": "center",
-            "bottom": 0,
-            "justifyContent": "center",
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
+            "height": 48,
+            "opacity": 1,
+            "width": 48,
           }
         }
       >
@@ -59,13 +53,13 @@ exports[`SportSessionHistory should render correctly 1`] = `
           collapsable={false}
           style={
             {
-              "height": 48,
-              "transform": [
-                {
-                  "rotate": "45deg",
-                },
-              ],
-              "width": 48,
+              "alignItems": "center",
+              "bottom": 0,
+              "justifyContent": "center",
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             }
           }
         >
@@ -73,8 +67,12 @@ exports[`SportSessionHistory should render correctly 1`] = `
             collapsable={false}
             style={
               {
-                "height": 24,
-                "overflow": "hidden",
+                "height": 48,
+                "transform": [
+                  {
+                    "rotate": "45deg",
+                  },
+                ],
                 "width": 48,
               }
             }
@@ -83,15 +81,8 @@ exports[`SportSessionHistory should render correctly 1`] = `
               collapsable={false}
               style={
                 {
-                  "height": 48,
-                  "transform": [
-                    {
-                      "translateY": 0,
-                    },
-                    {
-                      "rotate": "-165deg",
-                    },
-                  ],
+                  "height": 24,
+                  "overflow": "hidden",
                   "width": 48,
                 }
               }
@@ -100,8 +91,15 @@ exports[`SportSessionHistory should render correctly 1`] = `
                 collapsable={false}
                 style={
                   {
-                    "height": 24,
-                    "overflow": "hidden",
+                    "height": 48,
+                    "transform": [
+                      {
+                        "translateY": 0,
+                      },
+                      {
+                        "rotate": "-165deg",
+                      },
+                    ],
                     "width": 48,
                   }
                 }
@@ -110,44 +108,40 @@ exports[`SportSessionHistory should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderColor": "rgba(103, 80, 164, 1)",
-                      "borderRadius": 24,
-                      "borderWidth": 4.8,
-                      "height": 48,
+                      "height": 24,
+                      "overflow": "hidden",
                       "width": 48,
                     }
                   }
-                />
+                >
+                  <View
+                    collapsable={false}
+                    style={
+                      {
+                        "borderColor": "rgba(103, 80, 164, 1)",
+                        "borderRadius": 24,
+                        "borderWidth": 4.8,
+                        "height": 48,
+                        "width": 48,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
-      <View
-        collapsable={false}
-        style={
-          {
-            "alignItems": "center",
-            "bottom": 0,
-            "justifyContent": "center",
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-      >
         <View
           collapsable={false}
           style={
             {
-              "height": 48,
-              "transform": [
-                {
-                  "rotate": "45deg",
-                },
-              ],
-              "width": 48,
+              "alignItems": "center",
+              "bottom": 0,
+              "justifyContent": "center",
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             }
           }
         >
@@ -155,9 +149,12 @@ exports[`SportSessionHistory should render correctly 1`] = `
             collapsable={false}
             style={
               {
-                "height": 24,
-                "overflow": "hidden",
-                "top": 24,
+                "height": 48,
+                "transform": [
+                  {
+                    "rotate": "45deg",
+                  },
+                ],
                 "width": 48,
               }
             }
@@ -166,15 +163,9 @@ exports[`SportSessionHistory should render correctly 1`] = `
               collapsable={false}
               style={
                 {
-                  "height": 48,
-                  "transform": [
-                    {
-                      "translateY": -24,
-                    },
-                    {
-                      "rotate": "345deg",
-                    },
-                  ],
+                  "height": 24,
+                  "overflow": "hidden",
+                  "top": 24,
                   "width": 48,
                 }
               }
@@ -183,8 +174,15 @@ exports[`SportSessionHistory should render correctly 1`] = `
                 collapsable={false}
                 style={
                   {
-                    "height": 24,
-                    "overflow": "hidden",
+                    "height": 48,
+                    "transform": [
+                      {
+                        "translateY": -24,
+                      },
+                      {
+                        "rotate": "345deg",
+                      },
+                    ],
                     "width": 48,
                   }
                 }
@@ -193,20 +191,31 @@ exports[`SportSessionHistory should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderColor": "rgba(103, 80, 164, 1)",
-                      "borderRadius": 24,
-                      "borderWidth": 4.8,
-                      "height": 48,
+                      "height": 24,
+                      "overflow": "hidden",
                       "width": 48,
                     }
                   }
-                />
+                >
+                  <View
+                    collapsable={false}
+                    style={
+                      {
+                        "borderColor": "rgba(103, 80, 164, 1)",
+                        "borderRadius": 24,
+                        "borderWidth": 4.8,
+                        "height": 48,
+                        "width": 48,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
       </View>
     </View>
-  </View>
-</View>
+  </View>,
+]
 `;

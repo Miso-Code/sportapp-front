@@ -112,7 +112,7 @@ jest.mock(
 					<button
 						onClick={() => {
 							const payload: SportFormData = {
-								availableTrainingHoursPerWeek: 1,
+								availableTrainingHoursPerDay: 1,
 								favouriteSportId: '1',
 								height: 1,
 								weight: 1,
@@ -122,7 +122,8 @@ jest.mock(
 										name: 'test'
 									}
 								],
-								trainingFrequency: '1',
+								weekdays: ['monday'],
+								preferedTrainingStartTime: '08:00 AM',
 								trainingObjective: '1'
 							}
 							handleCustomSubmit(payload)
