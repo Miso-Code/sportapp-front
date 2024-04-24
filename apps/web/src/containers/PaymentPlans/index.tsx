@@ -10,7 +10,7 @@ import {
 	Typography
 } from '@mui/material'
 import { TransitionProps } from '@mui/material/transitions'
-import { ReactElement, forwardRef, useState } from 'react'
+import { ReactElement, forwardRef, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import CardPaymentPlan from './components/CardPaymentPlan'
@@ -29,14 +29,25 @@ export default function PaymentPlans() {
 	const [selected, setSelected] = useState<PlanType>('free')
 	const [selectedModal, setSelectedModal] = useState<PlanType>(PlanTypes.NONE)
 
-	const handleOpen = (plan: PlanType) => {
+	const handleOpen = useCallback((plan: PlanType) => {
 		setSelectedModal(plan)
 		setOpen(true)
-	}
-	const handleClose = () => setOpen(false)
-	const handleSelect = () => {
+	}, [])
+	const handleClose = useCallback(() => setOpen(false), [])
+	const handleSelect = useCallback(() => {
 		setSelected(selectedModal)
 		handleClose()
+	}, [handleClose, selectedModal])
+
+	const generateBenefits = (activeBenefitsCount: number) => {
+		const benefits = []
+		for (let i = 0; i < 8; i++) {
+			benefits.push({
+				description: t('paymentPlans.benefits.information.' + i),
+				isActive: i < activeBenefitsCount
+			})
+		}
+		return benefits
 	}
 
 	return (
@@ -52,56 +63,7 @@ export default function PaymentPlans() {
 						activeText={t('paymentPlans.active')}
 						name={t('paymentPlans.free.title')}
 						description={t('paymentPlans.free.description')}
-						benefits={[
-							{
-								description: t(
-									'paymentPlans.benefits.information.0'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.1'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.2'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.3'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.4'
-								),
-								isActive: false
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.5'
-								),
-								isActive: false
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.6'
-								),
-								isActive: false
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.7'
-								),
-								isActive: false
-							}
-						]}
+						benefits={generateBenefits(4)}
 						duration='mes'
 						price={0}
 						onClick={() => handleOpen('free')}
@@ -111,56 +73,7 @@ export default function PaymentPlans() {
 						isActive={selected === 'basic'}
 						name={t('paymentPlans.basic.title')}
 						description={t('paymentPlans.basic.description')}
-						benefits={[
-							{
-								description: t(
-									'paymentPlans.benefits.information.0'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.1'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.2'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.3'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.4'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.5'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.6'
-								),
-								isActive: false
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.7'
-								),
-								isActive: false
-							}
-						]}
+						benefits={generateBenefits(6)}
 						duration='mes'
 						price={5}
 						onClick={() => handleOpen('basic')}
@@ -170,56 +83,7 @@ export default function PaymentPlans() {
 						isActive={selected === 'premium'}
 						name={t('paymentPlans.premium.title')}
 						description={t('paymentPlans.premium.description')}
-						benefits={[
-							{
-								description: t(
-									'paymentPlans.benefits.information.0'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.1'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.2'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.3'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.4'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.5'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.6'
-								),
-								isActive: true
-							},
-							{
-								description: t(
-									'paymentPlans.benefits.information.7'
-								),
-								isActive: true
-							}
-						]}
+						benefits={generateBenefits(8)}
 						duration='mes'
 						price={10}
 						onClick={() => handleOpen('premium')}

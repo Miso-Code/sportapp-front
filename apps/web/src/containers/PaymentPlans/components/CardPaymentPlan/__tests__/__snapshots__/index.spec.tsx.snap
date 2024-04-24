@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaymentPlans should render the component 1`] = `
+exports[`CardPaymentPlan should render the component 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
