@@ -10,5 +10,9 @@
 	"min": {
 		"string": "El campo no cumple con la longitud mínima",
 		"array": "El campo no cumple con la longitud mínima de elementos"
+	},
+	"max":{
+		"string": "El campo excede la longitud máxima",
+		"array": "El campo excede la longitud máxima de elementos"
 	}
 }

@@ -8,7 +8,22 @@ import { useAuthStore } from '..'
 
 export const initialSportSessionState: ISportSessionState = {
 	sportSession: undefined,
-	sportSessions: []
+	sportSessions: [
+		{
+			session_id: 'session_id',
+			sport_id: 'sport_id',
+			user_id: 'user_id',
+			started_at: '2024-04-17T17:00:00',
+			duration: 3600,
+			distance: 1,
+			steps: 1,
+			calories: 1,
+			average_speed: 1,
+			min_heartrate: 1,
+			max_heartrate: 1,
+			avg_heartrate: 1
+		}
+	]
 }
 
 export const useSportSessionStore = create<ISportSessionStore>(

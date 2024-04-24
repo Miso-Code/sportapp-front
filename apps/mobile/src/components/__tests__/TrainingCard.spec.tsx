@@ -11,9 +11,19 @@ describe('TrainingCard', () => {
 	beforeEach(() => {
 		component = renderer.create(
 			<TrainingCard
-				title='Test'
-				description='Test description'
 				date={new Date()}
+				trainingSession={
+					{
+						training_plan_session_id: '1',
+						weekday: 'monday',
+						start_time: '10:00 AM',
+						warm_up: 0.35,
+						cardio: 0.7,
+						strength: 0.525,
+						cool_down: 0.175,
+						user_id: '1'
+					}
+				}
 			/>
 		)
 	})
@@ -37,8 +47,18 @@ describe('TrainingCard', () => {
 		future.setFullYear(future.getFullYear() + 1)
 		component.update(
 			<TrainingCard
-				title='Test'
-				description='Test description'
+				trainingSession={
+					{
+						training_plan_session_id: '1',
+						weekday: 'monday',
+						start_time: '10:00 AM',
+						warm_up: 0.35,
+						cardio: 0.7,
+						strength: 0.525,
+						cool_down: 0.175,
+						user_id: '1'
+					}
+				}
 				date={future}
 			/>
 		)

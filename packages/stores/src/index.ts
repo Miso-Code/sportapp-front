@@ -15,3 +15,8 @@ export {
 	initialProductPartnerState,
 	usePartnerProductStore
 } from './partner/products'
+
+export {
+	initialTrainingPlanState,
+	useTrainingPlanStore
+} from './trainingPlan'

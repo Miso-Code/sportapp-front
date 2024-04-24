@@ -10,5 +10,9 @@
 	"min": {
 		"string": "The field doesn't meet the minimum length of characters",
 		"array": "The field doesn't meet the minimum length of items"
+	},
+	"max":{
+		"string": "The field exceeds the maximum length",
+		"array": "The field exceeds the maximum length of items"
 	}
 }
