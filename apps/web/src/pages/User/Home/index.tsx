@@ -22,6 +22,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import { handleEdit } from './components/Menu/utils'
+import PaymentPlans from '@/containers/PaymentPlans'
 
 function HomePage() {
 	const { t } = useTranslation()
@@ -229,7 +230,7 @@ function HomePage() {
 			inputsDisabled={isEditing[2]}
 			className='mt-10 px-3'
 		/>,
-		<div>Planes de pago</div>
+		<PaymentPlans />
 	]
 
 	return (

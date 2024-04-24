@@ -1,0 +1,33 @@
+{
+	"title": "Payment Plans",
+	"free": {
+		"title": "Free Plan",
+		"description": "Ideal for individuals who are just starting out in the world of sports."
+	},
+	"basic": {
+		"title": "Basic Plan",
+		"description": "Ideal for individuals who engage in sports periodically and want to keep track of their health."
+	},
+	"premium": {
+		"title": "Premium Plan",
+		"description": "Ideal for individuals who engage in sports constantly and want to improve their performance."
+	},
+	"benefits": {
+		"title": "Benefits",
+		"information": [
+			"Event recommendations",
+			"Companion recommendations",
+			"Nutrition recommendations",
+			"Health indicators",
+			"Risk notifications",
+			"24x7 monitoring",
+			"Sessions with specialists",
+			"24x7 available coach"
+		]
+	},
+	"active": "Active",
+	"payment": {
+		"year": "Year Payment",
+		"month": "Month Payment"
+	}
+}

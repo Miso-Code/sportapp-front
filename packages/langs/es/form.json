@@ -116,5 +116,7 @@
 		"remove": "Eliminar archivo",
 		"placeholder": "Arrastre y suelte la imagen del producto aquí, o haga clic para seleccionar la imagen del producto"
 	},
-	"createProduct": "Crear producto"
+	"createProduct": "Crear producto",
+	"agree": "Estoy de acuerdo",
+	"disagree": "No estoy de acuerdo"
 }
