@@ -1,0 +1,37 @@
+{
+	"title": "Planes de Pago",
+	"free": {
+		"title": "Plan gratuito",
+		"description": "Ideal para individuos que apenas están empezando en el mundo del deporte."
+	},
+	"basic": {
+		"title": "Plan básico",
+		"description": "Ideal para individuos que realizan deporte periódicamente y desean estar pendientes de su salud"
+	},
+	"premium": {
+		"title": "Plan premium",
+		"description": "Ideal para individuos que realizan deporte constantemente y desean mejorar su rendimiento"
+	},
+	"benefits": {
+		"title": "Beneficios",
+		"information": [
+			"Recomendación de eventos",
+			"Recomendación de acompañantes",
+			"Recomendación de alimentación",
+			"Indicadores de salud",
+			"Notificación de riesgos",
+			"Monitoreo 24x7",
+			"Sesiones con especialistas",
+			"Entrenador disponible 24x7"
+		]
+	},
+	"active": "Activo",
+	"payment": {
+		"year": "Pago anual",
+		"month": "Pago mensual"
+	},
+	"selection": {
+		"title": "Selección de plan",
+		"description": "Esta seguro que desea seleccionar el "
+	}
+}
