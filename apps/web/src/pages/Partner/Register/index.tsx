@@ -38,7 +38,6 @@ export default function Register() {
 	}
 
 	const handleGoToLogin = () => {
-		console.log('navigate', navigate)
 		navigate('/partner/login')
 	}
 

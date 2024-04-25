@@ -117,6 +117,15 @@ exports[`UpdateProductPartnerPage should render the component 1`] = `
           >
             productUpdate.title
           </h4>
+          <div>
+            CreateProduct
+            <button>
+              productUpdate.update
+            </button>
+            <p
+              id="loading"
+            />
+          </div>
           <button
             class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError MuiButton-fullWidth mt-4 css-1pt4pzm-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":r1:"

@@ -145,11 +145,12 @@ exports[`HomePartner should render the component 1`] = `
                   class="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
                 >
                   <span
-                    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase"
+                    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase"
                   >
                     <input
                       checked=""
                       class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+                      id="8f02181a-4433-48a6-b8df-578bb3a1cdc7-switch"
                       type="checkbox"
                     />
                     <span

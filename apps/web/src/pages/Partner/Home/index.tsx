@@ -12,6 +12,7 @@ import {
 	Switch,
 	Typography
 } from '@mui/material'
+import { Product } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product'
 
 import { usePartnerProductStore } from '@sportapp/stores'
 import { useCallback, useEffect, useState } from 'react'
@@ -23,7 +24,7 @@ export default function HomePartner() {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const search = location.search
-	const { getProducts } = usePartnerProductStore()
+	const { getProducts, updateProduct } = usePartnerProductStore()
 	const { loading, error, products } = usePartnerProductStore()
 	const [alert, setAlert] = useState(false)
 	const [page, setPage] = useState(1)
@@ -48,6 +49,22 @@ export default function HomePartner() {
 				: `?productId=${productId}`
 		})
 	}
+
+	const handleUpdateProduct = useCallback(
+		async (productId: string, active: boolean, product: Product) => {
+			const payload = { ...product, active }
+
+			const response = await updateProduct({ ...payload }, productId)
+
+			if (!response) {
+				setAlert(true)
+				return
+			}
+
+			await handleGetProducts()
+		},
+		[handleGetProducts, updateProduct]
+	)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -129,9 +146,20 @@ export default function HomePartner() {
 															}
 														}}>
 														<Switch
-															defaultChecked={
+															checked={
 																product.active
 															}
+															id={`${product.product_id}-switch`}
+															onChange={(
+																event: React.ChangeEvent<HTMLInputElement>
+															) => {
+																handleUpdateProduct(
+																	product.product_id,
+																	event.target
+																		.checked,
+																	product
+																)
+															}}
 														/>
 													</div>
 												</div>
