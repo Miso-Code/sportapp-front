@@ -112,6 +112,7 @@ class DayJs {
 	}
 
 	weekday(day = 1) {
+		// defaults to monday
 		const date = new Date(this.date).setDate(day)
 		this.date = new Date(date).toISOString()
 		return this

@@ -17,6 +17,7 @@ import productCreate from './productCreate.json'
 import productObtain from './productObtain.json'
 import productUpdate from './productUpdate.json'
 import paymentPlans from './paymentPlans.json'
+import motivation from './motivation.json'
 
 const defaultTranslate = {
 	translation: {
@@ -38,7 +39,8 @@ const defaultTranslate = {
 		productCreate,
 		productObtain,
 		productUpdate,
-		paymentPlans
+		paymentPlans,
+		motivation
 	}
 }
 

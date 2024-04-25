@@ -1,4 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import dayjs from 'dayjs'
+import 'dayjs/locale/en' // import English locale
+import 'dayjs/locale/es' // import French locale
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter' // load isSameOrAfter plugin
+import weekday from 'dayjs/plugin/weekday' // load weekday plugin
+
+dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
+dayjs.extend(weekday) // use weekday plugin
+
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 import { View, Text, StyleSheet } from 'react-native'
 
@@ -10,7 +19,9 @@ import { useLocation } from '@/hooks/useLocation'
 import {
 	useAuthStore,
 	useSportSessionStore,
-	useSportStore
+	useSportStore,
+	useTrainingPlanStore,
+	useAlertStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +31,12 @@ const SportSession: React.FC = () => {
 	const { startSportSession, finishSportSession, addSessionLocation } =
 		useSportSessionStore()
 	const { getSports, sports } = useSportStore()
+	const { setAlert } = useAlertStore()
+	const { trainingPlanSessions } = useTrainingPlanStore()
+	const trainingPlanSessionsMemo = useMemo(
+		() => trainingPlanSessions,
+		[trainingPlanSessions]
+	)
 
 	const { t } = useTranslation()
 
@@ -27,7 +44,7 @@ const SportSession: React.FC = () => {
 	const { locationUpdates, isLocationAvailable } = useLocation()
 
 	const [currentTime, setCurrentTime] = useState(0)
-	const [maxTime] = useState(60)
+	const [maxTime, setMaxTime] = useState(1_800) // 30 minutes
 
 	const [startedAt, setStartedAt] = useState<Date>(new Date())
 
@@ -39,6 +56,16 @@ const SportSession: React.FC = () => {
 	)
 
 	const [sessionID, setSessionID] = useState<string | null>(null)
+
+	const motivationalInterval = useRef<ReturnType<typeof setInterval> | null>(
+		null
+	)
+	const motivationalTimer = useRef<ReturnType<typeof setInterval> | null>(
+		null
+	)
+
+	const currentStepCountRef = useRef(currentStepCount)
+	const prevStepCountRef = useRef(0)
 
 	const startTimer = () => {
 		const currentTimer = setInterval(() => {
@@ -125,6 +152,17 @@ const SportSession: React.FC = () => {
 		sessionID
 	])
 
+	const sendMotivationalMessage = (doingGreat = true) => {
+		const i = Math.floor(Math.random() * 10)
+		setAlert({
+			type: 'info',
+			message: doingGreat
+				? t(`motivation.doingGreat.${i}`)
+				: t(`motivation.doingBetter.${i}`),
+			position: 'top'
+		})
+	}
+
 	useEffect(() => {
 		if (currentTime >= maxTime) {
 			handleStop()
@@ -164,6 +202,76 @@ const SportSession: React.FC = () => {
 	useEffect(() => {
 		getSports()
 	}, [getSports])
+
+	useEffect(() => {
+		if (motivationalTimer.current) clearInterval(motivationalTimer.current)
+		if (motivationalInterval.current)
+			clearInterval(motivationalInterval.current)
+		if (isRunning && !isPaused) {
+			let timeForMotivation = Math.floor(maxTime / 3) * 1000
+
+			if (timeForMotivation < 30_000) timeForMotivation = 30_000
+			else if (timeForMotivation > 120_000) timeForMotivation = 120_000
+			const currentMotivationalTimer = setInterval(() => {
+				sendMotivationalMessage(true)
+			}, timeForMotivation)
+			motivationalInterval.current = currentMotivationalTimer
+
+			const currentMotivationalInterval = setInterval(() => {
+				if (currentStepCountRef.current !== 0) {
+					const delta =
+						currentStepCountRef.current - prevStepCountRef.current
+					if (delta <= 5) sendMotivationalMessage(false)
+					prevStepCountRef.current = currentStepCountRef.current
+				}
+			}, 10_000)
+			motivationalTimer.current = currentMotivationalInterval
+		}
+		return () => {
+			if (motivationalTimer.current)
+				clearInterval(motivationalTimer.current)
+			if (motivationalInterval.current)
+				clearInterval(motivationalInterval.current)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isRunning, isPaused, maxTime])
+
+	useEffect(() => {
+		currentStepCountRef.current = currentStepCount
+	}, [currentStepCount])
+
+	useEffect(() => {
+		if (trainingPlanSessionsMemo.length) {
+			const daysOfWeek = [
+				'sunday',
+				'monday',
+				'tuesday',
+				'wednesday',
+				'thursday',
+				'friday',
+				'saturday'
+			]
+			const currentDay = dayjs().weekday()
+			// find the the closes session to the current day
+			const closestSession = trainingPlanSessionsMemo.reduce(
+				(prev, curr) => {
+					const currDay = daysOfWeek.indexOf(curr.weekday)
+					const prevDay = daysOfWeek.indexOf(prev.weekday)
+					const currDiff = Math.abs(currDay - currentDay)
+					const prevDiff = Math.abs(prevDay - currentDay)
+					return currDiff < prevDiff ? curr : prev
+				}
+			)
+			const totalHours =
+				closestSession.warm_up +
+				closestSession.cardio +
+				closestSession.strength +
+				closestSession.cool_down
+			setMaxTime(Math.ceil(totalHours * 3600))
+		} else {
+			setMaxTime(1_800) // 30 minutes
+		}
+	}, [trainingPlanSessionsMemo])
 
 	return (
 		<View style={styles.container}>
