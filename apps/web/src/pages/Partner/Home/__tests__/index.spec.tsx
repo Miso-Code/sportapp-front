@@ -31,7 +31,24 @@ jest.mock('@sportapp/stores', () => ({
 				description: 'ksgfdshfkjdshfskj\ntest',
 				active: true
 			}
-		])
+		]),
+		products: [
+			{
+				product_id: '8f02181a-4433-48a6-b8df-578bb3a1cdc7',
+				business_partner_id: '15ba4bc7-53b0-40f6-9606-a8d28342d473',
+				category: 'training_services',
+				name: 'aaa',
+				summary: '[Mobile] - Calendario de Eventos',
+				url: 'https://www.youtube.com/watch?v=ZklvDN4-8bA&ab_channel=ProfeZaki',
+				price: 2.0,
+				payment_type: 'periodic',
+				payment_frequency: 'monthly',
+				image_url:
+					'https://raw.githubusercontent.com/react-dropzone/react-dropzone/master/logo/logo.png',
+				description: 'ksgfdshfkjdshfskj\ntest',
+				active: true
+			}
+		]
 	}),
 	usePartnerAuthStore: () => ({
 		user: {
@@ -122,7 +139,24 @@ describe('HomePartner', () => {
 					description: 'ksgfdshfkjdshfskj\ntest',
 					active: true
 				}
-			])
+			]),
+			products: [
+				{
+					product_id: '8f02181a-4433-48a6-b8df-578bb3a1cdc7',
+					business_partner_id: '15ba4bc7-53b0-40f6-9606-a8d28342d473',
+					category: 'training_services',
+					name: 'aaa',
+					summary: '[Mobile] - Calendario de Eventos',
+					url: 'https://www.youtube.com/watch?v=ZklvDN4-8bA&ab_channel=ProfeZaki',
+					price: 2.0,
+					payment_type: 'periodic',
+					payment_frequency: 'monthly',
+					image_url:
+						'https://raw.githubusercontent.com/react-dropzone/react-dropzone/master/logo/logo.png',
+					description: 'ksgfdshfkjdshfskj\ntest',
+					active: true
+				}
+			]
 		})
 
 		act(() => {
@@ -198,7 +232,24 @@ describe('HomePartner', () => {
 					description: 'ksgfdshfkjdshfskj\ntest',
 					active: true
 				}
-			])
+			]),
+			products: [
+				{
+					product_id: '8f02181a-4433-48a6-b8df-578bb3a1cdc7',
+					business_partner_id: '15ba4bc7-53b0-40f6-9606-a8d28342d473',
+					category: 'training_services',
+					name: 'aaa',
+					summary: '[Mobile] - Calendario de Eventos',
+					url: 'https://www.youtube.com/watch?v=ZklvDN4-8bA&ab_channel=ProfeZaki',
+					price: 2.0,
+					payment_type: 'periodic',
+					payment_frequency: 'monthly',
+					image_url:
+						'https://raw.githubusercontent.com/react-dropzone/react-dropzone/master/logo/logo.png',
+					description: 'ksgfdshfkjdshfskj\ntest',
+					active: true
+				}
+			]
 		})
 
 		act(() => {
@@ -213,6 +264,39 @@ describe('HomePartner', () => {
 				pathname: '/partner/product/update',
 				search: '?searchId=8f02181a-4433-48a6-b8df-578bb3a1cdc7&productId=8f02181a-4433-48a6-b8df-578bb3a1cdc7'
 			})
+		})
+	})
+
+	it('should call getProducts with click in pagination 2', async () => {
+		const getProducts = jest.fn().mockResolvedValue([
+			{
+				product_id: '8f02181a-4433-48a6-b8df-578bb3a1cdc7',
+				business_partner_id: '15ba4bc7-53b0-40f6-9606-a8d28342d473',
+				category: 'training_services',
+				name: 'aaa',
+				summary: '[Mobile] - Calendario de Eventos',
+				url: 'https://www.youtube.com/watch?v=ZklvDN4-8bA&ab_channel=ProfeZaki',
+				price: 2.0,
+				payment_type: 'periodic',
+				payment_frequency: 'monthly',
+				image_url:
+					'https://raw.githubusercontent.com/react-dropzone/react-dropzone/master/logo/logo.png',
+				description: 'ksgfdshfkjdshfskj\ntest',
+				active: true
+			}
+		])
+		;(usePartnerProductStore as unknown as jest.Mock).mockReturnValue({
+			loading: false,
+			error: undefined,
+			getProducts
+		})
+
+		wrapper.rerender(<HomePartner />)
+
+		await waitFor(() => {
+			const button = wrapper.getByText('2')
+			fireEvent.click(button)
+			expect(getProducts).toHaveBeenCalledWith({ limit: 5, offset: 1 })
 		})
 	})
 })

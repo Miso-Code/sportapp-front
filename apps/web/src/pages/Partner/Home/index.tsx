@@ -8,10 +8,10 @@ import {
 	Card,
 	CardContent,
 	Container,
+	Pagination,
 	Switch,
 	Typography
 } from '@mui/material'
-import { Product } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product'
 
 import { usePartnerProductStore } from '@sportapp/stores'
 import { useCallback, useEffect, useState } from 'react'
@@ -24,15 +24,21 @@ export default function HomePartner() {
 	const location = useLocation()
 	const search = location.search
 	const { getProducts } = usePartnerProductStore()
-	const { loading, error } = usePartnerProductStore()
+	const { loading, error, products } = usePartnerProductStore()
 	const [alert, setAlert] = useState(false)
-	const [products, setProducts] = useState<Product[]>([])
+	const [page, setPage] = useState(1)
+
+	const handleChange = async (
+		_event: React.ChangeEvent<unknown>,
+		value: number
+	) => {
+		setPage(value)
+		await handleGetProducts()
+	}
 
 	const handleGetProducts = useCallback(async () => {
-		const response = await getProducts({ limit: 5, offset: 0 })
-
-		if (response) setProducts(response)
-	}, [getProducts])
+		await getProducts({ limit: 5, offset: page - 1 })
+	}, [getProducts, page])
 
 	const handleGoToUpdateProduct = (productId: string) => {
 		navigate({
@@ -74,89 +80,104 @@ export default function HomePartner() {
 							</Typography>
 						</Box>
 					) : (
-						<Box
-							style={{
-								display: 'grid',
-								gridTemplateColumns:
-									'repeat(auto-fill, minmax(300px, 1fr))',
-								gap: '2rem',
-								marginTop: '2rem',
-								paddingBottom: '2rem'
-							}}>
-							{products.length > 0 ? (
-								products.map((product) => (
-									<Card
-										key={product.product_id}
-										className='cursor-pointer'
-										onClick={() =>
-											handleGoToUpdateProduct(
-												product.product_id
-											)
-										}>
-										<CardContent>
-											<div className='flex justify-between'>
-												<div className='flex'>
-													<Avatar variant='square'>
-														{product.name[0]}
-													</Avatar>
-													<Typography
-														className='ml-4'
-														variant='h6'>
-														{t(product.name)}
-													</Typography>
-												</div>
-												<div
-													onClick={(event) => {
-														event.stopPropagation()
-													}}
-													onKeyDown={(event) => {
-														if (
-															event.key ===
-																'Enter' ||
-															event.key === ' '
-														) {
+						<>
+							<Box
+								style={{
+									display: 'grid',
+									gridTemplateColumns:
+										'repeat(auto-fill, minmax(300px, 1fr))',
+									gap: '2rem',
+									marginTop: '2rem',
+									paddingBottom: '2rem'
+								}}>
+								{products &&
+								Array.isArray(products) &&
+								products.length > 0 ? (
+									products.map((product) => (
+										<Card
+											key={product.product_id}
+											className='cursor-pointer'
+											onClick={() =>
+												handleGoToUpdateProduct(
+													product.product_id
+												)
+											}>
+											<CardContent>
+												<div className='flex justify-between'>
+													<div className='flex'>
+														<Avatar variant='square'>
+															{product.name[0]}
+														</Avatar>
+														<Typography
+															className='ml-4'
+															variant='h6'>
+															{t(product.name)}
+														</Typography>
+													</div>
+													<div
+														onClick={(event) => {
 															event.stopPropagation()
-														}
-													}}>
-													<Switch
-														defaultChecked={
-															product.active
-														}
-													/>
+														}}
+														onKeyDown={(event) => {
+															if (
+																event.key ===
+																	'Enter' ||
+																event.key ===
+																	' '
+															) {
+																event.stopPropagation()
+															}
+														}}>
+														<Switch
+															defaultChecked={
+																product.active
+															}
+														/>
+													</div>
 												</div>
-											</div>
-										</CardContent>
-										<CardContent>
-											<Typography
-												style={{
-													height: '4rem',
-													overflow: 'hidden',
-													textOverflow: 'ellipsis',
-													display: '-webkit-box',
-													WebkitLineClamp: 3,
-													WebkitBoxOrient: 'vertical'
-												}}
-												variant='caption'>
-												{product.summary}
-											</Typography>
-										</CardContent>
-									</Card>
-								))
-							) : (
-								<Box className='flex flex-col items-center col-span-full'>
-									<SearchOffIcon
-										color='action'
-										style={{
-											width: '6rem',
-											height: '6rem'
-										}}
-									/>
-									<Typography color='GrayText'>
-										{t('productObtain.noProducts')}
-									</Typography>
-								</Box>
-							)}
-						</Box>
+											</CardContent>
+											<CardContent>
+												<Typography
+													style={{
+														height: '4rem',
+														overflow: 'hidden',
+														textOverflow:
+															'ellipsis',
+														display: '-webkit-box',
+														WebkitLineClamp: 3,
+														WebkitBoxOrient:
+															'vertical'
+													}}
+													variant='caption'>
+													{product.summary}
+												</Typography>
+											</CardContent>
+										</Card>
+									))
+								) : (
+									<Box className='flex flex-col items-center col-span-full'>
+										<SearchOffIcon
+											color='action'
+											style={{
+												width: '6rem',
+												height: '6rem'
+											}}
+										/>
+										<Typography color='GrayText'>
+											{t('productObtain.noProducts')}
+										</Typography>
+									</Box>
+								)}
+							</Box>
+							<Pagination
+								count={10}
+								color='primary'
+								page={page}
+								onChange={handleChange}
+								shape='rounded'
+								className='w-fit mx-auto'
+							/>
+						</>
 					)}
 				</Container>
 			</div>
