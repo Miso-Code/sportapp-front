@@ -1,35 +1,26 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
 import { router } from 'expo-router'
-import { useSportSessionStore, useSportStore } from '@sportapp/stores'
+import {
+	useAlertStore,
+	useAuthStore,
+	useSportSessionStore,
+	useSportStore,
+	useTrainingPlanStore
+} from '@sportapp/stores'
 import { useLocation } from '@/hooks/useLocation'
 
 import SportSession from '../sportSession'
+import { usePedometer } from '@/hooks/usePedometer'
 
 jest.mock('expo-router')
 jest.mock('@sportapp/stores', () => {
 	return {
-		useAuthStore: jest.fn().mockReturnValue({
-			user: {
-				id: '1'
-			}
-		}),
-		useSportSessionStore: jest.fn().mockReturnValue({
-			startSportSession: jest.fn().mockReturnValue({
-				session_id: '1'
-			}),
-			finishSportSession: jest.fn(),
-			addSessionLocation: jest.fn()
-		}),
-		useSportStore: jest.fn().mockReturnValue({
-			getSports: jest.fn(),
-			sports: [
-				{
-					sport_id: '1',
-					name: 'Running'
-				}
-			]
-		})
+		useAuthStore: jest.fn(),
+		useSportSessionStore: jest.fn(),
+		useSportStore: jest.fn(),
+		useAlertStore: jest.fn(),
+		useTrainingPlanStore: jest.fn()
 	}
 })
 jest.mock('@/hooks/usePedometer', () => {
@@ -65,10 +56,12 @@ jest.mock('@/components/TimerRing', () => {
 	const native = jest.requireActual('react-native')
 	return {
 		__esModule: true,
-		default: ({ currentTime }) => {
+		default: ({ currentTime, ...props }) => {
 			return (
 				<native.View>
-					<native.Text testID='timer'>{currentTime}</native.Text>
+					<native.Text testID='timer' {...props}>
+						{currentTime}
+					</native.Text>
 				</native.View>
 			)
 		}
@@ -80,19 +73,61 @@ describe('SportSession', () => {
 
 	beforeEach(() => {
 		jest.useFakeTimers()
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			user: {
+				id: '1'
+			}
+		})
+		;(useSportSessionStore as unknown as jest.Mock).mockReturnValue({
+			startSportSession: jest.fn().mockReturnValue({
+				session_id: '1'
+			}),
+			finishSportSession: jest.fn(),
+			addSessionLocation: jest.fn()
+		})
+		;(useSportStore as unknown as jest.Mock).mockReturnValue({
+			getSports: jest.fn(),
+			sports: [
+				{
+					sport_id: '1',
+					name: 'Running'
+				}
+			]
+		})
+		;(useAlertStore as unknown as jest.Mock).mockReturnValue({
+			setAlert: jest.fn()
+		})
+		;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+			trainingPlanSessions: [
+				{
+					training_plan_session_id: 'training_plan_session_id',
+					weekday: 'monday',
+					start_time: '00:00 AM',
+					warm_up: 1 / 360,
+					cardio: 1 / 360,
+					strength: 1 / 360,
+					cool_down: 1 / 360,
+					user_id: 'user_id'
+				}
+			]
+		})
 		component = renderer.create(<SportSession />)
 	})
 
 	afterEach(() => {
-		jest.useRealTimers()
 		component.unmount()
+		jest.useRealTimers()
+		jest.clearAllMocks()
 	})
 
 	it('should render correctly', () => {
 		expect(component.toJSON()).toMatchSnapshot()
 	})
 
-	it('should call getSports on mount', () => {
+	it('should call getSports on mount', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
 		expect(useSportStore().getSports).toHaveBeenCalled()
 	})
 
@@ -102,7 +137,7 @@ describe('SportSession', () => {
 		})
 		await act(async () => {
 			startButton.props.onPress()
-			await jest.advanceTimersByTimeAsync(60000)
+			await jest.advanceTimersByTimeAsync((4 / 360) * 3_600_000) // check mock data in useTrainingPlanStore, is in hours so we advance 4/360 of an hour
 		})
 		expect(startButton).toBeTruthy()
 
@@ -528,17 +563,265 @@ describe('SportSession', () => {
 			expect(useSportSessionStore().finishSportSession).toHaveBeenCalled()
 		})
 
-		it('should natigate to the sport session summary when the timer is stopped', () => {
+		it('should natigate to the sport session summary when the timer is stopped', async () => {
 			const stopButton = component.root.findByProps({
 				testID: 'stopButton'
 			})
-			act(() => {
+			await act(async () => {
 				stopButton.props.onPress()
+				await Promise.resolve()
 			})
 
 			expect(router.push).toHaveBeenCalledWith(
 				'training/sportSessionSummary'
 			)
 		})
+	})
+
+	describe('Motivation Alerts', () => {
+		it('should show a motivation alert 3 times during the session', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600, // sum is 2 mins so we should get 3 alerts every 40 seconds
+						cardio: 30 / 3_600,
+						strength: 30 / 3_600,
+						cool_down: 30 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(120_000)
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(3)
+		})
+
+		it('should show a motivation alert every 30 seconds if the session is shorter than 2 minutes', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600, // sum is 1 min so we should get 2 alerts every 30 seconds
+						cardio: 30 / 3_600,
+						strength: 0,
+						cool_down: 0,
+						user_id: 'user_id'
+					}
+				]
+			})
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(60_000)
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(2)
+		})
+
+		it('should show a motivation alert every 2 minutes if the session is longer than 6 minutes', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 120 / 3_600, // sum is 8 mins so we should get 1 alert every 2 minutes
+						cardio: 120 / 3_600,
+						strength: 120 / 3_600,
+						cool_down: 120 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(480_000)
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(4)
+		})
+		it('should not show a motivation alert if the session is paused', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600, // sum is 2 mins so we should get 3 alerts every 40 seconds
+						cardio: 30 / 3_600,
+						strength: 30 / 3_600,
+						cool_down: 30 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(1_000) // 1 second then pause
+				component.root
+					.findByProps({ testID: 'pauseButton' })
+					.props.onPress()
+			})
+			await jest.advanceTimersByTimeAsync(120_000)
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(0)
+		})
+
+		it('should not show a motivation alert if the session is stopped', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600, // sum is 2 mins so we should get 3 alerts every 40 seconds
+						cardio: 30 / 3_600,
+						strength: 30 / 3_600,
+						cool_down: 30 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(1_000) // 1 second then stop
+				component.root
+					.findByProps({ testID: 'stopButton' })
+					.props.onPress()
+			})
+			await jest.advanceTimersByTimeAsync(120_000)
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(0)
+		})
+
+		it('should show a motivation alert if there is a decrease on delta steps', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600,
+						cardio: 30 / 3_600,
+						strength: 30 / 3_600,
+						cool_down: 30 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+			;(usePedometer as jest.Mock).mockReturnValue({
+				isPedometerAvailable: true,
+				currentStepCount: 0
+			})
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(10_000)
+				usePedometer().currentStepCount = 100 // diff is 100 so it speeds up
+				await jest.advanceTimersByTimeAsync(10_000)
+				usePedometer().currentStepCount = 105 // diff is 10 so it slows down but not so much
+				await jest.advanceTimersByTimeAsync(10_000)
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(1)
+		})
+
+		it('should not show a motivation alert if there is a decrease on delta steps greater then 5', async () => {
+			;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+				trainingPlanSessions: [
+					{
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 30 / 3_600,
+						cardio: 30 / 3_600,
+						strength: 30 / 3_600,
+						cool_down: 30 / 3_600,
+						user_id: 'user_id'
+					}
+				]
+			})
+			;(usePedometer as jest.Mock).mockReturnValue({
+				isPedometerAvailable: true,
+				currentStepCount: 0
+			})
+			await act(async () => {
+				component.update(<SportSession />)
+				component.root
+					.findByProps({ testID: 'startButton' })
+					.props.onPress()
+				await jest.advanceTimersByTimeAsync(10_000)
+				usePedometer().currentStepCount = 100 // diff is 100 so it speeds up
+				await jest.advanceTimersByTimeAsync(10_000)
+				usePedometer().currentStepCount = 110 // diff is 10 so it slows down but not so much
+				await jest.advanceTimersByTimeAsync(10_000)
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledTimes(0)
+		})
+	})
+
+	it('should set max time to 30 mins if there is no training plan', async () => {
+		;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+			trainingPlanSessions: []
+		})
+		await act(async () => {
+			component.update(<SportSession />)
+		})
+		expect(
+			component.root.findByProps({ testID: 'timer' }).props.maxTime
+		).toBe(1800)
+	})
+
+	it('should set max time to the sum of the closest training plan session times', async () => {
+		;(useTrainingPlanStore as unknown as jest.Mock).mockReturnValue({
+			trainingPlanSessions: [
+				{
+					training_plan_session_id: 'training_plan_session_id',
+					weekday: 'tuesday', // closest to monday (mocked always to be monday)
+					start_time: '00:00 AM',
+					warm_up: 2 / 360,
+					cardio: 2 / 360,
+					strength: 2 / 360,
+					cool_down: 2 / 360,
+					user_id: 'user_id'
+				},
+				{
+					training_plan_session_id: 'training_plan_session_id',
+					weekday: 'saturday',
+					start_time: '00:00 AM',
+					warm_up: 1 / 360,
+					cardio: 1 / 360,
+					strength: 1 / 360,
+					cool_down: 1 / 360,
+					user_id: 'user_id'
+				}
+			]
+		})
+		await act(async () => {
+			component.update(<SportSession />)
+		})
+		expect(
+			component.root.findByProps({ testID: 'timer' }).props.maxTime
+		).toBe((8 / 360) * 3_600)
 	})
 })
