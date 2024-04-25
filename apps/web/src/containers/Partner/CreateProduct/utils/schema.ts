@@ -12,7 +12,6 @@ const schema = object().shape({
 		is: 'subscription',
 		then: () => string().required()
 	}),
-	stock: number().min(1).required(),
 	description: string().required(),
 	typeImage: string().oneOf(['true', 'false']).required(),
 	image_base64: mixed().when('typeImage', {
