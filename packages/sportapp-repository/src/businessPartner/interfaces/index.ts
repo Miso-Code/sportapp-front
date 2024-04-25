@@ -36,3 +36,23 @@ export interface SearchRequest {
 }
 
 export interface ProductRequest extends PaginatedRequest, SearchRequest {}
+
+export interface PurchaseProductRequest {
+	user_name: string
+	user_email: string
+	payment_data: {
+		card_number: string
+		card_holder: string
+		card_expiration_date: string
+		card_cvv: string
+		amount: number
+	}
+	product_id: string
+}
+
+export interface PurchaseProductResponse {
+	transaction_id: string
+	transaction_status: 'failed' | 'completed'
+	transaction_date: string
+	message: string
+}

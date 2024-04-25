@@ -11,7 +11,11 @@ import {
 import { useLocalSearchParams, router } from 'expo-router'
 import ProductServiceCard from '@/components/ProductServiceCard'
 import KeyboardAvoidingDialog from '@/components/KeyboardAvoidingDialog'
-import { useAlertStore, useBusinessPartnerStore } from '@sportapp/stores'
+import {
+	useAlertStore,
+	useBusinessPartnerStore,
+	useUserStore
+} from '@sportapp/stores'
 import Markdown from 'react-native-markdown-display'
 import { useTranslation } from 'react-i18next'
 
@@ -19,6 +23,11 @@ const ServiceAndProductsCheckout: React.FC = () => {
 	const params = useLocalSearchParams()
 	const { t } = useTranslation()
 	const { setAlert } = useAlertStore()
+	const { productToCheckout, purchaseProduct } = useBusinessPartnerStore()
+	const { getProfile } = useUserStore()
+
+	const [userProfile, setUserProfile] =
+		useState<Awaited<ReturnType<typeof getProfile>>>(null)
 
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -28,8 +37,6 @@ const ServiceAndProductsCheckout: React.FC = () => {
 	const [cardHolder, setCardHolder] = useState('')
 	const [expirationDate, setExpirationDate] = useState('')
 	const [cvv, setCvv] = useState('')
-
-	const { productToCheckout } = useBusinessPartnerStore()
 
 	const formatCardNumber = (value: string) => {
 		if (!value) return
@@ -50,10 +57,22 @@ const ServiceAndProductsCheckout: React.FC = () => {
 
 	const processPayment = async () => {
 		setIsLoading(true)
-		await new Promise((resolve) => setTimeout(resolve, 2000))
+		const response = await purchaseProduct({
+			user_name: userProfile?.first_name + ' ' + userProfile?.last_name,
+			user_email: userProfile?.email,
+			payment_data: {
+				card_number: cardNumber,
+				card_holder: cardHolder,
+				card_expiration_date:
+					expirationDate.slice(0, 2) + '/' + expirationDate.slice(2),
+				card_cvv: cvv,
+				amount: productToCheckout.price * parseInt(quantity, 10)
+			},
+			product_id: productToCheckout.product_id
+		})
 		setIsLoading(false)
 
-		if (cardNumber === '4242424242424242') {
+		if (response.transaction_status === 'completed') {
 			setAlert({
 				type: 'success',
 				message: t('productService.paymentSuccess')
@@ -87,6 +106,15 @@ const ServiceAndProductsCheckout: React.FC = () => {
 			router.back()
 		}
 	}, [productToCheckout, setAlert])
+
+	useEffect(() => {
+		;(async () => {
+			const profile = await getProfile()
+			if (profile) {
+				setUserProfile(profile)
+			}
+		})()
+	}, [getProfile])
 
 	return (
 		<>

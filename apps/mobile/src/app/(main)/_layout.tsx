@@ -8,16 +8,16 @@ import {
 	Icon,
 	Text,
 	useTheme,
-	MD3Theme
+	MD3Theme,
+	Portal
 } from 'react-native-paper'
 
 import { useAlertStore } from '@sportapp/stores'
-import { View, StyleSheet, Dimensions } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 export default function AppLayout() {
 	const theme = useTheme()
-	const deviceHeight = Dimensions.get('window').height
-	const styles = createStyles(theme, deviceHeight)
+	const styles = createStyles(theme)
 	const { alert, setAlert } = useAlertStore()
 
 	const iconByAlertType = {
@@ -33,70 +33,68 @@ export default function AppLayout() {
 			<Stack>
 				<Stack.Screen name='(tabs)' options={{ headerShown: false }} />
 			</Stack>
-			{alert && (
-				<Snackbar
-					testID='alert'
-					onIconPress={() => setAlert(undefined)}
-					visible={!!alert}
-					onDismiss={() => setAlert(undefined)}
-					duration={alert.ttl ?? 5000}
-					style={{
-						...styles[alert.type],
-						...styles[alert.position ?? 'bottom']
-					}}>
-					<View style={styles.row}>
-						<Icon
-							source={iconByAlertType[alert.type]}
-							color={styles[alert.type].color}
-							size={20}
-						/>
-						<Text style={styles[alert.type]}>{alert.message}</Text>
-					</View>
-				</Snackbar>
-			)}
+			<Portal>
+				{alert && (
+					<Snackbar
+						testID='alert'
+						onIconPress={() => setAlert(undefined)}
+						visible={!!alert}
+						onDismiss={() => setAlert(undefined)}
+						duration={alert.ttl ?? 5000}
+						style={styles[alert.type]}
+						wrapperStyle={styles[alert.position]}>
+						<View style={styles.row}>
+							<Icon
+								source={iconByAlertType[alert.type]}
+								color={styles[alert.type].color}
+								size={20}
+							/>
+							<Text style={styles[alert.type]}>
+								{alert.message}
+							</Text>
+						</View>
+					</Snackbar>
+				)}
+			</Portal>
 		</PaperProvider>
 	)
 }
 
-const createStyles = (theme: MD3Theme, height: number) =>
+const createStyles = (theme: MD3Theme) =>
 	StyleSheet.create({
 		row: {
 			flexDirection: 'row',
 			alignItems: 'center',
-			gap: 20
+			gap: 20,
+			marginRight: 30
 		},
 		error: {
 			color: theme.colors.onError,
-			backgroundColor: theme.colors.error
+			backgroundColor: theme.colors.error,
+			alignItems: 'flex-start'
 		},
 		success: {
 			color: theme.colors.onPrimary,
-			backgroundColor: 'green'
+			backgroundColor: 'green',
+			alignItems: 'flex-start'
 		},
 		warning: {
 			color: theme.colors.onPrimary,
-			backgroundColor: 'orange'
+			backgroundColor: 'orange',
+			alignItems: 'flex-start'
 		},
 		info: {
 			color: theme.colors.onSecondary,
-			backgroundColor: theme.colors.secondary
+			backgroundColor: theme.colors.secondary,
+			alignItems: 'flex-start'
 		},
 		bottom: {
-			position: 'absolute',
-			bottom: 100,
-			left: 0,
-			right: 0
+			bottom: 50
 		},
 		top: {
-			position: 'absolute',
-			bottom: height - 120,
-			left: 0,
-			right: 0
+			top: 50
 		},
 		center: {
-			position: 'absolute',
-			bottom: height / 2,
-			left: 0,
-			right: 0
+			top: '45%'
 		}
 	})
