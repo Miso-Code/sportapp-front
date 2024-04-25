@@ -22,3 +22,8 @@ export interface Product {
 	description: string
 	active: boolean
 }
+
+export interface ProductSpecificRequestPayload {
+	options: AxiosRequestConfig
+	product_id: string
+}

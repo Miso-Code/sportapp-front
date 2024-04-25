@@ -22,5 +22,7 @@ export interface IProductActions {
 	setProducts: (products: Product[]) => void
 	createProduct: (product: ProductCreateRequest) => Promise<boolean>
 	getProducts: (payload: getProductsPayload) => Promise<Product[] | false>
+	getProduct: (id: string) => Promise<Product | false>
 	deleteProduct: (productId: string) => Promise<boolean>
+	updateProduct: (product: Partial<Product>, id: string) => Promise<boolean>
 }

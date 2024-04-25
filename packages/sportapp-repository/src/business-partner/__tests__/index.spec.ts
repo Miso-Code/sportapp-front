@@ -478,4 +478,233 @@ describe('BusinessPartnerApi', () => {
 			expect(result).toEqual(false)
 		})
 	})
+
+	describe('updateProduct', () => {
+		it('should update a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1',
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '200'
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).patch.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.updateProduct(data)
+			expect(result).toEqual(true)
+		})
+
+		it('should not update a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1',
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).patch.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.updateProduct(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not update a product and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1',
+				product: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).patch.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.updateProduct(data)
+
+			expect(result).toEqual(false)
+		})
+	})
+
+	describe('getProduct', () => {
+		it('should get a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '200',
+				data: {
+					product_id: '1',
+					business_partner_id: '1',
+					category: 'test',
+					name: 'test',
+					summary: 'test',
+					url: 'test',
+					price: 100,
+					payment_type: 'test',
+					payment_frequency: 'test',
+					image_url: 'test',
+					description: 'test',
+					active: true
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+			const result = await businessPartnerApi.getProduct(data)
+			expect(result).toEqual(response.data)
+		})
+
+		it('should not get a product', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.getProduct(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not get a product and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.getProduct(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not get a product and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+				product_id: '1'
+			}
+
+			const response = {
+				status: '401',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.getProduct(data)
+			expect(result).toEqual(false)
+		})
+	})
 })
