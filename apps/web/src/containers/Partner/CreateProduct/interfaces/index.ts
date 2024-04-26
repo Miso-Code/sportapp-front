@@ -5,6 +5,8 @@ export interface Props {
 	onHandleSubmit: (data: FormData) => void
 	disabled?: boolean
 	isLoading?: boolean
+	defaultValues?: Partial<FormData>
+	buttonText?: string
 }
 
 export enum ProductCategory {

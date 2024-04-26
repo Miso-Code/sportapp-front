@@ -3,8 +3,10 @@ import MarckDownController from '@/components/Inputs/MarckDownController'
 import RadioButtonController from '@/components/Inputs/RadioButtonController'
 import SelectController from '@/components/Inputs/SelectController'
 import TextFieldController from '@/components/Inputs/TexFieldController'
+import { toBase64 } from '@/utils/files'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoadingButton from '@mui/lab/LoadingButton'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
@@ -15,14 +17,24 @@ import {
 	Props
 } from './interfaces'
 import schema, { FormData } from './utils/schema'
-import { toBase64 } from '@/utils/files'
-import { useEffect, useState } from 'react'
 
 export default function CreateProduct({
 	className,
 	onHandleSubmit,
 	disabled,
 	isLoading,
+	defaultValues = {
+		category: '',
+		name: '',
+		summary: '',
+		url: '',
+		price: 0,
+		paymentType: '',
+		paymentFrequency: PaymentFrequency.OTHER,
+		description: '',
+		image_base64: ''
+	},
+	buttonText = 'form.createProduct',
 	...props
 }: Props) {
 	const { t } = useTranslation()
@@ -34,17 +46,17 @@ export default function CreateProduct({
 		formState: { isValid }
 	} = useForm<FormData>({
 		resolver: yupResolver(schema),
-		defaultValues: {
-			category: '',
-			name: '',
-			summary: '',
-			url: '',
-			price: 0,
-			paymentType: '',
-			paymentFrequency: PaymentFrequency.OTHER,
-			stock: 0,
-			description: '',
-			image_base64: ''
+		values: {
+			category: defaultValues.category ?? '',
+			name: defaultValues.name ?? '',
+			summary: defaultValues.summary ?? '',
+			url: defaultValues.url ?? '',
+			price: defaultValues.price ?? 0,
+			paymentType: defaultValues.paymentType ?? '',
+			paymentFrequency: defaultValues.paymentFrequency,
+			description: defaultValues.description ?? '',
+			typeImage: 'false',
+			imageUrl: defaultValues.imageUrl ?? ''
 		},
 		mode: 'onChange'
 	})
@@ -188,13 +200,6 @@ export default function CreateProduct({
 					]}
 				/>
 			)}
-			<TextFieldController
-				control={control}
-				fullWidth
-				type='number'
-				label={t('form.productStock')}
-				name='stock'
-			/>
 			<RadioButtonController
 				control={control}
 				fullWidth
@@ -254,7 +259,7 @@ export default function CreateProduct({
 				loading={isLoading}
 				type='submit'
 				variant='contained'>
-				{t('form.createProduct')}
+				{t(buttonText)}
 			</LoadingButton>
 		</form>
 	)

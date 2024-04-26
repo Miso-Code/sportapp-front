@@ -3,6 +3,7 @@ import BusinessPartner from '@sportapp/sportapp-repository/src/business-partner'
 import { usePartnerProductStore } from '../index'
 import { ProductCreateRequest } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product-create'
 import { getProductsPayload } from '../interfaces'
+import { Product } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product'
 
 jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
@@ -415,5 +416,170 @@ describe('ProductStore', () => {
 		})
 		expect(result.current.products).toBe(undefined)
 		expect(result.current.error).toBe('errors.product.get')
+	})
+
+	it('should get product', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getProduct: jest.fn().mockResolvedValue({
+				product_id: '3d34b017-ac99-4e2b-8959-0c997231a64c',
+				business_partner_id: '22ed137d-2898-4d1c-ae44-a451b8f4f729',
+				category: 'nutrition',
+				name: 'Test Product',
+				summary: 'The best product ever',
+				url: 'https://www.google.com.co',
+				price: 12310,
+				payment_type: 'unique',
+				payment_frequency: 'other',
+				image_url:
+					'https://business-partners-products.s3.us-east-1.amazonaws.com/product_images/22ed137d-2898-4d1c-ae44-a451b8f4f729/test_product_1713564629661',
+				description:
+					"I'll override the auxiliary THX feed, that should driver the GB firewall!",
+				active: true
+			})
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		let product: Partial<Product> = {}
+		await act(async () => {
+			product = (await getProduct(productId)) as Product
+		})
+		expect(product).toStrictEqual({
+			product_id: '3d34b017-ac99-4e2b-8959-0c997231a64c',
+			business_partner_id: '22ed137d-2898-4d1c-ae44-a451b8f4f729',
+			category: 'nutrition',
+			name: 'Test Product',
+			summary: 'The best product ever',
+			url: 'https://www.google.com.co',
+			price: 12310,
+			payment_type: 'unique',
+			payment_frequency: 'other',
+			image_url:
+				'https://business-partners-products.s3.us-east-1.amazonaws.com/product_images/22ed137d-2898-4d1c-ae44-a451b8f4f729/test_product_1713564629661',
+			description:
+				"I'll override the auxiliary THX feed, that should driver the GB firewall!",
+			active: true
+		})
+	})
+
+	it('should not get product', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getProduct: jest.fn().mockResolvedValue(false)
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		let product: Partial<Product> = {}
+		await act(async () => {
+			product = (await getProduct(productId)) as Product
+		})
+		expect(product).toBe(false)
+	})
+
+	it('should not get product, because of an error', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getProduct: jest.fn().mockRejectedValue(new Error('error'))
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		let product: Partial<Product> = {}
+		await act(async () => {
+			product = (await getProduct(productId)) as Product
+		})
+		expect(product).toBe(false)
+	})
+
+	it('should update product', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			updateProduct: jest.fn().mockResolvedValue(true)
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { updateProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		const product: Product = {
+			product_id: '3d34b017-ac99-4e2b-8959-0c997231a64c',
+			business_partner_id: '22ed137d-2898-4d1c-ae44-a451b8f4f729',
+			category: 'nutrition',
+			name: 'Test Product',
+			summary: 'The best product ever',
+			url: 'https://www.google.com.co',
+			price: 12310,
+			payment_type: 'unique',
+			payment_frequency: 'other',
+			image_url:
+				'https://business-partners-products.s3.us-east-1.amazonaws.com/product_images/22ed137d-2898-4d1c-ae44-a451b8f4f729/test_product_1713564629661',
+			description: "I'll override the auxiliary THX feed,",
+			active: true
+		}
+		let updatedProduct: boolean = false
+		await act(async () => {
+			updatedProduct = await updateProduct(product, productId)
+		})
+		expect(updatedProduct).toBe(true)
+	})
+
+	it('should not update product', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			updateProduct: jest.fn().mockResolvedValue(false)
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { updateProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		const product: Product = {
+			product_id: '3d34b017-ac99-4e2b-8959-0c997231a64c',
+			business_partner_id: '22ed137d-2898-4d1c-ae44-a451b8f4f729',
+			category: 'nutrition',
+			name: 'Test Product',
+			summary: 'The best product ever',
+			url: 'https://www.google.com.co',
+			price: 12310,
+			payment_type: 'unique',
+			payment_frequency: 'other',
+			image_url:
+				'https://business-partners-products.s3.us-east-1.amazonaws.com/product_images/22ed137d-2898-4d1c-ae44-a451b8f4f729/test_product_1713564629661',
+			description: "I'll override the auxiliary THX feed,",
+			active: true
+		}
+		let updatedProduct: boolean = true
+		await act(async () => {
+			updatedProduct = await updateProduct(product, productId)
+		})
+		expect(updatedProduct).toBe(false)
+	})
+
+	it('should not update product, because of an error', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			updateProduct: jest.fn().mockRejectedValue(new Error('error'))
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { updateProduct } = result.current
+		expect(result.current.products).toBe(undefined)
+		const productId = '3d34b017-ac99-4e2b-8959-0c997231a64c'
+		const product: Product = {
+			product_id: '3d34b017-ac99-4e2b-8959-0c997231a64c',
+			business_partner_id: '22ed137d-2898-4d1c-ae44-a451b8f4f729',
+			category: 'nutrition',
+			name: 'Test Product',
+			summary: 'The best product ever',
+			url: 'https://www.google.com.co',
+			price: 12310,
+			payment_type: 'unique',
+			payment_frequency: 'other',
+			image_url:
+				'https://business-partners-products.s3.us-east-1.amazonaws.com/product_images/22ed137d-2898-4d1c-ae44-a451b8f4f729/test_product_1713564629661',
+			description: "I'll override the auxiliary THX feed,",
+			active: true
+		}
+		let updatedProduct: boolean = true
+		await act(async () => {
+			updatedProduct = await updateProduct(product, productId)
+		})
+		expect(updatedProduct).toBe(false)
 	})
 })

@@ -175,6 +175,93 @@ export const usePartnerProductStore = create(
 					}))
 					return false
 				}
+			},
+			getProduct: async (id) => {
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						usePartnerAuthStore.getState().authToken?.accessToken
+
+					const businessPartnerApi = new BusinessPartnerApi()
+					const response = await businessPartnerApi.getProduct({
+						options: {
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						},
+						product_id: id
+					})
+
+					if (response) {
+						set((state) => ({
+							...state,
+							selectedProduct: response,
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.product.get',
+						loading: false
+					}))
+
+					return false
+				} catch (error) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.product.get'
+					}))
+					return false
+				}
+			},
+			updateProduct: async (product, id) => {
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						usePartnerAuthStore.getState().authToken?.accessToken
+					const businessPartnerApi = new BusinessPartnerApi()
+					const response = await businessPartnerApi.updateProduct({
+						product_id: id,
+						options: {
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						},
+						product
+					})
+
+					if (response) {
+						set((state) => ({
+							...state,
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.product.update',
+						loading: false
+					}))
+
+					return false
+				} catch (error) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.product.update'
+					}))
+					return false
+				}
 			}
 		}),
 		{

@@ -11,7 +11,11 @@ import {
 } from './interfaces/api/register'
 import { ProductCreateRequestPayload } from './interfaces/api/product-create'
 import { ProductDeleteRequestPayload } from './interfaces/api/product-delete'
-import { Product, ProductGetRequestPayload } from './interfaces/api/product'
+import {
+	Product,
+	ProductGetRequestPayload,
+	ProductSpecificRequestPayload
+} from './interfaces/api/product'
 
 export default class BusinessPartnerApi {
 	private readonly sportappApi: AxiosInstance
@@ -109,6 +113,50 @@ export default class BusinessPartnerApi {
 			})
 			if (response.status.toString().startsWith('2')) {
 				return response.data
+			}
+			return false
+		} catch (error) {
+			console.error(error)
+			return false
+		}
+	}
+
+	async getProduct({
+		options,
+		product_id
+	}: ProductSpecificRequestPayload): Promise<Product | false> {
+		const endpoint = endpoints.product.get(product_id)
+		try {
+			const response = await this.sportappApi.get<Product>(
+				endpoint,
+				options
+			)
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+			return false
+		} catch (error) {
+			console.error(error)
+			return false
+		}
+	}
+
+	async updateProduct({
+		options,
+		product_id,
+		product
+	}: ProductSpecificRequestPayload & {
+		product: Partial<Product>
+	}): Promise<boolean> {
+		const endpoint = endpoints.product.update(product_id)
+		try {
+			const response = await this.sportappApi.patch(
+				endpoint,
+				product,
+				options
+			)
+			if (response.status.toString().startsWith('2')) {
+				return true
 			}
 			return false
 		} catch (error) {
