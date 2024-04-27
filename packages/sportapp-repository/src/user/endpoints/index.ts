@@ -11,7 +11,8 @@ const endpoints = {
 	updateSportProfile: `${BASE_PROFILE_URL}/sports`,
 	getNutritionalProfile: `${BASE_PROFILE_URL}/nutritional`,
 	updateNutritionalProfile: `${BASE_PROFILE_URL}/nutritional`,
-	getAllNutritionalLimitations: `${BASE_URL}/nutritional-limitations`
+	getAllNutritionalLimitations: `${BASE_URL}/nutritional-limitations`,
+	updatePlan: `${BASE_URL}/update-plan`
 }
 
 export default endpoints

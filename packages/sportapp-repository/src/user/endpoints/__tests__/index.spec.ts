@@ -63,4 +63,8 @@ describe('User endpoints', () => {
 			'/users/nutritional-limitations'
 		)
 	})
+
+	it('should return the correct endpoint from updatePlan', () => {
+		expect(endpoints.updatePlan).toBe('/users/update-plan')
+	})
 })
