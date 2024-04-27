@@ -127,5 +127,24 @@
 		"remove": "Remove File",
 		"placeholder": "Drag and drop the product image here, or click to select the product image"
 	},
-	"createProduct": "Create Product"
+	"createProduct": "Create Product",
+	"amount": "Amount",
+	"total": "Total",
+	"pay": "Buy",
+	"cancel": "Cancel",
+	"checkout": "Checkout",
+	"card": {
+		"cardNumber": "Card Number",
+		"cardHolder": "Cardholder Name",
+		"expirationDate": "Expiration Date",
+		"cvv": "CVV",
+		"cardNumberPlaceholder": "1234 5678 9012 3456",
+		"cardHolderPlaceholder": "Cardholder Name",
+		"expirationDatePlaceholder": "MM/YY",
+		"cvvPlaceholder": "CVV",
+		"cardNumberError": "Invalid card number",
+		"cardHolderError": "Invalid cardholder name",
+		"expirationDateError": "Invalid expiration date",
+		"cvvError": "Invalid CVV"
+	}
 }

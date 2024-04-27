@@ -129,5 +129,24 @@
 	},
 	"createProduct": "Crear producto",
 	"agree": "Estoy de acuerdo",
-	"disagree": "No estoy de acuerdo"
+	"disagree": "No estoy de acuerdo",
+	"amount": "Cantidad",
+	"total": "Total",
+	"pay": "Comprar",
+	"cancel": "Cancelar",
+	"checkout": "Pagar",
+	"card": {
+		"cardNumber": "Número de tarjeta",
+		"cardHolder": "Titular de la tarjeta",
+		"expirationDate": "Fecha de vencimiento",
+		"cvv": "CVV",
+		"cardNumberPlaceholder": "1234 5678 9012 3456",
+		"cardHolderPlaceholder": "Nombre del titular",
+		"expirationDatePlaceholder": "MM/AA",
+		"cvvPlaceholder": "CVV",
+		"cardNumberError": "El número de tarjeta es inválido",
+		"cardHolderError": "El nombre del titular de la tarjeta es inválido",
+		"expirationDateError": "La fecha de vencimiento es inválida",
+		"cvvError": "El CVV es inválido"
+	}
 }
