@@ -707,4 +707,175 @@ describe('BusinessPartnerApi', () => {
 			expect(result).toEqual(false)
 		})
 	})
+
+	describe('getPurchasedProducts', () => {
+		it('should get purchased products', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '200',
+				data: [
+					{
+						product_transaction_id:
+							'3bbd7da4-ae9a-4931-879d-acc45b174f5d',
+						product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+						user_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+						user_name: 'Brayan',
+						user_email: 'br@br.com',
+						transaction_date: '2024-04-24T17:26:18.327219',
+						transaction_status: 'completed',
+						product_data: {
+							product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+							business_partner_id:
+								'7acb70b2-9565-4843-9174-d6290d72749d',
+							category: 'equipment',
+							name: 'Smart Coffee Maker 3.0',
+							summary:
+								'Use the cross-platform SDD alarm, then you can input the mobile program!',
+							url: 'https://www.google.com.co',
+							price: 12310,
+							payment_type: 'unique',
+							payment_frequency: 'other',
+							image_url:
+								'https://www.foodandwine.com/thmb/BuNbO0wq3jGgJHuTNIINNer44Ls=/fit-in/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-DeLonghi_LaSpecialistaPrestigio_EC9355M_8-0927-Russell-Kilgore.jpg-798c754b7a614cfdbf618d041eccc94d.jpg',
+							description:
+								"# Headline2 1\nThis is a simple **Markdown** document.\n\n## Headline 2\nHere's some more text, and let's make this **bold** too.\n\nFor more details on Markdown, visit [Markdown Guide](https://www.markdownguide.org).",
+							active: true
+						}
+					},
+					{
+						product_transaction_id:
+							'b46b59ce-50ca-4f0b-8b95-9f02fce0cc61',
+						product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+						user_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+						user_name: 'Brayan',
+						user_email: 'br@br.com',
+						transaction_date: '2024-04-24T17:27:49.863312',
+						transaction_status: 'completed',
+						product_data: {
+							product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+							business_partner_id:
+								'7acb70b2-9565-4843-9174-d6290d72749d',
+							category: 'equipment',
+							name: 'Smart Coffee Maker 3.0',
+							summary:
+								'Use the cross-platform SDD alarm, then you can input the mobile program!',
+							url: 'https://www.google.com.co',
+							price: 12310,
+							payment_type: 'unique',
+							payment_frequency: 'other',
+							image_url:
+								'https://www.foodandwine.com/thmb/BuNbO0wq3jGgJHuTNIINNer44Ls=/fit-in/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-DeLonghi_LaSpecialistaPrestigio_EC9355M_8-0927-Russell-Kilgore.jpg-798c754b7a614cfdbf618d041eccc94d.jpg',
+							description:
+								"# Headline2 1\nThis is a simple **Markdown** document.\n\n## Headline 2\nHere's some more text, and let's make this **bold** too.\n\nFor more details on Markdown, visit [Markdown Guide](https://www.markdownguide.org).",
+							active: true
+						}
+					},
+					{
+						product_transaction_id:
+							'c800ec4b-c39f-441f-947b-3669c51fb467',
+						product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+						user_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+						user_name: 'Brayan',
+						user_email: 'br@br.com',
+						transaction_date: '2024-04-24T17:27:55.363282',
+						transaction_status: 'failed',
+						product_data: {
+							product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+							business_partner_id:
+								'7acb70b2-9565-4843-9174-d6290d72749d',
+							category: 'equipment',
+							name: 'Smart Coffee Maker 3.0',
+							summary:
+								'Use the cross-platform SDD alarm, then you can input the mobile program!',
+							url: 'https://www.google.com.co',
+							price: 12310,
+							payment_type: 'unique',
+							payment_frequency: 'other',
+							image_url:
+								'https://www.foodandwine.com/thmb/BuNbO0wq3jGgJHuTNIINNer44Ls=/fit-in/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-DeLonghi_LaSpecialistaPrestigio_EC9355M_8-0927-Russell-Kilgore.jpg-798c754b7a614cfdbf618d041eccc94d.jpg',
+							description:
+								"# Headline2 1\nThis is a simple **Markdown** document.\n\n## Headline 2\nHere's some more text, and let's make this **bold** too.\n\nFor more details on Markdown, visit [Markdown Guide](https://www.markdownguide.org).",
+							active: true
+						}
+					}
+				]
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+			const result = await businessPartnerApi.getPurchasedProducts(data)
+			expect(result).toEqual(response.data)
+		})
+
+		it('should not get purchased products', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockRejectedValue(response)
+
+			const result = await businessPartnerApi.getPurchasedProducts(data)
+			expect(result).toEqual(false)
+		})
+
+		it('should not get purchased products and return other status code', async () => {
+			const data = {
+				options: {
+					headers: {
+						Authorization: 'Bearer token'
+					}
+				},
+
+				params: {
+					offset: 0,
+					limit: 10
+				}
+			}
+
+			const response = {
+				status: '400',
+				data: {
+					message: 'error'
+				}
+			}
+
+			;(
+				sportappApi as jest.Mocked<typeof sportappApi>
+			).get.mockResolvedValue(response)
+
+			const result = await businessPartnerApi.getPurchasedProducts(data)
+			expect(result).toEqual(false)
+		})
+	})
 })

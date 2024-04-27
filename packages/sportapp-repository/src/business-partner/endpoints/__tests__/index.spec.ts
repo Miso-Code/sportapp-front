@@ -34,4 +34,10 @@ describe('endpoints', () => {
 	it('should have product get all endpoint', () => {
 		expect(endpoints.product.getAll).toEqual('/business-partners/products')
 	})
+
+	it('should have product get purchased endpoint', () => {
+		expect(endpoints.product.getPurchased).toEqual(
+			'/business-partners/products/purchase'
+		)
+	})
 })

@@ -8,7 +8,8 @@ const endpoints = {
 		update: (id: string) => `${BASE_URL}/products/${id}`,
 		delete: (id: string) => `${BASE_URL}/products/${id}`,
 		get: (id: string) => `${BASE_URL}/products/${id}`,
-		getAll: `${BASE_URL}/products`
+		getAll: `${BASE_URL}/products`,
+		getPurchased: `${BASE_URL}/products/purchase`,
 	}
 }
 
