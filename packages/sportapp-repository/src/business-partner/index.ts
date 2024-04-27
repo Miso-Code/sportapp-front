@@ -16,6 +16,7 @@ import {
 	ProductGetRequestPayload,
 	ProductSpecificRequestPayload
 } from './interfaces/api/product'
+import { ProductPurchased, ProductPurchasedRequestPayload } from './interfaces/api/product-purchased'
 
 export default class BusinessPartnerApi {
 	private readonly sportappApi: AxiosInstance
@@ -157,6 +158,28 @@ export default class BusinessPartnerApi {
 			)
 			if (response.status.toString().startsWith('2')) {
 				return true
+			}
+			return false
+		} catch (error) {
+			console.error(error)
+			return false
+		}
+	}
+
+	async getPurchasedProducts(
+		payload: ProductPurchasedRequestPayload
+	): Promise<ProductPurchased[] | false> {
+		const endpoint = endpoints.product.getPurchased
+		try {
+			const response = await this.sportappApi.get<ProductPurchased[]>(
+				endpoint,
+				{
+					...payload.options,
+					params: { ...payload.params, ...payload.options.params }
+				}
+			)
+			if (response.status.toString().startsWith('2')) {
+				return response.data
 			}
 			return false
 		} catch (error) {

@@ -7,6 +7,7 @@ import { ProductCreateRequest } from '@sportapp/sportapp-repository/src/business
 import { Product } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product'
 import BusinessPartnerApi from '@sportapp/sportapp-repository/src/business-partner'
 import { usePartnerAuthStore } from '../auth'
+import { ProductPurchasedRequestPayload } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product-purchased'
 
 export const initialProductPartnerState: IProductState = {
 	products: undefined,
@@ -261,6 +262,57 @@ export const usePartnerProductStore = create(
 						error: 'errors.product.update'
 					}))
 					return false
+				}
+			},
+			getPurchasedProducts: async (params) => {
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const authToken =
+						usePartnerAuthStore.getState().authToken?.accessToken
+					const businessPartnerApi = new BusinessPartnerApi()
+
+					const payload: ProductPurchasedRequestPayload = {
+						options: {
+							headers: {
+								Authorization: `Bearer ${authToken}`
+							}
+						},
+						params
+					}
+					const response =
+						await businessPartnerApi.getPurchasedProducts(payload)
+
+					if (response) {
+						set((state) => ({
+							...state,
+							purchasedProducts: response,
+							loading: false
+						}))
+						return response
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.product.get',
+						loading: false
+					}))
+
+					return false
+				} catch (error) {
+					set((state) => ({
+						...state,
+						loading: false,
+						error: 'errors.product.get'
+					}))
+					return false
+				} finally {
+					set((state) => ({
+						...state,
+						loading: false
+					}))
 				}
 			}
 		}),

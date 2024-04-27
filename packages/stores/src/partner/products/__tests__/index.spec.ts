@@ -4,6 +4,7 @@ import { usePartnerProductStore } from '../index'
 import { ProductCreateRequest } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product-create'
 import { getProductsPayload } from '../interfaces'
 import { Product } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product'
+import { ProductPurchased } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product-purchased'
 
 jest.mock('simple-zustand-devtools', () => ({
 	mountStoreDevtool: jest.fn()
@@ -581,5 +582,127 @@ describe('ProductStore', () => {
 			updatedProduct = await updateProduct(product, productId)
 		})
 		expect(updatedProduct).toBe(false)
+	})
+
+	it('should get purchased products', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getPurchasedProducts: jest.fn().mockResolvedValue([
+				{
+					product_transaction_id:
+						'3bbd7da4-ae9a-4931-879d-acc45b174f5d',
+					product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+					user_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+					user_name: 'Brayan',
+					user_email: 'br@br.com',
+					transaction_date: '2024-04-24T17:26:18.327219',
+					transaction_status: 'completed',
+					product_data: {
+						product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+						business_partner_id:
+							'7acb70b2-9565-4843-9174-d6290d72749d',
+						category: 'equipment',
+						name: 'Smart Coffee Maker 3.0',
+						summary:
+							'Use the cross-platform SDD alarm, then you can input the mobile program!',
+						url: 'https://www.google.com.co',
+						price: 12310,
+						payment_type: 'unique',
+						payment_frequency: 'other',
+						image_url:
+							'https://www.foodandwine.com/thmb/BuNbO0wq3jGgJHuTNIINNer44Ls=/fit-in/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-DeLonghi_LaSpecialistaPrestigio_EC9355M_8-0927-Russell-Kilgore.jpg-798c754b7a614cfdbf618d041eccc94d.jpg',
+						description:
+							"# Headline2 1\nThis is a simple **Markdown** document.\n\n## Headline 2\nHere's some more text, and let's make this **bold** too.\n\nFor more details on Markdown, visit [Markdown Guide](https://www.markdownguide.org).",
+						active: true
+					}
+				}
+			])
+		}))
+
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getPurchasedProducts } = result.current
+		expect(result.current.purchasedProducts).toBe(undefined)
+
+		const payload: getProductsPayload = {
+			offset: 0,
+			limit: 10
+		}
+		let purchasedProducts: Partial<ProductPurchased[]> = []
+		await act(async () => {
+			purchasedProducts = (await getPurchasedProducts(
+				payload
+			)) as ProductPurchased[]
+		})
+
+		expect(purchasedProducts).toStrictEqual([
+			{
+				product_transaction_id: '3bbd7da4-ae9a-4931-879d-acc45b174f5d',
+				product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+				user_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+				user_name: 'Brayan',
+				user_email: 'br@br.com',
+				transaction_date: '2024-04-24T17:26:18.327219',
+				transaction_status: 'completed',
+				product_data: {
+					product_id: '46245361-2287-490f-a1a4-1a6491d501f3',
+					business_partner_id: '7acb70b2-9565-4843-9174-d6290d72749d',
+					category: 'equipment',
+					name: 'Smart Coffee Maker 3.0',
+					summary:
+						'Use the cross-platform SDD alarm, then you can input the mobile program!',
+					url: 'https://www.google.com.co',
+					price: 12310,
+					payment_type: 'unique',
+					payment_frequency: 'other',
+					image_url:
+						'https://www.foodandwine.com/thmb/BuNbO0wq3jGgJHuTNIINNer44Ls=/fit-in/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-DeLonghi_LaSpecialistaPrestigio_EC9355M_8-0927-Russell-Kilgore.jpg-798c754b7a614cfdbf618d041eccc94d.jpg',
+					description:
+						"# Headline2 1\nThis is a simple **Markdown** document.\n\n## Headline 2\nHere's some more text, and let's make this **bold** too.\n\nFor more details on Markdown, visit [Markdown Guide](https://www.markdownguide.org).",
+					active: true
+				}
+			}
+		])
+	})
+
+	it('should not get purchased products', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getPurchasedProducts: jest.fn().mockResolvedValue(false)
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getPurchasedProducts } = result.current
+		expect(result.current.purchasedProducts).toBe(undefined)
+
+		const payload: getProductsPayload = {
+			offset: 0,
+			limit: 10
+		}
+		let purchasedProducts: Partial<ProductPurchased[]> = []
+		await act(async () => {
+			purchasedProducts = (await getPurchasedProducts(
+				payload
+			)) as ProductPurchased[]
+		})
+		expect(purchasedProducts).toBe(false)
+	})
+
+	it('should not get purchased products, because of an error', async () => {
+		;(BusinessPartner as jest.Mock).mockImplementationOnce(() => ({
+			getPurchasedProducts: jest
+				.fn()
+				.mockRejectedValue(new Error('error'))
+		}))
+		const { result } = renderHook(() => usePartnerProductStore())
+		const { getPurchasedProducts } = result.current
+		expect(result.current.purchasedProducts).toBe(undefined)
+		const payload: getProductsPayload = {
+			offset: 0,
+			limit: 10
+		}
+		let purchasedProducts: Partial<ProductPurchased[]> = []
+		await act(async () => {
+			purchasedProducts = (await getPurchasedProducts(
+				payload
+			)) as ProductPurchased[]
+		})
+		expect(purchasedProducts).toBe(false)
 	})
 })
