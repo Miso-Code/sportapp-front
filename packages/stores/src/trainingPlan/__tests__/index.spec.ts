@@ -11,24 +11,24 @@ jest.mock('@sportapp/sportapp-repository/src/trainingPlan', () => {
 		default: jest.fn().mockImplementation(() => ({
 			getTrainingPlan: jest.fn().mockResolvedValue([
 				{
-					"training_plan_session_id": "training_plan_session_id",
-					"weekday": "monday",
-					"start_time": "00:00 AM",
-					"warm_up": 1,
-					"cardio": 2,
-					"strength": 3,
-					"cool_down": 4,
-					"user_id": "user_id"
+					training_plan_session_id: 'training_plan_session_id',
+					weekday: 'monday',
+					start_time: '00:00 AM',
+					warm_up: 1,
+					cardio: 2,
+					strength: 3,
+					cool_down: 4,
+					user_id: 'user_id'
 				},
 				{
-					"training_plan_session_id": "training_plan_session_id2",
-					"weekday": "tuesday",
-					"start_time": "00:00 AM",
-					"warm_up": 1,
-					"cardio": 2,
-					"strength": 3,
-					"cool_down": 4,
-					"user_id": "user_id"
+					training_plan_session_id: 'training_plan_session_id2',
+					weekday: 'tuesday',
+					start_time: '00:00 AM',
+					warm_up: 1,
+					cardio: 2,
+					strength: 3,
+					cool_down: 4,
+					user_id: 'user_id'
 				}
 			])
 		}))
@@ -54,7 +54,7 @@ describe('TrainingPlanStore', () => {
 		await act(async () => {
 			await clearState()
 		})
-		console.log(result.current)
+
 		expect(result.current.trainingPlanSessions).toStrictEqual([])
 	})
 
@@ -76,48 +76,48 @@ describe('TrainingPlanStore', () => {
 				const trainingPlanSessions = await getTrainingPlan()
 				expect(trainingPlanSessions).toStrictEqual([
 					{
-						"training_plan_session_id": "training_plan_session_id",
-						"weekday": "monday",
-						"start_time": "00:00 AM",
-						"warm_up": 1,
-						"cardio": 2,
-						"strength": 3,
-						"cool_down": 4,
-						"user_id": "user_id"
+						training_plan_session_id: 'training_plan_session_id',
+						weekday: 'monday',
+						start_time: '00:00 AM',
+						warm_up: 1,
+						cardio: 2,
+						strength: 3,
+						cool_down: 4,
+						user_id: 'user_id'
 					},
 					{
-						"training_plan_session_id": "training_plan_session_id2",
-						"weekday": "tuesday",
-						"start_time": "00:00 AM",
-						"warm_up": 1,
-						"cardio": 2,
-						"strength": 3,
-						"cool_down": 4,
-						"user_id": "user_id"
+						training_plan_session_id: 'training_plan_session_id2',
+						weekday: 'tuesday',
+						start_time: '00:00 AM',
+						warm_up: 1,
+						cardio: 2,
+						strength: 3,
+						cool_down: 4,
+						user_id: 'user_id'
 					}
 				])
 			})
 
 			expect(result.current.trainingPlanSessions).toStrictEqual([
 				{
-					"training_plan_session_id": "training_plan_session_id",
-					"weekday": "monday",
-					"start_time": "00:00 AM",
-					"warm_up": 1,
-					"cardio": 2,
-					"strength": 3,
-					"cool_down": 4,
-					"user_id": "user_id"
+					training_plan_session_id: 'training_plan_session_id',
+					weekday: 'monday',
+					start_time: '00:00 AM',
+					warm_up: 1,
+					cardio: 2,
+					strength: 3,
+					cool_down: 4,
+					user_id: 'user_id'
 				},
 				{
-					"training_plan_session_id": "training_plan_session_id2",
-					"weekday": "tuesday",
-					"start_time": "00:00 AM",
-					"warm_up": 1,
-					"cardio": 2,
-					"strength": 3,
-					"cool_down": 4,
-					"user_id": "user_id"
+					training_plan_session_id: 'training_plan_session_id2',
+					weekday: 'tuesday',
+					start_time: '00:00 AM',
+					warm_up: 1,
+					cardio: 2,
+					strength: 3,
+					cool_down: 4,
+					user_id: 'user_id'
 				}
 			])
 		})

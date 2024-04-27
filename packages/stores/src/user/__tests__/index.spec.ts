@@ -212,7 +212,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 			await act(async () => {
 				await updateProfile(payload)
@@ -240,7 +241,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 			const { updateProfile } = result.current
 			await act(async () => {
