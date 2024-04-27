@@ -35,7 +35,13 @@ jest.mock('@sportapp/sportapp-repository/src/businessPartner', () => {
 					description: 'description2',
 					active: true
 				}
-			])
+			]),
+			purchaseProduct: jest.fn().mockResolvedValue({
+				transaction_id: 'transaction_id',
+				transaction_status: 'success',
+				transaction_date: 'transaction_date',
+				message: 'message'
+			})
 		}))
 	}
 })
@@ -132,6 +138,33 @@ describe('BusinessPartnerStore', () => {
 			summary: 'summary',
 			description: 'description',
 			active: true
+		})
+	})
+
+	it('should purchase product', async () => {
+		const { result } = renderHook(() => useBusinessPartnerStore())
+		const { purchaseProduct } = result.current
+
+		let response = undefined
+		await act(async () => {
+			response = await purchaseProduct({
+				user_name: 'user_name',
+				user_email: 'user_email',
+				payment_data: {
+					card_number: 'card_number',
+					card_holder: 'card_holder',
+					card_expiration_date: 'card_expiration_date',
+					card_cvv: 'card_cvv',
+					amount: 100
+				},
+				product_id: 'product_id'
+			})
+		})
+		expect(response).toStrictEqual({
+			transaction_id: 'transaction_id',
+			transaction_status: 'success',
+			transaction_date: 'transaction_date',
+			message: 'message'
 		})
 	})
 })

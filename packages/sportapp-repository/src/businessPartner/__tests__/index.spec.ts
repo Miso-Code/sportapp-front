@@ -86,4 +86,39 @@ describe('BusinessPartnerApi', () => {
 			])
 		})
 	})
+	describe('purchaseProduct', () => {
+		it('should call the purchaseProduct endpoint', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						transaction_id: 'transaction_id',
+						transaction_status: 'success',
+						transaction_date: 'transaction_date',
+						message: 'message'
+					}
+				})
+			)
+			const api = new sportApi()
+			const response = await api.purchaseProduct({
+				user_name: 'user_name',
+				user_email: 'user_email',
+				payment_data: {
+					card_number: 'card_number',
+					card_holder: 'card_holder',
+					card_expiration_date: 'card_expiration_date',
+					card_cvv: 'card_cvv',
+					amount: 100
+				},
+				product_id: 'product_id'
+			})
+
+			expect(response).toStrictEqual({
+				transaction_id: 'transaction_id',
+				transaction_status: 'success',
+				transaction_date: 'transaction_date',
+				message: 'message'
+			})
+		})
+	})
 })

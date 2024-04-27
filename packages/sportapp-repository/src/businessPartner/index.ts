@@ -1,7 +1,12 @@
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { sportappApi } from '../index'
 import endpoints from './endpoints'
-import { Product, ProductRequest } from './interfaces'
+import {
+	Product,
+	ProductRequest,
+	PurchaseProductRequest,
+	PurchaseProductResponse
+} from './interfaces'
 
 export default class businessPartnerApi {
 	private readonly sportappApi: AxiosInstance
@@ -20,6 +25,28 @@ export default class businessPartnerApi {
 				...options,
 				params: { limit, offset, search }
 			})
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async purchaseProduct(
+		payload: PurchaseProductRequest,
+		options?: AxiosRequestConfig
+	): Promise<PurchaseProductResponse | undefined> {
+		try {
+			const endpoint = endpoints.purchaseProduct(payload.product_id)
+
+			const response =
+				await this.sportappApi.post<PurchaseProductResponse>(
+					endpoint,
+					payload,
+					options
+				)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

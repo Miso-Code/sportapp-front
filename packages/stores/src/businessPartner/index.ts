@@ -23,6 +23,15 @@ export const useBusinessPartnerStore = create<IBusinessPartnerStore>(
 				}
 			})
 		},
+		purchaseProduct(payload) {
+			const api = new businessPartnerApi()
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			return api.purchaseProduct(payload, {
+				headers: {
+					Authorization: `Bearer ${authToken}`
+				}
+			})
+		},
 		setProductToCheckout: (product) =>
 			set((state) => ({ ...state, productToCheckout: product })),
 		clearState: () =>

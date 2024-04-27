@@ -1,7 +1,11 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
 import { router, useLocalSearchParams } from 'expo-router'
-import { useAlertStore, useBusinessPartnerStore } from '@sportapp/stores'
+import {
+	useAlertStore,
+	useBusinessPartnerStore,
+	useUserStore
+} from '@sportapp/stores'
 
 import ServicesAndProductsCheckout from '../servicesAndProductsCheckout'
 
@@ -33,23 +37,9 @@ jest.mock('@/components/ProductServiceCard', () => {
 	))
 })
 jest.mock('@sportapp/stores', () => ({
-	useAlertStore: jest.fn().mockReturnValue({
-		setAlert: jest.fn()
-	}),
-	useBusinessPartnerStore: jest.fn().mockReturnValue({
-		productToCheckout: {
-			product_id: 'product_id',
-			category: 'category',
-			name: 'name',
-			url: 'url',
-			price: 100,
-			payment_type: 'payment_type',
-			payment_frequency: 'payment_frequency',
-			image_url: 'image_url',
-			description: 'description',
-			active: true
-		}
-	})
+	useAlertStore: jest.fn(),
+	useBusinessPartnerStore: jest.fn(),
+	useUserStore: jest.fn()
 }))
 describe('ServicesAndProductsCheckout', () => {
 	let component: ReactTestRenderer
@@ -74,7 +64,20 @@ describe('ServicesAndProductsCheckout', () => {
 				image_url: 'image_url',
 				description: 'description',
 				active: true
-			}
+			},
+			purchaseProduct: jest.fn().mockResolvedValue({
+				transaction_id: 'transaction_id',
+				transaction_status: 'complete',
+				transaction_date: 'transaction_date',
+				message: 'message'
+			})
+		})
+		;(useUserStore as unknown as jest.Mock).mockReturnValue({
+			getProfile: jest.fn().mockResolvedValue({
+				first_name: 'John',
+				last_name: 'Doe',
+				email: 'john.doe@example.com'
+			})
 		})
 		component = renderer.create(<ServicesAndProductsCheckout />)
 		jest.useFakeTimers()
@@ -305,27 +308,69 @@ describe('ServicesAndProductsCheckout', () => {
 		// 	await act(async () => {
 		// 		payButton.props.onPress()
 		// 		await Promise.resolve()
-		// 		await jest.advanceTimersByTimeAsync(2000) //TODO: remove
 		// 	})
 		// 	const modal = component.root.findByProps({
 		// 		testID: 'modalProcessing'
 		// 	})
 		// 	expect(modal.props.visible).toBe(false)
 		// })
-		it('should set the alert message on payment complete', async () => {
+		it('should call purchaseProduct on pay button press', async () => {
 			const payButton = component.root.findByProps({
 				testID: 'payButton'
 			})
 			await act(async () => {
 				payButton.props.onPress()
 				await Promise.resolve()
-				await jest.advanceTimersByTimeAsync(2000) //TODO: remove
+			})
+			expect(useBusinessPartnerStore().purchaseProduct).toHaveBeenCalled()
+		})
+		it('should set the alert message on payment success', async () => {
+			;(
+				useBusinessPartnerStore()
+					.purchaseProduct as unknown as jest.Mock
+			).mockReturnValue({
+				transaction_id: 'transaction_id',
+				transaction_status: 'completed',
+				transaction_date: 'transaction_date',
+				message: 'message'
+			})
+			const payButton = component.root.findByProps({
+				testID: 'payButton'
+			})
+			await act(async () => {
+				payButton.props.onPress()
+				await Promise.resolve()
 			})
 			expect(useAlertStore().setAlert).toHaveBeenCalledWith({
-				type: expect.any(String), //TODO: validate specific fields
-				message: expect.any(String)
+				type: 'success',
+				message: 'productService.paymentSuccess'
 			})
 		})
+
+		it('should set the alert message on payment failed', async () => {
+			;(
+				useBusinessPartnerStore()
+					.purchaseProduct as unknown as jest.Mock
+			).mockReturnValue({
+				transaction_id: 'transaction_id',
+				transaction_status: 'failed',
+				transaction_date: 'transaction_date',
+				message: 'message'
+			})
+			const payButton = component.root.findByProps({
+				testID: 'payButton'
+			})
+			await act(async () => {
+				component.update(<ServicesAndProductsCheckout />)
+				payButton.props.onPress()
+				await Promise.resolve()
+			})
+			expect(useAlertStore().setAlert).toHaveBeenCalledWith({
+				type: 'error',
+				message: 'productService.paymentFailed'
+			})
+		})
+
 		it('should navigate back on payment complete', async () => {
 			const payButton = component.root.findByProps({
 				testID: 'payButton'
@@ -333,7 +378,6 @@ describe('ServicesAndProductsCheckout', () => {
 			await act(async () => {
 				payButton.props.onPress()
 				await Promise.resolve()
-				await jest.advanceTimersByTimeAsync(2000) //TODO: remove
 			})
 			expect(router.back).toHaveBeenCalled()
 		})

@@ -8,7 +8,8 @@ import AppLayout from '../_layout'
 jest.mock('expo-router/stack')
 jest.mock('react-native-paper', () => ({
 	...jest.requireActual('react-native-paper'),
-	PaperProvider: jest.fn(({ children }) => children)
+	PaperProvider: jest.fn(({ children }) => children),
+	Portal: jest.fn(({ children }) => children)
 }))
 
 jest.mock('@sportapp/stores', () => ({
