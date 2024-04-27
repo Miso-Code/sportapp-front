@@ -163,11 +163,14 @@ export default function CustomPaginationActionsTable() {
 							labelRowsPerPage={t(
 								'paymentPurchased.table.footer.rows_per_page'
 							)}
-							labelDisplayedRows={({ from, to, count }) =>
-								`${from}-${to} ${t(
+							labelDisplayedRows={({ from, to, count }) => {
+								const ofText = t(
 									'paymentPurchased.table.footer.of'
-								)} ${count !== -1 ? count : `> ${to}`}`
-							}
+								)
+								const countText =
+									count !== -1 ? count : `> ${to}`
+								return `${from}-${to} ${ofText} ${countText}`
+							}}
 							slotProps={{
 								select: {
 									inputProps: {
