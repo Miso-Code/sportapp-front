@@ -1,0 +1,36 @@
+{
+	"title": "Purchased Products",
+	"table": {
+		"header": ["ID", "Name", "Email", "Product", "Status", "Price"],
+		"footer": {
+			"total": "Total",
+			"all": "All",
+			"rows": "Rows",
+			"rows_per_page": "Rows per page",
+			"empty": "No data available",
+			"search": {
+				"empty": "No results found",
+				"button": "Search",
+				"placeholder": "Search..."
+			},
+			"of": "of",
+			"rowsPerPage": "Rows per page",
+			"atribute": {
+				"placeholder": "Filter by...",
+				"option": {
+					"id": "ID",
+					"name": "Name",
+					"email": "Email",
+					"product": "Product",
+					"status": "Status",
+					"price": "Price"
+				}
+			}
+		},
+		"status": {
+			"completed": "Completed",
+			"pending": "Pending",
+			"failed": "Failed"
+		}
+	}
+}
