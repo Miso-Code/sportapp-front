@@ -149,5 +149,18 @@
 		"cardHolderError": "Invalid cardholder name",
 		"expirationDateError": "Invalid expiration date",
 		"cvvError": "Invalid CVV"
-	}
+	},
+	"date": "Date",
+	"hour": "Hour",
+	"dateAndHour": "Date and Time",
+	"trainer": "Trainer",
+	"direction": "Address",
+	"description": "Description",
+	"training": {
+		"dateAndHour": "Select date and time",
+		"trainer": "Select trainer",
+		"address": "Session address",
+		"description": "Session reason"
+	},
+	"schedule": "Schedule"
 }

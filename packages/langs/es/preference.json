@@ -1,0 +1,47 @@
+{
+	"title0": "Servicios Preferenciales",
+	"title": "Agendamiento de citas",
+	"title2": "Agendar cita",
+	"virtualAppointment": {
+		"title": "Cita virtual con deportólogo",
+		"description": "Agenda una cita virtual con tu deportólogo para recibir asesoría y seguimiento en tu entrenamiento desde la comodidad de tu hogar."
+	},
+	"inPersonAppointment": {
+		"title": "Cita presencial con deportólogo",
+		"description": "Agenda una cita presencial con tu deportólogo para recibir asesoría y seguimiento en tu entrenamiento en un lugar acordado."
+	},
+	"types": {
+		"virtual": "Virtual",
+		"inPerson": "Presencial",
+		"sport": "Deporte",
+		"nutrition": "Nutrición"
+	},
+	"form": {
+		"virtualAppointment": {
+			"title": "Formulario de agendamiento de cita virtual"
+		},
+		"inPersonAppointment": {
+			"title": "Formulario de agendamiento de cita presencial"
+		}
+	},
+	"menu": {
+		"schedule": "Agendar cita",
+		"list": "Listado de citas"
+	},
+	"loading": "Agendando la cita, por favor espere...",
+	"success": "La cita ha sido agendada exitosamente",
+	"error": "Ha ocurrido un error al agendar la cita, por favor intente nuevamente más tarde",
+	"table": {
+		"header": {
+			"dateAndTime": "Fecha y hora",
+			"type": "Tipo de cita",
+			"location": "Ubicación",
+			"trainingName": "Nombre del Deportólogo",
+			"add": "Añadir a tu calendario"
+		}
+	},
+	"virtual": "Virtual",
+	"inPerson": "Presencial",
+	"noLocation": "Sin ubicación",
+	"addCalendar": "Agregar al calendario"
+}
