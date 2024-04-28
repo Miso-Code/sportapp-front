@@ -83,8 +83,6 @@ export const useAuthStore = create(
 						refresh_token: refreshToken
 					})
 
-					console.log('response', response)
-
 					if (response && response.access_token) {
 						set((state) => ({
 							...state,
@@ -111,8 +109,6 @@ export const useAuthStore = create(
 
 					return false
 				} catch (e) {
-					console.log('e', e)
-
 					set((state) => ({
 						...state,
 						loading: false,

@@ -745,7 +745,7 @@ exports[`ListSchedulePreferencePage should render with sportsmanAppointments 1`]
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
                       scope="row"
                     >
-                      2021-08-31 19:00
+                      1996-07-19 00:00
                     </th>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -779,14 +779,14 @@ exports[`ListSchedulePreferencePage should render with sportsmanAppointments 1`]
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
                     >
                       <add-to-calendar-button
-                        enddate="2021-08-31"
-                        endtime="20:00"
+                        enddate="1996-07-19"
+                        endtime="02:00"
                         language="en"
                         location="location"
                         name="preference.inPersonAppointment.title"
                         options="["Apple","Google"]"
-                        startdate="2021-08-31"
-                        starttime="19:00"
+                        startdate="1996-07-19"
+                        starttime="01:00"
                         timezone="America/Bogota"
                       />
                     </td>
@@ -1027,7 +1027,7 @@ exports[`ListSchedulePreferencePage should render with sportsmanAppointments 1`]
                     class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
                     scope="row"
                   >
-                    2021-08-31 19:00
+                    1996-07-19 00:00
                   </th>
                   <td
                     class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -1061,14 +1061,14 @@ exports[`ListSchedulePreferencePage should render with sportsmanAppointments 1`]
                     class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
                   >
                     <add-to-calendar-button
-                      enddate="2021-08-31"
-                      endtime="20:00"
+                      enddate="1996-07-19"
+                      endtime="02:00"
                       language="en"
                       location="location"
                       name="preference.inPersonAppointment.title"
                       options="["Apple","Google"]"
-                      startdate="2021-08-31"
-                      starttime="19:00"
+                      startdate="1996-07-19"
+                      starttime="01:00"
                       timezone="America/Bogota"
                     />
                   </td>

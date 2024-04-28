@@ -30,12 +30,16 @@ jest.mock('react-router-dom', () => ({
 
 describe('ListSchedulePreferencePage', () => {
 	let wrapper: RenderResult
+	let spy: jest.SpyInstance
 
 	beforeEach(() => {
+		const mockedDate = new Date(1996, 6, 19)
+		spy = jest.spyOn(global, 'Date').mockImplementation(() => mockedDate)
 		wrapper = render(<ListSchedulePreferencePage />)
 	})
 
 	afterEach(() => {
+		spy.mockRestore()
 		jest.clearAllMocks()
 	})
 
