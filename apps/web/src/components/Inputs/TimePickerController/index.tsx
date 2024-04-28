@@ -2,7 +2,7 @@ import { Props } from '@/components/Inputs/TimePickerController/interfaces'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { isValid } from 'date-fns'
+import { format, isValid } from 'date-fns'
 import { Controller, FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -21,7 +21,9 @@ export default function TimePickerController<
 			}) => (
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
 					<TimePicker
-						onChange={onChange}
+						onChange={(date): void =>
+							onChange(format(date ?? new Date(), 'hh:mm aa'))
+						}
 						label={label}
 						slotProps={{
 							textField: {
