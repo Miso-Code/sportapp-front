@@ -11,7 +11,16 @@ describe('PaymentForm', () => {
 
 	beforeEach(() => {
 		wrapper = render(
-			<PaymentForm onCancel={jest.fn()} onSubmit={jest.fn()} />
+			<PaymentForm
+				onCancel={jest.fn()}
+				onSubmit={jest.fn()}
+				options={[
+					{
+						label: 'label',
+						value: '1'
+					}
+				]}
+			/>
 		)
 	})
 
@@ -22,7 +31,16 @@ describe('PaymentForm', () => {
 	it('should call cancel function', async () => {
 		const handleCancel = jest.fn()
 		wrapper.rerender(
-			<PaymentForm onCancel={handleCancel} onSubmit={jest.fn()} />
+			<PaymentForm
+				onCancel={handleCancel}
+				onSubmit={jest.fn()}
+				options={[
+					{
+						label: 'label',
+						value: '1'
+					}
+				]}
+			/>
 		)
 		const cancelButton = wrapper.getByText('form.cancel')
 		fireEvent.click(cancelButton)
@@ -35,7 +53,8 @@ describe('PaymentForm', () => {
 		)
 		fireEvent.focus(cardNumber as Element)
 		await waitFor(() => {
-			const cardFrontNumber = wrapper.container.querySelector('.rccs__number')
+			const cardFrontNumber =
+				wrapper.container.querySelector('.rccs__number')
 
 			expect(cardFrontNumber).toHaveClass('rccs--focused')
 		})

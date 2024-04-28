@@ -2,26 +2,36 @@ import SelectController from '@/components/Inputs/SelectController'
 import TextFieldController from '@/components/Inputs/TexFieldController'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoadingButton from '@mui/lab/LoadingButton'
+import { Box } from '@mui/material'
 import { useState } from 'react'
 import Cards, { Focused } from 'react-credit-cards-2'
 import 'react-credit-cards-2/dist/lib/styles.scss'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { generateLabelValuePairs } from './utils'
-import { FormPaymentData, paymentSchema } from './utils/schema'
 import { Props } from './interfaces'
+import { FormPaymentData, paymentSchema } from './utils/schema'
 
-const amountOptions = generateLabelValuePairs(10)
 
 export default function PaymentForm({
 	onCancel,
 	onSubmit: onSubmitProp,
+	options,
+	price,
+	isLoading,
 	...props
 }: Props) {
 	const { t } = useTranslation()
 	const [focus, setFocus] = useState<Focused>('name')
-	const { watch, handleSubmit, control } = useForm({
+	const {
+		watch,
+		handleSubmit,
+		control,
+		formState: { isValid }
+	} = useForm({
 		resolver: yupResolver(paymentSchema),
+		defaultValues: {
+			amount: price
+		},
 		mode: 'onChange'
 	})
 
@@ -48,14 +58,22 @@ export default function PaymentForm({
 				placeholders={{ name: t('form.card.cardHolderPlaceholder') }}
 				focused={focus}
 			/>
-			<section className='flex flex-col gap-4 p-4 mt-2'>
+			<Box
+				sx={{
+					display: 'flex',
+					marginTop: 2,
+					flexDirection: 'column',
+					gap: '1rem',
+					padding: '1rem'
+				}}>
 				<SelectController
 					control={control}
 					isTranslated={false}
 					selectProps={{ fullWidth: true }}
+					formControlProps={{ disabled: !!price }}
 					label={t('form.amount')}
 					name='amount'
-					options={amountOptions}
+					options={options}
 				/>
 				<TextFieldController
 					control={control}
@@ -75,10 +93,15 @@ export default function PaymentForm({
 					onFocus={handleFocus}
 					name='name'
 				/>
-				<div className='flex gap-4'>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'row',
+						gap: '1rem'
+					}}>
 					<TextFieldController
 						control={control}
-						className='w-1/2'
+						sx={{ width: '50%' }}
 						method='expirationDate'
 						onFocus={handleFocus}
 						label={t('form.card.expirationDate')}
@@ -87,14 +110,20 @@ export default function PaymentForm({
 
 					<TextFieldController
 						control={control}
-						className='w-1/2'
+						sx={{ width: '50%' }}
 						method='cvv'
 						onFocus={handleFocus}
 						label={t('form.card.cvv')}
 						name='cvc'
 					/>
-				</div>
-				<div className='flex md:flex-row gap-4 mt-2'>
+				</Box>
+				<Box
+					sx={{
+						display: 'flex',
+						marginTop: 2,
+						flexDirection: 'row',
+						gap: '1rem'
+					}}>
 					<LoadingButton
 						fullWidth
 						size='large'
@@ -108,12 +137,14 @@ export default function PaymentForm({
 						fullWidth
 						size='large'
 						color='success'
+						disabled={!isValid}
+						loading={isLoading}
 						type='submit'
 						variant='contained'>
 						{t('form.checkout')}
 					</LoadingButton>
-				</div>
-			</section>
+				</Box>
+			</Box>
 		</form>
 	)
 }
