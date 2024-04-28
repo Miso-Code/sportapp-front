@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { useAuthStore } from '../index'
 import {
 	RegisterUserRequest,
@@ -363,6 +363,129 @@ describe('AuthStore', () => {
 			})
 
 			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+		})
+	})
+
+	describe('refreshToken', () => {
+		const initialStoreState = useAuthStore.getState()
+
+		beforeEach(() => {
+			useAuthStore.setState(initialStoreState)
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should refresh token', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				loginRefresh: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh_token: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				}),
+				login: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh_token: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				})
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { refreshToken, login } = result.current
+
+			await act(async () => {
+				await login({ email: 'test@corre.com', password: 'password' })
+			})
+
+			await act(async () => {
+				await refreshToken()
+			})
+
+			await waitFor(() => {
+				expect(result.current.authToken).toStrictEqual({
+					accessToken: 'accessToken',
+					accessTokenExpirationMinutes: 1,
+					refreshToken: 'refreshToken',
+					refreshTokenExpirationMinutes: 1
+				})
+			})
+
+			expect(result.current.isAuth).toBe(true)
+		})
+
+		it('should not refresh token', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				loginRefresh: jest.fn().mockResolvedValue(false),
+				login: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh_token: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				})
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { refreshToken, login } = result.current
+
+			await act(async () => {
+				await login({ email: 'test@corre.com', password: 'password' })
+			})
+			await act(async () => {
+				await refreshToken()
+			})
+
+			expect(result.current.authToken).toStrictEqual({
+				accessToken: 'accessToken',
+				accessTokenExpirationMinutes: 1,
+				refreshToken: 'refreshToken',
+				refreshTokenExpirationMinutes: 1
+			})
+			expect(result.current.isAuth).toBe(false)
+		})
+
+		it('should not refresh token', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				loginRefresh: jest.fn().mockRejectedValue(new Error('error')),
+				login: jest.fn().mockResolvedValue({
+					access_token: 'accessToken',
+					access_token_expires_minutes: 1,
+					refresh_token: 'refreshToken',
+					refresh_token_expires_minutes: 1
+				})
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { refreshToken, login } = result.current
+
+			await act(async () => {
+				await login({ email: 'test@corre.com', password: 'password' })
+			})
+			await act(async () => {
+				await refreshToken()
+			})
+
+			expect(result.current.authToken).toStrictEqual({
+				accessToken: 'accessToken',
+				accessTokenExpirationMinutes: 1,
+				refreshToken: 'refreshToken',
+				refreshTokenExpirationMinutes: 1
+			})
 			expect(result.current.isAuth).toBe(false)
 		})
 	})

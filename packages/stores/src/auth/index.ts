@@ -43,9 +43,9 @@ export const useAuthStore = create(
 								refreshTokenExpirationMinutes:
 									response.refresh_token_expires_minutes
 							},
-							user:{
+							user: {
 								...state.user!,
-								id:response.user_id // TODO: Crafty
+								id: response.user_id // TODO: Crafty
 							}
 						}))
 						return true
@@ -62,6 +62,61 @@ export const useAuthStore = create(
 					set((state) => ({
 						...state,
 						loading: false,
+						error: 'errors.login.base'
+					}))
+					return false
+				}
+			},
+			refreshToken: async () => {
+				const userApi = new UserApi()
+				const refreshToken = get().authToken?.refreshToken
+				if (!refreshToken) {
+					return false
+				}
+
+				try {
+					set((state) => ({
+						...state,
+						loading: true
+					}))
+					const response = await userApi.loginRefresh({
+						refresh_token: refreshToken
+					})
+
+					console.log('response', response)
+
+					if (response && response.access_token) {
+						set((state) => ({
+							...state,
+							isAuth: true,
+							loading: false,
+							authToken: {
+								accessToken: response.access_token,
+								accessTokenExpirationMinutes:
+									response.access_token_expires_minutes,
+								refreshToken: response.refresh_token,
+								refreshTokenExpirationMinutes:
+									response.refresh_token_expires_minutes
+							}
+						}))
+						return true
+					}
+
+					set((state) => ({
+						...state,
+						error: 'errors.login.base',
+						isAuth: false,
+						loading: false
+					}))
+
+					return false
+				} catch (e) {
+					console.log('e', e)
+
+					set((state) => ({
+						...state,
+						loading: false,
+						isAuth: false,
 						error: 'errors.login.base'
 					}))
 					return false
