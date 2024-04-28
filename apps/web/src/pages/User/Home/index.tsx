@@ -4,6 +4,7 @@ import {
 	FormDataBase as NutritionalBaseFormData,
 	FormDataRequired as NutritionalFormData
 } from '@/containers/NutritionalDataForm/utils/schema'
+import PaymentPlans from '@/containers/PaymentPlans'
 import PersonalDataForm from '@/containers/PersonalDataForm'
 import { FormData as PersonalFormData } from '@/containers/PersonalDataForm/utils/schema'
 import SportDataForm from '@/containers/SportDataForm'
@@ -22,7 +23,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
 import { handleEdit } from './components/Menu/utils'
-import PaymentPlans from '@/containers/PaymentPlans'
 
 function HomePage() {
 	const { t } = useTranslation()
