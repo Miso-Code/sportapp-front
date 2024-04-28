@@ -93,7 +93,7 @@ exports[`PreferenceFormPage should render correctly 1`] = `
                 />
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -567,7 +567,7 @@ exports[`PreferenceFormPage should render correctly 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -1098,7 +1098,7 @@ exports[`PreferenceFormPage should render for in person appointment 1`] = `
                 />
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -1572,7 +1572,7 @@ exports[`PreferenceFormPage should render for in person appointment 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -2103,7 +2103,7 @@ exports[`PreferenceFormPage should render for virtual appointment 1`] = `
                 />
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -2577,7 +2577,7 @@ exports[`PreferenceFormPage should render for virtual appointment 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
@@ -3108,7 +3108,7 @@ exports[`PreferenceFormPage should render with trainers 1`] = `
                 />
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -3582,7 +3582,7 @@ exports[`PreferenceFormPage should render with trainers 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >

@@ -28,6 +28,9 @@ jest.mock('@sportapp/stores', () => ({
 				subscription_type: ''
 			}
 		}
+	})),
+	useAuthStore: jest.fn(() => ({
+		refreshToken: jest.fn()
 	}))
 }))
 

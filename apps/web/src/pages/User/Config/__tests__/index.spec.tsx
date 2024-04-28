@@ -1,6 +1,19 @@
 import ConfigPage from '..'
 import { render, RenderResult } from '@testing-library/react'
 
+jest.mock('@sportapp/stores', () => ({
+	useUserStore: jest.fn().mockReturnValue({
+		user: {
+			profileData: {
+				subscription_type: 'premium'
+			}
+		}
+	}),
+	useAuthStore: jest.fn().mockReturnValue({
+		logout: jest.fn()
+	})
+}))
+
 describe('ConfigPage', () => {
 	let wrapper: RenderResult
 

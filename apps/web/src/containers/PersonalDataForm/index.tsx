@@ -64,7 +64,7 @@ export default function PersonalDataForm({
 				<TextFieldController
 					control={control}
 					fullWidth
-					disabled={inputsDisabled}
+					disabled
 					label={t('form.email')}
 					name='email'
 				/>

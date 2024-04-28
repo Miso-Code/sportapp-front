@@ -90,7 +90,7 @@ exports[`ConfigPage should render 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
             tabindex="0"
             type="button"
           >
@@ -368,7 +368,7 @@ exports[`ConfigPage should render component 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
             tabindex="0"
             type="button"
           >

@@ -99,7 +99,7 @@ exports[`Home should render correctly 1`] = `
                 </span>
               </button>
               <button
-                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -537,7 +537,7 @@ exports[`Home should render correctly 1`] = `
               </span>
             </button>
             <button
-              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root Mui-focusVisible MuiBottomNavigationAction-root navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >
