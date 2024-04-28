@@ -4,7 +4,7 @@
 		"title": "Free Plan",
 		"description": "Ideal for individuals who are just starting out in the world of sports."
 	},
-	"basic": {
+	"intermediate": {
 		"title": "Basic Plan",
 		"description": "Ideal for individuals who engage in sports periodically and want to keep track of their health."
 	},
@@ -29,5 +29,13 @@
 	"payment": {
 		"year": "Year Payment",
 		"month": "Month Payment"
+	},
+	"alert": {
+		"error": "Error processing payment, please try again later",
+		"success": "Payment successfully processed and plan updated"
+	},
+	"freeCard": {
+		"title": "Are you sure you want to switch to the free plan?",
+		"description": "By selecting this plan, you will lose all benefits of the current plan"
 	}
 }

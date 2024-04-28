@@ -128,8 +128,11 @@
 		"placeholder": "Drag and drop the product image here, or click to select the product image"
 	},
 	"createProduct": "Create Product",
-	"amount": "Amount",
+	"agree": "I agree",
+	"disagree": "I disagree",
+	"amount": "Price",
 	"total": "Total",
+	"obtain": "Obtain",
 	"pay": "Buy",
 	"cancel": "Cancel",
 	"checkout": "Checkout",
