@@ -23,14 +23,16 @@ export default function Navbar({ className = '' }: Props) {
 	const currentPath = location.pathname
 
 	const currentStep = useMemo(() => {
-		switch (currentPath) {
-			case '/home':
-				return 0
-			case '/config':
-				return 4
-			default:
-				return 0
+		if (currentPath.includes('/home')) {
+			return 0
 		}
+		if (currentPath.includes('/preferences')) {
+			return 3
+		}
+		if (currentPath.includes('/config')) {
+			return 4
+		}
+		return -1
 	}, [currentPath])
 
 	return (
@@ -65,6 +67,7 @@ export default function Navbar({ className = '' }: Props) {
 					<BottomNavigationAction
 						label={t('navbar.preferential')}
 						LinkComponent={'a'}
+						onClick={() => navigate('/preferences')}
 						className='navbar-content-navigation-button'
 						icon={<StartIcon />}
 					/>
