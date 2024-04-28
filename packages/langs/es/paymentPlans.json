@@ -1,15 +1,15 @@
 {
 	"title": "Planes de Pago",
 	"free": {
-		"title": "Plan gratuito",
+		"title": "Plan Gratuito",
 		"description": "Ideal para individuos que apenas están empezando en el mundo del deporte."
 	},
 	"intermediate": {
-		"title": "Plan básico",
+		"title": "Plan Intermedio",
 		"description": "Ideal para individuos que realizan deporte periódicamente y desean estar pendientes de su salud"
 	},
 	"premium": {
-		"title": "Plan premium",
+		"title": "Plan Premium",
 		"description": "Ideal para individuos que realizan deporte constantemente y desean mejorar su rendimiento"
 	},
 	"benefits": {

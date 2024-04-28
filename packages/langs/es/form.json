@@ -149,5 +149,18 @@
 		"cardHolderError": "El nombre del titular de la tarjeta es inválido",
 		"expirationDateError": "La fecha de vencimiento es inválida",
 		"cvvError": "El CVV es inválido"
-	}
+	},
+	"date": "Fecha",
+	"hour": "Hora",
+	"dateAndHour": "Fecha y hora",
+	"trainer": "Entrenador",
+	"direction": "Dirección",
+	"description": "Descripción",
+	"training": {
+		"dateAndHour": "Selecciona fecha y hora",
+		"trainer": "Selecciona entrenador",
+		"address": "Dirección de la sesión",
+		"description": "Motivo de la sesión"
+	},
+	"schedule": "Agendar"
 }

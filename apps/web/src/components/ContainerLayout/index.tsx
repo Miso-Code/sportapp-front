@@ -1,12 +1,13 @@
 import { Box, Paper } from '@mui/material'
-import { Props } from './interfaces'
-import './_index.scss'
 import Navbar from '../Navbar'
+import './_index.scss'
+import { Props } from './interfaces'
 
 export default function ContainerLayout({
 	children,
 	className = '',
-	secondarySection
+	secondarySection,
+	withSecondarySection = true
 }: Props) {
 	const handleSecondaryClass = () => {
 		if (secondarySection) {
@@ -24,10 +25,12 @@ export default function ContainerLayout({
 			<Paper className='container-layout-main-section container-layout-main-section__full'>
 				{children}
 			</Paper>
-			<Paper
-				className={`container-layout-secondary-section ${handleSecondaryClass()}`}>
-				{secondarySection}
-			</Paper>
+			{withSecondarySection && (
+				<Paper
+					className={`container-layout-secondary-section ${handleSecondaryClass()}`}>
+					{secondarySection}
+				</Paper>
+			)}
 		</Box>
 	)
 }

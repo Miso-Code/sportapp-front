@@ -58,6 +58,9 @@ export interface RegisterFullUserResponse {
 	birth_date: string
 }
 
+export interface LoginUserRefreshRequest {
+	refresh_token: string
+}
 export interface LoginUserRequest {
 	email: string
 	password: string

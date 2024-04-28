@@ -299,6 +299,65 @@ describe('UserApi', () => {
 		})
 	})
 
+	describe('loginRefresh', () => {
+		it('should call the loginRefresh endpoint', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						access_token: 'test_access_token',
+						access_token_expires_minutes: 1,
+						refresh_token: 'test_refresh_token',
+						refresh_token_expires_minutes: 1
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				refresh_token: 'test_refresh_token'
+			}
+			const response = await userApi.loginRefresh(data)
+
+			expect(response).toStrictEqual({
+				access_token: 'test_access_token',
+				access_token_expires_minutes: 1,
+				refresh_token: 'test_refresh_token',
+				refresh_token_expires_minutes: 1
+			})
+		})
+
+		it('should return undefined if the loginRefresh fails', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				refresh_token: 'test_refresh_token'
+			}
+			const response = await userApi.loginRefresh(data)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the loginRefresh fails', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data = {
+				refresh_token: 'test_refresh_token'
+			}
+
+			try {
+				await userApi.loginRefresh(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
 	describe('getPersonalProfile', () => {
 		it('should call the getPersonalProfile endpoint', async () => {
 			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
@@ -894,6 +953,240 @@ describe('UserApi', () => {
 
 			try {
 				await userApi.updatePlan(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('getAllTrainers', () => {
+		it('should call the getAllTrainers endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: [
+						{
+							trainer_id: '50a5a9fb-3ed3-4e6c-a2d6-39b148c0e6dc',
+							first_name: 'John',
+							last_name: 'Doe'
+						},
+						{
+							trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+							first_name: 'Jane',
+							last_name: 'Smith'
+						}
+					]
+				})
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+			const response = await userApi.getAllTrainers(payload)
+
+			expect(response).toStrictEqual([
+				{
+					trainer_id: '50a5a9fb-3ed3-4e6c-a2d6-39b148c0e6dc',
+					first_name: 'John',
+					last_name: 'Doe'
+				},
+				{
+					trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+					first_name: 'Jane',
+					last_name: 'Smith'
+				}
+			])
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+			const response = await userApi.getAllTrainers(payload)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+
+			try {
+				await userApi.getAllTrainers(payload)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('addSportsmanAppointment', () => {
+		it('should call the addSportsmanAppointment endpoint', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						appointment_id: 'e09eccfd-ef1d-4d1d-a141-b28d713a796c',
+						user_id: '3b4ee6ec-189a-4baf-901f-ac6f431fa9fc',
+						appointment_date: '2024-04-23T22:05:26',
+						appointment_type: 'virtual',
+						trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+						appointment_reason: 'Some dumb reason'
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					appointment_date: '2024-04-23T22:05:26',
+					appointment_type: 'virtual',
+					trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+					appointment_reason: 'Some dumb reason'
+				}
+			}
+			const response = await userApi.addSportsmanAppointment(data)
+
+			expect(response).toBe(true)
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					appointment_date: '2024-04-23T22:05:26',
+					appointment_type: 'virtual',
+					trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+					appointment_reason: 'Some dumb reason'
+				}
+			}
+			const response = await userApi.addSportsmanAppointment(data)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					appointment_date: '2024-04-23T22:05:26',
+					appointment_type: 'virtual',
+					trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+					appointment_reason: 'Some dumb reason'
+				}
+			}
+
+			try {
+				await userApi.addSportsmanAppointment(data)
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('getAllSportsmanAppointments', () => {
+		it('should call the getAllSportsmanAppointments endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: [
+						{
+							appointment_id:
+								'e09eccfd-ef1d-4d1d-a141-b28d713a796c',
+							user_id: '3b4ee6ec-189a-4baf-901f-ac6f431fa9fc',
+							appointment_date: '2024-04-23T22:05:26',
+							appointment_type: 'virtual',
+							trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+							appointment_reason: 'Some dumb reason'
+						}
+					]
+				})
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+			const response = await userApi.getAllSportsmanAppointments(payload)
+
+			expect(response).toStrictEqual([
+				{
+					appointment_id: 'e09eccfd-ef1d-4d1d-a141-b28d713a796c',
+					user_id: '3b4ee6ec-189a-4baf-901f-ac6f431fa9fc',
+					appointment_date: '2024-04-23T22:05:26',
+					appointment_type: 'virtual',
+					trainer_id: '7e2de02d-09eb-438c-8cb1-0ed4e59ef28f',
+					appointment_reason: 'Some dumb reason'
+				}
+			])
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+			const response = await userApi.getAllSportsmanAppointments(payload)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const payload = {
+				options: {
+					headers: {
+						Authorization: 'Bearer test_token'
+					}
+				}
+			}
+
+			try {
+				await userApi.getAllSportsmanAppointments(payload)
 			} catch (error) {
 				expect(error).toMatch('error')
 			}

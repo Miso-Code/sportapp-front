@@ -113,7 +113,11 @@ describe('PurchasedProduct Table utils', () => {
 	describe('formatCurrency', () => {
 		it('should format currency', () => {
 			const result = formatCurrency(100)
-			expect(result).toEqual('100.00')
+			expect(result).toEqual('100')
+		})
+		it('should format currency', () => {
+			const result = formatCurrency(1000)
+			expect(result).toEqual('1,000')
 		})
 	})
 })

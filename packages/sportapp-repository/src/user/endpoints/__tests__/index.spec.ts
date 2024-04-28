@@ -13,7 +13,11 @@ describe('User endpoints', () => {
 				updateSportProfile: expect.any(String),
 				getNutritionalProfile: expect.any(String),
 				updateNutritionalProfile: expect.any(String),
-				getAllNutritionalLimitations: expect.any(String)
+				getAllNutritionalLimitations: expect.any(String),
+				updatePlan: expect.any(String),
+				getAllTrainers: expect.any(String),
+				addSportsmanAppointment: expect.any(String),
+				getAllSportsmanAppointments: expect.any(String)
 			})
 		)
 	})
@@ -66,5 +70,21 @@ describe('User endpoints', () => {
 
 	it('should return the correct endpoint from updatePlan', () => {
 		expect(endpoints.updatePlan).toBe('/users/update-plan')
+	})
+
+	it('should return the correct endpoint from getAllTrainers', () => {
+		expect(endpoints.getAllTrainers).toBe('/users/premium/trainers')
+	})
+
+	it('should return the correct endpoint from addSportsmanAppointment', () => {
+		expect(endpoints.addSportsmanAppointment).toBe(
+			'/users/premium/sportsman-appointment'
+		)
+	})
+
+	it('should return the correct endpoint from getAllSportsmanAppointments', () => {
+		expect(endpoints.getAllSportsmanAppointments).toBe(
+			'/users/premium/sportsman-appointment'
+		)
 	})
 })

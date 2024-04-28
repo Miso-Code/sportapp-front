@@ -42,4 +42,11 @@ describe('ContainerLayout', () => {
 		)
 		expect(wrapper.container).toMatchSnapshot()
 	})
+
+	it('should render without secondary section', () => {
+		wrapper.rerender(
+			<ContainerLayout withSecondarySection={false}>Children</ContainerLayout>
+		)
+		expect(wrapper.container).toMatchSnapshot()
+	})
 })

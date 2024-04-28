@@ -4057,6 +4057,20 @@ acorn@^8.1.0, acorn@^8.4.1, acorn@^8.8.1, acorn@^8.8.2, acorn@^8.9.0:
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.11.3.tgz"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
 
+add-to-calendar-button-react@^2.6.13:
+  version "2.6.13"
+  resolved "https://registry.yarnpkg.com/add-to-calendar-button-react/-/add-to-calendar-button-react-2.6.13.tgz#4a0254983f90b74ad7f23fc613beb994f3519cf7"
+  integrity sha512-GQZNxHTkUBZ+I8Y9ojIjFpRRtfVxy5zKdru9PZM0hVJIq2nWuvjU7XgAMXhYQ41adTIXiZa/A5LUC4Xm4+CH7g==
+  dependencies:
+    add-to-calendar-button "^2.6.13"
+
+add-to-calendar-button@^2.6.13:
+  version "2.6.13"
+  resolved "https://registry.yarnpkg.com/add-to-calendar-button/-/add-to-calendar-button-2.6.13.tgz#e52c22ee5dc6262d842c5f124e809df3f6eee78b"
+  integrity sha512-Me2n/8uV8AWq3guJI0tbBpVgeXTsMVXAXmxfZeCFPh6PHItr1pQjKlPRKZmf84BSdDJHvVLXG7kGKE/X78D2pA==
+  dependencies:
+    timezones-ical-library "^1.8.2"
+
 agent-base@6:
   version "6.0.2"
   resolved "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
@@ -13392,6 +13406,11 @@ through@2, "through@>=2.2.7 <3":
   version "2.3.8"
   resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
+
+timezones-ical-library@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/timezones-ical-library/-/timezones-ical-library-1.8.2.tgz#33a96db1f2bcce87d5e00ee64f263b9925c37719"
+  integrity sha512-0bbCp+xXtTUOcBo7bAGkzK5yMiNnY/FmJblTlnkGcqW5O+SChvWNtvsOX9WqbU5/8sT+Nl/MKQ7c9qafIkUstA==
 
 tiny-case@^1.0.3:
   version "1.0.3"

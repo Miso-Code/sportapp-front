@@ -14,3 +14,14 @@ export const PurchasedProductPartnerLazy = lazy(
 export const UpdateProductPartnerLazy = lazy(
 	() => import('@/pages/Partner/UpdateProduct')
 )
+//preferences
+export const PreferencePageLazy = lazy(() => import('@/pages/User/Preference'))
+export const PreferenceFormPageLazy = lazy(
+	() => import('@/pages/User/Preference/Form')
+)
+export const PreferenceCardSelectionPageLazy = lazy(
+	() => import('@/pages/User/Preference/CardSelection')
+)
+export const ListSchedulePreferencePageLazy = lazy(
+	() => import('@/pages/User/Preference/List')
+)

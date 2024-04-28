@@ -27,6 +27,7 @@
 		"@sportapp/langs": "*",
 		"@sportapp/stores": "*",
 		"@uiw/react-md-editor": "^4.0.4",
+		"add-to-calendar-button-react": "^2.6.13",
 		"country-state-city": "^3.2.1",
 		"date-fns": "^3.6.0",
 		"i18next": "^23.10.1",
