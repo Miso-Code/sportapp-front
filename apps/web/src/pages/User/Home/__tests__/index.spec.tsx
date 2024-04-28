@@ -44,7 +44,11 @@ jest.mock('@sportapp/stores/src/user', () => ({
 		updateSport: jest.fn(),
 		getNutrition: jest.fn(),
 		updateNutrition: jest.fn(),
-		user: {}
+		user: {
+			profileData: {
+				subscription_type: 'premium'
+			}
+		}
 	})
 }))
 

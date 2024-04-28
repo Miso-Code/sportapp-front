@@ -9,16 +9,18 @@ import {
 	BottomNavigationAction,
 	Box
 } from '@mui/material'
+import { useUserStore } from '@sportapp/stores'
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './_index.scss'
 import { Props } from './interfaces'
-import { useMemo } from 'react'
 
 export default function Navbar({ className = '' }: Props) {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const location = useLocation()
+	const { user } = useUserStore()
 
 	const currentPath = location.pathname
 
@@ -34,6 +36,10 @@ export default function Navbar({ className = '' }: Props) {
 		}
 		return -1
 	}, [currentPath])
+
+	const isPremium = useMemo(() => {
+		return user?.profileData?.subscription_type === 'premium'
+	}, [user])
 
 	return (
 		<Box className={`navbar ${className}`} flexGrow={0}>
@@ -67,8 +73,9 @@ export default function Navbar({ className = '' }: Props) {
 					<BottomNavigationAction
 						label={t('navbar.preferential')}
 						LinkComponent={'a'}
+						disabled={!isPremium}
 						onClick={() => navigate('/preferences')}
-						className='navbar-content-navigation-button'
+						className={`navbar-content-navigation-button ${!isPremium && 'navbar-content-navigation-button__disabled'}`}
 						icon={<StartIcon />}
 					/>
 					<BottomNavigationAction

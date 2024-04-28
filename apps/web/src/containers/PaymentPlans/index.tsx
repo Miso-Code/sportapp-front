@@ -17,7 +17,11 @@ import {
 	PaymentData,
 	subscriptionType
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
-import { usePaymentPlanStore, useUserStore } from '@sportapp/stores'
+import {
+	useAuthStore,
+	usePaymentPlanStore,
+	useUserStore
+} from '@sportapp/stores'
 import { ReactElement, forwardRef, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormPaymentData } from '../PaymentForm/utils/schema'
@@ -44,6 +48,7 @@ export default function PaymentPlans() {
 	const { setSelectedPlan, setPaymentData, updatePlan } =
 		usePaymentPlanStore()
 	const { getProfile } = useUserStore()
+	const { refreshToken } = useAuthStore()
 	const { user, loading: loadingUser } = useUserStore()
 	const [open, setOpen] = useState(false)
 	const [openModal, setOpenModal] = useState(false)
@@ -102,10 +107,18 @@ export default function PaymentPlans() {
 				})
 			}
 			await getProfile()
+			await refreshToken()
 			window.scrollTo(0, 0)
 			handleCloseAll()
 		},
-		[getProfile, handleCloseAll, setPaymentData, t, updatePlan]
+		[
+			getProfile,
+			handleCloseAll,
+			refreshToken,
+			setPaymentData,
+			t,
+			updatePlan
+		]
 	)
 
 	const generateBenefits = (activeBenefitsCount: number) => {

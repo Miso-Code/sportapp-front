@@ -15,6 +15,10 @@
 				&__end {
 					@apply mt-auto;
 				}
+
+				&__disabled {
+					@apply cursor-not-allowed hidden;
+				}
 			}
 		}
 	}

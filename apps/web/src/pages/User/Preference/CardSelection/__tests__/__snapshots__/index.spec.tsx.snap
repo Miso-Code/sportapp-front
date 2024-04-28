@@ -93,7 +93,7 @@ exports[`PreferenceCardSelectionPage should render correctly 1`] = `
                 />
               </button>
               <button
-                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+                class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
                 tabindex="0"
                 type="button"
               >
@@ -438,7 +438,7 @@ exports[`PreferenceCardSelectionPage should render correctly 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+              class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
               tabindex="0"
               type="button"
             >

@@ -1,6 +1,16 @@
 import ContainerLayout from '..'
 import { render, RenderResult } from '@testing-library/react'
 
+jest.mock('@sportapp/stores', () => ({
+	useUserStore: jest.fn().mockReturnValue({
+		user: {
+			profileData: {
+				subscription_type: 'premium'
+			}
+		}
+	})
+}))
+
 describe('ContainerLayout', () => {
 	let wrapper: RenderResult
 
