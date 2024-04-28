@@ -1,9 +1,5 @@
 import { useSportsmanStore, useUserStore } from '@sportapp/stores'
-import {
-	render,
-	RenderResult,
-	waitFor
-} from '@testing-library/react'
+import { render, RenderResult, waitFor } from '@testing-library/react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import PreferenceFormPage from '..'
 
@@ -27,7 +23,7 @@ jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
 	useNavigate: jest.fn().mockReturnValue(jest.fn()),
 	useLocation: jest.fn().mockReturnValue({
-		pathname: '/preferences'
+		pathname: '/premium'
 	})
 }))
 
@@ -66,7 +62,7 @@ describe('PreferenceFormPage', () => {
 
 	it('should render for in person appointment', () => {
 		;(useLocation as jest.Mock).mockReturnValueOnce({
-			pathname: '/preferences?in_person=true'
+			pathname: '/premium?in_person=true'
 		})
 
 		expect(wrapper).toMatchSnapshot()
@@ -74,7 +70,7 @@ describe('PreferenceFormPage', () => {
 
 	it('should render for virtual appointment', () => {
 		;(useLocation as jest.Mock).mockReturnValueOnce({
-			pathname: '/preferences?virtual=true'
+			pathname: '/premium?virtual=true'
 		})
 
 		expect(wrapper).toMatchSnapshot()

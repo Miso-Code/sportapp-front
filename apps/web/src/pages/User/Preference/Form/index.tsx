@@ -53,7 +53,7 @@ export default function PreferenceFormPage() {
 		setShowMessage(true)
 		const payload: SportsmanAppointmentRequest = {
 			appointment_date: format(data.date, 'yyyy-MM-dd HH:mm:ss'),
-			appointment_type: data.type ? 'in_person' : 'virtual',
+			appointment_type: data.type ? 'virtual' : 'in_person',
 			trainer_id: data.training,
 			appointment_reason: data.description
 		}
@@ -62,11 +62,11 @@ export default function PreferenceFormPage() {
 		}
 		const response = await addSportsmanAppointment(payload)
 		if (response) {
-			navigate('/preferences/selection?success=true')
+			navigate('/premium/selection?success=true')
 			return
 		}
 		setAlert(true)
-		navigate('/preferences/selection?success=false')
+		navigate('/premium/selection?success=false')
 	}
 
 	const handleGetAllTrainers = useCallback(async () => {
@@ -136,7 +136,7 @@ export default function PreferenceFormPage() {
 						<IconButton
 							aria-label='back'
 							size='large'
-							onClick={() => navigate('/preferences/selection')}>
+							onClick={() => navigate('/premium/selection')}>
 							<ArrowBackIosIcon />
 						</IconButton>
 						{t('preference.title2')}
@@ -158,7 +158,11 @@ export default function PreferenceFormPage() {
 									className='preference-form-title'
 									variant='h4'>
 									{t(
-										`preference.form.${inPerson ? 'inPersonAppointment' : 'virtualAppointment'}.title`
+										`preference.form.${
+											inPerson
+												? 'inPersonAppointment'
+												: 'virtualAppointment'
+										}.title`
 									)}
 								</Typography>
 								<DateTimeController

@@ -124,7 +124,7 @@ export default function ListSchedulePreferencePage() {
 						<IconButton
 							aria-label='back'
 							size='large'
-							onClick={() => navigate('/preferences')}>
+							onClick={() => navigate('/premium')}>
 							<ArrowBackIosIcon />
 						</IconButton>
 						{t('preference.title')}
@@ -217,7 +217,9 @@ export default function ListSchedulePreferencePage() {
 												timeZone='America/Bogota'
 												language={
 													i18n.language as 'en' | 'es'
-												}></AddToCalendarButton>
+												}
+												forceOverlay={true}
+											/>
 										</TableCell>
 									</TableRow>
 								))}

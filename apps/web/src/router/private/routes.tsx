@@ -15,14 +15,14 @@ export default function privateRoutesUser() {
 		children: [
 			{ path: '/home', element: <HomeLazy /> },
 			{ path: '/config', element: <ConfigLazy /> },
-			{ path: '/preferences', element: <PreferencePageLazy /> },
+			{ path: '/premium', element: <PreferencePageLazy /> },
 			{
-				path: '/preferences/selection',
+				path: '/premium/selection',
 				element: <PreferenceCardSelectionPageLazy />
 			},
-			{ path: '/preferences/form', element: <PreferenceFormPageLazy /> },
+			{ path: '/premium/form', element: <PreferenceFormPageLazy /> },
 			{
-				path: '/preferences/list-schedule',
+				path: '/premium/list-schedule',
 				element: <ListSchedulePreferencePageLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }

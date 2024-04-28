@@ -14,7 +14,7 @@ export const PurchasedProductPartnerLazy = lazy(
 export const UpdateProductPartnerLazy = lazy(
 	() => import('@/pages/Partner/UpdateProduct')
 )
-//preferences
+//premium
 export const PreferencePageLazy = lazy(() => import('@/pages/User/Preference'))
 export const PreferenceFormPageLazy = lazy(
 	() => import('@/pages/User/Preference/Form')
