@@ -16,7 +16,6 @@ export {
 	usePartnerProductStore
 } from './partner/products'
 
-export {
-	initialTrainingPlanState,
-	useTrainingPlanStore
-} from './trainingPlan'
+export { initialTrainingPlanState, useTrainingPlanStore } from './trainingPlan'
+
+export { initialPaymentPlanState, usePaymentPlanStore } from './paymentPlan'

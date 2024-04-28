@@ -28,6 +28,10 @@ import {
 	NutritionalProfileUpdateRequest,
 	NutritionalProfileUpdateResponse
 } from './interfaces/api/nutritionalProfile'
+import {
+	UpdatePlanRequestPayload,
+	UpdatePlanResponse
+} from './interfaces/api/updatePlan'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -296,6 +300,26 @@ export default class UserApi {
 			const response = await this.sportappApi.get<
 				NutritionalLimitations[]
 			>(endpoint, options)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async updatePlan({
+		data,
+		options
+	}: UpdatePlanRequestPayload): Promise<UpdatePlanResponse | undefined> {
+		const endpoint = endpoints.updatePlan
+		try {
+			const response = await this.sportappApi.patch<UpdatePlanResponse>(
+				endpoint,
+				data,
+				options
+			)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

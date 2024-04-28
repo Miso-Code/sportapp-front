@@ -73,8 +73,8 @@ exports[`PaymentForm should render component 1`] = `
             </div>
           </div>
         </div>
-        <section
-          class="flex flex-col gap-4 p-4 mt-2"
+        <div
+          class="MuiBox-root css-1oke1pi"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -215,10 +215,10 @@ exports[`PaymentForm should render component 1`] = `
             </div>
           </div>
           <div
-            class="flex gap-4"
+            class="MuiBox-root css-p27s4m"
           >
             <div
-              class="MuiFormControl-root MuiTextField-root w-1/2 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+              class="MuiFormControl-root MuiTextField-root css-1g1iitx-MuiFormControl-root-MuiTextField-root"
             >
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -254,7 +254,7 @@ exports[`PaymentForm should render component 1`] = `
               </div>
             </div>
             <div
-              class="MuiFormControl-root MuiTextField-root w-1/2 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+              class="MuiFormControl-root MuiTextField-root css-1g1iitx-MuiFormControl-root-MuiTextField-root"
             >
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -291,7 +291,7 @@ exports[`PaymentForm should render component 1`] = `
             </div>
           </div>
           <div
-            class="flex md:flex-row gap-4 mt-2"
+            class="MuiBox-root css-ke9lij"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorError MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorError MuiButton-fullWidth css-1e0debn-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
@@ -305,18 +305,16 @@ exports[`PaymentForm should render component 1`] = `
               />
             </button>
             <button
-              class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth css-xtcf48-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth Mui-disabled MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth css-xtcf48-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+              disabled=""
               id=":r6:"
-              tabindex="0"
+              tabindex="-1"
               type="submit"
             >
               form.checkout
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
-        </section>
+        </div>
       </form>
     </div>
   </body>,
@@ -389,8 +387,8 @@ exports[`PaymentForm should render component 1`] = `
           </div>
         </div>
       </div>
-      <section
-        class="flex flex-col gap-4 p-4 mt-2"
+      <div
+        class="MuiBox-root css-1oke1pi"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -531,10 +529,10 @@ exports[`PaymentForm should render component 1`] = `
           </div>
         </div>
         <div
-          class="flex gap-4"
+          class="MuiBox-root css-p27s4m"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root w-1/2 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root css-1g1iitx-MuiFormControl-root-MuiTextField-root"
           >
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -570,7 +568,7 @@ exports[`PaymentForm should render component 1`] = `
             </div>
           </div>
           <div
-            class="MuiFormControl-root MuiTextField-root w-1/2 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root css-1g1iitx-MuiFormControl-root-MuiTextField-root"
           >
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -607,7 +605,7 @@ exports[`PaymentForm should render component 1`] = `
           </div>
         </div>
         <div
-          class="flex md:flex-row gap-4 mt-2"
+          class="MuiBox-root css-ke9lij"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorError MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorError MuiButton-fullWidth css-1e0debn-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
@@ -621,18 +619,16 @@ exports[`PaymentForm should render component 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth css-xtcf48-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth Mui-disabled MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorSuccess MuiButton-fullWidth css-xtcf48-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            disabled=""
             id=":r6:"
-            tabindex="0"
+            tabindex="-1"
             type="submit"
           >
             form.checkout
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
           </button>
         </div>
-      </section>
+      </div>
     </form>
   </div>,
   "debug": [Function],

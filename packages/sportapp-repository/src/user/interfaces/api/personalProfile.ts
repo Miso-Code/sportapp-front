@@ -20,8 +20,12 @@ export interface PersonalProfileBase {
 	birth_date: string
 }
 
-export interface PersonalProfileResponse extends PersonalProfileBase {}
+export interface PersonalProfileResponse extends PersonalProfileBase {
+	subscription_type: string
+}
 
 export interface PersonalProfileUpdateRequest extends PersonalProfileBase {}
 
-export interface PersonalProfileUpdateResponse extends PersonalProfileBase {}
+export interface PersonalProfileUpdateResponse extends PersonalProfileBase {
+	subscription_type: string
+}

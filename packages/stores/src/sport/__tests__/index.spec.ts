@@ -46,7 +46,7 @@ describe('SportStore', () => {
 		await act(async () => {
 			await clearState()
 		})
-		console.log(result.current)
+
 		expect(result.current.sports).toStrictEqual([])
 	})
 

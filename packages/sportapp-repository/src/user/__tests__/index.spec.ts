@@ -399,7 +399,8 @@ describe('UserApi', () => {
 				country_of_residence: 'CountryOfResidence2',
 				city_of_residence: 'CityOfResidence2',
 				residence_age: 25,
-				birth_date: '1996-12-30'
+				birth_date: '1996-12-30',
+				subscription_type: 'FREE'
 			}
 			const response = await userApi.updatePersonalProfile(data)
 
@@ -438,7 +439,8 @@ describe('UserApi', () => {
 				country_of_residence: 'CountryOfResidence2',
 				city_of_residence: 'CityOfResidence2',
 				residence_age: 25,
-				birth_date: '1996-12-30'
+				birth_date: '1996-12-30',
+				subscription_type: 'FREE'
 			}
 			const response = await userApi.updatePersonalProfile(data)
 
@@ -462,7 +464,8 @@ describe('UserApi', () => {
 				country_of_residence: 'CountryOfResidence2',
 				city_of_residence: 'CityOfResidence2',
 				residence_age: 25,
-				birth_date: '1996-12-30'
+				birth_date: '1996-12-30',
+				subscription_type: 'FREE'
 			}
 
 			try {
@@ -805,6 +808,92 @@ describe('UserApi', () => {
 
 			try {
 				await userApi.getAllNutritionalLimitations()
+			} catch (error) {
+				expect(error).toMatch('error')
+			}
+		})
+	})
+
+	describe('updatePlan', () => {
+		it('should call the updatePlan endpoint', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						status: 'success',
+						message: 'Plan updated',
+						subscription_start_date: '2021-08-01',
+						subscription_end_date: '2021-09-01'
+					}
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					subscription_type: 'test',
+					payment_data: {
+						card_number: '123456789',
+						card_holder: 'John Doe',
+						card_expiration_date: '2023-12',
+						card_cvv: '123',
+						amount: 100
+					}
+				}
+			}
+			const response = await userApi.updatePlan(data)
+
+			expect(response).toStrictEqual({
+				status: 'success',
+				message: 'Plan updated',
+				subscription_start_date: '2021-08-01',
+				subscription_end_date: '2021-09-01'
+			})
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					subscription_type: 'test',
+					payment_data: {
+						card_number: '123456789',
+						card_holder: 'John Doe',
+						card_expiration_date: '2023-12',
+						card_cvv: '123',
+						amount: 100
+					}
+				}
+			}
+			const response = await userApi.updatePlan(data)
+
+			expect(response).toBeUndefined()
+		})
+
+		it('should return undefined if the request fails and catch error', async () => {
+			;(sportappApi.patch as jest.Mock).mockImplementationOnce(() =>
+				Promise.reject('error')
+			)
+			const userApi = new UserApi()
+			const data = {
+				data: {
+					subscription_type: 'test',
+					payment_data: {
+						card_number: '123456789',
+						card_holder: 'John Doe',
+						card_expiration_date: '2023-12',
+						card_cvv: '123',
+						amount: 100
+					}
+				}
+			}
+
+			try {
+				await userApi.updatePlan(data)
 			} catch (error) {
 				expect(error).toMatch('error')
 			}

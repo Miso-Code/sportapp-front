@@ -4,7 +4,7 @@
 		"title": "Plan gratuito",
 		"description": "Ideal para individuos que apenas están empezando en el mundo del deporte."
 	},
-	"basic": {
+	"intermediate": {
 		"title": "Plan básico",
 		"description": "Ideal para individuos que realizan deporte periódicamente y desean estar pendientes de su salud"
 	},
@@ -33,5 +33,13 @@
 	"selection": {
 		"title": "Selección de plan",
 		"description": "Esta seguro que desea seleccionar el "
+	},
+	"alert": {
+		"error": "Error al procesar el pago, por favor intente nuevamente mas tarde",
+		"success": "Pago realizado con éxito y plan actualizado"
+	},
+	"freeCard": {
+		"title": "¿Estas seguro que deseas pasar al plan gratuito?",
+		"description": "Al seleccionar este plan perderás todos los beneficios del plan actual"
 	}
 }

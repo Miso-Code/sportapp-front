@@ -1,8 +1,3 @@
-export enum PlanTypes {
-	FREE = 'free',
-	PREMIUM = 'premium',
-    BASIC = 'basic',
-    NONE = 'none'
-}
+import { subscriptionType } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
 
-export type PlanType = `${PlanTypes}`
+export type PlanType = `${subscriptionType}`
