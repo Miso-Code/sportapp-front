@@ -20,6 +20,7 @@ export interface SportsmanAppointmentRequest {
 	appointment_type: string
 	trainer_id: string
 	appointment_reason: string
+	appointment_location?: string
 }
 
 export interface SportsmanAppointmentAllRequest {
