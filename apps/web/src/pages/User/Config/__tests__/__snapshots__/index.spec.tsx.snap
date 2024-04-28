@@ -15,7 +15,7 @@ exports[`ConfigPage should render 1`] = `
           class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
         >
           <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
             tabindex="0"
             type="button"
           >
@@ -31,7 +31,7 @@ exports[`ConfigPage should render 1`] = `
               />
             </svg>
             <span
-              class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
               navbar.profile
             </span>
@@ -293,7 +293,7 @@ exports[`ConfigPage should render component 1`] = `
           class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
         >
           <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
             tabindex="0"
             type="button"
           >
@@ -309,7 +309,7 @@ exports[`ConfigPage should render component 1`] = `
               />
             </svg>
             <span
-              class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
             >
               navbar.profile
             </span>

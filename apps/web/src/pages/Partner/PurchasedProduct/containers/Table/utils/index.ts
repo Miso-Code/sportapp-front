@@ -53,5 +53,5 @@ export const columns: readonly Column[] = [
 ]
 
 export function formatCurrency(value: number) {
-	return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
