@@ -11,6 +11,7 @@ import {
 	Typography
 } from '@mui/material'
 import { Props } from './interfaces'
+import { formatCurrency } from '@/pages/Partner/PurchasedProduct/containers/Table/utils'
 
 export default function CardPaymentPlan({
 	name,
@@ -42,7 +43,7 @@ export default function CardPaymentPlan({
 			</CardContent>
 			<CardContent className='flex items-end'>
 				<Typography component='p' variant='h2'>
-					${price}
+					${formatCurrency(price)}
 					<span className='text-3xl'>/ {duration}</span>
 				</Typography>
 			</CardContent>

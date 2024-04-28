@@ -34,8 +34,8 @@ const Transition = forwardRef<
 
 const pricePlans = {
 	[ESubscription.FREE]: 0,
-	[ESubscription.INTERMEDIATE]: 5,
-	[ESubscription.PREMIUM]: 10
+	[ESubscription.INTERMEDIATE]: 10000,
+	[ESubscription.PREMIUM]: 20000
 }
 
 export default function PaymentPlans() {
