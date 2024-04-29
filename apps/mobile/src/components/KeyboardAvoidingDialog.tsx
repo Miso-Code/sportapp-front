@@ -13,7 +13,7 @@ const KeyboardAvoidingDialog: React.FC<ComponentProps<typeof Dialog>> = ({
 
 	useEffect(() => {
 		function onKeyboardChange(e) {
-			if (e.endCoordinates.screenY < e.startCoordinates.screenY)
+			if (e.endCoordinates.screenY < e.startCoordinates?.screenY ?? 0)
 				setBottom(e.endCoordinates.height / 2)
 			else setBottom(0)
 		}
