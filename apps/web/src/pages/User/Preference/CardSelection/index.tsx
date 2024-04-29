@@ -74,7 +74,7 @@ export default function PreferenceCardSelectionPage() {
 						<IconButton
 							aria-label='back'
 							size='large'
-							onClick={() => navigate('/preferences')}>
+							onClick={() => navigate('/premium')}>
 							<ArrowBackIosIcon />
 						</IconButton>
 						{t('preference.title')}
@@ -93,7 +93,7 @@ export default function PreferenceCardSelectionPage() {
 							}}>
 							<CardActionArea
 								onClick={() =>
-									navigate('/preferences/form?type=virtual')
+									navigate('/premium/form?type=virtual')
 								}>
 								<CardMedia
 									sx={{ height: 240 }}
@@ -136,7 +136,7 @@ export default function PreferenceCardSelectionPage() {
 							}}>
 							<CardActionArea
 								onClick={() =>
-									navigate('/preferences/form?type=in-person')
+									navigate('/premium/form?type=in-person')
 								}>
 								<CardMedia
 									sx={{

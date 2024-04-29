@@ -28,7 +28,7 @@ export default function Navbar({ className = '' }: Props) {
 		if (currentPath.includes('/home')) {
 			return 0
 		}
-		if (currentPath.includes('/preferences')) {
+		if (currentPath.includes('/premium')) {
 			return 3
 		}
 		if (currentPath.includes('/config')) {
@@ -74,8 +74,11 @@ export default function Navbar({ className = '' }: Props) {
 						label={t('navbar.preferential')}
 						LinkComponent={'a'}
 						disabled={!isPremium}
-						onClick={() => navigate('/preferences')}
-						className={`navbar-content-navigation-button ${!isPremium && 'navbar-content-navigation-button__disabled'}`}
+						onClick={() => navigate('/premium')}
+						className={`navbar-content-navigation-button ${
+							!isPremium &&
+							'navbar-content-navigation-button__disabled'
+						}`}
 						icon={<StartIcon />}
 					/>
 					<BottomNavigationAction

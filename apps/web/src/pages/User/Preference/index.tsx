@@ -22,7 +22,7 @@ export default function PreferencePage() {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const { user } = useUserStore()
-	
+
 	useEffect(() => {
 		if (user?.profileData?.subscription_type !== 'premium') {
 			navigate('/home')
@@ -51,7 +51,7 @@ export default function PreferencePage() {
 							<ListItem disablePadding>
 								<ListItemButton
 									onClick={() =>
-										navigate('/preferences/selection')
+										navigate('/premium/selection')
 									}
 									tabIndex={0}
 									className='preference-menu-item'>
@@ -74,7 +74,7 @@ export default function PreferencePage() {
 								<ListItemButton
 									tabIndex={1}
 									onClick={() =>
-										navigate('/preferences/list-schedule')
+										navigate('/premium/list-schedule')
 									}
 									className='preference-menu-item'>
 									<ListItemIcon>
