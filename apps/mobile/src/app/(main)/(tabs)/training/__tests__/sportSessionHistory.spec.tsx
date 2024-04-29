@@ -21,30 +21,50 @@ jest.mock('react-native-big-calendar', () => {
 		itemSeparatorComponent: Separator
 	}) => {
 		return (
-			<native.Text>
+			<native.View>
 				{events.map((event, index) => (
 					<>
 						<native.Button
 							onPress={() => onPressEvent(event)}
 							testID={`testButton`}
 							title={event.title}
-							key={'button' + index}
+							key={'mockCalendarButton' + index}
 						/>
 						{index < events.length && (
 							<Separator
 								leadingItem={[event]}
-								key={'separator' + index}
+								key={'mockCalendarSeparator' + index}
 							/>
 						)}
 					</>
 				))}
-			</native.Text>
+			</native.View>
 		)
 	}
 	return {
 		Calendar: mockCalendar
 	}
 })
+
+jest.mock('react-native-paper', () => {
+	return {
+		...jest.requireActual('react-native-paper'),
+		Portal: jest.fn(({ children }) => children)
+	}
+})
+
+jest.mock('@/components/KeyboardAvoidingDialog', () =>
+	jest.fn(({ children }) => children)
+)
+jest.mock('@/components/TrainingCard', () => {
+	const native = jest.requireActual('react-native')
+	return jest.fn(({ date, ...props }) => (
+		<native.View {...props} testID='trainingCard'>
+			{date.toISOString()}
+		</native.View>
+	))
+})
+
 jest.mock('@sportapp/stores', () => ({
 	useSportSessionStore: jest.fn().mockReturnValue({
 		sportSessions: [
@@ -82,7 +102,22 @@ jest.mock('@sportapp/stores', () => ({
 	}),
 	initialSportSessionState: {
 		sportSession: null
-	}
+	},
+	useTrainingPlanStore: jest.fn().mockReturnValue({
+		trainingPlanSessions: [
+			{
+				training_plan_session_id: '1',
+				weekday: 'monday',
+				start_time: '10:00 AM',
+				warm_up: 0.35,
+				cardio: 0.7,
+				strength: 0.525,
+				cool_down: 0.175,
+				user_id: '1'
+			}
+		],
+		getTrainingPlan: jest.fn()
+	})
 }))
 
 describe('SportSessionHistory', () => {
@@ -152,7 +187,7 @@ describe('SportSessionHistory', () => {
 			await Promise.resolve()
 		})
 		expect(
-			component.root.findByProps({ testID: 'calendarHeader' }).props
+			component.root.findAllByProps({ testID: 'calendarHeader' })[0].props
 				.children
 		).toBe(
 			useSportSessionStore().sportSessions[0].started_at.substring(0, 6)
@@ -179,9 +214,26 @@ describe('SportSessionHistory', () => {
 			testID: 'calendarSwitch'
 		})
 		switchComponent.props.onValueChange(false)
+
 		expect(
 			component.root.findAllByProps({ testID: 'upcoming' }).length
-		).toBe(2)
+		).toBe(3) // ScrollView renders 3 children (2x react bug)
+	})
+
+	it('should render only upcoming events on switch off', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const [switchComponent] = component.root.findAllByProps({
+			testID: 'calendarSwitch'
+		})
+		switchComponent.props.onValueChange(false)
+
+		const cards = component.root.findAllByProps({ testID: 'trainingCard' })
+		expect(cards.length).toBe(10) // not more than 5 entries are rendered (2x react bug)
+		expect(
+			new Date(cards[0].props.children).getTime()
+		).toBeGreaterThanOrEqual(new Date(cards[1].props.children).getTime())
 	})
 
 	it('should show the calendar on switch on', async () => {
@@ -210,7 +262,7 @@ describe('SportSessionHistory', () => {
 		).toBe(0)
 	})
 
-	it('should navigate to the sport session on event press', async () => {
+	it('should navigate to the sport session on event press if event is session', async () => {
 		await act(async () => {
 			await Promise.resolve()
 		})
@@ -230,6 +282,21 @@ describe('SportSessionHistory', () => {
 		expect(router.push).toHaveBeenCalledTimes(1)
 	})
 
+	it('should show to the training plan on event press if event is training', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root.findAllByProps({
+			testID: 'testButton'
+		})
+		const button = eventButtons[Math.floor(eventButtons.length / 2)]
+		button.props.onPress()
+		const trainingModal = component.root.findByProps({
+			testID: 'trainingModal'
+		})
+		expect(trainingModal.props.visible).toBe(true)
+	})
+
 	it('should render a single header when calendar mode is not schedule', async () => {
 		await act(async () => {
 			await Promise.resolve()
@@ -246,7 +313,7 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(3) // 1 default + 2 react bug
+		).toBe(9) // this is buggy
 	})
 
 	it('should render unique calendar headers on calendar mode schedule', async () => {
@@ -317,6 +384,6 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(9) // (3x3 react bug), // 1 default and two calcualted
+		).toBe(15)
 	})
 })

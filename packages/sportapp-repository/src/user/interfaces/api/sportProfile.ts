@@ -1,11 +1,20 @@
 import { AxiosRequestConfig } from 'axios'
 
+type WeekDay =
+	| 'monday'
+	| 'tuesday'
+	| 'wednesday'
+	| 'thursday'
+	| 'friday'
+	| 'saturday'
+	| 'sunday'
 export interface SportProfileBase {
 	training_objective: string
 	weight: number
 	height: number
 	available_training_hours: number
-	training_frequency: string
+	available_weekdays: WeekDay[]
+	preferred_training_start_time: string
 	training_limitations: TrainingLimitation[]
 	bmi: number
 	favourite_sport_id: string
@@ -23,8 +32,9 @@ export interface SportProfileUpdateRequest {
 	weight: number
 	height: number
 	available_training_hours: number
-	training_frequency: string
 	training_limitations: TrainingLimitationRequest[]
+	available_weekdays: WeekDay[]
+	preferred_training_start_time: string
 }
 
 export interface TrainingLimitation {

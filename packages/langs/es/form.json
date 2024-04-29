@@ -5,6 +5,7 @@
 	"email": "Correo electrónico",
 	"password": "Contraseña",
 	"confirmPassword": "Confirmar contraseña",
+	"companyName": "Nombre de la empresa",
 	"documentType": "Tipo de documento",
 	"documentTypeValues": {
 		"CC": "Cédula de ciudadanía",
@@ -42,6 +43,17 @@
 		"MONTHLY": "Mensual",
 		"EVERY_OTHER_DAY": "Día de por medio"
 	},
+	"daysOfTheWeek": "Días de la semana disponibles para entrenar",
+	"daysOfTheWeekValues": {
+		"MONDAY": "Lu",
+		"TUESDAY": "Ma",
+		"WEDNESDAY": "Mi",
+		"THURSDAY": "Ju",
+		"FRIDAY": "Vi",
+		"SATURDAY": "Sá",
+		"SUNDAY": "Do"
+	},
+	"preferedTrainingStartTime": "Hora de inicio preferida para entrenar",
 	"limitations": "Limitaciones",
 	"limitation": "Limitacion",
 	"limitationsLabels": {
@@ -50,7 +62,7 @@
 		"add": "Agregar limitacion",
 		"remove": "Eliminar limitacion"
 	},
-	"availableTrainingHoursPerWeek": "Tiempo para entrenar",
+	"availableTrainingHoursPerDay": "Tiempo disponible para entrenar por día",
 	"weight": "Peso",
 	"height": "Altura",
 	"imc": "Porcentaje de IMC",
@@ -71,5 +83,84 @@
 	"add": "Agregar",
 	"remove": "Eliminar",
 	"save": "Guardar",
-	"years": { "endLabel": "años" }
+	"years": { "endLabel": "años" },
+	"productCategory": "Categoría de producto",
+	"productCategoryValues": {
+		"equipment": "Equipos",
+		"apparel": "Ropa",
+		"nutrition": "Nutrición",
+		"training_services": "Servicios de entrenamiento",
+		"wellness": "Bienestar",
+		"sports_technology": "Tecnología deportiva",
+		"medical_services": "Servicios médicos"
+	},
+	"productName": "Nombre del producto",
+	"productDescription": "Descripción del producto",
+	"productSummary": "Resumen del producto",
+	"productPrice": "Precio del producto",
+	"productStock": "Stock del producto",
+	"productUrl": "URL del producto",
+	"paymentType": "Tipo de pago",
+	"paymentTypeValues": {
+		"unique": "Pago único",
+		"periodic": "Pago periódico"
+	},
+	"paymentFrequency": "Frecuencia de pago",
+	"paymentFrequencyValues": {
+		"weekly": "Semanal",
+		"monthly": "Mensual",
+		"annually": "Anual",
+		"bi_annually": "Semestral",
+		"quarterly": "Trimestral",
+		"other": "Otro"
+	},
+	"productImageType": "Cargar imagen del producto mediante",
+	"imageTypeValues": {
+		"url": "URL",
+		"file": "Archivo"
+	},
+	"productImageUrl": "URL de la imagen",
+	"productImageFile": "Archivo de la imagen",
+	"file": {
+		"select": "Seleccionar archivo",
+		"upload": "Subir archivo",
+		"remove": "Eliminar archivo",
+		"placeholder": "Arrastre y suelte la imagen del producto aquí, o haga clic para seleccionar la imagen del producto"
+	},
+	"createProduct": "Crear producto",
+	"agree": "Estoy de acuerdo",
+	"disagree": "No estoy de acuerdo",
+	"amount": "Precio",
+	"total": "Total",
+	"obtain": "Obtener",
+	"pay": "Comprar",
+	"cancel": "Cancelar",
+	"checkout": "Pagar",
+	"card": {
+		"cardNumber": "Número de tarjeta",
+		"cardHolder": "Titular de la tarjeta",
+		"expirationDate": "Fecha de vencimiento",
+		"cvv": "CVV",
+		"cardNumberPlaceholder": "1234 5678 9012 3456",
+		"cardHolderPlaceholder": "Nombre del titular",
+		"expirationDatePlaceholder": "MM/AA",
+		"cvvPlaceholder": "CVV",
+		"cardNumberError": "El número de tarjeta es inválido",
+		"cardHolderError": "El nombre del titular de la tarjeta es inválido",
+		"expirationDateError": "La fecha de vencimiento es inválida",
+		"cvvError": "El CVV es inválido"
+	},
+	"date": "Fecha",
+	"hour": "Hora",
+	"dateAndHour": "Fecha y hora",
+	"trainer": "Entrenador",
+	"direction": "Dirección",
+	"description": "Descripción",
+	"training": {
+		"dateAndHour": "Selecciona fecha y hora",
+		"trainer": "Selecciona entrenador",
+		"address": "Dirección de la sesión",
+		"description": "Motivo de la sesión"
+	},
+	"schedule": "Agendar"
 }

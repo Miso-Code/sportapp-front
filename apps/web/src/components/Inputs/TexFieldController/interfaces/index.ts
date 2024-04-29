@@ -7,4 +7,6 @@ export interface Props<T extends FieldValues = FieldValues>
 	readonly name: Path<T>
 	readonly label: string
 	variant?: TextFieldVariants
+	method?: 'expirationDate' | 'cvv' | 'maxLength'
+	maxLength?: number
 }

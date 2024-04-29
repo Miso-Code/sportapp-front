@@ -21,6 +21,32 @@ export default defineConfig(({ mode }) => {
 				EXPO_PUBLIC_SPORTAPP_API_URL: env.EXPO_PUBLIC_SPORTAPP_API_URL,
 				EXPO_PUBLIC_STORAGE: env.EXPO_PUBLIC_STORAGE
 			}
+		},
+		optimizeDeps: {
+			include: ['@emotion/styled']
+		},
+		build: {
+			outDir: 'dist',
+			emptyOutDir: true,
+			sourcemap: true,
+			chunkSizeWarningLimit: 500,
+			rollupOptions: {
+				onwarn(warning, defaultHandler) {
+					if (warning.code === 'SOURCEMAP_ERROR') {
+						return
+					}
+
+					defaultHandler(warning)
+				},
+				output: {
+					manualChunks: {
+						react: ['react', 'react-dom'],
+						material: ['@mui/material', '@mui/icons-material'],
+						i18next: ['i18next', 'react-i18next'],
+						router: ['react-router-dom']
+					}
+				}
+			}
 		}
 	}
 })

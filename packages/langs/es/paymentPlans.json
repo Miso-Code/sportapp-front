@@ -1,0 +1,45 @@
+{
+	"title": "Planes de Pago",
+	"free": {
+		"title": "Plan Gratuito",
+		"description": "Ideal para individuos que apenas están empezando en el mundo del deporte."
+	},
+	"intermediate": {
+		"title": "Plan Intermedio",
+		"description": "Ideal para individuos que realizan deporte periódicamente y desean estar pendientes de su salud"
+	},
+	"premium": {
+		"title": "Plan Premium",
+		"description": "Ideal para individuos que realizan deporte constantemente y desean mejorar su rendimiento"
+	},
+	"benefits": {
+		"title": "Beneficios",
+		"information": [
+			"Recomendación de eventos",
+			"Recomendación de acompañantes",
+			"Recomendación de alimentación",
+			"Indicadores de salud",
+			"Notificación de riesgos",
+			"Monitoreo 24x7",
+			"Sesiones con especialistas",
+			"Entrenador disponible 24x7"
+		]
+	},
+	"active": "Activo",
+	"payment": {
+		"year": "Pago anual",
+		"month": "Pago mensual"
+	},
+	"selection": {
+		"title": "Selección de plan",
+		"description": "Esta seguro que desea seleccionar el "
+	},
+	"alert": {
+		"error": "Error al procesar el pago, por favor intente nuevamente mas tarde",
+		"success": "Pago realizado con éxito y plan actualizado"
+	},
+	"freeCard": {
+		"title": "¿Estas seguro que deseas pasar al plan gratuito?",
+		"description": "Al seleccionar este plan perderás todos los beneficios del plan actual"
+	}
+}

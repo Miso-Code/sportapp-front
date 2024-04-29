@@ -1,0 +1,47 @@
+{
+	"title0": "Preferred Services",
+	"title": "Appointment Scheduling",
+	"title2": "Schedule Appointment",
+	"virtualAppointment": {
+		"title": "Virtual Appointment with Sports Doctor",
+		"description": "Schedule a virtual appointment with your sports doctor to receive advice and follow-up on your training from the comfort of your home."
+	},
+	"inPersonAppointment": {
+		"title": "In-Person Appointment with Sports Doctor",
+		"description": "Schedule an in-person appointment with your sports doctor to receive advice and follow-up on your training at an agreed location."
+	},
+	"types": {
+		"virtual": "Virtual",
+		"inPerson": "In-Person",
+		"sport": "Sports",
+		"nutrition": "Nutrition"
+	},
+	"form": {
+		"virtualAppointment": {
+			"title": "Virtual Appointment Scheduling Form"
+		},
+		"inPersonAppointment": {
+			"title": "In-Person Appointment Scheduling Form"
+		}
+	},
+	"menu": {
+		"schedule": "Schedule Appointment",
+		"list": "Appointment List"
+	},
+	"loading": "Scheduling appointment, please wait...",
+	"success": "The appointment has been successfully scheduled",
+	"error": "An error occurred while scheduling the appointment, please try again later",
+	"table": {
+		"header": {
+			"dateAndTime": "Date and Time",
+			"type": "Appointment Type",
+			"location": "Location",
+			"trainingName": "Sports Doctor Name",
+			"add": "Add to your calendar"
+		}
+	},
+	"virtual": "Virtual",
+	"inPerson": "In-Person",
+	"noLocation": "No location",
+	"addCalendar": "Add to calendar"
+}

@@ -1,11 +1,16 @@
 import PrivateRoutes from '@/router/private/routes'
+import PrivateRoutesPartner from '@/router/private/routes-partner'
 import PublicRoutes from '@/router/public/routes'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const Router = () => {
-	const router = createBrowserRouter([PrivateRoutes(), ...PublicRoutes()])
+	const router = createBrowserRouter([
+		PrivateRoutes(),
+		PrivateRoutesPartner(),
+		...PublicRoutes()
+	])
 
 	const { i18n } = useTranslation()
 

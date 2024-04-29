@@ -27,6 +27,7 @@ export interface User {
 
 export interface IAuthActions {
 	login: (payload: { email: string; password: string }) => Promise<boolean>
+	refreshToken: () => Promise<boolean>
 	logout: () => void
 	setError: (error: string) => void
 	setLoading: (isAuth: boolean) => void

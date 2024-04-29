@@ -1,5 +1,25 @@
+import { useUserStore } from '@sportapp/stores'
 import Navbar from '..'
 import { render, RenderResult } from '@testing-library/react'
+import { useLocation } from 'react-router-dom'
+
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useLocation: jest.fn().mockReturnValue({
+		pathname: '/config'
+	}),
+	useNavigate: () => jest.fn()
+}))
+
+jest.mock('@sportapp/stores', () => ({
+	useUserStore: jest.fn().mockReturnValue({
+		user: {
+			profileData: {
+				subscription_type: 'premium'
+			}
+		}
+	})
+}))
 
 describe('Navbar', () => {
 	let wrapper: RenderResult
@@ -17,29 +37,31 @@ describe('Navbar', () => {
 		expect(wrapper.container).toMatchSnapshot()
 	})
 
-	it('should render with currentNavigationStep', () => {
-		wrapper.rerender(<Navbar currentNavigationStep={0} />)
+	it('should render with home step', () => {
+		;(useLocation as jest.Mock).mockReturnValue({
+			pathname: '/home'
+		})
+		wrapper.rerender(<Navbar />)
 		expect(wrapper.container).toMatchSnapshot()
 	})
 
-	it('should render with currentNavigationStep and className', () => {
-		wrapper.rerender(
-			<Navbar currentNavigationStep={0} className='test-class' />
-		)
+	it('should render with config step', () => {
+		;(useLocation as jest.Mock).mockReturnValue({
+			pathname: '/home'
+		})
+		wrapper.rerender(<Navbar className='test-class' />)
 		expect(wrapper.container).toMatchSnapshot()
 	})
 
-	it('should change currentNavigationStep to 0 step', () => {
-		wrapper.rerender(<Navbar currentNavigationStep={0} />)
-		expect(
-			wrapper.container.querySelector('.Mui-selected')
-		).toHaveAttribute('tabindex', '0')
-	})
-
-	it('should change currentNavigationStep to 1 step', () => {
-		wrapper.rerender(<Navbar currentNavigationStep={1} />)
-		expect(
-			wrapper.container.querySelector('.Mui-selected')
-		).toHaveAttribute('tabindex', '0')
+	it('should render with user is not premium', () => {
+		;(useUserStore as unknown as jest.Mock).mockReturnValue({
+			user: {
+				profileData: {
+					subscription_type: 'free'
+				}
+			}
+		})
+		wrapper.rerender(<Navbar className='test-class' />)
+		expect(wrapper.container).toMatchSnapshot()
 	})
 })

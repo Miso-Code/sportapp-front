@@ -4,10 +4,11 @@ import { InferType, array, number, object, string } from 'yup'
 export const schemaBase = object().shape({
 	favouriteSportId: string(),
 	trainingObjective: string(),
-	trainingFrequency: string(),
 	weight: number(),
 	height: number(),
-	availableTrainingHoursPerWeek: number(),
+	weekdays: array().of(string()),
+	preferedTrainingStartTime: string(),
+	availableTrainingHoursPerDay: number(),
 	limitations: array().of(
 		object().shape({
 			description: string().required(),
@@ -21,10 +22,11 @@ export const schemaBase = object().shape({
 export const schemaRequired = object().shape({
 	favouriteSportId: string().required(),
 	trainingObjective: string().required(),
-	trainingFrequency: string().required(),
 	weight: number().required(),
 	height: number().required(),
-	availableTrainingHoursPerWeek: number().required(),
+	weekdays: array().of(string()).min(1).required(),
+	preferedTrainingStartTime: string().required(),
+	availableTrainingHoursPerDay: number().min(1).max(24).required(),
 	limitations: array()
 		.of(
 			object().shape({

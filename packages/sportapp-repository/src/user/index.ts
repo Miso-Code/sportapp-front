@@ -3,6 +3,7 @@ import { sportappApi } from '../index'
 import { globalVariables } from '../utils/global-variables'
 import endpoints from './endpoints'
 import {
+	LoginUserRefreshRequest,
 	LoginUserRequest,
 	LoginUserResponse,
 	RegisterFullUserRequest,
@@ -10,6 +11,13 @@ import {
 	RegisterUserRequest,
 	RegisterUserStreamResponse
 } from './interfaces'
+import {
+	NutritionalLimitations,
+	NutritionalProfileRequestPayload,
+	NutritionalProfileResponse,
+	NutritionalProfileUpdateRequest,
+	NutritionalProfileUpdateResponse
+} from './interfaces/api/nutritionalProfile'
 import {
 	PersonalProfileRequestPayload,
 	PersonalProfileResponse,
@@ -22,12 +30,16 @@ import {
 	SportProfileUpdateRequest
 } from './interfaces/api/sportProfile'
 import {
-	NutritionalLimitations,
-	NutritionalProfileRequestPayload,
-	NutritionalProfileResponse,
-	NutritionalProfileUpdateRequest,
-	NutritionalProfileUpdateResponse
-} from './interfaces/api/nutritionalProfile'
+	SportsmanAppointmentAllRequest,
+	SportsmanAppointmentAllResponse,
+	SportsmanAppointmentRequestPayload,
+	Trainer,
+	TrainerGetAllRequest
+} from './interfaces/api/trainer'
+import {
+	UpdatePlanRequestPayload,
+	UpdatePlanResponse
+} from './interfaces/api/updatePlan'
 
 export default class UserApi {
 	private readonly sportappApi: AxiosInstance
@@ -170,6 +182,26 @@ export default class UserApi {
 		}
 	}
 
+	async loginRefresh({
+		refresh_token
+	}: LoginUserRefreshRequest): Promise<LoginUserResponse | undefined> {
+		const endpoint = endpoints.login
+		try {
+			const response = await this.sportappApi.post<LoginUserResponse>(
+				endpoint,
+				{
+					refresh_token
+				}
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
 	async getPersonalProfile(
 		options?: PersonalProfileRequestPayload
 	): Promise<PersonalProfileResponse | undefined> {
@@ -295,6 +327,83 @@ export default class UserApi {
 		try {
 			const response = await this.sportappApi.get<
 				NutritionalLimitations[]
+			>(endpoint, options)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async updatePlan({
+		data,
+		options
+	}: UpdatePlanRequestPayload): Promise<UpdatePlanResponse | undefined> {
+		const endpoint = endpoints.updatePlan
+		try {
+			const response = await this.sportappApi.patch<UpdatePlanResponse>(
+				endpoint,
+				data,
+				options
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async getAllTrainers({
+		options
+	}: TrainerGetAllRequest): Promise<Trainer[] | undefined> {
+		const endpoint = endpoints.getAllTrainers
+		try {
+			const response = await this.sportappApi.get<Trainer[]>(
+				endpoint,
+				options
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async addSportsmanAppointment({
+		data,
+		options
+	}: SportsmanAppointmentRequestPayload): Promise<boolean | undefined> {
+		const endpoint = endpoints.addSportsmanAppointment
+		try {
+			const response = await this.sportappApi.post(
+				endpoint,
+				data,
+				options
+			)
+
+			if (response.status.toString().startsWith('2')) {
+				return true
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async getAllSportsmanAppointments({
+		options
+	}: SportsmanAppointmentAllRequest): Promise<
+		SportsmanAppointmentAllResponse[] | undefined
+	> {
+		const endpoint = endpoints.getAllSportsmanAppointments
+		try {
+			const response = await this.sportappApi.get<
+				SportsmanAppointmentAllResponse[]
 			>(endpoint, options)
 
 			if (response.status.toString().startsWith('2')) {

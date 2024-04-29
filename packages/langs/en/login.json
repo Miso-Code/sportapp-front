@@ -5,5 +5,8 @@
 		"default": "Register",
 		"go": "Sign Up"
 	},
+	"partner": {
+		"title": "Partner Login"
+	},
 	"image": "Login Image"
 }

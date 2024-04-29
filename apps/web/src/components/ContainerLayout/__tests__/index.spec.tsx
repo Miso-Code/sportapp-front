@@ -1,6 +1,16 @@
 import ContainerLayout from '..'
 import { render, RenderResult } from '@testing-library/react'
 
+jest.mock('@sportapp/stores', () => ({
+	useUserStore: jest.fn().mockReturnValue({
+		user: {
+			profileData: {
+				subscription_type: 'premium'
+			}
+		}
+	})
+}))
+
 describe('ContainerLayout', () => {
 	let wrapper: RenderResult
 
@@ -39,6 +49,13 @@ describe('ContainerLayout', () => {
 	it('should render with className', () => {
 		wrapper.rerender(
 			<ContainerLayout className='test-class'>Children</ContainerLayout>
+		)
+		expect(wrapper.container).toMatchSnapshot()
+	})
+
+	it('should render without secondary section', () => {
+		wrapper.rerender(
+			<ContainerLayout withSecondarySection={false}>Children</ContainerLayout>
 		)
 		expect(wrapper.container).toMatchSnapshot()
 	})

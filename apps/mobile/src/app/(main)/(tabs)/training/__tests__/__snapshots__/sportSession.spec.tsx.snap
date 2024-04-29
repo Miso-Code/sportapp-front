@@ -13,6 +13,7 @@ exports[`SportSession should render correctly 1`] = `
 >
   <View>
     <Text
+      maxTime={40}
       testID="timer"
     >
       0

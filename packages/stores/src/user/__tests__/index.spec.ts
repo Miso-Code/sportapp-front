@@ -91,7 +91,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 		}
 
@@ -117,7 +118,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 		}
 
@@ -212,7 +214,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 			await act(async () => {
 				await updateProfile(payload)
@@ -240,7 +243,8 @@ describe('UserStore', () => {
 				gender: 'M',
 				residence_age: 25,
 				identification_number: '123456789',
-				identification_type: 'CC'
+				identification_type: 'CC',
+				subscription_type: 'free'
 			}
 			const { updateProfile } = result.current
 			await act(async () => {
@@ -323,7 +327,8 @@ describe('UserStore', () => {
 				available_training_hours: 10,
 				favourite_sport_id: '1',
 				height: 180,
-				training_frequency: '3',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [
 					{
 						name: 'test',
@@ -351,7 +356,8 @@ describe('UserStore', () => {
 				available_training_hours: 10,
 				favourite_sport_id: '1',
 				height: 180,
-				training_frequency: '3',
+				available_weekdays: ['monday'],
+				preferred_training_start_time: '10:00 AM',
 				training_limitations: [
 					{
 						name: 'test',

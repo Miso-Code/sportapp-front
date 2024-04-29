@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LayoutPartner should render the component 1`] = `
+<div>
+  <div>
+    Navigate
+  </div>
+</div>
+`;
+
+exports[`LayoutPartner should return navigate component 1`] = `
+<div>
+  <div>
+    Navigate
+  </div>
+</div>
+`;

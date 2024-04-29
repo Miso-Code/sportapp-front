@@ -1,4 +1,5 @@
 import errors from './errors.json'
+import config from './config.json'
 import es from './es.json'
 import form from './form.json'
 import login from './login.json'
@@ -11,7 +12,14 @@ import sportDataForm from './sportDataForm.json'
 import validations from './validations.json'
 import training from './training.json'
 import session from './session.json'
-
+import productService from './productService.json'
+import productCreate from './productCreate.json'
+import productObtain from './productObtain.json'
+import productUpdate from './productUpdate.json'
+import paymentPlans from './paymentPlans.json'
+import motivation from './motivation.json'
+import paymentPurchased from './paymentPurchased.json'
+import preference from './preference.json'
 
 const defaultTranslate = {
 	translation: {
@@ -27,7 +35,16 @@ const defaultTranslate = {
 		sportDataForm,
 		nutritionalDataForm,
 		training,
-		session
+		session,
+		config,
+		productService,
+		productCreate,
+		productObtain,
+		productUpdate,
+		paymentPlans,
+		motivation,
+		paymentPurchased,
+		preference
 	}
 }
 

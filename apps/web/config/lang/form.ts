@@ -9,7 +9,19 @@ const yupLocale: LocaleObject = {
 	},
 	string: {
 		...defaultLocale.string,
-		email: 'validations.email'
+		email: 'validations.email',
+		min: 'validations.min.string',
+		max: 'validations.max.string'
+	},
+	array: {
+		...defaultLocale.array,
+		min: 'validations.min.string',
+		max: 'validations.max.string'
+	},
+	number: {
+		...defaultLocale.number,
+		min: 'validations.min.string',
+		max: 'validations.max.string'
 	}
 }
 

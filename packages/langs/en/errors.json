@@ -4,5 +4,9 @@
 	},
 	"login": {
 		"base": "An error occurred while logging in"
+	},
+	"preference": {
+		"base": "An error occurred while saving preferences",
+		"scheduleError": "An error occurred while scheduling an appointment"
 	}
 }

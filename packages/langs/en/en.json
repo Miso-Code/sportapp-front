@@ -3,5 +3,6 @@
 		"name": "SportApp"
 	},
 	"Athletics": "Athletics",
-	"Cycling": "Cycling"
+	"Cycling": "Cycling",
+	"loading": "Loading..."
 }

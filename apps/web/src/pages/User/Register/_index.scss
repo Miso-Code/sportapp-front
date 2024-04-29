@@ -1,0 +1,40 @@
+.register {
+	@apply flex;
+
+	min-height: 100vh;
+
+	.title {
+		@apply font-bold mb-7 text-6xl md:text-8xl;
+	}
+
+	.navigation {
+		@apply mt-4;
+	}
+
+	.section {
+		&-main {
+			@apply flex-1 p-2 flex flex-col items-center justify-center pb-10;
+		}
+	}
+
+	.card {
+		&-register {
+			@apply w-full p-7 pb-4 border;
+
+			min-width: 18.75rem;
+			max-width: 29.125rem;
+
+			&__full {
+				max-width: 44.375rem;
+			}
+		}
+
+		&-title {
+			@apply w-full text-center mb-6;
+		}
+	}
+}
+
+.alert-register-container {
+	@apply absolute top-0 left-0 w-full;
+}

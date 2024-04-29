@@ -1,0 +1,11 @@
+{
+	"title": "Configuración",
+	"menu": {
+		"language": "Idioma",
+		"logout": "Cerrar sesión"
+	},
+	"language": {
+		"es": "Español",
+		"en": "Inglés"
+	}
+}

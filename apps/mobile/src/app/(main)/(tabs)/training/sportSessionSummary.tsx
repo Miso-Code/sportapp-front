@@ -50,7 +50,7 @@ const SportSessionSummary: React.FC = () => {
 								value={sportSession.duration ?? 0}
 								max={60}
 								label={t('session.duration')}
-								valueSuffix='min'
+								valueSuffix='s'
 								icon='timer'
 							/>
 							<Kpi

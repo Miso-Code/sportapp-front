@@ -4,5 +4,9 @@
 	},
 	"login": {
 		"base": "Ha ocurrido un error al iniciar sesión"
+	},
+	"preference": {
+		"base": "Ha ocurrido un error al guardar las preferencias",
+		"scheduleError": "Se produjo un error al agendar una Cita"
 	}
 }

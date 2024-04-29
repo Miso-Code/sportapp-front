@@ -1,0 +1,36 @@
+{
+	"title": "Productos Adquiridos",
+	"table": {
+		"header": ["ID", "Nombre", "Correo", "Producto", "Estado", "Precio"],
+		"footer": {
+			"total": "Total",
+			"all": "Todos",
+			"rows": "Filas",
+			"rows_per_page": "Filas por página",
+			"empty": "No hay datos disponibles",
+			"search": {
+				"empty": "No se encontraron resultados",
+				"button": "Buscar",
+				"placeholder": "Buscar..."
+			},
+			"of": "de",
+			"rowsPerPage": "Filas por página",
+			"atribute": {
+				"placeholder": "Filtrar por...",
+				"option": {
+					"id": "ID",
+					"name": "Nombre",
+					"email": "Correo",
+					"product": "Producto",
+					"status": "Estado",
+					"price": "Precio"
+				}
+			}
+		},
+		"status": {
+			"completed": "Completado",
+			"pending": "Pendiente",
+			"failed": "Fallido"
+		}
+	}
+}

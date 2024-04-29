@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputFileDrop should render the component 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class=""
+        data-testid="container"
+      >
+        <label
+          class="MuiTypography-root MuiTypography-body1 text-[#00000099] leading-8 css-ahj2mt-MuiTypography-root"
+        />
+        <div
+          class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded hover:bg-gray-100 border  border-gray-400 cursor-pointer active:bg-gray-200 bg-white border-dashed css-172kgz0-MuiPaper-root"
+          data-testid="dropzone"
+          role="presentation"
+          tabindex="0"
+        >
+          <input
+            accept="image/*,.jpg,.jpeg,.png,.gif"
+            data-testid="drop-input"
+            style="display: none;"
+            tabindex="-1"
+            type="file"
+          />
+          <div
+            class="flex flex-col items-center p-2 MuiBox-root css-0"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="UploadFileIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"
+              />
+            </svg>
+            <span
+              class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+            >
+              Drop file here
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class=""
+      data-testid="container"
+    >
+      <label
+        class="MuiTypography-root MuiTypography-body1 text-[#00000099] leading-8 css-ahj2mt-MuiTypography-root"
+      />
+      <div
+        class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded hover:bg-gray-100 border  border-gray-400 cursor-pointer active:bg-gray-200 bg-white border-dashed css-172kgz0-MuiPaper-root"
+        data-testid="dropzone"
+        role="presentation"
+        tabindex="0"
+      >
+        <input
+          accept="image/*,.jpg,.jpeg,.png,.gif"
+          data-testid="drop-input"
+          style="display: none;"
+          tabindex="-1"
+          type="file"
+        />
+        <div
+          class="flex flex-col items-center p-2 MuiBox-root css-0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="UploadFileIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"
+            />
+          </svg>
+          <span
+            class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+          >
+            Drop file here
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -38,6 +38,20 @@ export default function TrainingStack() {
 					title: t('training.trainings')
 				}}
 			/>
+			<Stack.Screen
+				name='servicesAndProducts'
+				options={{
+					...screenOptions,
+					title: t('training.others')
+				}}
+			/>
+			<Stack.Screen
+				name='servicesAndProductsCheckout'
+				options={{
+					...screenOptions,
+					title: t('training.others')
+				}}
+			/>
 		</Stack>
 	)
 }

@@ -1,19 +1,23 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Card, Text, Chip, useTheme, MD3Theme } from 'react-native-paper'
 import { useTranslation } from 'react-i18next'
 
+import { useTrainingPlanStore } from '@sportapp/stores'
+
+type TrainingPlanSession = Parameters<
+	Parameters<typeof useTrainingPlanStore>[0]
+>[0]['trainingPlanSessions'][number]
+
 interface TrainingCardProps {
 	date: Date
-	title: string
-	description: string
+	trainingSession: TrainingPlanSession
 }
 
 const TrianingCard: React.FC<TrainingCardProps> = ({
 	date,
-	title,
-	description
+	trainingSession
 }) => {
 	const theme = useTheme()
 	const styles = createStyles(theme)
@@ -29,13 +33,57 @@ const TrianingCard: React.FC<TrainingCardProps> = ({
 				<Text variant='labelLarge' style={styles.dateLabel}>
 					{parsedDate}
 				</Text>
-				<Text variant='titleLarge' style={styles.cardTitle}>
-					{title}
+				<Text variant='labelLarge' style={styles.dateLabel}>
+					{trainingSession?.start_time}
 				</Text>
-				<Text variant='bodyMedium'>
-					{description ||
-						'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'}
-				</Text>
+				<View style={styles.trainingInfo}>
+					<View style={styles.trainingDetail}>
+						<Text variant='titleSmall'>{t('training.warmUp')}</Text>
+						<Text variant='bodyMedium'>
+							{(trainingSession?.warm_up * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
+						</Text>
+					</View>
+					<View style={styles.trainingDetail}>
+						<Text variant='titleSmall'>{t('training.cardio')}</Text>
+						<Text variant='bodyMedium'>
+							{(trainingSession?.cardio * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
+						</Text>
+					</View>
+					<View style={styles.trainingDetail}>
+						<Text variant='titleSmall'>
+							{t('training.strength')}
+						</Text>
+						<Text variant='bodyMedium'>
+							{(trainingSession?.strength * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
+						</Text>
+					</View>
+					<View style={styles.trainingDetail}>
+						<Text variant='titleSmall'>
+							{t('training.coolDown')}
+						</Text>
+						<Text variant='bodyMedium'>
+							{(trainingSession?.cool_down * 60).toFixed(0)}{' '}
+							{t('training.minutes')}
+						</Text>
+					</View>
+					<View style={styles.trainingDetail}>
+						<Text variant='titleMedium'>
+							{t('training.totalDuration')}
+						</Text>
+						<Text variant='bodyLarge'>
+							{(
+								trainingSession?.cardio +
+								trainingSession?.cool_down +
+								trainingSession?.strength +
+								trainingSession?.warm_up
+							).toFixed(1)}{' '}
+							{t('training.hours')}
+						</Text>
+					</View>
+				</View>
 				<Chip
 					testID='chip'
 					style={isUpcoming ? styles.chipUpcoming : styles.chipToday}
@@ -88,6 +136,15 @@ const createStyles = (theme: MD3Theme) =>
 		},
 		chipUpcomingText: {
 			color: theme.colors.error
+		},
+		trainingInfo: {
+			marginVertical: 10
+		},
+		trainingDetail: {
+			flexDirection: 'row',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+			marginVertical: 5
 		}
 	})
 

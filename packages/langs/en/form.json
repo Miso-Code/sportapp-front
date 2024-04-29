@@ -5,6 +5,7 @@
 	"email": "Email",
 	"password": "Password",
 	"confirmPassword": "Confirm Password",
+	"companyName": "Company Name",
 	"documentType": "Document Type",
 	"documentTypeValues": {
 		"CC": "Citizenship Card",
@@ -42,6 +43,17 @@
 		"MONTHLY": "Monthly",
 		"EVERY_OTHER_DAY": "Every other day"
 	},
+	"daysOfTheWeek": "Days of the week available for training",
+	"daysOfTheWeekValues": {
+		"MONDAY": "Mo",
+		"TUESDAY": "Tu",
+		"WEDNESDAY": "We",
+		"THURSDAY": "Th",
+		"FRIDAY": "Fr",
+		"SATURDAY": "Sa",
+		"SUNDAY": "Su"
+	},
+	"preferedTrainingStartTime": "Preferred Training Start Time",
 	"limitations": "Limitations",
 	"limitation": "Limitations",
 	"limitationsLabels": {
@@ -50,7 +62,7 @@
 		"add": "Add Limitation",
 		"remove": "Remove Limitation"
 	},
-	"availableTrainingHoursPerWeek": "Available Training Time",
+	"availableTrainingHoursPerDay": "Available Training Time per Day",
 	"weight": "Weight",
 	"height": "Height",
 	"imc": "IMC Perncentage",
@@ -71,5 +83,84 @@
 	"add": "Add",
 	"remove": "Remove",
 	"save": "Save",
-	"years": { "endLabel": "years" }
+	"years": { "endLabel": "years" },
+	"productCategory": "Product Category",
+	"productCategoryValues": {
+		"equipment": "Equipment",
+		"apparel": "Apparel",
+		"nutrition": "Nutrition",
+		"training_services": "Training Services",
+		"wellness": "Wellness",
+		"sports_technology": "Sports Technology",
+		"medical_services": "Medical Services"
+	},
+	"productName": "Product Name",
+	"productDescription": "Product Description",
+	"productSummary": "Product Summary",
+	"productPrice": "Product Price",
+	"productStock": "Product Stock",
+	"productUrl": "Product URL",
+	"paymentType": "Payment Type",
+	"paymentTypeValues": {
+		"unique": "One-time Payment",
+		"periodic": "Periodic Payment"
+	},
+	"paymentFrequency": "Payment Frequency",
+	"paymentFrequencyValues": {
+		"weekly": "Weekly",
+		"monthly": "Monthly",
+		"annually": "Annually",
+		"bi_annually": "Bi-annually",
+		"quarterly": "Quarterly",
+		"other": "Other"
+	},
+	"productImageType": "Upload Product Image Via",
+	"imageTypeValues": {
+		"url": "URL",
+		"file": "File"
+	},
+	"productImageUrl": "Image URL",
+	"productImageFile": "Image File",
+	"file": {
+		"select": "Select File",
+		"upload": "Upload File",
+		"remove": "Remove File",
+		"placeholder": "Drag and drop the product image here, or click to select the product image"
+	},
+	"createProduct": "Create Product",
+	"agree": "I agree",
+	"disagree": "I disagree",
+	"amount": "Price",
+	"total": "Total",
+	"obtain": "Obtain",
+	"pay": "Buy",
+	"cancel": "Cancel",
+	"checkout": "Checkout",
+	"card": {
+		"cardNumber": "Card Number",
+		"cardHolder": "Cardholder Name",
+		"expirationDate": "Expiration Date",
+		"cvv": "CVV",
+		"cardNumberPlaceholder": "1234 5678 9012 3456",
+		"cardHolderPlaceholder": "Cardholder Name",
+		"expirationDatePlaceholder": "MM/YY",
+		"cvvPlaceholder": "CVV",
+		"cardNumberError": "Invalid card number",
+		"cardHolderError": "Invalid cardholder name",
+		"expirationDateError": "Invalid expiration date",
+		"cvvError": "Invalid CVV"
+	},
+	"date": "Date",
+	"hour": "Hour",
+	"dateAndHour": "Date and Time",
+	"trainer": "Trainer",
+	"direction": "Address",
+	"description": "Description",
+	"training": {
+		"dateAndHour": "Select date and time",
+		"trainer": "Select trainer",
+		"address": "Session address",
+		"description": "Session reason"
+	},
+	"schedule": "Schedule"
 }

@@ -4,7 +4,6 @@ import {
 	NutritionalProfileUpdateRequest
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/nutritionalProfile'
 import {
-	PersonalProfileBase,
 	PersonalProfileResponse,
 	PersonalProfileUpdateRequest
 } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
@@ -23,7 +22,7 @@ export interface IUserState {
 }
 
 export interface User {
-	profileData?: PersonalProfileBase
+	profileData?: PersonalProfileResponse
 	sportData?: SportProfileBase
 	nutritionData?: NutritionalProfileResponse
 	nutritionalLimitations?: NutritionalLimitations[]
