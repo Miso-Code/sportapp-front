@@ -83,7 +83,7 @@ describe('Dropdown', () => {
 		expect(dialog.props.visible).toBe(false)
 	})
 
-	it('should clsoe the dropdown on dismiss', () => {
+	it('should close the dropdown on dismiss', () => {
 		const dialog = component.root.findByType(KeyboardAvoidingDialog)
 		act(() => dialog.props.onDismiss())
 		expect(dialog.props.visible).toBe(false)

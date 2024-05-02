@@ -13,7 +13,7 @@ import {
 	useTheme
 } from 'react-native-paper'
 
-const NutritonalProfile: React.FC = () => {
+const NutritionalProfile: React.FC = () => {
 	const theme = useTheme()
 	const styles = createStyles(theme)
 	const { t } = useTranslation()
@@ -214,4 +214,4 @@ const createStyles = (theme: MD3Theme) =>
 		}
 	})
 
-export default NutritonalProfile
+export default NutritionalProfile

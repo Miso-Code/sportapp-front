@@ -58,7 +58,7 @@ const PersonalProfile: React.FC = () => {
 	)
 
 	const emailHasErrors = () => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-za-z0-9.-]+\.[a-za-z]{2,}$/
 		return !emailRegex.test(email) && email.length > 0
 	}
 

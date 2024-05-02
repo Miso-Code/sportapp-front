@@ -12,6 +12,7 @@ jest.mock('expo-router')
 jest.mock('react-native-paper-dates', () => {
 	const native = jest.requireActual('react-native')
 	return {
+		// since this is a mock inputMode would break the test, we just ignore it
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		DatePickerInput: jest.fn(({ inputMode, value, ...props }) => (
 			<native.TextInput {...props} value={value.toISOString()} />

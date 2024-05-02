@@ -25,8 +25,8 @@ const Profile: React.FC = () => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.row}>
-				{(user?.profileData?.first_name ||
-					user?.profileData?.last_name) && (
+				{(!!user?.profileData?.first_name ||
+					!!user?.profileData?.last_name) && (
 					<Avatar.Text
 						size={42}
 						label={
