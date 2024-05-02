@@ -25,6 +25,7 @@ export default {
 		]
 	},
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+	testPathIgnorePatterns: ['<rootDir>/e2e/'],
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'<rootDir>/src/components/**/*.{ts,tsx}',
