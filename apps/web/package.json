@@ -12,7 +12,8 @@
 		"lint:js": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"pre-commit": "lint-staged",
 		"preview": "vite preview",
-		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose"
+		"test": "jest --ci --reporters=default --config jest.config.ts --no-cache --coverage --forceExit --detectOpenHandles --logHeapUsage --silent=false --verbose",
+		"test:e2e": "playwright test"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.4",
@@ -46,12 +47,15 @@
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.24.1",
+		"@faker-js/faker": "^8.4.1",
+		"@playwright/test": "^1.43.1",
 		"@sportapp/eslint-config": "*",
 		"@sportapp/prettier-config": "*",
 		"@sportapp/stylelint-config": "*",
 		"@testing-library/jest-dom": "^6.4.2",
 		"@testing-library/react": "^14.2.2",
 		"@types/jest": "^29.5.12",
+		"@types/node": "^20.12.7",
 		"@types/react": "^18.2.66",
 		"@types/react-dom": "^18.2.22",
 		"@typescript-eslint/eslint-plugin": "^7.2.0",
