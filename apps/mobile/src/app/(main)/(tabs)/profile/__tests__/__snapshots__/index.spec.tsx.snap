@@ -25,6 +25,57 @@ exports[`Profile should render correctly 1`] = `
       }
     }
   >
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "rgba(125, 82, 96, 1)",
+            "borderRadius": 21,
+            "height": 42,
+            "width": 42,
+          },
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+          },
+          {},
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          [
+            {
+              "textAlign": "left",
+            },
+            {
+              "color": "rgba(28, 27, 31, 1)",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+            },
+            {
+              "writingDirection": "ltr",
+            },
+            [
+              {
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              },
+              {
+                "color": "#ffffff",
+                "fontSize": 21,
+                "lineHeight": 21,
+              },
+              undefined,
+            ],
+          ]
+        }
+      >
+        JD
+      </Text>
+    </View>
     <Text
       style={
         [
@@ -48,7 +99,9 @@ exports[`Profile should render correctly 1`] = `
         ]
       }
     >
+      John
        
+      Doe
     </Text>
   </View>
   <View

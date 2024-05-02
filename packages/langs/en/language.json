@@ -1,0 +1,7 @@
+{
+    "changeText": "Choose the language you want to use in the app",
+    "options":{
+        "en": "English",
+        "es": "Spanish"
+    }
+}

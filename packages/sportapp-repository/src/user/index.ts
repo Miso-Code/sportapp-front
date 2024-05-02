@@ -256,6 +256,7 @@ export default class UserApi {
 				return response.data
 			}
 		} catch (error) {
+			console.log(error.response.data.message.errors)
 			console.error(error)
 		}
 	}
@@ -276,6 +277,7 @@ export default class UserApi {
 				return response.data
 			}
 		} catch (error) {
+			console.log(error.response.data.message.errors)
 			console.error(error)
 		}
 	}

@@ -1,5 +1,6 @@
 {
 	"title": "Nutritional Data",
 	"save": "Save",
-	"edit": "Edit"
+	"edit": "Edit",
+	"success": "Nutritional data updated successfully"
 }

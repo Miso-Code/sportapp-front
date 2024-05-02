@@ -1,4 +1,7 @@
 {
 	"title": "Personal Data",
-	"edit": "Edit"
+	"edit": "Edit",
+	"save": "Save",
+	"cancel": "Cancel",
+	"success": "Personal data updated successfully"
 }

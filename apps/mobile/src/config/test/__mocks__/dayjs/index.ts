@@ -1,8 +1,23 @@
 class DayJs {
 	private date: string
 
-	constructor(date: string | Date = new Date()) {
-		this.date = new Date(date).toISOString().slice(0, -7) + '00Z'
+	constructor(date: string | Date = new Date(), format?: string) {
+		if (format === 'hh:mm A' && typeof date === 'string') {
+			const today = new Date()
+			const [hours, minutes, period] = date.split(/[:\s]/)
+			let hour = parseInt(hours, 10)
+
+			if (period === 'PM' && hour !== 12) {
+				hour += 12
+			} else if (period === 'AM' && hour === 12) {
+				hour = 0
+			}
+
+			today.setHours(hour, parseInt(minutes, 10), 0, 0)
+			this.date = today.toISOString().slice(0, -7) + '00Z'
+		} else {
+			this.date = new Date(date).toISOString().slice(0, -7) + '00Z'
+		}
 	}
 
 	toDate() {
@@ -53,6 +68,17 @@ class DayJs {
 	}
 
 	format(_format: string) {
+		if (_format === 'hh:mm A') {
+			const date = new Date(this.date)
+			let hours: string | number = date.getHours()
+			const period = hours >= 12 ? 'PM' : 'AM'
+			hours = hours % 12
+			hours = hours ? hours : 12
+			let minutes: string | number = date.getMinutes()
+			if (hours < 10) hours = '0' + hours
+			if (minutes < 10) minutes = '0' + minutes
+			return `${hours}:${minutes} ${period}`
+		}
 		return this.date.substring(0, 6)
 	}
 
@@ -98,6 +124,9 @@ class DayJs {
 	}
 
 	hour(hour: number) {
+		if (hour === undefined) {
+			return new Date(this.date).getHours()
+		}
 		const date = new Date(this.date)
 		date.setHours(hour, 0, 0, 0)
 		this.date = new Date(date).toISOString()
@@ -105,6 +134,9 @@ class DayJs {
 	}
 
 	minute(minute: number) {
+		if (minute === undefined) {
+			return new Date(this.date).getMinutes()
+		}
 		const date = new Date(this.date)
 		date.setMinutes(minute, 0, 0)
 		this.date = new Date(date).toISOString()
@@ -119,7 +151,7 @@ class DayJs {
 	}
 }
 
-const dayjs = (date: string | Date) => new DayJs(date)
+const dayjs = (date: string | Date, format?: string) => new DayJs(date, format)
 dayjs.extend = () => dayjs
 
 export default dayjs
