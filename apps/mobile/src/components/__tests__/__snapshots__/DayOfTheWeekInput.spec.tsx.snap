@@ -1,0 +1,720 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayOfTheWeekInput should render correctly 1`] = `
+[
+  <Text
+    style={
+      [
+        {
+          "textAlign": "left",
+        },
+        {
+          "color": "rgba(28, 27, 31, 1)",
+          "writingDirection": "ltr",
+        },
+        [
+          {
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0.25,
+            "lineHeight": 20,
+          },
+          false,
+        ],
+      ]
+    }
+  >
+    Test
+  </Text>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 10,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(103, 80, 164, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="activeDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(255, 255, 255, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.SUNDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(103, 80, 164, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="activeDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(255, 255, 255, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.MONDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="inactiveDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(103, 80, 164, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.TUESDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="inactiveDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(103, 80, 164, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.WEDNESDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="inactiveDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(103, 80, 164, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.THURSDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="inactiveDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(103, 80, 164, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.FRIDAY
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "borderRadius": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderRadius": 18,
+              "height": 36,
+              "width": 36,
+            },
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="inactiveDay"
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+              },
+              {
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                },
+                {
+                  "color": "rgba(103, 80, 164, 1)",
+                  "fontSize": 18,
+                  "lineHeight": 18,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          form.daysOfTheWeekValues.SATURDAY
+        </Text>
+      </View>
+    </View>
+  </View>,
+]
+`;

@@ -20,6 +20,7 @@ import paymentPlans from './paymentPlans.json'
 import motivation from './motivation.json'
 import paymentPurchased from './paymentPurchased.json'
 import preference from './preference.json'
+import language from './language.json'
 
 const defaultTranslate = {
 	translation: {
@@ -44,7 +45,8 @@ const defaultTranslate = {
 		paymentPlans,
 		motivation,
 		paymentPurchased,
-		preference
+		preference,
+		language
 	}
 }
 

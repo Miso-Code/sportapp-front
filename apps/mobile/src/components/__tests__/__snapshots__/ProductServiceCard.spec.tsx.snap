@@ -76,7 +76,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
           }
           source={
             {
-              "uri": undefined,
+              "uri": "test.jpg",
             }
           }
           style={
@@ -136,7 +136,9 @@ exports[`ProductServiceCard should render correctly 1`] = `
               ],
             ]
           }
-        />
+        >
+          Test
+        </Text>
         <Text
           style={
             [
@@ -159,7 +161,9 @@ exports[`ProductServiceCard should render correctly 1`] = `
               ],
             ]
           }
-        />
+        >
+          Test description
+        </Text>
         <View
           style={
             {
@@ -321,7 +325,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
                       ]
                     }
                   >
-                    productService.undefined
+                    productService.Test category
                   </Text>
                 </View>
               </View>
@@ -477,7 +481,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
                       ]
                     }
                   >
-                    COPNaN
+                    COP 100.00 / productService.monthly
                   </Text>
                 </View>
               </View>

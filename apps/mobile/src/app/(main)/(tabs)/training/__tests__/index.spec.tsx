@@ -30,5 +30,6 @@ describe('Training', () => {
 
 		expect(router.push).toHaveBeenCalledWith('training/sportSession')
 		expect(router.push).toHaveBeenCalledWith('training/sportSessionHistory')
+		expect(router.push).toHaveBeenCalledWith('training/servicesAndProducts')
 	})
 })

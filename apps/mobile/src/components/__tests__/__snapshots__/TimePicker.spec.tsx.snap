@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker should render correctly 1`] = `
+<View>
+  <View
+    data-testId="timePickerModal"
+    hours={12}
+    locale="en"
+    minutes={0}
+    onConfirm={[Function]}
+    onDismiss={[Function]}
+    visible={false}
+  />
+  <View
+    style={
+      {
+        "flex": 1,
+        "position": "relative",
+      }
+    }
+  >
+    <TextInput
+      editable={false}
+      label="Test"
+      right={
+        <TextInput.Icon
+          forceTextInputFocus={true}
+          icon="clock-outline"
+        />
+      }
+      value="12:00 PM"
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID="timePickerPressable"
+    />
+  </View>
+</View>
+`;

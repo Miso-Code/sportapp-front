@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Language should render correctly 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "marginBottom": 15,
+      "marginHorizontal": 15,
+      "marginTop": 120,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "textAlign": "left",
+        },
+        {
+          "color": "rgba(28, 27, 31, 1)",
+          "writingDirection": "ltr",
+        },
+        [
+          {
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0.25,
+            "lineHeight": 20,
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    language.changeText
+  </Text>
+  <View
+    accessibilityRole="radiogroup"
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "gap": 10,
+        }
+      }
+      testID="language"
+    >
+      <View
+        accessibilityLiveRegion="polite"
+        accessibilityRole="radio"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": false,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            {
+              "overflow": "hidden",
+            },
+            {
+              "borderRadius": 18,
+            },
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "borderColor": "rgba(73, 69, 79, 1)",
+              "borderRadius": 10,
+              "borderWidth": 2,
+              "height": 20,
+              "margin": 8,
+              "width": 20,
+            }
+          }
+        />
+      </View>
+      <Text
+        onPress={[Function]}
+        style={
+          [
+            {
+              "textAlign": "left",
+            },
+            {
+              "color": "rgba(28, 27, 31, 1)",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+            },
+            {
+              "writingDirection": "ltr",
+            },
+            undefined,
+          ]
+        }
+      >
+        language.options.es
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "gap": 10,
+        }
+      }
+      testID="language"
+    >
+      <View
+        accessibilityLiveRegion="polite"
+        accessibilityRole="radio"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": true,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            {
+              "overflow": "hidden",
+            },
+            {
+              "borderRadius": 18,
+            },
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "borderColor": "rgba(103, 80, 164, 1)",
+              "borderRadius": 10,
+              "borderWidth": 2,
+              "height": 20,
+              "margin": 8,
+              "width": 20,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "backgroundColor": "rgba(103, 80, 164, 1)",
+                  "borderRadius": 5,
+                  "height": 10,
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                  "width": 10,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <Text
+        onPress={[Function]}
+        style={
+          [
+            {
+              "textAlign": "left",
+            },
+            {
+              "color": "rgba(28, 27, 31, 1)",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+            },
+            {
+              "writingDirection": "ltr",
+            },
+            undefined,
+          ]
+        }
+      >
+        language.options.en
+      </Text>
+    </View>
+  </View>
+</View>
+`;

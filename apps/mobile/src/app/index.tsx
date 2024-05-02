@@ -4,6 +4,11 @@ import { ActivityIndicator } from 'react-native-paper'
 import { router, useRootNavigationState } from 'expo-router'
 import { useAuthStore } from '@sportapp/stores'
 
+import { es, en, registerTranslation } from 'react-native-paper-dates'
+
+registerTranslation('es', es)
+registerTranslation('en', en)
+
 const Index: React.FC = () => {
 	const { isAuth } = useAuthStore()
 
