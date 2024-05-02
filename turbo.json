@@ -4,7 +4,9 @@
 		"NODE_ENV",
 		"VITE_SPORTAPP_API_URL",
 		"EXPO_PUBLIC_SPORTAPP_API_URL",
-		"EXPO_PUBLIC_STORAGE"
+		"EXPO_PUBLIC_STORAGE",
+		"CI",
+		"BASE_URL_E2E"
 	],
 	"globalDependencies": ["**/.env.*local"],
 	"pipeline": {
