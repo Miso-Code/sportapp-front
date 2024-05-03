@@ -8,9 +8,12 @@ import ListItem from '@/components/ListItem'
 
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { ESubscription } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
+import { useUserStore } from '@sportapp/stores'
 
 const Training: React.FC = () => {
 	const { t } = useTranslation()
+	const { user } = useUserStore()
 	return (
 		<View style={styles.container}>
 			<List.Section>
@@ -33,7 +36,10 @@ const Training: React.FC = () => {
 					icon='cart'
 					onPress={() => router.push('training/servicesAndProducts')}
 				/>
-				<ListItem title={t('training.preferentials')} icon='star' />
+				{user?.profileData?.subscription_type ===
+					ESubscription.PREMIUM && (
+					<ListItem title={t('training.preferentials')} icon='star' />
+				)}
 			</List.Section>
 		</View>
 	)

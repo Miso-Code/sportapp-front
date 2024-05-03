@@ -70,6 +70,7 @@ const Profile: React.FC = () => {
 				<ListItem
 					title={t('profile.menu.paymentPlans')}
 					icon='tag-outline'
+					onPress={() => router.navigate('profile/paymentPlans')}
 				/>
 				<ListItem
 					title={t('navbar.settings')}
