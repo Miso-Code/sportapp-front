@@ -46,6 +46,13 @@ export default function TrainingStack() {
 					title: t('profile.menu.nutritionData')
 				}}
 			/>
+			<Stack.Screen
+				name='paymentPlans'
+				options={{
+					...screenOptions,
+					title: t('profile.menu.paymentPlans')
+				}}
+			/>
 		</Stack>
 	)
 }

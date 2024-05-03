@@ -6,6 +6,10 @@ import { router } from 'expo-router'
 import TrainingLayout from '../_layout'
 jest.mock('expo-router')
 
+jest.mock('@sportapp/stores', () => ({
+	useUserStore: jest.fn()
+}))
+
 describe('TrainingLayout', () => {
 	let component: ReactTestRenderer
 

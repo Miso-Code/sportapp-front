@@ -3,6 +3,9 @@ import { Icon } from 'react-native-paper'
 
 import { Tabs, useSegments } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { useUserStore } from '@sportapp/stores'
+
+import { ESubscription } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
 
 const ProfileIcon = ({ color }) => (
 	<Icon size={20} source='account' color={color} />
@@ -20,6 +23,8 @@ const PremiumIcon = ({ color }) => (
 )
 
 export default function TabLayout() {
+	const { user } = useUserStore()
+
 	const { t } = useTranslation()
 
 	const segments = useSegments()
@@ -67,7 +72,12 @@ export default function TabLayout() {
 				name='premium'
 				options={{
 					title: t('navbar.preferential'),
-					tabBarIcon: PremiumIcon
+					tabBarIcon: PremiumIcon,
+					href:
+						user?.profileData?.subscription_type ===
+						ESubscription.PREMIUM
+							? '/premium'
+							: null
 				}}
 			/>
 		</Tabs>

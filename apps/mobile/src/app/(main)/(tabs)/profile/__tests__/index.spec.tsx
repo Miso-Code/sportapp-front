@@ -49,6 +49,7 @@ describe('Profile', () => {
 			'profile/nutritionalProfile'
 		)
 		expect(router.navigate).toHaveBeenCalledWith('profile/settings')
+		expect(router.navigate).toHaveBeenCalledWith('profile/paymentPlans')
 	})
 
 	it('should render user avatar', () => {
