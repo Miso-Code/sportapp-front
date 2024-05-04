@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Premium should render correctly 1`] = `
+exports[`CreateAppointment should render correctly 1`] = `
 <View
   style={
     {
       "flex": 1,
       "justifyContent": "flex-start",
       "marginHorizontal": 15,
+      "marginTop": 100,
     }
   }
 >
@@ -294,7 +295,7 @@ exports[`Premium should render correctly 1`] = `
               ]
             }
           >
-            󰃮
+            󰌢
           </Text>
         </View>
         <View
@@ -342,7 +343,7 @@ exports[`Premium should render correctly 1`] = `
               ]
             }
           >
-            preference.menu.schedule
+            preference.virtualAppointment.title
           </Text>
         </View>
         <View
@@ -510,7 +511,7 @@ exports[`Premium should render correctly 1`] = `
               ]
             }
           >
-            󰑉
+            󰹩
           </Text>
         </View>
         <View
@@ -558,7 +559,7 @@ exports[`Premium should render correctly 1`] = `
               ]
             }
           >
-            preference.menu.list
+            preference.inPersonAppointment.title
           </Text>
         </View>
         <View

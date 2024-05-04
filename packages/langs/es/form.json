@@ -158,6 +158,8 @@
 	"description": "Descripción",
 	"training": {
 		"dateAndHour": "Selecciona fecha y hora",
+		"date": "Selecciona la fecha",
+		"time": "Selecciona la hora",
 		"trainer": "Selecciona entrenador",
 		"address": "Dirección de la sesión",
 		"description": "Motivo de la sesión"

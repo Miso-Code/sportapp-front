@@ -158,6 +158,8 @@
 	"description": "Description",
 	"training": {
 		"dateAndHour": "Select date and time",
+		"date": "Select a date",
+		"time": "Select a time",
 		"trainer": "Select trainer",
 		"address": "Session address",
 		"description": "Session reason"
