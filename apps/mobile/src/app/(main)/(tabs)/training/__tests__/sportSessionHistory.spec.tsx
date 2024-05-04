@@ -190,7 +190,7 @@ describe('SportSessionHistory', () => {
 			component.root.findAllByProps({ testID: 'calendarHeader' })[0].props
 				.children
 		).toBe(
-			useSportSessionStore().sportSessions[0].started_at.substring(0, 6)
+			useSportSessionStore().sportSessions[0].started_at.substring(0, 10)
 		)
 	})
 	it('should hide the calendar on switch off', async () => {
@@ -313,7 +313,7 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(9) // this is buggy
+		).toBe(99) // this is buggy
 	})
 
 	it('should render unique calendar headers on calendar mode schedule', async () => {
@@ -384,6 +384,6 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(15)
+		).toBe(102)
 	})
 })

@@ -2,9 +2,15 @@ class DayJs {
 	private date: string
 
 	constructor(date: string | Date = new Date(), format?: string) {
-		if (format === 'hh:mm A' && typeof date === 'string') {
-			const today = new Date()
-			const [hours, minutes, period] = date.split(/[:\s]/)
+		if (date instanceof Date || !format || format.includes('YYYY-MM-DD'))
+			this.date = new Date(date).toISOString().slice(0, -7) + '00Z'
+		else this.date = new Date().toISOString().slice(0, -7) + '00Z'
+		if (format?.includes('hh:mm A') && typeof date === 'string') {
+			const today = new Date(this.date)
+
+			const [hours, minutes, period] = date
+				.match(/(\d+):(\d+) (AM|PM)/)[0]
+				.split(/[:\s]/)
 			let hour = parseInt(hours, 10)
 
 			if (period === 'PM' && hour !== 12) {
@@ -15,8 +21,6 @@ class DayJs {
 
 			today.setHours(hour, parseInt(minutes, 10), 0, 0)
 			this.date = today.toISOString().slice(0, -7) + '00Z'
-		} else {
-			this.date = new Date(date).toISOString().slice(0, -7) + '00Z'
 		}
 	}
 
@@ -79,7 +83,7 @@ class DayJs {
 			if (minutes < 10) minutes = '0' + minutes
 			return `${hours}:${minutes} ${period}`
 		}
-		return this.date.substring(0, 6)
+		return this.date.substring(0, 10)
 	}
 
 	extend() {
