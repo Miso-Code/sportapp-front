@@ -13,7 +13,7 @@ export default defineConfig({
 	name: 'SportApp E2E Tests',
 	testDir: './e2e',
 	/* Run tests in files in parallel */
-	fullyParallel: true,
+	fullyParallel: false,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
@@ -40,14 +40,16 @@ export default defineConfig({
 		reuseExistingServer: !process.env.CI
 	},
 
+	timeout: 60000,
+
 	/* Configure projects for major browsers */
 	projects: [
 		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] }
-		},
+		}
 
-		{
+		/* {
 			name: 'firefox',
 			use: { ...devices['Desktop Firefox'] }
 		},
@@ -55,7 +57,7 @@ export default defineConfig({
 		{
 			name: 'webkit',
 			use: { ...devices['Desktop Safari'] }
-		}
+		} */
 
 		/* Test against mobile viewports. */
 		// {

@@ -25,6 +25,8 @@ dist-ssr
 
 #Test e2e
 /test-results/
+/e2e/**/files/*.json
+/e2e/**/files/*.json
 /playwright-report/
 /blob-report/
 /playwright/.cache/
