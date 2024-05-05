@@ -101,6 +101,7 @@ export const usePartnerAuthStore = create(
 							}
 						set((state) => ({
 							...state,
+							loading: false,
 							user: businessPartnerPayload
 						}))
 

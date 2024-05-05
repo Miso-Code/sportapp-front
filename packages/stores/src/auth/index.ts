@@ -189,11 +189,24 @@ export const useAuthStore = create(
 					isAuth: true
 				}))
 
-				return await userApi.registerFull(request, {
-					headers: {
-						Authorization: `Bearer ${get().authToken?.accessToken}`
-					}
-				})
+				try {
+					return await userApi.registerFull(request, {
+						headers: {
+							Authorization: `Bearer ${get().authToken?.accessToken}`
+						}
+					})
+				} catch (error) {
+					set((state) => ({
+						...state,
+						error: 'errors.register.full'
+					}))
+					return false
+				} finally {
+					set((state) => ({
+						...state,
+						loading: false
+					}))
+				}
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading }),

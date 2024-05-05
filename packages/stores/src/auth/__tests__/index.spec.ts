@@ -292,6 +292,47 @@ describe('AuthStore', () => {
 				expect(result).toBe(false)
 			})
 		})
+
+		it('should not register full', async () => {
+			;(UserApi as jest.Mock).mockImplementationOnce(() => ({
+				registerFull: jest.fn().mockRejectedValue(new Error('error'))
+			}))
+			const { result } = renderHook(() => useAuthStore())
+			expect(result.current.user).toBe(undefined)
+
+			const { registerFull, setUser } = result.current
+
+			const userPayload: User = {
+				id: 'e4296860-5cad-43ae-a7a7-d8c2acdb0a63',
+				email: 'test@correo.com',
+				first_name: 'John',
+				last_name: 'Doe'
+			}
+
+			act(() => {
+				setUser(userPayload)
+			})
+
+			const payload: RegisterFullUserRequest = {
+				identification_type: 'CC',
+				identification_number: '123456789',
+				birth_date: '1996-12-31',
+				city_of_birth: 'CityOfBirth',
+				city_of_residence: 'CityOfResidence',
+				country_of_birth: 'CountryOfBirth',
+				country_of_residence: 'CountryOfResidence',
+				gender: 'M',
+				residence_age: 25
+			}
+
+			await act(async () => {
+				await registerFull(payload)
+			})
+
+			await waitFor(() => {
+				expect(result.current.error).toBe('errors.register.full')
+			})
+		})
 	})
 
 	describe('login', () => {
@@ -487,6 +528,25 @@ describe('AuthStore', () => {
 				refreshTokenExpirationMinutes: 1
 			})
 			expect(result.current.isAuth).toBe(false)
+		})
+
+		it('should not refresh token', async () => {
+			;(UserApi as jest.Mock).mockImplementation(() => ({
+				loginRefresh: jest.fn().mockRejectedValue(new Error('error')),
+				login: jest.fn().mockResolvedValue(false)
+			}))
+
+			const { result } = renderHook(() => useAuthStore())
+
+			expect(result.current.authToken).toBe(undefined)
+			expect(result.current.isAuth).toBe(false)
+
+			const { refreshToken } = result.current
+
+			await act(async () => {
+				const response = await refreshToken()
+				expect(response).toBe(false)
+			})
 		})
 	})
 
