@@ -1,4 +1,10 @@
 import { Page } from '@playwright/test'
+import {
+	DocumentTypeKey,
+	GenderTypeKey,
+	documentType,
+	genderType
+} from './interfaces'
 
 export class RegisterUserPage {
 	readonly page: Page
@@ -17,11 +23,6 @@ export class RegisterUserPage {
 
 	async goToLoginPage() {
 		await this.page.getByText('Inicia sesión').click()
-	}
-
-	async goToLoginPageSuccess() {
-		await this.page.getByText('Inicia sesión').click()
-		await expect(this.page.url()).toBe(`${this.pathBaseURL}`)
 	}
 
 	async getAndFillEmail(email: string) {
@@ -46,8 +47,8 @@ export class RegisterUserPage {
 		await this.page.locator('#lastName').fill(lastName)
 	}
 
-	async getAndFillDocumentType(documentType: string) {
-		await this.page.locator('#documentType').fill(documentType)
+	async getAndFillDocumentType(documentTyp: DocumentTypeKey) {
+		await this.page.locator('#documentType').fill(documentType[documentTyp])
 	}
 
 	async getAndFillDocumentNumber(documentNumber: string) {
@@ -86,8 +87,8 @@ export class RegisterUserPage {
 			.click()
 	}
 
-	async getAndFillGender(gender: string) {
-		await this.page.locator('#gender').fill(gender)
+	async getAndFillGender(gender: GenderTypeKey) {
+		await this.page.locator('#gender').fill(genderType[gender])
 	}
 
 	async getAndFillBirthdate(date: string) {
