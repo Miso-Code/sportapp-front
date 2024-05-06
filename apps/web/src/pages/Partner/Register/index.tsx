@@ -58,6 +58,7 @@ export default function Register() {
 						</Typography>
 						<RegisterPartnerContainer
 							onHandleSubmit={handleFirstSubmit}
+							isDisabled={loading}
 						/>
 
 						<div className='flex items-center justify-center navigation'>
