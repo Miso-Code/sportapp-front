@@ -8,8 +8,12 @@ jest.mock('dayjs')
 
 describe('AppointmentCard', () => {
 	let component: ReactTestRenderer
+	let spy: jest.SpyInstance
 
 	beforeEach(() => {
+		const mockedDate = new Date(1996, 6, 19)
+
+		spy = jest.spyOn(global, 'Date').mockImplementation(() => mockedDate)
 		component = renderer.create(
 			<AppointmentCard
 				date={new Date().toISOString()}
@@ -21,6 +25,7 @@ describe('AppointmentCard', () => {
 	})
 
 	afterEach(() => {
+		spy.mockRestore()
 		component.unmount()
 	})
 

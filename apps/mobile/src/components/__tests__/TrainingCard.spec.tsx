@@ -7,8 +7,12 @@ jest.mock('dayjs')
 
 describe('TrainingCard', () => {
 	let component: ReactTestRenderer
+	let spy: jest.SpyInstance
 
 	beforeEach(() => {
+		const mockedDate = new Date(1996, 6, 19)
+
+		spy = jest.spyOn(global, 'Date').mockImplementation(() => mockedDate)
 		component = renderer.create(
 			<TrainingCard
 				date={new Date()}
@@ -27,6 +31,7 @@ describe('TrainingCard', () => {
 	})
 
 	afterEach(() => {
+		spy.mockRestore()
 		component.unmount()
 	})
 
@@ -61,6 +66,6 @@ describe('TrainingCard', () => {
 
 		expect(
 			component.root.findByProps({ testID: 'chip' }).props.children
-		).toBe('training.upcoming')
+		).toBe('training.today')
 	})
 })

@@ -1,7 +1,6 @@
 import { expect, type Page } from '@playwright/test'
-import { faker } from '@faker-js/faker'
 
-export class LoginUserPage {
+export class LoginPartnerPage {
 	readonly page: Page
 	readonly loginPath: string
 	readonly pathBaseURL: string
@@ -9,7 +8,7 @@ export class LoginUserPage {
 	constructor(page: Page, pathBaseURL: string = 'http://localhost:5173') {
 		this.page = page
 		this.pathBaseURL = pathBaseURL
-		this.loginPath = `${pathBaseURL}/`
+		this.loginPath = `${pathBaseURL}/partner/login`
 	}
 
 	async goto() {
@@ -18,7 +17,9 @@ export class LoginUserPage {
 
 	async goToRegisterPage() {
 		await this.page.getByText('Registrarse').click()
-		await expect(this.page.url()).toBe(`${this.pathBaseURL}/register`)
+		await expect(this.page.url()).toBe(
+			new URL('/partner/register', this.pathBaseURL).toString()
+		)
 	}
 
 	async showPassword() {
@@ -39,26 +40,20 @@ export class LoginUserPage {
 		await this.page.locator('button[type="submit"]').click()
 	}
 
-	async loginSuccessUser() {
-		await this.getAndFillEmail('jdoe@gmail.com')
+	async loginSuccessPartner() {
+		await this.getAndFillEmail('jdoe-parnet@gmail.com')
 		await this.getAndFillPassword('Test123!')
 		await this.showPassword()
 		await this.clickSubmit()
 
 		await this.page.waitForResponse(
 			(response) =>
-				response.url().includes('users/login') &&
-				response.status().toString().startsWith('2')
-		)
-
-		await this.page.waitForResponse(
-			(response) =>
-				response.url().includes('users/profiles/personal') &&
+				response.url().includes('login') &&
 				response.status().toString().startsWith('2')
 		)
 	}
 
-	async loginCustomUser({
+	async loginCustomPartner({
 		email,
 		password
 	}: {
@@ -71,15 +66,15 @@ export class LoginUserPage {
 		await this.clickSubmit()
 	}
 
-	async loginErrorUser() {
-		await this.getAndFillEmail(faker.internet.email())
-		await this.getAndFillPassword(
-			faker.internet.password({
-				length: 10,
-				memorable: true,
-				prefix: '!0aA'
-			})
-		)
+	async loginErrorPartner({
+		email,
+		password
+	}: {
+		email: string
+		password: string
+	}) {
+		await this.getAndFillEmail(email)
+		await this.getAndFillPassword(password)
 		await this.showPassword()
 		await this.clickSubmit()
 
@@ -101,7 +96,8 @@ export class LoginUserPage {
 			'height: auto;'
 		)
 
-		expect(alertMessage).toBe('Ha ocurrido un error al iniciar sesión')
+		const expectedErrorMessage = 'Ha ocurrido un error al iniciar sesión'
+		await expect(alertMessage).toBe(expectedErrorMessage)
 
 		expect(await this.page.url()).toBe(this.loginPath)
 	}

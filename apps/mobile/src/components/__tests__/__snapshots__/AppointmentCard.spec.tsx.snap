@@ -89,7 +89,7 @@ exports[`AppointmentCard should render correctly 1`] = `
             ]
           }
         >
-          2024-05-04
+          1996-07-19
         </Text>
         <Text
           style={
