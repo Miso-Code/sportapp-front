@@ -41,7 +41,7 @@ test.describe('[Partner] Register Profile Flow', () => {
 			root,
 			`partner-${date}-${browserName}_${title}.json`
 		)
-		fs.writeFileSync(file, data)
+		fs.writeFileSync(file, data, { mode: 0o600 })
 	})
 
 	test('should be not login partner', async ({ page, baseURL }) => {

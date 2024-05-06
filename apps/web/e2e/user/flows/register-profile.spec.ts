@@ -66,7 +66,7 @@ test.describe('[User] Register new user profile', () => {
 			root,
 			`user-${date}-${browserName}_${title}.json`
 		)
-		fs.writeFileSync(file, data)
+		fs.writeFileSync(file, data, { mode: 0o600 })
 	})
 
 	test('should be not login, because the user is not register', async ({

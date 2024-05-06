@@ -18,7 +18,7 @@ export class LoginPartnerPage {
 	async goToRegisterPage() {
 		await this.page.getByText('Registrarse').click()
 		await expect(this.page.url()).toBe(
-			`${this.pathBaseURL}/partner/register`
+			new URL('/partner/register', this.pathBaseURL).toString()
 		)
 	}
 
@@ -96,7 +96,8 @@ export class LoginPartnerPage {
 			'height: auto;'
 		)
 
-		expect(alertMessage).toBe('Ha ocurrido un error al iniciar sesión')
+		const expectedErrorMessage = 'Ha ocurrido un error al iniciar sesión'
+		await expect(alertMessage).toBe(expectedErrorMessage)
 
 		expect(await this.page.url()).toBe(this.loginPath)
 	}

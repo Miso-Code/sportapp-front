@@ -22,8 +22,10 @@ export class HomeUserPage {
 		email: string
 		name: string
 	}) {
-		expect(await this.page.getByText(email)).toBeTruthy()
-		expect(await this.page.getByText(name)).toBeTruthy()
+		const emailElement = await this.page.getByText(email)
+		const nameElement = await this.page.getByText(name)
+		expect(emailElement).toBeTruthy()
+		expect(nameElement).toBeTruthy()
 	}
 
 	async gotoPersonalData() {

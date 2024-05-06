@@ -125,12 +125,14 @@ export class HomeUserPersonalDataPage {
 		gender: string
 		birdate: string
 	}) {
-		expect(await this.page.locator('#email').inputValue()).toBe(email)
-		expect(await this.page.locator('#name').inputValue()).toBe(name)
-		expect(await this.page.locator('#lastName').inputValue()).toBe(lastName)
-		expect(await this.page.locator('#documentNumber').inputValue()).toBe(
-			documentNumber
-		)
+		const emailInput = await this.page.locator('#email')
+		const nameInput = await this.page.locator('#name')
+		const lastNameInput = await this.page.locator('#lastName')
+		const documentNumberInput = await this.page.locator('#documentNumber')
+		expect(await emailInput.inputValue()).toBe(email)
+		expect(await nameInput.inputValue()).toBe(name)
+		expect(await lastNameInput.inputValue()).toBe(lastName)
+		expect(await documentNumberInput.inputValue()).toBe(documentNumber)
 		expect(
 			await this.page
 				.locator('[id="residence\\.lengthOfStay"]')
@@ -175,27 +177,5 @@ export class HomeUserPersonalDataPage {
 			await this.page.locator('#mui-component-select-gender').innerHTML()
 		).toBe(gender)
 		expect(await this.page.locator('#birthday').inputValue()).toBe(birdate)
-
-		/* 
-		expect(await this.page.locator('#documentType').inputValue()).toBe(
-			documentType
-		)
-		
-		expect(
-			await this.page.locator('#nationality.country').inputValue()
-		).toBe(country) 
-
-		expect(await this.page.locator('#nationality.city').inputValue()).toBe(
-			city
-		)
-
-		expect(await this.page.locator('#residence.country').inputValue()).toBe(
-			countryResidence
-		)
-
-		expect(await this.page.locator('#residence.city').inputValue()).toBe(
-			cityResidence
-		)
-		*/
 	}
 }
