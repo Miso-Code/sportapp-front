@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { Stack } from 'expo-router/stack'
 
@@ -14,18 +14,38 @@ import {
 
 import { useAlertStore } from '@sportapp/stores'
 import { View, StyleSheet } from 'react-native'
+import { usePushNotification } from '@/hooks/usePushNotifications'
+
+const iconByAlertType = {
+	error: 'alert-circle',
+	success: 'check-circle',
+	warning: 'alert-circle',
+	info: 'information'
+}
 
 export default function AppLayout() {
 	const theme = useTheme()
 	const styles = createStyles(theme)
 	const { alert, setAlert } = useAlertStore()
 
-	const iconByAlertType = {
-		error: 'alert-circle',
-		success: 'check-circle',
-		warning: 'alert-circle',
-		info: 'information'
-	}
+	const { subscribe } = usePushNotification()
+
+	const showPushNotification = useCallback(
+		(title: string, body: string, type: 'info' | 'warning') => {
+			setAlert({
+				message: `${title}: ${body}`,
+				type: type,
+				position: 'top'
+			})
+		},
+		[setAlert]
+	)
+
+	useEffect(() => {
+		;(async () => {
+			await subscribe(showPushNotification)
+		})()
+	}, [showPushNotification, subscribe])
 
 	return (
 		<PaperProvider>
