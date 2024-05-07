@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/messaging": "^19.2.2",
     "@sportapp/langs": "*",
     "@sportapp/stores": "*",
     "country-state-city": "^3.2.1",

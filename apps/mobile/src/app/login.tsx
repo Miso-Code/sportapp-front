@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View, StyleSheet, Image } from 'react-native'
 import {
 	TextInput,
@@ -12,14 +12,31 @@ import SquaredButton from '@/components/SquaredButton'
 import { useAuthStore } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { usePushNotification } from '@/hooks/usePushNotifications'
+import AlertsApi from '@sportapp/sportapp-repository/src/alerts'
 
 export default function App() {
-	const { login, loading, isAuth, error } = useAuthStore()
+	const { login, loading, isAuth, error, authToken } = useAuthStore()
 	const { t } = useTranslation()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [isError, setIsError] = useState(!!error)
+
+	const { getToken } = usePushNotification()
+
+	const sendApiRequest = useCallback(
+		async (deviceToken: string) => {
+			const token = authToken?.accessToken
+			const alertsApi = new AlertsApi()
+			await alertsApi.createOrUpdateUserDeviceToken(deviceToken, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			})
+		},
+		[authToken]
+	)
 
 	useEffect(() => {
 		if (email.length > 0 || password.length > 0) {
@@ -39,8 +56,12 @@ export default function App() {
 		}
 	}, [error])
 
-	const handleLogin = () => {
-		login({ email, password })
+	const handleLogin = async () => {
+		const response = await login({ email, password })
+		const deviceToken = await getToken()
+		if (response && deviceToken) {
+			await sendApiRequest(deviceToken)
+		}
 	}
 
 	const emailHasErrors = () => {
