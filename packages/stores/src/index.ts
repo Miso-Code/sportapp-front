@@ -21,3 +21,5 @@ export { initialTrainingPlanState, useTrainingPlanStore } from './trainingPlan'
 export { initialPaymentPlanState, usePaymentPlanStore } from './paymentPlan'
 
 export { initialSportsmanState, useSportsmanStore } from './sportsman'
+
+export { initialSportEventState, useSportEventStore } from './sportEvents'
