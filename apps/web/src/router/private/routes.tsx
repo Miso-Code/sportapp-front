@@ -1,13 +1,14 @@
 import Layout from '@/router/private/Layout'
-import { Navigate } from 'react-router-dom'
 import {
 	ConfigLazy,
 	HomeLazy,
 	ListSchedulePreferencePageLazy,
+	OtherServicePageLazy,
 	PreferenceCardSelectionPageLazy,
 	PreferenceFormPageLazy,
 	PreferencePageLazy
 } from '@/router/private/lazy-pages'
+import { Navigate } from 'react-router-dom'
 
 export default function privateRoutesUser() {
 	return {
@@ -24,6 +25,10 @@ export default function privateRoutesUser() {
 			{
 				path: '/premium/list-schedule',
 				element: <ListSchedulePreferencePageLazy />
+			},
+			{
+				path: '/other-services',
+				element: <OtherServicePageLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]

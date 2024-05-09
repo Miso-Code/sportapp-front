@@ -55,3 +55,14 @@ export const columns: readonly Column[] = [
 export function formatCurrency(value: number) {
 	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
+
+export function currencyByCountry(value: number, country: string) {
+	const fmt = new Intl.NumberFormat(country, {
+		style: 'currency',
+		currency: country,
+		currencyDisplay: 'code',
+		minimumFractionDigits: 0
+	})
+
+	return fmt.format(value).replace(/^([A-Z]{3})\s*(.+)$/, '$2 $1')
+}
