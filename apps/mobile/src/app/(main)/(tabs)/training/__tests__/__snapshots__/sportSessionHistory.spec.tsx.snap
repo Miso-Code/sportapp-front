@@ -12,6 +12,13 @@ exports[`SportSessionHistory should render correctly 1`] = `
   <View
     style={
       {
+        "minHeight": 250,
+      }
+    }
+  />,
+  <View
+    style={
+      {
         "alignItems": "center",
         "flex": 1,
         "gap": 10,

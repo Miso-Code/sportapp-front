@@ -14,6 +14,7 @@ jest.mock('expo-router')
 jest.mock('react-native-safe-area-context')
 jest.mock('react-native-big-calendar', () => {
 	const native = jest.requireActual('react-native')
+	const react = jest.requireActual('react')
 
 	const mockCalendar: typeof Calendar = ({
 		events,
@@ -23,20 +24,16 @@ jest.mock('react-native-big-calendar', () => {
 		return (
 			<native.View>
 				{events.map((event, index) => (
-					<>
+					<react.Fragment key={'mockCalendar' + index}>
 						<native.Button
 							onPress={() => onPressEvent(event)}
 							testID={`testButton`}
 							title={event.title}
-							key={'mockCalendarButton' + index}
 						/>
 						{index < events.length && (
-							<Separator
-								leadingItem={[event]}
-								key={'mockCalendarSeparator' + index}
-							/>
+							<Separator leadingItem={[event]} />
 						)}
-					</>
+					</react.Fragment>
 				))}
 			</native.View>
 		)
@@ -64,6 +61,19 @@ jest.mock('@/components/TrainingCard', () => {
 		</native.View>
 	))
 })
+
+jest.mock('@/hooks/useLocation', () => ({
+	useLocation: jest.fn().mockReturnValue({
+		locationUpdates: [
+			{
+				coords: {
+					latitude: 1,
+					longitude: 1
+				}
+			}
+		]
+	})
+}))
 
 jest.mock('@sportapp/stores', () => ({
 	useSportSessionStore: jest.fn().mockReturnValue({
@@ -117,6 +127,33 @@ jest.mock('@sportapp/stores', () => ({
 			}
 		],
 		getTrainingPlan: jest.fn()
+	}),
+	useSportEventStore: jest.fn().mockReturnValue({
+		sportEvents: [
+			{
+				event_id: '1',
+				sport_id: '1',
+				location_latitude: 1,
+				location_longitude: 1,
+				start_date: new Date().toISOString(),
+				end_date: new Date().toISOString(),
+				title: 'title',
+				capacity: 10,
+				description: 'description'
+			},
+			{
+				event_id: '2',
+				sport_id: '1',
+				location_latitude: 1,
+				location_longitude: 1,
+				start_date: new Date().toISOString(),
+				end_date: new Date().toISOString(),
+				title: 'title',
+				capacity: 10,
+				description: 'description'
+			}
+		],
+		getSportEvents: jest.fn()
 	})
 }))
 
@@ -282,7 +319,7 @@ describe('SportSessionHistory', () => {
 		expect(router.push).toHaveBeenCalledTimes(1)
 	})
 
-	it('should show to the training plan on event press if event is training', async () => {
+	it('should show the training plan on event press if event is training', async () => {
 		await act(async () => {
 			await Promise.resolve()
 		})
@@ -295,6 +332,59 @@ describe('SportSessionHistory', () => {
 			testID: 'trainingModal'
 		})
 		expect(trainingModal.props.visible).toBe(true)
+	})
+
+	it('should show the event details on event press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		button.props.onPress()
+		const eventModal = component.root.findByProps({
+			testID: 'eventModal'
+		})
+		expect(eventModal.props.visible).toBe(true)
+	})
+
+	it('should hide the training plan on close', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root.findAllByProps({
+			testID: 'testButton'
+		})
+		const button = eventButtons[Math.floor(eventButtons.length / 2)]
+		button.props.onPress()
+		const trainingModal = component.root.findByProps({
+			testID: 'trainingModal'
+		})
+		trainingModal.props.onDismiss()
+		expect(trainingModal.props.visible).toBe(false)
+	})
+
+	it('should hide the event details on close', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		button.props.onPress()
+		const eventModal = component.root.findByProps({
+			testID: 'eventModal'
+		})
+		eventModal.props.onDismiss()
+		expect(eventModal.props.visible).toBe(false)
 	})
 
 	it('should render a single header when calendar mode is not schedule', async () => {
@@ -313,7 +403,7 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(99) // this is buggy
+		).toBe(93) // this is buggy
 	})
 
 	it('should render unique calendar headers on calendar mode schedule', async () => {

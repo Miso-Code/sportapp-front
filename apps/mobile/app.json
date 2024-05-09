@@ -55,7 +55,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.misoteam.sportapp"
+      "package": "com.misoteam.sportapp",
+      "config": {
+        "googleMaps": {
+          "apiKey": "KEEP_IT_SECRET"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
