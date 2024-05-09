@@ -34,6 +34,9 @@ export default function Navbar({ className = '' }: Props) {
 		if (currentPath.includes('/config')) {
 			return 4
 		}
+		if (currentPath.includes('/other-services')) {
+			return 2
+		}
 		return -1
 	}, [currentPath])
 
@@ -67,6 +70,7 @@ export default function Navbar({ className = '' }: Props) {
 					<BottomNavigationAction
 						label={t('navbar.otherServices')}
 						LinkComponent={'a'}
+						onClick={() => navigate('/other-services')}
 						className='navbar-content-navigation-button'
 						icon={<ShoppingIcon />}
 					/>
