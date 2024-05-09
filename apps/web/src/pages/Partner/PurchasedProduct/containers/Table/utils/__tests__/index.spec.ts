@@ -1,5 +1,11 @@
 import { ProductPurchased } from '@sportapp/sportapp-repository/src/business-partner/interfaces/api/product-purchased'
-import { columns, createData, formatCurrency, generateRows } from '..'
+import {
+	columns,
+	createData,
+	formatCurrency,
+	generateRows,
+	currencyByCountry
+} from '..'
 
 describe('PurchasedProduct Table utils', () => {
 	const data = [
@@ -108,6 +114,20 @@ describe('PurchasedProduct Table utils', () => {
 				}
 			])
 		})
+
+		it('should format price', () => {
+			if (
+				columns &&
+				columns.length > 5 &&
+				columns[5] &&
+				typeof columns[5].format === 'function'
+			) {
+				const result = columns[5].format(100)
+				expect(result).toEqual('100.00')
+			} else {
+				throw new Error('columns[5].format is not a function')
+			}
+		})
 	})
 
 	describe('formatCurrency', () => {
@@ -118,6 +138,37 @@ describe('PurchasedProduct Table utils', () => {
 		it('should format currency', () => {
 			const result = formatCurrency(1000)
 			expect(result).toEqual('1,000')
+		})
+	})
+
+	describe('currencyByCountry', () => {
+		beforeEach(() => {
+			jest.spyOn(Intl, 'NumberFormat').mockImplementation(() => ({
+				format: (value: number) => `$${value.toFixed(2)}`,
+				resolvedOptions: () => ({
+					locale: 'en-US',
+					numberingSystem: 'latn',
+					style: 'decimal',
+					currency: 'USD',
+					currencyDisplay: 'symbol',
+					minimumIntegerDigits: 1,
+					minimumFractionDigits: 0,
+					maximumFractionDigits: 0,
+					useGrouping: false
+				}),
+				formatToParts: () => [],
+				formatRange: () => '',
+				formatRangeToParts: () => []
+			}))
+		})
+
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+
+		it('should format currency by country', () => {
+			const result = currencyByCountry(100, 'en-US')
+			expect(result).toEqual('$100.00')
 		})
 	})
 })
