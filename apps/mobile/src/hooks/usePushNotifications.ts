@@ -1,7 +1,8 @@
-/* eslint-disable no-console */ // Remove this line after implementing the code
+// Remove this line after implementing the code
 import { useCallback, useState } from 'react'
 import messaging from '@react-native-firebase/messaging'
 import { PermissionsAndroid, Platform } from 'react-native'
+import { useAlertStore } from '@sportapp/stores'
 
 type ForegroundNotificationCallback = (
 	title: string,
@@ -11,6 +12,7 @@ type ForegroundNotificationCallback = (
 
 export const usePushNotification = () => {
 	const [isPermissionsGranted, setIsPermissionsGranted] = useState(false)
+	const { addHiddenAlertToHistory } = useAlertStore()
 
 	const subscribe = useCallback(
 		async (callback?: ForegroundNotificationCallback) => {
@@ -21,6 +23,7 @@ export const usePushNotification = () => {
 				onNotificationOpenedAppFromQuit()
 			])
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[]
 	)
 
@@ -69,10 +72,10 @@ export const usePushNotification = () => {
 	const listenToBackgroundNotifications = async () => {
 		const unsubscribe = messaging().setBackgroundMessageHandler(
 			async (remoteMessage) => {
-				console.log(
-					'A new message arrived! (BACKGROUND)',
-					JSON.stringify(remoteMessage)
-				)
+				addHiddenAlertToHistory({
+					type: remoteMessage.data.priority as 'info' | 'warning',
+					message: `${remoteMessage.notification.title}: ${remoteMessage.notification.body}`
+				})
 			}
 		)
 		return unsubscribe
@@ -81,23 +84,23 @@ export const usePushNotification = () => {
 	const onNotificationOpenedAppFromBackground = async () => {
 		const unsubscribe = messaging().onNotificationOpenedApp(
 			async (remoteMessage) => {
-				console.log(
-					'App opened from BACKGROUND by tapping notification:',
-					JSON.stringify(remoteMessage)
-				)
+				addHiddenAlertToHistory({
+					type: remoteMessage.data.priority as 'info' | 'warning',
+					message: `${remoteMessage.notification.title}: ${remoteMessage.notification.body}`
+				})
 			}
 		)
 		return unsubscribe
 	}
 
 	const onNotificationOpenedAppFromQuit = async () => {
-		const message = await messaging().getInitialNotification()
+		const remoteMessage = await messaging().getInitialNotification()
 
-		if (message) {
-			console.log(
-				'App opened from QUIT by tapping notification:',
-				JSON.stringify(message)
-			)
+		if (remoteMessage) {
+			addHiddenAlertToHistory({
+				type: remoteMessage.data.priority as 'info' | 'warning',
+				message: `${remoteMessage.notification.title}: ${remoteMessage.notification.body}`
+			})
 		}
 	}
 

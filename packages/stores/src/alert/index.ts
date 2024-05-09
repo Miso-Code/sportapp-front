@@ -5,7 +5,8 @@ import { customStorage } from '../utils/storages'
 import { IAlertState, IAlertStore, Alert } from './interfaces'
 
 export const initialAlertState: IAlertState = {
-	alert: undefined
+	alert: undefined,
+	alertHistory: []
 }
 
 export const useAlertStore = create(
@@ -13,11 +14,25 @@ export const useAlertStore = create(
 		(set) => ({
 			...initialAlertState,
 			setAlert: (alert: Alert) => {
-				set((state) => ({ ...state, alert }))
-				if (!alert) return
+				alert.createAt = new Date()
+				set((state) => ({
+					...state,
+					alert,
+					alertHistory: [...state.alertHistory, alert]
+				}))
 				setTimeout(() => {
 					set((state) => ({ ...state, alert: undefined }))
 				}, alert.ttl ?? 5000)
+			},
+			addHiddenAlertToHistory: (
+				alert: Alert // adds alert to alertHistory withot showing it
+			) => {
+				alert.createAt = new Date()
+
+				set((state) => ({
+					...state,
+					alertHistory: [...state.alertHistory, alert]
+				}))
 			},
 			clearState: () =>
 				set((state) => ({ ...state, ...initialAlertState }))
