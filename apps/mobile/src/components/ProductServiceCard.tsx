@@ -37,6 +37,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 
 	return (
 		<Card
+			testID='productServiceCard'
 			elevation={1}
 			style={small ? styles.cardSmall : styles.card}
 			contentStyle={small ? styles.smallCard : undefined}

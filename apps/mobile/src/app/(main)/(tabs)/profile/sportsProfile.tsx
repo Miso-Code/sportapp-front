@@ -37,13 +37,13 @@ const SportsProfile: React.FC = () => {
 		user?.sportData?.training_objective ?? ''
 	)
 	const [weight, setWeight] = useState(
-		user?.sportData?.weight.toString() ?? '0'
+		user?.sportData?.weight?.toString() ?? '0'
 	)
 	const [height, setHeight] = useState(
-		user?.sportData?.height.toString() ?? '0'
+		user?.sportData?.height?.toString() ?? '0'
 	)
 	const [availableTrainingHours, setAvailableTrainingHours] = useState(
-		user?.sportData?.available_training_hours.toString() ?? '0'
+		user?.sportData?.available_training_hours?.toString() ?? '0'
 	)
 	const [availableWeekdays, setAvailableWeekdays] = useState(
 		user?.sportData?.available_weekdays ?? []
@@ -114,12 +114,12 @@ const SportsProfile: React.FC = () => {
 	useEffect(() => {
 		if (user.sportData) {
 			setTrainingObjective(user.sportData.training_objective)
-			setWeight(user.sportData.weight.toString())
-			setHeight(user.sportData.height.toString())
+			setWeight(user.sportData.weight?.toString())
+			setHeight(user.sportData.height?.toString())
 			setAvailableTrainingHours(
-				user.sportData.available_training_hours.toString()
+				user.sportData.available_training_hours?.toString()
 			)
-			setAvailableWeekdays(user.sportData.available_weekdays)
+			setAvailableWeekdays(user.sportData.available_weekdays ?? [])
 			setPreferredTrainingStartTime(
 				user.sportData.preferred_training_start_time
 			)
@@ -224,7 +224,7 @@ const SportsProfile: React.FC = () => {
 					<TextInput
 						testID='text-input-bmi'
 						label={t('form.imc')}
-						value={bmi.toString()}
+						value={bmi?.toString()}
 						mode='outlined'
 						disabled
 						right={<TextInput.Affix text='%' />}

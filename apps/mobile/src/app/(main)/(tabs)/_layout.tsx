@@ -53,21 +53,24 @@ export default function TabLayout() {
 				name='profile'
 				options={{
 					title: t('navbar.profile'),
-					tabBarIcon: ProfileIcon
+					tabBarIcon: ProfileIcon,
+					tabBarTestID: 'profile-tab'
 				}}
 			/>
 			<Tabs.Screen
 				name='training'
 				options={{
 					title: t('navbar.training'),
-					tabBarIcon: TrainingIcon
+					tabBarIcon: TrainingIcon,
+					tabBarTestID: 'training-tab'
 				}}
 			/>
 			<Tabs.Screen
 				name='notifications'
 				options={{
 					title: t('navbar.notifications'),
-					tabBarIcon: NotificationsIcon
+					tabBarIcon: NotificationsIcon,
+					tabBarTestID: 'notifications-tab'
 				}}
 			/>
 			<Tabs.Screen
@@ -79,7 +82,8 @@ export default function TabLayout() {
 						user?.profileData?.subscription_type ===
 						ESubscription.PREMIUM
 							? '/premium'
-							: null
+							: null,
+					tabBarTestID: 'premium-tab'
 				}}
 			/>
 		</Tabs>

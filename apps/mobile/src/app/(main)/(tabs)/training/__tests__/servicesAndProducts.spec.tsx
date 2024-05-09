@@ -95,7 +95,7 @@ describe('ServicesAndProducts', () => {
 		const products = component.root.findAllByProps({
 			testID: 'productCard'
 		})
-		expect(products.length).toBe(4)
+		expect(products.length).toBe(6)
 	})
 
 	it('should render an activity indicator on scroll', async () => {

@@ -29,7 +29,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 	label,
 	mode = 'outlined',
 	searchable,
-	disabled
+	disabled,
+	...props
 }) => {
 	const [visible, setVisible] = useState(false)
 	const [selectedItem, setSelectedItem] = useState('')
@@ -91,6 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 									<React.Fragment
 										key={item.toString() + index}>
 										<List.Item
+											testID='dropdown-item'
 											title={
 												item instanceof Object
 													? item.label
@@ -117,6 +119,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 					right={<TextInput.Icon icon='menu-down' />}
 					editable={false}
 					disabled={disabled}
+					{...props}
 				/>
 				<Pressable
 					testID='dropdown-pressable'
