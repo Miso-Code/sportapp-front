@@ -5,6 +5,7 @@ import { Button, Text, View, Platform } from 'react-native'
 import { usePushNotification } from '../usePushNotifications'
 
 import messaging from '@react-native-firebase/messaging'
+import { useAlertStore } from '@sportapp/stores'
 
 jest.mock('@react-native-firebase/messaging', () => {
 	const mockMessaging = jest.fn().mockReturnValue({
@@ -49,6 +50,12 @@ jest.mock('react-native', () => {
 		Button: button
 	}
 })
+
+jest.mock('@sportapp/stores', () => ({
+	useAlertStore: jest.fn().mockReturnValue({
+		addHiddenAlertToHistory: jest.fn()
+	})
+}))
 
 describe('usePushNotifications', () => {
 	let component: ReactTestRenderer
@@ -178,19 +185,23 @@ describe('usePushNotifications', () => {
 		const onNotificationOpened = (
 			messaging().onNotificationOpenedApp as jest.Mock
 		).mock.calls[0][0]
-		const onInitialNotification = (
-			messaging().getInitialNotification as jest.Mock
-		).mockReturnValue(message)
+		;(messaging().getInitialNotification as jest.Mock).mockReturnValue(
+			message
+		)
 
 		await act(async () => {
 			onMessage(message)
 			onBackgroundMessage(message)
 			onNotificationOpened(message)
-			onInitialNotification()
 			await Promise.resolve()
 		})
 
 		expect(callback).toHaveBeenCalledWith('Test', 'Test', 'info')
+		expect(useAlertStore().addHiddenAlertToHistory).toHaveBeenCalledTimes(5)
+		expect(useAlertStore().addHiddenAlertToHistory).toHaveBeenCalledWith({
+			type: 'info',
+			message: 'Test: Test'
+		})
 	})
 
 	it('should request permissions on ios', async () => {
