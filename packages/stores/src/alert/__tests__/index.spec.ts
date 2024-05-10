@@ -36,6 +36,16 @@ describe('AlertStore', () => {
 		})
 	})
 
+	it('should set alert with undefined', async () => {
+		const { result } = renderHook(() => useAlertStore())
+		const { setAlert } = result.current
+		expect(result.current.alert).toBe(undefined)
+		await act(async () => {
+			await setAlert(undefined)
+		})
+		expect(result.current.alert).toBe(undefined)
+	})
+
 	it('should add alert to the history', async () => {
 		const { result } = renderHook(() => useAlertStore())
 		const { setAlert } = result.current

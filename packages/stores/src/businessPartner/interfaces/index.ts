@@ -20,6 +20,6 @@ export interface IBusinessPartnerActions {
 	purchaseProduct: (
 		payload: PurchaseProductRequest
 	) => Promise<PurchaseProductResponse | undefined>
-	setProductToCheckout: (product: Product) => void
+	setProductToCheckout: (product: Product | undefined) => void
 	clearState: () => void
 }

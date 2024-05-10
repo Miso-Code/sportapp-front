@@ -13,7 +13,11 @@ export const useAlertStore = create(
 	persist<IAlertStore>(
 		(set) => ({
 			...initialAlertState,
-			setAlert: (alert: Alert) => {
+			setAlert: (alert: Alert | undefined) => {
+				if (!alert) {
+					set((state) => ({ ...state, alert: undefined }))
+					return
+				}
 				alert.createAt = new Date()
 				set((state) => ({
 					...state,
