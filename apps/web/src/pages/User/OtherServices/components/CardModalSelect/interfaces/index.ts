@@ -7,4 +7,5 @@ export interface Props {
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => void
 	handleClose: () => void
+	handleSuccess: () => void
 }

@@ -1,281 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OtherServicePage should open modal with product selected 1`] = `
-<div
-  aria-hidden="true"
->
-  <div
-    class="container-layout other-service-page MuiBox-root css-1xhj18k"
-  >
-    <div
-      class="navbar  MuiBox-root css-2uchni"
-    >
-      <header
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionRelative navbar-content css-1kby834-MuiPaper-root-MuiAppBar-root"
-      >
-        <div
-          class="MuiBottomNavigation-root navbar-content-navigation css-16lloyr-MuiBottomNavigation-root"
-        >
-          <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__start css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="PersonIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
-              />
-            </svg>
-            <span
-              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
-            >
-              navbar.profile
-            </span>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="FavoriteIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"
-              />
-            </svg>
-            <span
-              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
-            >
-              navbar.training
-            </span>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="ShoppingCartIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2M1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2"
-              />
-            </svg>
-            <span
-              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
-            >
-              navbar.otherServices
-            </span>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button false css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="StarIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-              />
-            </svg>
-            <span
-              class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
-            >
-              navbar.preferential
-            </span>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button navbar-content-navigation-button__end css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="SettingsIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
-              />
-            </svg>
-            <span
-              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
-            >
-              navbar.settings
-            </span>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-      </header>
-    </div>
-    <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
-    >
-      <section
-        class="other-service-page-section"
-      >
-        <h3
-          class="MuiTypography-root MuiTypography-h3 other-service-page-title css-gepadz-MuiTypography-root"
-        >
-          otherService.title
-        </h3>
-      </section>
-      <div
-        class="MuiFormControl-root css-r47a1p-MuiFormControl-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-          data-shrink="false"
-          for="outlined-adornment-search"
-        >
-          productService.search
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-adornment-search"
-            placeholder="productService.search"
-            type="text"
-            value=""
-          />
-          <div
-            class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="SearchIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
-              />
-            </svg>
-          </div>
-          <fieldset
-            aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="css-yjsfm1"
-            >
-              <span>
-                productService.search
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        class="MuiBox-root css-0"
-      >
-        <div>
-          <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root other-service-page-card css-88rc0s-MuiPaper-root-MuiCard-root"
-          >
-            <button
-              class="MuiButtonBase-root MuiCardActionArea-root css-y0orxu-MuiButtonBase-root-MuiCardActionArea-root"
-              data-testid="card-action-area"
-              tabindex="0"
-              type="button"
-            >
-              <img
-                alt="Awesome Rubber Computer"
-                class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
-                height="190"
-                src="https://picsum.photos/seed/wPfJxYXCA/640/480"
-              />
-              <div
-                class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
-              >
-                <div
-                  class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
-                >
-                  Awesome Rubber Computer
-                </div>
-                <p
-                  class="MuiTypography-root MuiTypography-body2 css-1442vf8-MuiTypography-root"
-                >
-                  Adipiscor demoror velit ventito reiciendis audacia pax abbas aliquam.
-                </p>
-                <div
-                  class="MuiBox-root css-17vpr0m"
-                >
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gavykb-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      productService.equipment
-                    </span>
-                  </div>
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-filledSecondary css-1v5g1fx-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      408 USD 
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <span
-                class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
-              />
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`OtherServicePage should render the component 1`] = `
 <div>
   <div
@@ -421,6 +145,71 @@ exports[`OtherServicePage should render the component 1`] = `
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
     >
+      <div
+        class="MuiBox-root css-0"
+      >
+        <div
+          class="MuiCollapse-root MuiCollapse-vertical css-1fkrdiv-MuiCollapse-root"
+          style="min-height: 0px; height: 0px; transition-duration: 300ms;"
+        >
+          <div
+            class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+          >
+            <div
+              class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard css-1ql91c4-MuiPaper-root-MuiAlert-root"
+                role="alert"
+              >
+                <div
+                  class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                    data-testid="SuccessOutlinedIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+                />
+                <div
+                  class="MuiAlert-action css-ki1hdl-MuiAlert-action"
+                >
+                  <button
+                    aria-label="close"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1e0d89p-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                      data-testid="CloseIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <section
         class="other-service-page-section"
       >
@@ -635,6 +424,71 @@ exports[`OtherServicePage should render the component, with products 1`] = `
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
     >
+      <div
+        class="MuiBox-root css-0"
+      >
+        <div
+          class="MuiCollapse-root MuiCollapse-vertical css-1fkrdiv-MuiCollapse-root"
+          style="min-height: 0px; height: 0px; transition-duration: 300ms;"
+        >
+          <div
+            class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+          >
+            <div
+              class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard css-1ql91c4-MuiPaper-root-MuiAlert-root"
+                role="alert"
+              >
+                <div
+                  class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                    data-testid="SuccessOutlinedIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+                />
+                <div
+                  class="MuiAlert-action css-ki1hdl-MuiAlert-action"
+                >
+                  <button
+                    aria-label="close"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1e0d89p-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                      data-testid="CloseIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <section
         class="other-service-page-section"
       >
@@ -724,7 +578,7 @@ exports[`OtherServicePage should render the component, with products 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-1442vf8-MuiTypography-root"
                 >
-                  Adipiscor demoror velit ventito reiciendis audacia pax abbas aliquam.
+                  Adflicto sonitus fuga aperio calculus calamitas vicissitudo.
                 </p>
                 <div
                   class="MuiBox-root css-17vpr0m"

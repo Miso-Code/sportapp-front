@@ -32,6 +32,7 @@ describe('CardModalSelect', () => {
 				quantity='1'
 				handleQuantityChange={jest.fn()}
 				handleClose={jest.fn()}
+				handleSuccess={jest.fn()}
 			/>
 		)
 	})
@@ -63,6 +64,7 @@ describe('CardModalSelect', () => {
 				quantity='1'
 				handleQuantityChange={handleQuantityChange}
 				handleClose={jest.fn()}
+				handleSuccess={jest.fn()}
 			/>
 		)
 		const input = wrapper.getByPlaceholderText('0')

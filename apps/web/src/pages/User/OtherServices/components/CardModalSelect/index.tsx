@@ -15,7 +15,8 @@ export default function CardModalSelect({
 	selectedProduct,
 	quantity,
 	handleQuantityChange,
-	handleClose
+	handleClose,
+	handleSuccess
 }: Props) {
 	const { t } = useTranslation()
 	return (
@@ -27,8 +28,9 @@ export default function CardModalSelect({
 				image={selectedProduct.image_url}
 				alt={selectedProduct.name}
 			/>
+			<Typography variant='body2'>{selectedProduct.summary}</Typography>
 			<Box sx={{ mt: 4 }}>
-				<MuiMarkdown>{selectedProduct.description}</MuiMarkdown>
+				<MuiMarkdown>{selectedProduct.summary}</MuiMarkdown>
 			</Box>
 			<Box>
 				<TextField
@@ -54,7 +56,7 @@ export default function CardModalSelect({
 				<Button size='small' color='error' onClick={handleClose}>
 					{t('productService.close')}
 				</Button>
-				<Button size='small' onClick={handleClose}>
+				<Button size='small' onClick={handleSuccess}>
 					{t('productService.buy')}
 				</Button>
 			</CardActions>

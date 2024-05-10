@@ -109,7 +109,7 @@ exports[`Notifications should render correctly 1`] = `
                     ]
                   }
                 >
-                  2024-05-09
+                  2024-05-10
                 </Text>
                 <Text
                   style={
