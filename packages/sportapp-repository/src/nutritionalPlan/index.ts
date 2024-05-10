@@ -3,6 +3,7 @@ import { sportappApi } from '../index'
 import endpoints from './endpoints'
 import {
 	GetNutritionalPlanDishesRequest,
+	NotifyCaloryIntakeRequest,
 	NutritionalPlanDish,
 	NutritionalPlanDishRaw
 } from './interfaces'
@@ -63,6 +64,23 @@ export default class sportApi {
 						name
 					}
 				})
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async notifyCaloryIntake(
+		request: NotifyCaloryIntakeRequest,
+		options: AxiosRequestConfig
+	): Promise<boolean | undefined> {
+		try {
+			const endpoint = endpoints.notifyCaloryIntake
+
+			const response = await this.sportappApi.post(endpoint,request, options)
+
+			if (response.status.toString().startsWith('2')) {
+				return true
 			}
 		} catch (error) {
 			console.error(error)

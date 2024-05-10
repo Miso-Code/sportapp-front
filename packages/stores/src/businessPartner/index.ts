@@ -33,6 +33,15 @@ export const useBusinessPartnerStore = create(
 					}
 				})
 			},
+			suggestProduct(request) {
+				const api = new businessPartnerApi()
+				const authToken = useAuthStore.getState().authToken?.accessToken
+				return api.suggestProduct(request, {
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
+				})
+			},
 			setProductToCheckout: (product) =>
 				set((state) => ({ ...state, productToCheckout: product })),
 			clearState: () =>

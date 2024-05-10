@@ -5,7 +5,8 @@ import {
 	Product,
 	ProductRequest,
 	PurchaseProductRequest,
-	PurchaseProductResponse
+	PurchaseProductResponse,
+	SuggestProductRequest
 } from './interfaces'
 
 export default class businessPartnerApi {
@@ -47,6 +48,31 @@ export default class businessPartnerApi {
 					payload,
 					options
 				)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async suggestProduct(
+		payload?: SuggestProductRequest,
+		options?: AxiosRequestConfig
+	): Promise<Product | undefined> {
+		try {
+			const endpoint = endpoints.suggestProduct
+
+			options = {
+				...options,
+				params: payload
+			}
+
+			const response = await this.sportappApi.get<Product>(
+				endpoint,
+				options
+			)
 
 			if (response.status.toString().startsWith('2')) {
 				return response.data

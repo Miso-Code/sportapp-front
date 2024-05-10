@@ -6,5 +6,7 @@
 	"steps": "Steps",
 	"distance": "Distance",
 	"speed": "Speed",
-	"heartRate": "Heart Rate"
+	"heartRate": "Heart Rate",
+	"nutritionalSuggestionTitle": "Nutritional Suggestion",
+	"nutritionalSuggestion": "Great job! You have burned a lot of calories, but don't forget to consume healthy foods to keep your body in shape."
 }

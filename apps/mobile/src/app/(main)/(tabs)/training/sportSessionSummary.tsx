@@ -1,38 +1,100 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { ActivityIndicator, Text, useTheme } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { useSportSessionStore } from '@sportapp/stores'
+import { useSportSessionStore, useBusinessPartnerStore } from '@sportapp/stores'
 import Kpi from '@/components/Kpi'
 import { useTranslation } from 'react-i18next'
+import ProductServiceCard from '@/components/ProductServiceCard'
+import { router } from 'expo-router'
 
 const SportSessionSummary: React.FC = () => {
 	const theme = useTheme()
 	const { t } = useTranslation()
-	const { sportSession } = useSportSessionStore()
+	// const { sportSession } = useSportSessionStore()
+	const { getSportSessions } = useSportSessionStore()
+	const { setProductToCheckout, suggestProduct } = useBusinessPartnerStore()
+
+	const [loadingSuggestedProduct, setLoadingSuggestedProduct] = useState(false)
+	const [suggestedProduct, setSuggestedProduct] = useState<Awaited<ReturnType<typeof suggestProduct>>>()
+
+	const sportSession: Awaited<ReturnType<typeof getSportSessions>>[number] = useMemo(() => ({
+		calories: 10,
+		duration: 10,
+		steps: 10,
+		distance: 10,
+		average_speed: 10,
+		min_heartrate: 10,
+		avg_heartrate: 10,
+		max_heartrate: 10,
+		session_id: "1",
+		sport_id: "1",
+		started_at: new Date().toISOString(),
+		user_id: "1"
+	}), [])
+
+	useEffect(() => {
+		if (sportSession) {
+			setLoadingSuggestedProduct(true)
+				; (async () => {
+					// const product = await suggestProduct({
+					// 	sport_id: sportSession.sport_id,
+					// })
+					const product = {
+						name: 'Verduritas',
+						description: 'pa los gordos',
+						price: 10,
+						payment_frequency: 'monthly' as const,
+						image_url: 'https://www.cspinet.org/sites/default/files/styles/700x530/public/2023-09/Gheorghita_fruitVeg_adobe_hero_700x530px.jpg?h=61bc1599',
+						category: 'equipement' as const,
+						product_id: '1',
+						business_partner_id: '1',
+						url: 'https://example.com',
+						payment_type: 'unique' as const,
+						summary: 'summary',
+						active: true
+					}
+					setSuggestedProduct(product)
+					setLoadingSuggestedProduct(false)
+				}
+				)()
+		}
+	}, [sportSession])
+
 	return (
 		<SafeAreaProvider>
 			<ScrollView contentContainerStyle={styles.container}>
 				{sportSession ? (
 					<>
 						<Text variant='headlineMedium'>
-							Consumo Alimenticio
+							{t('session.nutritionalSuggestionTitle')}
 						</Text>
 						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit. Proin ultrices semper risus ac varius. Etiam
-							vehicula tristique libero, eu laoreet augue dictum
-							at. Nullam nec sem odio. Morbi consectetur ut velit
-							ut mattis. Aliquam hendrerit massa ut mattis
-							volutpat. Aenean congue eros nulla, at fermentum
-							purus porta quis. Etiam tempor luctus turpis, in
-							aliquet tortor porttitor sed. Mauris et nisl eget
-							dolor lacinia tempus. Nam at diam vel odio vehicula
-							gravida. Sed sed egestas lacus. Curabitur porttitor
-							leo justo, sit amet euismod ipsum luctus quis.
+							{t('session.nutritionalSuggestion')}
 						</Text>
+						{loadingSuggestedProduct ? <ActivityIndicator /> : suggestedProduct && <View style={styles.suggestedProductContainer}>
+							<ProductServiceCard
+								title={suggestedProduct.name}
+								description={suggestedProduct.description}
+								price={suggestedProduct.price}
+								priceFrequency={suggestedProduct.payment_frequency}
+								image={suggestedProduct.image_url}
+								category={suggestedProduct.category}
+								onPress={() => {
+									setProductToCheckout(suggestedProduct)
+									router.push({
+										pathname:
+											'training/servicesAndProductsCheckout',
+										params: {
+											quantity: 1
+										}
+									})
+								}}
+								small
+							/>
+						</View>}
 						<Text variant='headlineMedium'>Métricas</Text>
 						<View>
 							<Kpi
@@ -120,6 +182,9 @@ const styles = StyleSheet.create({
 	loaderContainer: {
 		width: '100%',
 		marginVertical: 100
+	},
+	suggestedProductContainer: {
+		width: '100%',
 	}
 })
 

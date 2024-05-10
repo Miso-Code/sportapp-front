@@ -25,5 +25,6 @@
     "cancel": "Cancel",
     "processingPayment": "Processing Payment",
     "paymentSuccess": "Payment Success",
-    "paymentFailed": "Payment Failed"
+    "paymentFailed": "Payment Failed",
+    "suggestion": "Our partner's recommended"
 }

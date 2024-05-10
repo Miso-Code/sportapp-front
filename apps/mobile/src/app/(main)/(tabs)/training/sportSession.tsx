@@ -21,18 +21,22 @@ import {
 	useSportSessionStore,
 	useSportStore,
 	useTrainingPlanStore,
-	useAlertStore
+	useAlertStore,
+	useUserStore,
+	useNutritionalPlanStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
 
 const SportSession: React.FC = () => {
-	const { user } = useAuthStore()
+	const { user: userAuth } = useAuthStore()
+	const { user, getSport } = useUserStore()
 	const { startSportSession, finishSportSession, addSessionLocation } =
 		useSportSessionStore()
-	const { getSports, sports } = useSportStore()
 	const { setAlert } = useAlertStore()
 	const { trainingPlanSessions } = useTrainingPlanStore()
+	const { notifyCaloryIntake } = useNutritionalPlanStore()
+
 	const trainingPlanSessionsMemo = useMemo(
 		() => trainingPlanSessions,
 		[trainingPlanSessions]
@@ -56,6 +60,8 @@ const SportSession: React.FC = () => {
 	)
 
 	const [sessionID, setSessionID] = useState<string | null>(null)
+
+	const [plannedTrainingSession, setPlannedTrainingSession] = useState<typeof trainingPlanSessionsMemo[number] | null>()
 
 	const motivationalInterval = useRef<ReturnType<typeof setInterval> | null>(
 		null
@@ -83,23 +89,23 @@ const SportSession: React.FC = () => {
 
 		const initial_location = isLocationAvailable
 			? {
-					...locationUpdates[0].coords,
-					altitude_accuracy:
-						locationUpdates[0].coords.altitudeAccuracy
-			  }
+				...locationUpdates[0].coords,
+				altitude_accuracy:
+					locationUpdates[0].coords.altitudeAccuracy
+			}
 			: {
-					latitude: 0,
-					longitude: 0,
-					altitude: 0,
-					accuracy: 0,
-					altitude_accuracy: 0,
-					heading: 0,
-					speed: 0
-			  }
+				latitude: 0,
+				longitude: 0,
+				altitude: 0,
+				accuracy: 0,
+				altitude_accuracy: 0,
+				heading: 0,
+				speed: 0
+			}
 
 		const response = await startSportSession({
-			user_id: user.id,
-			sport_id: sports.length ? sports[0].sport_id : '',
+			user_id: userAuth.id,
+			sport_id: user?.sportData?.favourite_sport_id || '',
 			started_at: startedAt.toISOString(),
 			initial_location
 		})
@@ -108,6 +114,16 @@ const SportSession: React.FC = () => {
 			setSessionID(response.session_id)
 		}
 	}
+
+	function calculateSessionCalories(weight, trainingSession) {
+		const warmUpCaloriesBurned = trainingSession["warm_up"] * 2 * weight;
+		const cardioCaloriesBurned = trainingSession["cardio"] * 3.5 * weight;
+		const strengthCaloriesBurned = trainingSession["strength"] * 5.5 * weight;
+		const coolDownCaloriesBurned = trainingSession["cool_down"] * 1.5 * weight;
+		const totalCaloriesBurned = warmUpCaloriesBurned + cardioCaloriesBurned + strengthCaloriesBurned + coolDownCaloriesBurned;
+		return Math.round(totalCaloriesBurned);
+	}
+
 
 	const handlePause = () => {
 		setIsPaused(true)
@@ -140,7 +156,15 @@ const SportSession: React.FC = () => {
 		if (isPedometerAvailable) {
 			payload.steps = currentStepCount
 		}
-		await finishSportSession(payload)
+		const response = await finishSportSession(payload)
+
+		const calories = response?.calories || 0
+		const plannedCalories = calculateSessionCalories(user.sportData.weight, plannedTrainingSession)
+		
+		await notifyCaloryIntake({
+			calories_burn: calories,
+			calories_burn_expected: plannedCalories
+		})
 
 		router.push('training/sportSessionSummary')
 	}, [
@@ -171,7 +195,7 @@ const SportSession: React.FC = () => {
 
 	useEffect(() => {
 		if (isRunning && isLocationAvailable && sessionID) {
-			;(async () => {
+			; (async () => {
 				const lastLocation = locationUpdates[locationUpdates.length - 1]
 				const location = {
 					...lastLocation.coords,
@@ -200,8 +224,8 @@ const SportSession: React.FC = () => {
 	}, [timer])
 
 	useEffect(() => {
-		getSports()
-	}, [getSports])
+		getSport()
+	}, [getSport])
 
 	useEffect(() => {
 		if (motivationalTimer.current) clearInterval(motivationalTimer.current)
@@ -262,6 +286,7 @@ const SportSession: React.FC = () => {
 					return currDiff < prevDiff ? curr : prev
 				}
 			)
+			setPlannedTrainingSession(closestSession)
 			const totalHours =
 				closestSession.warm_up +
 				closestSession.cardio +

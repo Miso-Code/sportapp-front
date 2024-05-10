@@ -7,7 +7,17 @@ import { ISportEventState, ISportEventStore } from './interfaces'
 import { useAuthStore } from '..'
 
 export const initialSportEventState: ISportEventState = {
-	sportEvents: [],
+	sportEvents: [{
+		event_id: '1',
+		title: 'Fake event',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+		location_latitude: 0,
+		location_longitude: 0,
+		sport_id: '1',
+		start_date: new Date().toISOString(),
+		end_date: new Date().toISOString(),
+		capacity: 0,
+	}],
 	loading: false,
 }
 

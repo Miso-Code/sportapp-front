@@ -18,3 +18,8 @@ export interface NutritionalPlanDishRaw
 export interface GetNutritionalPlanDishesRequest {
 	lang: string
 }
+
+export interface NotifyCaloryIntakeRequest {
+    calories_burn_expected: number,
+    calories_burn : number
+}

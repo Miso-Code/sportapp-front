@@ -11,6 +11,7 @@ interface ProductServiceCardProps {
 	category: string
 	image: string
 	onPress?: () => void
+	small?: boolean
 }
 
 const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
@@ -20,6 +21,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 	priceFrequency,
 	category,
 	image,
+	small,
 	...props
 }) => {
 	const theme = useTheme()
@@ -34,14 +36,14 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 		(priceFrequency ? ` / ${t('productService.' + priceFrequency)}` : '')
 
 	return (
-		<Card elevation={1} style={styles.card} {...props}>
-			<Card.Cover source={{ uri: image }} />
+		<Card elevation={1} style={styles.card} contentStyle={small ? styles.smallCard : undefined} {...props}>
+			<Card.Cover source={{ uri: image }} style={small ? styles.smallCover : undefined} />
 			<Card.Content style={styles.cardContent}>
 				<Text variant='titleLarge' style={styles.cardTitle}>
 					{title}
 				</Text>
 				<Text variant='bodyMedium'>{description}</Text>
-				<View style={styles.chipContainer}>
+				{!small && <View style={styles.chipContainer}>
 					<Chip textStyle={styles.chip} style={styles.chipBackground}>
 						{t(`productService.${category}`)}
 					</Chip>
@@ -50,7 +52,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 						style={styles.chipCostBackground}>
 						{formattedPrice}
 					</Chip>
-				</View>
+				</View>}
 			</Card.Content>
 		</Card>
 	)
@@ -60,7 +62,6 @@ const createStyles = (theme: MD3Theme) =>
 	StyleSheet.create({
 		card: {
 			backgroundColor: '#f2f2f2',
-			paddingBottom: 10,
 			width: '100%'
 		},
 		cardTitle: {
@@ -88,6 +89,14 @@ const createStyles = (theme: MD3Theme) =>
 		},
 		chipCost: {
 			color: theme.colors.onTertiaryContainer
+		},
+		smallCard: {
+			flexDirection: 'row',
+			width: '100%',
+		},
+		smallCover: {
+			width: 100,
+			height: 100,
 		}
 	})
 
