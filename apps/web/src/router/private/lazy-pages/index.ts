@@ -5,6 +5,9 @@ export const ConfigLazy = lazy(() => import('@/pages/User/Config'))
 export const OtherServicePageLazy = lazy(
 	() => import('@/pages/User/OtherServices')
 )
+export const PaymentOtherServicePageLazy = lazy(
+	() => import('@/pages/User/OtherServices/Payment')
+)
 
 // partner pages
 export const HomePartnerLazy = lazy(() => import('@/pages/Partner/Home'))
@@ -17,6 +20,7 @@ export const PurchasedProductPartnerLazy = lazy(
 export const UpdateProductPartnerLazy = lazy(
 	() => import('@/pages/Partner/UpdateProduct')
 )
+
 //premium
 export const PreferencePageLazy = lazy(() => import('@/pages/User/Preference'))
 export const PreferenceFormPageLazy = lazy(

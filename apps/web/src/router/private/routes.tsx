@@ -4,6 +4,7 @@ import {
 	HomeLazy,
 	ListSchedulePreferencePageLazy,
 	OtherServicePageLazy,
+	PaymentOtherServicePageLazy,
 	PreferenceCardSelectionPageLazy,
 	PreferenceFormPageLazy,
 	PreferencePageLazy
@@ -29,6 +30,10 @@ export default function privateRoutesUser() {
 			{
 				path: '/other-services',
 				element: <OtherServicePageLazy />
+			},
+			{
+				path: '/other-services/checkout',
+				element: <PaymentOtherServicePageLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]

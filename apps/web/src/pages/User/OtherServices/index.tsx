@@ -1,6 +1,8 @@
 import ContainerLayout from '@/components/ContainerLayout'
 import Spinner from '@/components/Spinner'
+import TransitionAlert from '@/components/TransitionAlert'
 import { useDebounce } from '@/hooks/useDebounce'
+import { currencyByCountry } from '@/pages/Partner/PurchasedProduct/containers/Table/utils'
 import SearchIcon from '@mui/icons-material/Search'
 import {
 	Box,
@@ -17,13 +19,13 @@ import {
 	Typography
 } from '@mui/material'
 import { Product } from '@sportapp/sportapp-repository/src/businessPartner/interfaces'
-import { useBusinessPartnerStore } from '@sportapp/stores'
+import { useAlertStore, useBusinessPartnerStore } from '@sportapp/stores'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { useNavigate } from 'react-router-dom'
 import './_index.scss'
 import CardModalSelect from './components/CardModalSelect'
-import { currencyByCountry } from '@/pages/Partner/PurchasedProduct/containers/Table/utils'
 
 const style = {
 	position: 'absolute',
@@ -35,15 +37,22 @@ const style = {
 
 export default function OtherServicePage() {
 	const { t, i18n } = useTranslation()
+	const { getAvailableProducts, setProductToCheckout } =
+		useBusinessPartnerStore()
+	const navigate = useNavigate()
+	const { alert } = useAlertStore()
+	const { setAlert } = useAlertStore()
+
+	const [alertShow, setAlertShow] = useState(false)
 	const [searchQuery, setSearchQuery] = useState('')
-	const { getAvailableProducts } = useBusinessPartnerStore()
 	const [hasMore, setHasMore] = useState(true)
 	const [page, setPage] = useState<number>(0)
 	const [products, setProducts] = useState<Product[]>([])
 	const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 	const [open, setOpen] = useState(false)
-	const debouncedValue = useDebounce(searchQuery)
 	const [quantity, setQuantity] = useState('1')
+
+	const debouncedValue = useDebounce(searchQuery)
 
 	const handleQuantityChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,6 +71,14 @@ export default function OtherServicePage() {
 		setOpen(true)
 	}
 	const handleClose = () => setOpen(false)
+	const handleSelectProduct = (product: Product) => {
+		setProductToCheckout({
+			...product,
+			price: product.price * Number(quantity)
+		})
+		handleClose()
+		navigate('/other-services/checkout')
+	}
 
 	const filterNewProducts = useCallback(
 		(availableProducts: Product[]) => {
@@ -94,6 +111,11 @@ export default function OtherServicePage() {
 		products
 	])
 
+	const handleCloseAlert = () => {
+		setAlertShow(false)
+		setAlert(undefined)
+	}
+
 	useEffect(() => {
 		handleGetAvailableProducts()
 	}, [handleGetAvailableProducts])
@@ -104,11 +126,22 @@ export default function OtherServicePage() {
 		setHasMore(true)
 	}, [debouncedValue])
 
+	useEffect(() => {
+		if (alert) {
+			setAlertShow(true)
+		}
+	}, [alert])
+
 	return (
 		<>
 			<ContainerLayout
 				className='other-service-page'
 				withSecondarySection={false}>
+				<TransitionAlert
+					isOpen={alertShow}
+					message={t(alert?.message ?? '')}
+					handleClose={handleCloseAlert}
+				/>
 				<section className='other-service-page-section'>
 					<Typography
 						className='other-service-page-title'
@@ -188,7 +221,7 @@ export default function OtherServicePage() {
 												WebkitBoxOrient: 'vertical'
 											}}
 											color='text.secondary'>
-											{product.description}
+											{product.summary}
 										</Typography>
 										<Box
 											sx={{
@@ -230,6 +263,9 @@ export default function OtherServicePage() {
 							quantity={quantity}
 							handleQuantityChange={handleQuantityChange}
 							handleClose={handleClose}
+							handleSuccess={() =>
+								handleSelectProduct(selectedProduct)
+							}
 						/>
 					)}
 				</Card>

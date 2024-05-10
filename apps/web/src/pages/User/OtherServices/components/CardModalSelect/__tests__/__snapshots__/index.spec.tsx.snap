@@ -16,13 +16,18 @@ exports[`CardModalSelect should render the component 1`] = `
       height="240"
       src="https://picsum.photos/seed/wPfJxYXCA/640/480"
     />
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+    >
+      Adflicto sonitus fuga aperio calculus calamitas vicissitudo.
+    </p>
     <div
       class="MuiBox-root css-h5fkc8"
     >
       <span
         class="MuiTypography-root MuiTypography-body1 css-16gwivt-MuiTypography-root"
       >
-        Adipiscor demoror velit ventito reiciendis audacia pax abbas aliquam.
+        Adflicto sonitus fuga aperio calculus calamitas vicissitudo.
       </span>
     </div>
     <div

@@ -8,10 +8,12 @@ import {
 } from '@testing-library/react'
 import { ReactNode } from 'react'
 import OtherServicePage from '..'
+import { Product } from '@sportapp/sportapp-repository/src/businessPartner/interfaces'
 
 jest.mock('@sportapp/stores', () => ({
 	useBusinessPartnerStore: jest.fn(() => ({
-		getAvailableProducts: jest.fn().mockReturnValue([])
+		getAvailableProducts: jest.fn().mockReturnValue([]),
+		setProductToCheckout: jest.fn()
 	})),
 	useUserStore: jest.fn().mockReturnValue({
 		user: {
@@ -19,7 +21,8 @@ jest.mock('@sportapp/stores', () => ({
 				subscription_type: 'premium'
 			}
 		}
-	})
+	}),
+	useAlertStore: jest.fn().mockReturnValue({ alert: {}, setAlert: jest.fn() })
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -33,6 +36,47 @@ jest.mock('react-router-dom', () => ({
 jest.mock('react-infinite-scroll-component', () => ({
 	__esModule: true,
 	default: ({ children }: { children: ReactNode }) => <div>{children}</div>
+}))
+
+jest.mock('@mui/material', () => ({
+	...jest.requireActual('@mui/material'),
+	Modal: ({ children, open }: { children: ReactNode; open: boolean }) =>
+		open ? <div id='modal'>{children}</div> : null
+}))
+
+jest.mock('../components/CardModalSelect', () => ({
+	__esModule: true,
+	default: jest.fn(
+		({
+			selectedProduct,
+			quantity,
+			handleQuantityChange,
+			handleClose,
+			handleSuccess
+		}: {
+			selectedProduct: Product
+			quantity: string
+			handleQuantityChange: () => void
+			handleClose: () => void
+			handleSuccess: () => void
+		}) => (
+			<div>
+				<button
+					data-testid='handleQuantityChange'
+					onClick={handleQuantityChange}>
+					handleQuantityChange
+				</button>
+				<button data-testid='handleClose' onClick={handleClose}>
+					handleClose
+				</button>
+				<button data-testid='handleSuccess' onClick={handleSuccess}>
+					handleSuccess
+				</button>
+				<div>{selectedProduct.name}</div>
+				<div>{quantity}</div>
+			</div>
+		)
+	)
 }))
 
 describe('OtherServicePage', () => {
@@ -117,7 +161,20 @@ describe('OtherServicePage', () => {
 		})
 
 		await waitFor(() => {
-			expect(wrapper.container).toMatchSnapshot()
+			expect(
+				wrapper.container.querySelector('#modal')
+			).toBeInTheDocument()
+		})
+
+		act(() => {
+			fireEvent.click(wrapper.getByTestId('handleClose'))
+			fireEvent.click(wrapper.getByTestId('handleSuccess'))
+		})
+
+		await waitFor(() => {
+			expect(
+				wrapper.container.querySelector('#modal')
+			).not.toBeInTheDocument()
 		})
 	})
 
