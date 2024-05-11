@@ -1,0 +1,30 @@
+{
+	"weekday": {
+		"monday": "Lunes",
+		"tuesday": "Martes",
+		"wednesday": "Miércoles",
+		"thursday": "Jueves",
+		"friday": "Viernes",
+		"saturday": "Sábado",
+		"sunday": "Domingo"
+	},
+	"dishType": {
+		"breakfast": "Desayuno",
+		"lunch": "Almuerzo",
+		"dinner": "Cena",
+		"snack": "Merienda",
+		"recovery_snack": "Merienda de recuperación",
+		"dessert": "Postre",
+		"appetizer": "Aperitivo",
+		"drink": "Bebida",
+		"other": "Otro"
+	},
+	"macros": {
+		"calories": "calorías",
+		"of_proteins": "de proteínas",
+		"of_carbs": "de carbohidratos",
+		"of_fats": "de grasas"
+	},
+	"currentDay": "Platos de hoy",
+	"futureDishes": "Platos futuros"
+}
