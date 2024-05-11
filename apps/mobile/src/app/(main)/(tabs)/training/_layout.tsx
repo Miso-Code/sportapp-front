@@ -52,6 +52,13 @@ export default function TrainingStack() {
 					title: t('training.others')
 				}}
 			/>
+			<Stack.Screen
+				name='nutritionalPlan'
+				options={{
+					...screenOptions,
+					title: t('training.nutritionalPlan')
+				}}
+			/>
 		</Stack>
 	)
 }

@@ -22,6 +22,7 @@ import paymentPurchased from './paymentPurchased.json'
 import preference from './preference.json'
 import language from './language.json'
 import otherService from './otherService.json'
+import nutritionalPlan from './nutritionalPlan.json'
 
 const defaultTranslate = {
 	translation: {
@@ -48,7 +49,8 @@ const defaultTranslate = {
 		paymentPurchased,
 		preference,
 		language,
-		otherService
+		otherService,
+		nutritionalPlan
 	}
 }
 
