@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DialogEvent should render 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`DialogEvent should render with training type 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;

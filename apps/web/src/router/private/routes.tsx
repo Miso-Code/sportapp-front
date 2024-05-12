@@ -7,7 +7,9 @@ import {
 	PaymentOtherServicePageLazy,
 	PreferenceCardSelectionPageLazy,
 	PreferenceFormPageLazy,
-	PreferencePageLazy
+	PreferencePageLazy,
+	TrainingCalendarPageLazy,
+	TrainingPageLazy
 } from '@/router/private/lazy-pages'
 import { Navigate } from 'react-router-dom'
 
@@ -34,6 +36,14 @@ export default function privateRoutesUser() {
 			{
 				path: '/other-services/checkout',
 				element: <PaymentOtherServicePageLazy />
+			},
+			{
+				path: '/training',
+				element: <TrainingPageLazy />
+			},
+			{
+				path: '/training/calendar',
+				element: <TrainingCalendarPageLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]

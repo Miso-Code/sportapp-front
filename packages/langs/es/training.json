@@ -29,5 +29,16 @@
 	"strength": "Resistencia",
 	"coolDown": "Enfriamiento",
 	"totalDuration": "Duración Total",
-	"upcomingTraining": "Próximo Entrenamiento"
+	"upcomingTraining": "Próximo Entrenamiento",
+	"hour": "Hora",
+	"event": "Evento",
+	"events": "Eventos",
+	"tomorrow": "Mañana",
+	"previous": "Anterior",
+	"yesterday": "Ayer",
+	"work_week": "Semana Laboral",
+	"date": "Fecha",
+	"allDay": "Todo el día",
+	"showMore": "+ {{total}} más",
+	"next": "Siguiente"
 }
