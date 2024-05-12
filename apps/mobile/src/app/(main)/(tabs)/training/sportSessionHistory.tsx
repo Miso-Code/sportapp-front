@@ -29,13 +29,15 @@ import {
 	useTrainingPlanStore,
 	initialTrainingPlanState,
 	useSportEventStore,
-	initialSportEventState
+	initialSportEventState,
+	useBusinessPartnerStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 
 import KeyboardAvoidingDialog from '@/components/KeyboardAvoidingDialog'
 import TrianingCard from '@/components/TrainingCard'
 import EventCard from '@/components/EventCard'
+import ProductServiceCard from '@/components/ProductServiceCard'
 import { useLocation } from '@/hooks/useLocation'
 
 interface SportSessionHistoryEvent extends ICalendarEventBase {
@@ -233,10 +235,15 @@ const SportSessionHistory: React.FC = () => {
 		useSportSessionStore()
 	const { trainingPlanSessions, getTrainingPlan } = useTrainingPlanStore()
 	const { sportEvents, getSportEvents } = useSportEventStore()
+	const { setProductToCheckout, suggestProduct } = useBusinessPartnerStore()
 
 	const [isLoading, setIsLoading] = useState(true)
 	const [isCalendarActive, setIsCalendarActive] = useState(true)
 	const [calendarHeight, setCalendarHeight] = useState(0)
+	const [suggestedProduct, setSuggestedProduct] =
+		useState<Awaited<ReturnType<typeof suggestProduct>>>()
+	const [loadingSuggestedProduct, setLoadingSuggestedProduct] =
+		useState(false)
 	const [calendarMode, setCalendarMode] =
 		useState<ComponentProps<typeof Calendar>['mode']>('month')
 	const [calendarHeader, setCalendarHeader] = useState<Date>(new Date())
@@ -325,6 +332,14 @@ const SportSessionHistory: React.FC = () => {
 					(sE) => sE.event_id === event.id
 				)
 				setSelectedSportEvent(sportEvent)
+				;(async () => {
+					setLoadingSuggestedProduct(true)
+					const product = await suggestProduct({
+						sport_id: sportEvent.sport_id
+					})
+					setSuggestedProduct(product)
+					setLoadingSuggestedProduct(false)
+				})()
 				break
 			}
 		}
@@ -465,7 +480,7 @@ const SportSessionHistory: React.FC = () => {
 					testID='eventModal'
 					visible={!!selectedSportEvent}
 					onDismiss={() => setSelectedSportEvent(null)}>
-					<View style={styles.modalContent}>
+					<ScrollView contentContainerStyle={styles.modalContent}>
 						{selectedSportEvent && (
 							<>
 								<Text variant='titleLarge'>
@@ -511,6 +526,50 @@ const SportSessionHistory: React.FC = () => {
 								<Text variant='bodyLarge'>
 									{selectedSportEvent.description}
 								</Text>
+								{loadingSuggestedProduct ? (
+									<ActivityIndicator />
+								) : (
+									suggestedProduct && (
+										<View
+											style={
+												styles.suggestedProductContainer
+											}>
+											<Text variant='titleSmall'>
+												{t('productService.suggestion')}
+											</Text>
+											<ProductServiceCard
+												title={suggestedProduct.name}
+												description={
+													suggestedProduct.description
+												}
+												price={suggestedProduct.price}
+												priceFrequency={
+													suggestedProduct.payment_frequency
+												}
+												image={
+													suggestedProduct.image_url
+												}
+												category={
+													suggestedProduct.category
+												}
+												onPress={() => {
+													setSelectedSportEvent(null)
+													setProductToCheckout(
+														suggestedProduct
+													)
+													router.push({
+														pathname:
+															'training/servicesAndProductsCheckout',
+														params: {
+															quantity: 1
+														}
+													})
+												}}
+												small
+											/>
+										</View>
+									)
+								)}
 								<View style={styles.actionsContainer}>
 									<Button
 										testID='cancelButton'
@@ -523,7 +582,7 @@ const SportSessionHistory: React.FC = () => {
 								</View>
 							</>
 						)}
-					</View>
+					</ScrollView>
 				</KeyboardAvoidingDialog>
 			</Portal>
 			<View style={styles.container}>
@@ -660,7 +719,7 @@ const SportSessionHistory: React.FC = () => {
 										<EventCard
 											key={
 												'card-event-' +
-												event.id +
+												event.event_id +
 												'-' +
 												i
 											}
@@ -741,6 +800,10 @@ const styles = StyleSheet.create({
 		height: 200,
 		width: '100%',
 		marginVertical: 10
+	},
+	suggestedProductContainer: {
+		marginVertical: 10,
+		gap: 10
 	}
 })
 

@@ -4,9 +4,11 @@ import { router } from 'expo-router'
 import {
 	useAlertStore,
 	useAuthStore,
+	useNutritionalPlanStore,
 	useSportSessionStore,
 	useSportStore,
-	useTrainingPlanStore
+	useTrainingPlanStore,
+	useUserStore
 } from '@sportapp/stores'
 import { useLocation } from '@/hooks/useLocation'
 
@@ -17,10 +19,12 @@ jest.mock('expo-router')
 jest.mock('@sportapp/stores', () => {
 	return {
 		useAuthStore: jest.fn(),
+		useUserStore: jest.fn(),
 		useSportSessionStore: jest.fn(),
 		useSportStore: jest.fn(),
 		useAlertStore: jest.fn(),
-		useTrainingPlanStore: jest.fn()
+		useTrainingPlanStore: jest.fn(),
+		useNutritionalPlanStore: jest.fn()
 	}
 })
 jest.mock('@/hooks/usePedometer', () => {
@@ -78,6 +82,14 @@ describe('SportSession', () => {
 				id: '1'
 			}
 		})
+		;(useUserStore as unknown as jest.Mock).mockReturnValue({
+			user: {
+				sportData: {
+					favourite_sport_id: '1'
+				}
+			},
+			getSport: jest.fn()
+		})
 		;(useSportSessionStore as unknown as jest.Mock).mockReturnValue({
 			startSportSession: jest.fn().mockReturnValue({
 				session_id: '1'
@@ -110,6 +122,9 @@ describe('SportSession', () => {
 					user_id: 'user_id'
 				}
 			]
+		})
+		;(useNutritionalPlanStore as unknown as jest.Mock).mockReturnValue({
+			notifyCaloryIntake: jest.fn()
 		})
 		component = renderer.create(<SportSession />)
 	})
@@ -575,6 +590,43 @@ describe('SportSession', () => {
 			expect(router.push).toHaveBeenCalledWith(
 				'training/sportSessionSummary'
 			)
+		})
+
+		it('should call notifyCaloryIntake when the timer is stopped', async () => {
+			const stopButton = component.root.findByProps({
+				testID: 'stopButton'
+			})
+			await act(async () => {
+				stopButton.props.onPress()
+				await Promise.resolve()
+			})
+
+			expect(
+				useNutritionalPlanStore().notifyCaloryIntake
+			).toHaveBeenCalled()
+		})
+
+		it('should call setAlert when the timer is stopped and there is a response on notifyCaloryIntake', async () => {
+			;(
+				useNutritionalPlanStore().notifyCaloryIntake as jest.Mock
+			).mockReturnValue({
+				user_id: 'user_id',
+				message: 'message'
+			})
+
+			const stopButton = component.root.findByProps({
+				testID: 'stopButton'
+			})
+			await act(async () => {
+				stopButton.props.onPress()
+				await Promise.resolve()
+			})
+
+			expect(useAlertStore().setAlert).toHaveBeenCalledWith({
+				type: 'info',
+				message: 'message',
+				position: 'top'
+			})
 		})
 	})
 

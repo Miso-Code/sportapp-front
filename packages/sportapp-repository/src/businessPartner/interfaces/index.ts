@@ -24,6 +24,7 @@ export interface Product {
 	description: string
 	summary: string
 	active: boolean
+	sport_id?: string
 }
 
 export interface PaginatedRequest {
@@ -56,3 +57,5 @@ export interface PurchaseProductResponse {
 	transaction_date: string
 	message: string
 }
+
+export type SuggestProductRequest = Pick<Partial<Product>, 'category'|'sport_id'>

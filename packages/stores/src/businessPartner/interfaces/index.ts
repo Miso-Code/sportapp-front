@@ -2,7 +2,8 @@ import {
 	Product,
 	ProductRequest,
 	PurchaseProductRequest,
-	PurchaseProductResponse
+	PurchaseProductResponse,
+	SuggestProductRequest
 } from '@sportapp/sportapp-repository/src/businessPartner/interfaces'
 
 export interface IBusinessPartnerStore
@@ -20,6 +21,7 @@ export interface IBusinessPartnerActions {
 	purchaseProduct: (
 		payload: PurchaseProductRequest
 	) => Promise<PurchaseProductResponse | undefined>
+	suggestProduct: (request:SuggestProductRequest) => Promise<Product | undefined>
 	setProductToCheckout: (product: Product | undefined) => void
 	clearState: () => void
 }

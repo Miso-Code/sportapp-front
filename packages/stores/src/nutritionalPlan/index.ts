@@ -31,6 +31,15 @@ export const useNutritionalPlanStore = create<INutritionalPlanStore>(
 			set({ planDishes, loading: false })
 			return planDishes
 		},
+		notifyCaloryIntake: async (request) => {
+			const api = new nutritionalPlanApi()
+			const authToken = useAuthStore.getState().authToken?.accessToken
+			return await api.notifyCaloryIntake(request, {
+				headers: {
+					Authorization: `Bearer ${authToken}`
+				}
+			})
+		},
 		clearState: () =>
 			set((state) => ({ ...state, ...initialNutritionalPlanState }))
 	})

@@ -9,13 +9,15 @@ exports[`SportSessionHistory should render correctly 1`] = `
       }
     }
   />,
-  <View
-    style={
+  <RCTScrollView
+    contentContainerStyle={
       {
         "minHeight": 250,
       }
     }
-  />,
+  >
+    <View />
+  </RCTScrollView>,
   <View
     style={
       {

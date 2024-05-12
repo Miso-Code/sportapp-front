@@ -25,5 +25,6 @@
     "cancel": "Cancelar",
     "processingPayment": "Procesando pago",
     "paymentSuccess": "Pago exitoso",
-    "paymentFailed": "Pago fallido"
+    "paymentFailed": "Pago fallido",
+    "suggestion": "Recomendado de nuestros socios"
 }

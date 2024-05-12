@@ -8,7 +8,7 @@ import { useAuthStore } from '..'
 
 export const initialSportEventState: ISportEventState = {
 	sportEvents: [],
-	loading: false,
+	loading: false
 }
 
 export const useSportEventStore = create<ISportEventStore>(
@@ -19,16 +19,20 @@ export const useSportEventStore = create<ISportEventStore>(
 			set({ loading: true })
 			const api = new sportEventApi()
 			const authToken = useAuthStore.getState().authToken?.accessToken
-			const sportEvents = await api.getAllSportEvents(latitude, longitude, {
-				headers: {
-					Authorization: `Bearer ${authToken}`
+			const sportEvents = await api.getAllSportEvents(
+				latitude,
+				longitude,
+				{
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
 				}
-			})
+			)
 			if (!sportEvents) {
 				set({ loading: false })
 				return
 			}
-			set({ sportEvents, loading: false})
+			set({ sportEvents, loading: false })
 			return sportEvents
 		},
 		getSportEvent(sport_id) {
@@ -42,7 +46,8 @@ export const useSportEventStore = create<ISportEventStore>(
 				}
 			})
 		},
-		clearState: () => set((state) => ({ ...state, ...initialSportEventState }))
+		clearState: () =>
+			set((state) => ({ ...state, ...initialSportEventState }))
 	})
 	// 	{
 	// 		name: 'SportEvent-storage',

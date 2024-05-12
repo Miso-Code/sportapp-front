@@ -121,4 +121,42 @@ describe('BusinessPartnerApi', () => {
 			})
 		})
 	})
+	describe('suggestProduct', () => {
+		it('should call the suggestProduct endpoint', async () => {
+			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						product_id: 'product_id',
+						category: 'category',
+						name: 'name',
+						url: 'url',
+						price: 100,
+						payment_type: 'payment_type',
+						payment_frequency: 'payment_frequency',
+						image_url: 'image_url',
+						description: 'description',
+						active: true
+					}
+				})
+			)
+			const api = new sportApi()
+			const response = await api.suggestProduct({
+				category: 'apparel'
+			})
+
+			expect(response).toStrictEqual({
+				product_id: 'product_id',
+				category: 'category',
+				name: 'name',
+				url: 'url',
+				price: 100,
+				payment_type: 'payment_type',
+				payment_frequency: 'payment_frequency',
+				image_url: 'image_url',
+				description: 'description',
+				active: true
+			})
+		})
+	})
 })

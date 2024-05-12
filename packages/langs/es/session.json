@@ -6,5 +6,7 @@
 	"steps": "Pasos",
 	"distance": "Distancia",
 	"speed": "Velocidad",
-	"heartRate": "Ritmo Cardíaco"
+	"heartRate": "Ritmo Cardíaco",
+	"nutritionalSuggestionTitle": "Sugerencia Nutricional",
+	"nutritionalSuggestion": "Excelente trabajo! has quemado muchas calorias pero no olvides que debes consumir alimentos saludables para mantener tu cuerpo en forma."
 }
