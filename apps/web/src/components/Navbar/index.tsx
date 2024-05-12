@@ -14,7 +14,7 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './_index.scss'
-import { Props } from './interfaces'
+import { PathToStep, Props } from './interfaces'
 
 export default function Navbar({ className = '' }: Props) {
 	const { t } = useTranslation()
@@ -25,17 +25,18 @@ export default function Navbar({ className = '' }: Props) {
 	const currentPath = location.pathname
 
 	const currentStep = useMemo(() => {
-		if (currentPath.includes('/home')) {
-			return 0
+		const pathToStep: PathToStep = {
+			'/home': 0,
+			'/training': 1,
+			'/other-services': 2,
+			'/premium': 3,
+			'/config': 4
 		}
-		if (currentPath.includes('/premium')) {
-			return 3
-		}
-		if (currentPath.includes('/config')) {
-			return 4
-		}
-		if (currentPath.includes('/other-services')) {
-			return 2
+
+		for (const path in pathToStep) {
+			if (currentPath.includes(path)) {
+				return pathToStep[path as keyof PathToStep]
+			}
 		}
 		return -1
 	}, [currentPath])
@@ -64,6 +65,7 @@ export default function Navbar({ className = '' }: Props) {
 					<BottomNavigationAction
 						label={t('navbar.training')}
 						LinkComponent={'a'}
+						onClick={() => navigate('/training')}
 						className='navbar-content-navigation-button'
 						icon={<FavoriteIcon />}
 					/>
