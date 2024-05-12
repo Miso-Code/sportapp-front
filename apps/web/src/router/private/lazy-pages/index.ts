@@ -8,6 +8,10 @@ export const OtherServicePageLazy = lazy(
 export const PaymentOtherServicePageLazy = lazy(
 	() => import('@/pages/User/OtherServices/Payment')
 )
+export const TrainingPageLazy = lazy(() => import('@/pages/User/Training'))
+export const TrainingCalendarPageLazy = lazy(
+	() => import('@/pages/User/Training/Calendar')
+)
 
 // partner pages
 export const HomePartnerLazy = lazy(() => import('@/pages/Partner/Home'))

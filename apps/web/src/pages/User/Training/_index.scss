@@ -1,0 +1,31 @@
+.training {
+	@apply bg-white;
+
+	&-section {
+		@apply mt-10;
+
+		&-container {
+			height: 4rem;
+		}
+	}
+
+	&-menu {
+		&-section {
+			&-container {
+				height: 4rem;
+			}
+		}
+
+		&-item {
+			@apply h-full;
+		}
+	}
+
+	&-custom-button {
+		@apply mt-4;
+
+		&__max-w-md {
+			@apply max-w-md;
+		}
+	}
+}

@@ -1,0 +1,46 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.training-calendar-component {
+	.rbc-toolbar-label {
+		@apply uppercase font-bold text-lg;
+	}
+
+	.rbc-header {
+		@apply uppercase font-bold text-sm;
+	}
+
+	.rbc-toolbar button:active,
+	.rbc-toolbar button.rbc-active {
+		@apply bg-[#425E91] text-white;
+	}
+
+	.rbc-toolbar {
+		button:hover {
+			@apply bg-[#425E91] text-white;
+		}
+
+		button:focus {
+			@apply bg-[#425E91] text-white;
+		}
+	}
+
+	.event-custom-type {
+		&-training {
+			.rbc-event {
+				@apply bg-[#425E91] text-white;
+			}
+		}
+
+		&-event {
+			.rbc-event {
+				@apply bg-[#F9A825] text-white;
+			}
+		}
+
+		&-session {
+			.rbc-event {
+				@apply bg-[#5e339a] text-white;
+			}
+		}
+	}
+}
