@@ -13,53 +13,24 @@ import { router } from 'expo-router'
 const SportSessionSummary: React.FC = () => {
 	const theme = useTheme()
 	const { t } = useTranslation()
-	// const { sportSession } = useSportSessionStore()
-	const { getSportSessions } = useSportSessionStore()
+	const { sportSession } = useSportSessionStore()
 	const { setProductToCheckout, suggestProduct } = useBusinessPartnerStore()
 
-	const [loadingSuggestedProduct, setLoadingSuggestedProduct] = useState(false)
-	const [suggestedProduct, setSuggestedProduct] = useState<Awaited<ReturnType<typeof suggestProduct>>>()
-
-	const sportSession: Awaited<ReturnType<typeof getSportSessions>>[number] = useMemo(() => ({
-		calories: 10,
-		duration: 10,
-		steps: 10,
-		distance: 10,
-		average_speed: 10,
-		min_heartrate: 10,
-		avg_heartrate: 10,
-		max_heartrate: 10,
-		session_id: "1",
-		sport_id: "1",
-		started_at: new Date().toISOString(),
-		user_id: "1"
-	}), [])
+	const [loadingSuggestedProduct, setLoadingSuggestedProduct] =
+		useState(false)
+	const [suggestedProduct, setSuggestedProduct] =
+		useState<Awaited<ReturnType<typeof suggestProduct>>>()
 
 	useEffect(() => {
 		if (sportSession) {
 			setLoadingSuggestedProduct(true)
 				; (async () => {
-					// const product = await suggestProduct({
-					// 	sport_id: sportSession.sport_id,
-					// })
-					const product = {
-						name: 'Verduritas',
-						description: 'pa los gordos',
-						price: 10,
-						payment_frequency: 'monthly' as const,
-						image_url: 'https://www.cspinet.org/sites/default/files/styles/700x530/public/2023-09/Gheorghita_fruitVeg_adobe_hero_700x530px.jpg?h=61bc1599',
-						category: 'equipement' as const,
-						product_id: '1',
-						business_partner_id: '1',
-						url: 'https://example.com',
-						payment_type: 'unique' as const,
-						summary: 'summary',
-						active: true
-					}
+					const product = await suggestProduct({
+						category: 'nutrition',
+					})
 					setSuggestedProduct(product)
 					setLoadingSuggestedProduct(false)
-				}
-				)()
+				})()
 		}
 	}, [sportSession])
 
@@ -68,33 +39,58 @@ const SportSessionSummary: React.FC = () => {
 			<ScrollView contentContainerStyle={styles.container}>
 				{sportSession ? (
 					<>
-						<Text variant='headlineMedium'>
-							{t('session.nutritionalSuggestionTitle')}
-						</Text>
-						<Text>
-							{t('session.nutritionalSuggestion')}
-						</Text>
-						{loadingSuggestedProduct ? <ActivityIndicator /> : suggestedProduct && <View style={styles.suggestedProductContainer}>
-							<ProductServiceCard
-								title={suggestedProduct.name}
-								description={suggestedProduct.description}
-								price={suggestedProduct.price}
-								priceFrequency={suggestedProduct.payment_frequency}
-								image={suggestedProduct.image_url}
-								category={suggestedProduct.category}
-								onPress={() => {
-									setProductToCheckout(suggestedProduct)
-									router.push({
-										pathname:
-											'training/servicesAndProductsCheckout',
-										params: {
-											quantity: 1
-										}
-									})
-								}}
-								small
-							/>
-						</View>}
+						{loadingSuggestedProduct ? (
+							<ActivityIndicator />
+						) : (
+							<>
+								{suggestedProduct && (
+									<>
+										<Text variant='headlineMedium'>
+											{t(
+												'session.nutritionalSuggestionTitle'
+											)}
+										</Text>
+										<Text>
+											{t('session.nutritionalSuggestion')}
+										</Text>
+										<View
+											style={
+												styles.suggestedProductContainer
+											}>
+											<ProductServiceCard
+												title={suggestedProduct.name}
+												description={
+													suggestedProduct.description
+												}
+												price={suggestedProduct.price}
+												priceFrequency={
+													suggestedProduct.payment_frequency
+												}
+												image={
+													suggestedProduct.image_url
+												}
+												category={
+													suggestedProduct.category
+												}
+												onPress={() => {
+													setProductToCheckout(
+														suggestedProduct
+													)
+													router.push({
+														pathname:
+															'training/servicesAndProductsCheckout',
+														params: {
+															quantity: 1
+														}
+													})
+												}}
+												small
+											/>
+										</View>
+									</>
+								)}
+							</>
+						)}
 						<Text variant='headlineMedium'>Métricas</Text>
 						<View>
 							<Kpi
@@ -173,8 +169,8 @@ const SportSessionSummary: React.FC = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
+		justifyContent: 'center',
+		alignItems: 'center',
 		paddingVertical: 100,
 		marginHorizontal: 20,
 		gap: 20
@@ -184,7 +180,7 @@ const styles = StyleSheet.create({
 		marginVertical: 100
 	},
 	suggestedProductContainer: {
-		width: '100%',
+		width: '100%'
 	}
 })
 

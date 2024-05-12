@@ -34,6 +34,7 @@ const SportSession: React.FC = () => {
 	const { startSportSession, finishSportSession, addSessionLocation } =
 		useSportSessionStore()
 	const { setAlert } = useAlertStore()
+	const { sports, getSports } = useSportStore()
 	const { trainingPlanSessions } = useTrainingPlanStore()
 	const { notifyCaloryIntake } = useNutritionalPlanStore()
 
@@ -42,7 +43,7 @@ const SportSession: React.FC = () => {
 		[trainingPlanSessions]
 	)
 
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 
 	const { isPedometerAvailable, currentStepCount } = usePedometer()
 	const { locationUpdates, isLocationAvailable } = useLocation()
@@ -61,7 +62,9 @@ const SportSession: React.FC = () => {
 
 	const [sessionID, setSessionID] = useState<string | null>(null)
 
-	const [plannedTrainingSession, setPlannedTrainingSession] = useState<typeof trainingPlanSessionsMemo[number] | null>()
+	const [plannedTrainingSession, setPlannedTrainingSession] = useState<
+		(typeof trainingPlanSessionsMemo)[number] | null
+	>()
 
 	const motivationalInterval = useRef<ReturnType<typeof setInterval> | null>(
 		null
@@ -105,7 +108,7 @@ const SportSession: React.FC = () => {
 
 		const response = await startSportSession({
 			user_id: userAuth.id,
-			sport_id: user?.sportData?.favourite_sport_id || '',
+			sport_id: user?.sportData?.favourite_sport_id || sports[0].sport_id,
 			started_at: startedAt.toISOString(),
 			initial_location
 		})
@@ -115,15 +118,25 @@ const SportSession: React.FC = () => {
 		}
 	}
 
-	function calculateSessionCalories(weight, trainingSession) {
-		const warmUpCaloriesBurned = trainingSession["warm_up"] * 2 * weight;
-		const cardioCaloriesBurned = trainingSession["cardio"] * 3.5 * weight;
-		const strengthCaloriesBurned = trainingSession["strength"] * 5.5 * weight;
-		const coolDownCaloriesBurned = trainingSession["cool_down"] * 1.5 * weight;
-		const totalCaloriesBurned = warmUpCaloriesBurned + cardioCaloriesBurned + strengthCaloriesBurned + coolDownCaloriesBurned;
-		return Math.round(totalCaloriesBurned);
-	}
-
+	const calculateSessionCalories = useCallback(
+		(weight, trainingSession) => {
+			if (!trainingSession)
+				return Math.round((maxTime / 3_600) * 3.5 * weight)
+			const warmUpCaloriesBurned = trainingSession.warm_up * 2 * weight
+			const cardioCaloriesBurned = trainingSession.cardio * 3.5 * weight
+			const strengthCaloriesBurned =
+				trainingSession.strength * 5.5 * weight
+			const coolDownCaloriesBurned =
+				trainingSession.cool_down * 1.5 * weight
+			const totalCaloriesBurned =
+				warmUpCaloriesBurned +
+				cardioCaloriesBurned +
+				strengthCaloriesBurned +
+				coolDownCaloriesBurned
+			return Math.round(totalCaloriesBurned)
+		},
+		[maxTime]
+	)
 
 	const handlePause = () => {
 		setIsPaused(true)
@@ -158,22 +171,40 @@ const SportSession: React.FC = () => {
 		}
 		const response = await finishSportSession(payload)
 
-		const calories = response?.calories || 0
-		const plannedCalories = calculateSessionCalories(user.sportData.weight, plannedTrainingSession)
-		
-		await notifyCaloryIntake({
+		const calories = response?.calories ?? 0
+		const plannedCalories = calculateSessionCalories(
+			user?.sportData?.weight,
+			plannedTrainingSession
+		)
+
+		const notifyResponse = await notifyCaloryIntake({
 			calories_burn: calories,
-			calories_burn_expected: plannedCalories
+			calories_burn_expected: plannedCalories,
+			lang: i18n.language
 		})
+
+		if (notifyResponse) {
+			setAlert({
+				type: 'info',
+				message: notifyResponse.message,
+				position: 'top'
+			})
+		}
 
 		router.push('training/sportSessionSummary')
 	}, [
 		timer,
+		sessionID,
 		currentTime,
 		isPedometerAvailable,
-		currentStepCount,
 		finishSportSession,
-		sessionID
+		calculateSessionCalories,
+		user?.sportData?.weight,
+		plannedTrainingSession,
+		notifyCaloryIntake,
+		i18n.language,
+		currentStepCount,
+		setAlert
 	])
 
 	const sendMotivationalMessage = (doingGreat = true) => {
@@ -222,6 +253,10 @@ const SportSession: React.FC = () => {
 			}
 		}
 	}, [timer])
+
+	useEffect(() => {
+		getSports()
+	}, [getSports])
 
 	useEffect(() => {
 		getSport()

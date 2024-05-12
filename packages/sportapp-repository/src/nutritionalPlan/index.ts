@@ -4,6 +4,7 @@ import endpoints from './endpoints'
 import {
 	GetNutritionalPlanDishesRequest,
 	NotifyCaloryIntakeRequest,
+	NotifyCaloryIntakeResponse,
 	NutritionalPlanDish,
 	NutritionalPlanDishRaw
 } from './interfaces'
@@ -73,14 +74,25 @@ export default class sportApi {
 	async notifyCaloryIntake(
 		request: NotifyCaloryIntakeRequest,
 		options: AxiosRequestConfig
-	): Promise<boolean | undefined> {
+	): Promise<NotifyCaloryIntakeResponse | undefined> {
 		try {
 			const endpoint = endpoints.notifyCaloryIntake
 
-			const response = await this.sportappApi.post(endpoint,request, options)
+			const { lang, ...body } = request
+
+			options.params = {
+				lang
+			}
+
+			const response =
+				await this.sportappApi.post<NotifyCaloryIntakeResponse>(
+					endpoint,
+					body,
+					options
+				)
 
 			if (response.status.toString().startsWith('2')) {
-				return true
+				return response.data
 			}
 		} catch (error) {
 			console.error(error)

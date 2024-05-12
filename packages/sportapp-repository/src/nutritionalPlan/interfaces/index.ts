@@ -20,6 +20,12 @@ export interface GetNutritionalPlanDishesRequest {
 }
 
 export interface NotifyCaloryIntakeRequest {
-    calories_burn_expected: number,
-    calories_burn : number
+	calories_burn_expected: number
+	calories_burn: number
+	lang: string
+}
+
+export interface NotifyCaloryIntakeResponse {
+	user_id: string
+	message: string
 }

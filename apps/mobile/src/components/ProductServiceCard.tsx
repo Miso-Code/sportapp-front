@@ -36,23 +36,39 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 		(priceFrequency ? ` / ${t('productService.' + priceFrequency)}` : '')
 
 	return (
-		<Card elevation={1} style={styles.card} contentStyle={small ? styles.smallCard : undefined} {...props}>
-			<Card.Cover source={{ uri: image }} style={small ? styles.smallCover : undefined} />
+		<Card
+			elevation={1}
+			style={styles.card}
+			contentStyle={small ? styles.smallCard : undefined}
+			{...props}>
+			<Card.Cover
+				source={{ uri: image }}
+				style={small ? styles.smallCover : undefined}
+			/>
 			<Card.Content style={styles.cardContent}>
 				<Text variant='titleLarge' style={styles.cardTitle}>
 					{title}
 				</Text>
-				<Text variant='bodyMedium'>{description}</Text>
-				{!small && <View style={styles.chipContainer}>
-					<Chip textStyle={styles.chip} style={styles.chipBackground}>
-						{t(`productService.${category}`)}
-					</Chip>
-					<Chip
-						textStyle={styles.chipCost}
-						style={styles.chipCostBackground}>
-						{formattedPrice}
-					</Chip>
-				</View>}
+				<Text
+					variant='bodyMedium'
+					ellipsizeMode={small ? 'tail' : undefined}
+					numberOfLines={small ? 3 : undefined}>
+					{description}
+				</Text>
+				{!small && (
+					<View style={styles.chipContainer}>
+						<Chip
+							textStyle={styles.chip}
+							style={styles.chipBackground}>
+							{t(`productService.${category}`)}
+						</Chip>
+						<Chip
+							textStyle={styles.chipCost}
+							style={styles.chipCostBackground}>
+							{formattedPrice}
+						</Chip>
+					</View>
+				)}
 			</Card.Content>
 		</Card>
 	)
@@ -92,11 +108,11 @@ const createStyles = (theme: MD3Theme) =>
 		},
 		smallCard: {
 			flexDirection: 'row',
-			width: '100%',
+			width: '100%'
 		},
 		smallCover: {
 			width: 100,
-			height: 100,
+			height: 100
 		}
 	})
 

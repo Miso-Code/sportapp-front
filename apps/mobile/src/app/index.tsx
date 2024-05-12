@@ -16,7 +16,7 @@ const Index: React.FC = () => {
 
 	useEffect(() => {
 		if (rootNavigationState?.key)
-			router.navigate(true ? 'profile' : 'login')
+			router.navigate(isAuth ? 'profile' : 'login')
 	}, [isAuth, rootNavigationState?.key])
 
 	return (

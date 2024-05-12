@@ -74,6 +74,8 @@ export default class businessPartnerApi {
 				options
 			)
 
+			console.log(response.data)
+
 			if (response.status.toString().startsWith('2')) {
 				return response.data
 			}

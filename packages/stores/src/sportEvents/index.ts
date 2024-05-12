@@ -7,18 +7,8 @@ import { ISportEventState, ISportEventStore } from './interfaces'
 import { useAuthStore } from '..'
 
 export const initialSportEventState: ISportEventState = {
-	sportEvents: [{
-		event_id: '1',
-		title: 'Fake event',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-		location_latitude: 0,
-		location_longitude: 0,
-		sport_id: '1',
-		start_date: new Date().toISOString(),
-		end_date: new Date().toISOString(),
-		capacity: 0,
-	}],
-	loading: false,
+	sportEvents: [],
+	loading: false
 }
 
 export const useSportEventStore = create<ISportEventStore>(
@@ -29,16 +19,20 @@ export const useSportEventStore = create<ISportEventStore>(
 			set({ loading: true })
 			const api = new sportEventApi()
 			const authToken = useAuthStore.getState().authToken?.accessToken
-			const sportEvents = await api.getAllSportEvents(latitude, longitude, {
-				headers: {
-					Authorization: `Bearer ${authToken}`
+			const sportEvents = await api.getAllSportEvents(
+				latitude,
+				longitude,
+				{
+					headers: {
+						Authorization: `Bearer ${authToken}`
+					}
 				}
-			})
+			)
 			if (!sportEvents) {
 				set({ loading: false })
 				return
 			}
-			set({ sportEvents, loading: false})
+			set({ sportEvents, loading: false })
 			return sportEvents
 		},
 		getSportEvent(sport_id) {
@@ -52,7 +46,8 @@ export const useSportEventStore = create<ISportEventStore>(
 				}
 			})
 		},
-		clearState: () => set((state) => ({ ...state, ...initialSportEventState }))
+		clearState: () =>
+			set((state) => ({ ...state, ...initialSportEventState }))
 	})
 	// 	{
 	// 		name: 'SportEvent-storage',

@@ -240,8 +240,10 @@ const SportSessionHistory: React.FC = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isCalendarActive, setIsCalendarActive] = useState(true)
 	const [calendarHeight, setCalendarHeight] = useState(0)
-	const [suggestedProduct, setSuggestedProduct] = useState<Awaited<ReturnType<typeof suggestProduct>>>()
-	const [loadingSuggestedProduct, setLoadingSuggestedProduct] = useState(false)
+	const [suggestedProduct, setSuggestedProduct] =
+		useState<Awaited<ReturnType<typeof suggestProduct>>>()
+	const [loadingSuggestedProduct, setLoadingSuggestedProduct] =
+		useState(false)
 	const [calendarMode, setCalendarMode] =
 		useState<ComponentProps<typeof Calendar>['mode']>('month')
 	const [calendarHeader, setCalendarHeader] = useState<Date>(new Date())
@@ -524,29 +526,50 @@ const SportSessionHistory: React.FC = () => {
 								<Text variant='bodyLarge'>
 									{selectedSportEvent.description}
 								</Text>
-								{loadingSuggestedProduct ? <ActivityIndicator /> : suggestedProduct && <View style={styles.suggestedProductContainer}>
-									<Text variant='titleSmall'>{t('productService.suggestion')}</Text>
-									<ProductServiceCard
-										title={suggestedProduct.name}
-										description={suggestedProduct.description}
-										price={suggestedProduct.price}
-										priceFrequency={suggestedProduct.payment_frequency}
-										image={suggestedProduct.image_url}
-										category={suggestedProduct.category}
-										onPress={() => {
-											setSelectedSportEvent(null)
-											setProductToCheckout(suggestedProduct)
-											router.push({
-												pathname:
-													'training/servicesAndProductsCheckout',
-												params: {
-													quantity: 1
+								{loadingSuggestedProduct ? (
+									<ActivityIndicator />
+								) : (
+									suggestedProduct && (
+										<View
+											style={
+												styles.suggestedProductContainer
+											}>
+											<Text variant='titleSmall'>
+												{t('productService.suggestion')}
+											</Text>
+											<ProductServiceCard
+												title={suggestedProduct.name}
+												description={
+													suggestedProduct.description
 												}
-											})
-										}}
-										small
-									/>
-								</View>}
+												price={suggestedProduct.price}
+												priceFrequency={
+													suggestedProduct.payment_frequency
+												}
+												image={
+													suggestedProduct.image_url
+												}
+												category={
+													suggestedProduct.category
+												}
+												onPress={() => {
+													setSelectedSportEvent(null)
+													setProductToCheckout(
+														suggestedProduct
+													)
+													router.push({
+														pathname:
+															'training/servicesAndProductsCheckout',
+														params: {
+															quantity: 1
+														}
+													})
+												}}
+												small
+											/>
+										</View>
+									)
+								)}
 								<View style={styles.actionsContainer}>
 									<Button
 										testID='cancelButton'
