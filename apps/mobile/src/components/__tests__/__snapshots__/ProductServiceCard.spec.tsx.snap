@@ -27,7 +27,6 @@ exports[`ProductServiceCard should render correctly 1`] = `
         "borderRadius": 12,
         "elevation": 1,
         "flex": undefined,
-        "paddingBottom": 10,
         "shadowColor": "#000",
         "shadowOffset": {
           "height": 1,

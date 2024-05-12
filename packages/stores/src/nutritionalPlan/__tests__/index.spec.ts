@@ -28,7 +28,11 @@ jest.mock('@sportapp/sportapp-repository/src/nutritionalPlan', () => {
 					carbs: 200,
 					fat: 200
 				}
-			])
+			]),
+			notifyCaloryIntake: jest.fn().mockReturnValue({
+				user_id: 'user_id',
+				message: 'message'
+			})
 		}))
 	}
 })
@@ -114,6 +118,24 @@ describe('NutritionalPlanStore', () => {
 					fat: 200
 				}
 			])
+		})
+		it('should notify calory intake', async () => {
+			const { result } = renderHook(() => useNutritionalPlanStore())
+			const { notifyCaloryIntake } = result.current
+
+			let response = undefined
+			await act(async () => {
+				response = await notifyCaloryIntake({
+					calories_burn_expected: 100,
+					calories_burn: 100,
+					lang: 'en'
+				})
+			})
+
+			expect(response).toStrictEqual({
+				user_id: 'user_id',
+				message: 'message'
+			})
 		})
 	})
 })

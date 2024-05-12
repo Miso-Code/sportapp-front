@@ -21,7 +21,7 @@ global.fetch = jest.fn(() => Promise.resolve({ body: {} })) as jest.Mock
 describe('NutritionalPlanApi', () => {
 	describe('getAllNutritionalPlanDishes', () => {
 		it('should call the getAllNutritionalPlanDishes endpoint', async () => {
-			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+			; (sportappApi.get as jest.Mock).mockImplementationOnce(() =>
 				Promise.resolve({
 					status: 200,
 					data: [
@@ -75,7 +75,7 @@ describe('NutritionalPlanApi', () => {
 		})
 
 		it('should call the getAllNutritionalPlanDishes endpoint translated', async () => {
-			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+			; (sportappApi.get as jest.Mock).mockImplementationOnce(() =>
 				Promise.resolve({
 					status: 200,
 					data: [
@@ -129,7 +129,7 @@ describe('NutritionalPlanApi', () => {
 		})
 
 		it('should return undefined if the request fails', async () => {
-			;(sportappApi.get as jest.Mock).mockImplementationOnce(() =>
+			; (sportappApi.get as jest.Mock).mockImplementationOnce(() =>
 				Promise.resolve({
 					status: 400
 				})
@@ -137,6 +137,44 @@ describe('NutritionalPlanApi', () => {
 			const api = new nutritionalPlanApi()
 			const response = await api.getAllNutritionalPlanDishes(
 				{ lang: 'en' },
+				{}
+			)
+
+			expect(response).toBeUndefined()
+		})
+	})
+	describe('notifyCaloryIntake', () => {
+		it('should call the notifyCaloryIntake endpoint', async () => {
+			; (sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						user_id: 'user_id',
+						message: 'message'
+					}
+				})
+			)
+			const api = new nutritionalPlanApi()
+			const response = await api.notifyCaloryIntake(
+				{ lang: 'en', calories_burn: 1000, calories_burn_expected: 2000 },
+				{}
+			)
+
+			expect(response).toStrictEqual({
+				user_id: 'user_id',
+				message: 'message'
+			})
+		})
+
+		it('should return undefined if the request fails', async () => {
+			; (sportappApi.post as jest.Mock).mockImplementationOnce(() =>
+				Promise.resolve({
+					status: 400
+				})
+			)
+			const api = new nutritionalPlanApi()
+			const response = await api.notifyCaloryIntake(
+				{ lang: 'en', calories_burn: 1000, calories_burn_expected: 2000 },
 				{}
 			)
 

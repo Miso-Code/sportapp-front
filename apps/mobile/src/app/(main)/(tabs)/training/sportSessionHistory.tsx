@@ -332,14 +332,14 @@ const SportSessionHistory: React.FC = () => {
 					(sE) => sE.event_id === event.id
 				)
 				setSelectedSportEvent(sportEvent)
-					; (async () => {
-						setLoadingSuggestedProduct(true)
-						const product = await suggestProduct({
-							sport_id: sportEvent.sport_id
-						})
-						setSuggestedProduct(product)
-						setLoadingSuggestedProduct(false)
-					})()
+				;(async () => {
+					setLoadingSuggestedProduct(true)
+					const product = await suggestProduct({
+						sport_id: sportEvent.sport_id
+					})
+					setSuggestedProduct(product)
+					setLoadingSuggestedProduct(false)
+				})()
 				break
 			}
 		}
@@ -352,7 +352,7 @@ const SportSessionHistory: React.FC = () => {
 	}, [calendarMode, isCalendarActive, calendarEvents])
 
 	useEffect(() => {
-		; (async () => {
+		;(async () => {
 			setIsLoading(true)
 			await getSportSessions()
 			await getTrainingPlan()
@@ -653,8 +653,8 @@ const SportSessionHistory: React.FC = () => {
 									event.type === 'training'
 										? theme.colors.primary
 										: event.type === 'session'
-											? theme.colors.secondary
-											: theme.colors.tertiary
+										? theme.colors.secondary
+										: theme.colors.tertiary
 							})}
 							onPressEvent={onPressEvent}
 						/>

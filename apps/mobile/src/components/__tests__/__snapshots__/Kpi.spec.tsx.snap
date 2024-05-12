@@ -2,12 +2,16 @@
 
 exports[`Kpi should render correctly 1`] = `
 <View
+  label="label"
+  max={2}
   style={
     {
       "alignItems": "center",
       "justifyContent": "center",
     }
   }
+  type="progress"
+  value={1}
 >
   <View
     style={

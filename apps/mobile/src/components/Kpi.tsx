@@ -5,7 +5,7 @@ import { useTheme, Text, Icon } from 'react-native-paper'
 import { ProgressChart, LineChart } from 'react-native-chart-kit'
 import { hexToRgb } from '@/components/TimerRing'
 
-interface BaseKpiProps {
+interface BaseKpiProps extends ComponentProps<typeof View> {
 	color?: string
 }
 
@@ -33,7 +33,7 @@ export default function Kpi(props: KpiProps) {
 	const textColorRGB = hexToRgb(theme.colors.onBackground)
 
 	return (
-		<View style={styles.container}>
+		<View style={styles.container} {...props}>
 			{props.type === 'progress' && (
 				<>
 					<ProgressChart

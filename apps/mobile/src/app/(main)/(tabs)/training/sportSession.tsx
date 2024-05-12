@@ -92,19 +92,19 @@ const SportSession: React.FC = () => {
 
 		const initial_location = isLocationAvailable
 			? {
-				...locationUpdates[0].coords,
-				altitude_accuracy:
-					locationUpdates[0].coords.altitudeAccuracy
-			}
+					...locationUpdates[0].coords,
+					altitude_accuracy:
+						locationUpdates[0].coords.altitudeAccuracy
+			  }
 			: {
-				latitude: 0,
-				longitude: 0,
-				altitude: 0,
-				accuracy: 0,
-				altitude_accuracy: 0,
-				heading: 0,
-				speed: 0
-			}
+					latitude: 0,
+					longitude: 0,
+					altitude: 0,
+					accuracy: 0,
+					altitude_accuracy: 0,
+					heading: 0,
+					speed: 0
+			  }
 
 		const response = await startSportSession({
 			user_id: userAuth.id,
@@ -226,7 +226,7 @@ const SportSession: React.FC = () => {
 
 	useEffect(() => {
 		if (isRunning && isLocationAvailable && sessionID) {
-			; (async () => {
+			;(async () => {
 				const lastLocation = locationUpdates[locationUpdates.length - 1]
 				const location = {
 					...lastLocation.coords,

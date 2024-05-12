@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { ActivityIndicator, Text, useTheme } from 'react-native-paper'
@@ -24,15 +24,15 @@ const SportSessionSummary: React.FC = () => {
 	useEffect(() => {
 		if (sportSession) {
 			setLoadingSuggestedProduct(true)
-				; (async () => {
-					const product = await suggestProduct({
-						category: 'nutrition',
-					})
-					setSuggestedProduct(product)
-					setLoadingSuggestedProduct(false)
-				})()
+			;(async () => {
+				const product = await suggestProduct({
+					category: 'nutrition'
+				})
+				setSuggestedProduct(product)
+				setLoadingSuggestedProduct(false)
+			})()
 		}
-	}, [sportSession])
+	}, [sportSession, suggestProduct])
 
 	return (
 		<SafeAreaProvider>
@@ -94,6 +94,7 @@ const SportSessionSummary: React.FC = () => {
 						<Text variant='headlineMedium'>Métricas</Text>
 						<View>
 							<Kpi
+								testID='calories'
 								color={theme.colors.error}
 								type='progress'
 								value={sportSession.calories ?? 0}
@@ -103,6 +104,7 @@ const SportSessionSummary: React.FC = () => {
 								icon='fire'
 							/>
 							<Kpi
+								testID='duration'
 								color={theme.colors.secondary}
 								type='progress'
 								value={sportSession.duration ?? 0}
@@ -112,6 +114,7 @@ const SportSessionSummary: React.FC = () => {
 								icon='timer'
 							/>
 							<Kpi
+								testID='steps'
 								color={theme.colors.primary}
 								type='progress'
 								value={sportSession.steps ?? 0}
@@ -121,6 +124,7 @@ const SportSessionSummary: React.FC = () => {
 								icon='walk'
 							/>
 							<Kpi
+								testID='distance'
 								color={theme.colors.inversePrimary}
 								type='progress'
 								value={sportSession.distance ?? 0}
@@ -131,6 +135,7 @@ const SportSessionSummary: React.FC = () => {
 							/>
 
 							<Kpi
+								testID='speed'
 								color={theme.colors.tertiary}
 								type='progress'
 								value={sportSession.average_speed ?? 0}
@@ -141,6 +146,7 @@ const SportSessionSummary: React.FC = () => {
 							/>
 
 							<Kpi
+								testID='heartrate'
 								color={theme.colors.error}
 								type='lineChart'
 								labels={['min', 'avg', 'max']}

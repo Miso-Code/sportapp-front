@@ -1,13 +1,14 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
 
-import { useSportSessionStore } from '@sportapp/stores'
+import { useBusinessPartnerStore, useSportSessionStore } from '@sportapp/stores'
 
 import { router } from 'expo-router'
 
 import SportSessionHistory from '../sportSessionHistory'
 
 import { Calendar } from 'react-native-big-calendar'
+import ProductServiceCard from '@/components/ProductServiceCard'
 
 jest.mock('dayjs')
 jest.mock('expo-router')
@@ -154,6 +155,21 @@ jest.mock('@sportapp/stores', () => ({
 			}
 		],
 		getSportEvents: jest.fn()
+	}),
+	useBusinessPartnerStore: jest.fn().mockReturnValue({
+		suggestProduct: jest.fn().mockResolvedValue({
+			product_id: 'product_id',
+			category: 'category',
+			name: 'name',
+			url: 'url',
+			price: 100,
+			payment_type: 'payment_type',
+			payment_frequency: 'payment_frequency',
+			image_url: 'image_url',
+			description: 'description',
+			active: true
+		}),
+		setProductToCheckout: jest.fn()
 	})
 }))
 
@@ -350,6 +366,94 @@ describe('SportSessionHistory', () => {
 			testID: 'eventModal'
 		})
 		expect(eventModal.props.visible).toBe(true)
+	})
+
+	it('should call suggestProduct on event press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+		expect(useBusinessPartnerStore().suggestProduct).toHaveBeenCalled()
+	})
+
+	it('should set the product to checkout on event suggested product press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		const suggestedProductCard =
+			component.root.findByType(ProductServiceCard)
+
+		await act(async () => {
+			suggestedProductCard.props.onPress()
+			await Promise.resolve()
+		})
+		expect(
+			useBusinessPartnerStore().setProductToCheckout
+		).toHaveBeenCalledWith({
+			product_id: 'product_id',
+			category: 'category',
+			name: 'name',
+			url: 'url',
+			price: 100,
+			payment_type: 'payment_type',
+			payment_frequency: 'payment_frequency',
+			image_url: 'image_url',
+			description: 'description',
+			active: true
+		})
+	})
+
+	it('should navigate to the product to checkout on event suggested product press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		const suggestedProductCard =
+			component.root.findByType(ProductServiceCard)
+
+		await act(async () => {
+			suggestedProductCard.props.onPress()
+			await Promise.resolve()
+		})
+		expect(router.push).toHaveBeenCalledWith({
+			pathname: 'training/servicesAndProductsCheckout',
+			params: {
+				quantity: 1
+			}
+		})
 	})
 
 	it('should hide the training plan on close', async () => {
