@@ -243,7 +243,6 @@ describe('SportSessionSummary', () => {
 				avg_heartrate: 133
 			}
 		})
-
 		;(
 			useBusinessPartnerStore().suggestProduct as jest.Mock
 		).mockReturnValue({

@@ -108,7 +108,7 @@ const SportSession: React.FC = () => {
 
 		const response = await startSportSession({
 			user_id: userAuth.id,
-			sport_id: user?.sportData?.favourite_sport_id || sports[0].sport_id,
+			sport_id: user?.sportData?.favourite_sport_id ?? sports[0].sport_id,
 			started_at: startedAt.toISOString(),
 			initial_location
 		})
