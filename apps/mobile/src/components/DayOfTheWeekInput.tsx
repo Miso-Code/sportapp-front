@@ -185,7 +185,8 @@ const createStyles = (theme: MD3Theme) =>
 			borderRadius: 50
 		},
 		disabledActive: {
-			backgroundColor: theme.colors.onSurfaceDisabled,
+			color: theme.colors.onSurfaceDisabled,
+			backgroundColor: theme.colors.surfaceDisabled,
 			borderColor: 'transparent',
 			borderWidth: 1
 		},

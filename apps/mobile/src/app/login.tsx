@@ -46,22 +46,27 @@ export default function App() {
 
 	useEffect(() => {
 		if (isAuth) {
-			router.navigate('profile')
+			;(async () => {
+				const deviceToken = await getToken()
+				if (deviceToken) {
+					await sendApiRequest(deviceToken)
+				}
+				router.navigate('profile')
+			})()
 		}
-	}, [isAuth])
+	}, [isAuth, getToken, sendApiRequest])
 
 	useEffect(() => {
 		if (error) {
 			setIsError(true)
 		}
+		return () => {
+			setIsError(false)
+		}
 	}, [error])
 
 	const handleLogin = async () => {
-		const response = await login({ email, password })
-		const deviceToken = await getToken()
-		if (response && deviceToken) {
-			await sendApiRequest(deviceToken)
-		}
+		await login({ email, password })
 	}
 
 	const emailHasErrors = () => {

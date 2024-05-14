@@ -61,11 +61,20 @@ const NutritionalProfile: React.FC = () => {
 
 	useEffect(() => {
 		;(async () => {
+			setShowActivityIndicator(true)
 			await getAllNutritionalLimitations()
 			await getNutrition()
 			setShowActivityIndicator(false)
 		})()
 	}, [getAllNutritionalLimitations, getNutrition])
+
+	useEffect(() => {
+		if (user.nutritionData && user.nutritionalLimitations) {
+			setAlergies(user.nutritionData.nutritional_limitations)
+			setPreferredDiet(user.nutritionData.food_preference)
+		}
+	}, [user.nutritionData, user.nutritionalLimitations])
+
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
 			{showActivityIndicator ? (

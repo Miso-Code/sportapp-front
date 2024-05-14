@@ -60,7 +60,7 @@ const SportSessionSummary: React.FC = () => {
 											<ProductServiceCard
 												title={suggestedProduct.name}
 												description={
-													suggestedProduct.description
+													suggestedProduct.summary
 												}
 												price={suggestedProduct.price}
 												priceFrequency={

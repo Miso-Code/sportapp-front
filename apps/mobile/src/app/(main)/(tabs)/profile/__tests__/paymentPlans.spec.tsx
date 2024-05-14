@@ -6,7 +6,8 @@ import PaymentPlans from '../paymentPlans'
 import {
 	useUserStore,
 	useAlertStore,
-	usePaymentPlanStore
+	usePaymentPlanStore,
+	useAuthStore
 } from '@sportapp/stores'
 import { Surface } from 'react-native-paper'
 
@@ -15,7 +16,8 @@ jest.mock('expo-router')
 jest.mock('@sportapp/stores', () => ({
 	useUserStore: jest.fn(),
 	useAlertStore: jest.fn(),
-	usePaymentPlanStore: jest.fn()
+	usePaymentPlanStore: jest.fn(),
+	useAuthStore: jest.fn()
 }))
 
 jest.mock('react-native-paper', () => {
@@ -58,6 +60,9 @@ describe('PaymentPlans', () => {
 			setPaymentData: jest.fn(),
 			updatePlan: jest.fn(),
 			loading: false
+		})
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			refreshToken: jest.fn()
 		})
 		component = renderer.create(<PaymentPlans />)
 	})
@@ -391,6 +396,42 @@ describe('PaymentPlans', () => {
 			type: 'success',
 			message: 'paymentPlans.alert.success'
 		})
+	})
+
+	it('should refresh token if payment is successful', async () => {
+		const cardPressables = component.root
+			.findAllByProps({
+				testID: 'paymentPressable'
+			})
+			.filter((cardPressable) => cardPressable.props.onPress)
+		const cardPressable = cardPressables[2]
+		act(() => cardPressable.props.onPress())
+
+		const planModal = component.root.findByProps({ testID: 'planModal' })
+
+		const cardNumberInput = planModal.findByProps({ testID: 'cardNumber' })
+		const cardHolderInput = planModal.findByProps({ testID: 'cardHolder' })
+		const expirationDateInput = planModal.findByProps({
+			testID: 'expirationDate'
+		})
+		const cvvInput = planModal.findByProps({ testID: 'cvv' })
+
+		act(() => {
+			cardNumberInput.props.onChangeText('1234567890123456')
+			cardHolderInput.props.onChangeText('John Doe')
+			expirationDateInput.props.onChangeText('1222')
+			cvvInput.props.onChangeText('123')
+		})
+
+		const acceptButton = planModal.findByProps({ testID: 'acceptButton' })
+
+		const { updatePlan } = usePaymentPlanStore()
+		;(updatePlan as jest.Mock).mockResolvedValue(true)
+
+		await act(async () => acceptButton.props.onPress())
+
+		const { refreshToken } = useAuthStore()
+		expect(refreshToken).toHaveBeenCalledWith()
 	})
 
 	it('should show an error alert when payment is unsuccessful', async () => {

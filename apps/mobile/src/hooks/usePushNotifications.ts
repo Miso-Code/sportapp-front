@@ -53,7 +53,12 @@ export const usePushNotification = () => {
 	}
 
 	const getFCMToken = async () => {
-		return await messaging().getToken()
+		try {
+			return await messaging().getToken()
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error('There was a problem getting FCM token', error)
+		}
 	}
 
 	const listenToForegroundNotifications = async (

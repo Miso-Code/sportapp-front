@@ -107,6 +107,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
             {
               "justifyContent": "center",
               "marginTop": 10,
+              "paddingBottom": 10,
             },
           ]
         }

@@ -104,11 +104,29 @@ const SportsProfile: React.FC = () => {
 
 	useEffect(() => {
 		;(async () => {
+			setShowActivityIndicator(true)
 			await getSports()
 			await getSport()
 			setShowActivityIndicator(false)
 		})()
 	}, [getSports, getSport])
+
+	useEffect(() => {
+		if (user.sportData) {
+			setTrainingObjective(user.sportData.training_objective)
+			setWeight(user.sportData.weight.toString())
+			setHeight(user.sportData.height.toString())
+			setAvailableTrainingHours(
+				user.sportData.available_training_hours.toString()
+			)
+			setAvailableWeekdays(user.sportData.available_weekdays)
+			setPreferredTrainingStartTime(
+				user.sportData.preferred_training_start_time
+			)
+			setTrainingLimitations(user.sportData.training_limitations)
+			setFavouriteSportId(user.sportData.favourite_sport_id)
+		}
+	}, [user.sportData])
 
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
@@ -302,7 +320,6 @@ const SportsProfile: React.FC = () => {
 								!availableTrainingHours ||
 								!availableWeekdays.length ||
 								!preferredTrainingStartTime ||
-								!trainingLimitations.length ||
 								!favouriteSportId)
 						}
 					/>

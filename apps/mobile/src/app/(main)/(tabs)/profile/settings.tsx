@@ -1,5 +1,5 @@
 import ListItem from '@/components/ListItem'
-import { useAuthStore } from '@sportapp/stores'
+import { useAuthStore, useUserStore } from '@sportapp/stores'
 import { router } from 'expo-router'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -9,7 +9,8 @@ import { List } from 'react-native-paper'
 
 const Settings: React.FC = () => {
 	const { t } = useTranslation()
-	const { logout } = useAuthStore()
+	const { logout, clearState } = useAuthStore()
+	const { clearState: clearStateUser } = useUserStore()
 	return (
 		<View style={styles.container}>
 			<List.Section>
@@ -23,6 +24,8 @@ const Settings: React.FC = () => {
 					icon='logout'
 					onPress={() => {
 						logout()
+						clearState()
+						clearStateUser()
 						router.push('login')
 					}}
 				/>
