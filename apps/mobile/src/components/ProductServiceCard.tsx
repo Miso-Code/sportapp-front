@@ -38,7 +38,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 	return (
 		<Card
 			elevation={1}
-			style={styles.card}
+			style={small ? styles.cardSmall : styles.card}
 			contentStyle={small ? styles.smallCard : undefined}
 			{...props}>
 			<Card.Cover
@@ -46,7 +46,11 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 				style={small ? styles.smallCover : undefined}
 			/>
 			<Card.Content style={styles.cardContent}>
-				<Text variant='titleLarge' style={styles.cardTitle}>
+				<Text
+					variant='titleLarge'
+					ellipsizeMode={small ? 'tail' : undefined}
+					numberOfLines={small ? 1 : undefined}
+					style={styles.cardTitle}>
 					{title}
 				</Text>
 				<Text
@@ -80,12 +84,18 @@ const createStyles = (theme: MD3Theme) =>
 			backgroundColor: '#f2f2f2',
 			width: '100%'
 		},
+		cardSmall: {
+			paddingRight: 100,
+			backgroundColor: '#f2f2f2',
+			width: '100%'
+		},
 		cardTitle: {
 			fontWeight: 'bold'
 		},
 		cardContent: {
 			justifyContent: 'center',
-			marginTop: 10
+			marginTop: 10,
+			paddingBottom: 10
 		},
 		chipContainer: {
 			alignItems: 'flex-start',

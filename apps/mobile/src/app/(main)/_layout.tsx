@@ -3,7 +3,6 @@ import React, { useCallback, useEffect } from 'react'
 import { Stack } from 'expo-router/stack'
 
 import {
-	PaperProvider,
 	Snackbar,
 	Icon,
 	Text,
@@ -48,8 +47,7 @@ export default function AppLayout() {
 	}, [showPushNotification, subscribe])
 
 	return (
-		<PaperProvider>
-			{/** PaperProvider allows modals to render the right way by providing it here */}
+		<>
 			<Stack>
 				<Stack.Screen name='(tabs)' options={{ headerShown: false }} />
 			</Stack>
@@ -76,7 +74,7 @@ export default function AppLayout() {
 					</Snackbar>
 				)}
 			</Portal>
-		</PaperProvider>
+		</>
 	)
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
 	useAlertStore,
+	useAuthStore,
 	usePaymentPlanStore,
 	useUserStore
 } from '@sportapp/stores'
@@ -34,6 +35,7 @@ const pricePlans = {
 const PaymentPlans: React.FC = () => {
 	const theme = useTheme()
 	const { t } = useTranslation()
+	const { refreshToken } = useAuthStore()
 	const { user, getProfile } = useUserStore()
 	const { setAlert } = useAlertStore()
 	const {
@@ -77,6 +79,7 @@ const PaymentPlans: React.FC = () => {
 
 		if (response) {
 			await getProfile()
+			await refreshToken()
 			setAlert({
 				type: 'success',
 				message: t('paymentPlans.alert.success')

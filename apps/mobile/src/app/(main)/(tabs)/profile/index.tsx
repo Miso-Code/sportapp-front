@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { View, StyleSheet } from 'react-native'
 
@@ -8,7 +8,8 @@ import {
 	Avatar,
 	Text,
 	useTheme,
-	MD3Theme
+	MD3Theme,
+	ActivityIndicator
 } from 'react-native-paper'
 
 import ListItem from '@/components/ListItem'
@@ -19,14 +20,21 @@ import { useUserStore } from '@sportapp/stores'
 
 const Profile: React.FC = () => {
 	const { t } = useTranslation()
-	const { user } = useUserStore()
+	const { user, getProfile } = useUserStore()
 	const theme = useTheme()
 	const styles = createStyles(theme)
+
+	useEffect(() => {
+		;(async () => {
+			await getProfile()
+		})()
+	}, [getProfile])
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.row}>
-				{(!!user?.profileData?.first_name ||
-					!!user?.profileData?.last_name) && (
+				{!!user?.profileData?.first_name ||
+				!!user?.profileData?.last_name ? (
 					<Avatar.Text
 						size={42}
 						label={
@@ -35,6 +43,8 @@ const Profile: React.FC = () => {
 						}
 						style={styles.icon}
 					/>
+				) : (
+					<ActivityIndicator />
 				)}
 				<Text variant='titleMedium'>
 					{user?.profileData?.first_name}{' '}

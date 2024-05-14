@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Icon } from 'react-native-paper'
+import { Icon, useTheme } from 'react-native-paper'
 
 import { Tabs, useSegments } from 'expo-router'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +23,7 @@ const PremiumIcon = ({ color }) => (
 )
 
 export default function TabLayout() {
+	const theme = useTheme()
 	const { user } = useUserStore()
 
 	const { t } = useTranslation()
@@ -45,7 +46,8 @@ export default function TabLayout() {
 					fontWeight: 'normal',
 					fontSize: 34
 				},
-				headerBackground: () => null
+				headerBackground: () => null,
+				tabBarActiveTintColor: theme.colors.primary
 			}}>
 			<Tabs.Screen
 				name='profile'

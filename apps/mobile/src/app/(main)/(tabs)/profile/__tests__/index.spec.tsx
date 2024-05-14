@@ -23,7 +23,8 @@ describe('Profile', () => {
 					first_name: 'John',
 					last_name: 'Doe'
 				}
-			}
+			},
+			getProfile: jest.fn()
 		})
 		component = renderer.create(<Profile />)
 	})
@@ -52,6 +53,11 @@ describe('Profile', () => {
 		expect(router.navigate).toHaveBeenCalledWith('profile/paymentPlans')
 	})
 
+	it('should call getProfile when component mounts', async () => {
+		await act(async () => await Promise.resolve())
+		expect(useUserStore().getProfile).toHaveBeenCalled()
+	})
+
 	it('should render user avatar', () => {
 		const avatar = component.root.findByType(Avatar.Text)
 		expect(avatar.props.label).toBe('JD')
@@ -59,7 +65,8 @@ describe('Profile', () => {
 
 	it('should not render user avatar when user is undefined', () => {
 		;(useUserStore as unknown as jest.Mock).mockReturnValue({
-			user: undefined
+			user: undefined,
+			getProfile: jest.fn()
 		})
 		act(() => component.update(<Profile />))
 		const avatars = component.root.findAllByType(Avatar.Text)

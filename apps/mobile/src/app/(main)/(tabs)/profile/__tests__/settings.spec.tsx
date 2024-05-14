@@ -3,13 +3,14 @@ import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
 
 import Settings from '../settings'
 import { router } from 'expo-router'
-import { useAuthStore } from '@sportapp/stores'
+import { useAuthStore, useUserStore } from '@sportapp/stores'
 import { List } from 'react-native-paper'
 
 jest.mock('expo-router')
 
 jest.mock('@sportapp/stores', () => ({
-	useAuthStore: jest.fn()
+	useAuthStore: jest.fn(),
+	useUserStore: jest.fn()
 }))
 
 describe('Settings', () => {
@@ -18,7 +19,11 @@ describe('Settings', () => {
 	beforeEach(() => {
 		jest.clearAllMocks()
 		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
-			logout: jest.fn()
+			logout: jest.fn(),
+			clearState: jest.fn()
+		})
+		;(useUserStore as unknown as jest.Mock).mockReturnValue({
+			clearState: jest.fn()
 		})
 		component = renderer.create(<Settings />)
 	})
@@ -45,7 +50,19 @@ describe('Settings', () => {
 	it('should call logout on logout press', () => {
 		const [, logoutSetting] = component.root.findAllByType(List.Item)
 		act(() => logoutSetting.props.onPress())
-		expect(router.push).toHaveBeenCalledWith('login')
 		expect(useAuthStore().logout).toHaveBeenCalled()
+	})
+
+	it('should redirect to login on logout press', () => {
+		const [, logoutSetting] = component.root.findAllByType(List.Item)
+		act(() => logoutSetting.props.onPress())
+		expect(router.push).toHaveBeenCalledWith('login')
+	})
+
+	it('should clear auth and user state on logout press', () => {
+		const [, logoutSetting] = component.root.findAllByType(List.Item)
+		act(() => logoutSetting.props.onPress())
+		expect(useAuthStore().clearState).toHaveBeenCalled()
+		expect(useUserStore().clearState).toHaveBeenCalled()
 	})
 })

@@ -186,7 +186,7 @@ describe('Login', () => {
 		// expect(generalError.props.visible).toBe(true)
 	})
 
-	it('should navigate to the profile screen when the login is successful', () => {
+	it('should navigate to the profile screen when the login is successful', async () => {
 		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
 			login: jest.fn().mockReturnValue(true),
 			loading: false,
@@ -209,6 +209,8 @@ describe('Login', () => {
 		act(() => passwordInput.props.onChangeText('password'))
 
 		act(() => button.props.onPress())
+
+		await act(async () => await Promise.resolve())
 
 		expect(router.navigate).toHaveBeenCalledWith('profile')
 	})

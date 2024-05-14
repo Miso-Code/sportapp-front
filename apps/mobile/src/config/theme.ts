@@ -35,7 +35,7 @@ const CustomTheme = {
 		inversePrimary: '#A1CAFD',
 		shadow: '#000000',
 		scrim: '#000000',
-		backdrop: '#000000' // Used 'scrim' value, as 'backdrop' isn't defined in your JSON. Adjust as necessary.
+		backdrop: 'rgba(51,47,55,0.4)' // Used 'scrim' value, as 'backdrop' isn't defined in your JSON. Adjust as necessary.
 		// 'elevation' can't be directly mapped to a color. You might need to handle it separately.
 	},
 	fonts: {
