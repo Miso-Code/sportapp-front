@@ -28,13 +28,14 @@ export default function CardModalSelect({
 				image={selectedProduct.image_url}
 				alt={selectedProduct.name}
 			/>
-			<Typography variant='body2'>{selectedProduct.summary}</Typography>
-			<Box sx={{ mt: 4 }}>
+			<Typography sx={{ mt: 2 }} variant='body2'>
+				{selectedProduct.summary}
+			</Typography>
+			<Box sx={{ my: 2, maxHeight: '15rem', overflowY: 'auto' }}>
 				<MuiMarkdown>{selectedProduct.summary}</MuiMarkdown>
 			</Box>
 			<Box>
 				<TextField
-					sx={{ mt: 4 }}
 					id='quantity'
 					name='quantity'
 					type='number'
@@ -51,7 +52,7 @@ export default function CardModalSelect({
 				sx={{
 					display: 'flex',
 					justifyContent: 'end',
-					marginTop: '2rem'
+					marginTop: '1rem'
 				}}>
 				<Button size='small' color='error' onClick={handleClose}>
 					{t('productService.close')}

@@ -74,10 +74,12 @@ export default function OtherServicePage() {
 	const handleSelectProduct = (product: Product) => {
 		setProductToCheckout({
 			...product,
-			price: product.price * Number(quantity)
+			price: product.price
 		})
 		handleClose()
-		navigate('/other-services/checkout')
+		navigate(
+			`/other-services/checkout?product_id='${product.product_id}'&quantity=${quantity}`
+		)
 	}
 
 	const filterNewProducts = useCallback(
@@ -205,21 +207,16 @@ export default function OtherServicePage() {
 									/>
 									<CardContent>
 										<Typography
+											className='other-service-page-card-title'
 											gutterBottom
+											title={product.name}
 											variant='h5'
 											component='div'>
 											{product.name}
 										</Typography>
 										<Typography
 											variant='body2'
-											sx={{
-												height: '2.6rem',
-												overflow: 'hidden',
-												textOverflow: 'ellipsis',
-												display: '-webkit-box',
-												WebkitLineClamp: 3,
-												WebkitBoxOrient: 'vertical'
-											}}
+											className='other-service-page-card-description'
 											color='text.secondary'>
 											{product.summary}
 										</Typography>

@@ -40,6 +40,13 @@ jest.mock('@/containers/PaymentForm', () => ({
 	)
 }))
 
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useNavigate: () => jest.fn(),
+	useSearchParams: () => [new URLSearchParams()],
+	useLocation: () => ({ search: '', pathname: '' })
+}))
+
 describe('PaymentOtherServicePage', () => {
 	let wrapper: RenderResult
 

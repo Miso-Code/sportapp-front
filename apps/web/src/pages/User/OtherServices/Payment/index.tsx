@@ -20,13 +20,14 @@ import {
 } from '@sportapp/stores'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import './_index.scss'
 import TransitionAlert from '@/components/TransitionAlert'
 
 export default function PaymentOtherServicePage() {
 	const { t, i18n } = useTranslation()
 	const navigate = useNavigate()
+	const [currentQueryParameters] = useSearchParams()
 	const { productToCheckout } = useBusinessPartnerStore()
 	const { purchaseProduct, setProductToCheckout } = useBusinessPartnerStore()
 	const { alert } = useAlertStore()
@@ -35,6 +36,8 @@ export default function PaymentOtherServicePage() {
 
 	const [loading, setLoading] = useState(false)
 	const [alertShow, setAlertShow] = useState(false)
+
+	const quantity = currentQueryParameters.get('quantity') ?? 0
 
 	const handleSubmit = async (data: FormPaymentData) => {
 		if (productToCheckout) {
@@ -53,7 +56,7 @@ export default function PaymentOtherServicePage() {
 			})
 			setLoading(false)
 
-			if (response) {
+			if (response && response.transaction_status === 'completed') {
 				setAlert({
 					message: t('productService.paymentSuccess'),
 					type: 'success'
@@ -62,11 +65,11 @@ export default function PaymentOtherServicePage() {
 				handleCancel()
 				return
 			}
-			setAlertShow(true)
 			setAlert({
 				message: t('productService.paymentFailed'),
 				type: 'error'
 			})
+			setAlertShow(true)
 		}
 	}
 
@@ -109,11 +112,19 @@ export default function PaymentOtherServicePage() {
 						onCancel={handleCancel}
 						options={[
 							{
-								label: `${productToCheckout?.price}`,
-								value: `${productToCheckout?.price}`
+								label: `${
+									(productToCheckout?.price ?? 0) *
+									Number(quantity)
+								}`,
+								value: `${
+									(productToCheckout?.price ?? 0) *
+									Number(quantity)
+								}`
 							}
 						]}
-						price={productToCheckout?.price}
+						price={
+							(productToCheckout?.price ?? 0) * Number(quantity)
+						}
 					/>
 				</Box>
 				<Card
@@ -190,9 +201,7 @@ export default function PaymentOtherServicePage() {
 						flexDirection: 'column'
 					}}>
 					<CircularProgress color='primary' />
-					<Typography className='mt-4'>
-						{t('productService.loading')}
-					</Typography>
+					<Typography className='mt-4'>{t('loading')}</Typography>
 				</Paper>
 			</Backdrop>
 		</ContainerLayout>

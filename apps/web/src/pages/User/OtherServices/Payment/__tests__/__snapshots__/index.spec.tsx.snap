@@ -232,11 +232,13 @@ exports[`PaymentOtherServicePage should render component 1`] = `
             </button>
             <p
               data-testid="price"
-            />
+            >
+              0
+            </p>
             <p
               data-testid="options"
             >
-              undefined
+              0
             </p>
           </div>
         </section>
@@ -312,7 +314,7 @@ exports[`PaymentOtherServicePage should render component 1`] = `
           <p
             class="MuiTypography-root MuiTypography-body1 mt-4 css-ahj2mt-MuiTypography-root"
           >
-            productService.loading
+            loading
           </p>
         </div>
       </div>
