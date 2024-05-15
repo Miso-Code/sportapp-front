@@ -4,4 +4,23 @@
 	&-section {
 		@apply mt-10;
 	}
+
+	&-card {
+		&-title {
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&-description {
+			overflow: hidden;
+			max-height: 2.5rem;
+			-webkit-box-orient: vertical;
+			display: block;
+			display: -webkit-box;
+			text-overflow: ellipsis;
+			-webkit-line-clamp: 2;
+		}
+	}
 }

@@ -571,12 +571,13 @@ exports[`OtherServicePage should render the component, with products 1`] = `
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
               >
                 <div
-                  class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom other-service-page-card-title css-h93ljk-MuiTypography-root"
+                  title="Awesome Rubber Computer"
                 >
                   Awesome Rubber Computer
                 </div>
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-1442vf8-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 other-service-page-card-description css-r40f8v-MuiTypography-root"
                 >
                   Adflicto sonitus fuga aperio calculus calamitas vicissitudo.
                 </p>

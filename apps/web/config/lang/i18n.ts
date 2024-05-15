@@ -12,7 +12,7 @@ i18n.use(initReactI18next).init({
 	compatibilityJSON: 'v3',
 	resources,
 	lng: 'es',
-	debug: true,
+	debug: process.env.NODE_ENV === 'development',
 	interpolation: {
 		// not needed for react as it escapes by default
 		escapeValue: false
