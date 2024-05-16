@@ -26,6 +26,7 @@ export default class alertsApi {
 			if (response.status.toString().startsWith('2')) {
 				return true
 			}
+			return false
 		} catch (error) {
 			console.error(error)
 		}

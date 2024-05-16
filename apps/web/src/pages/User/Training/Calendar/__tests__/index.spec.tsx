@@ -1,5 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import CalendarTrainingPage from '..'
-import { act, render, RenderResult, waitFor } from '@testing-library/react'
+import {
+	act,
+	fireEvent,
+	render,
+	RenderResult,
+	waitFor
+} from '@testing-library/react'
 
 jest.mock('@sportapp/stores', () => ({
 	useSportEventStore: jest.fn().mockReturnValue({
@@ -63,6 +70,17 @@ jest.mock(
 			</div>
 		)
 )
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useNavigate: jest.fn().mockReturnValue(jest.fn()),
+	useParams: jest.fn().mockReturnValue({
+		id: '123'
+	}),
+	useLocation: jest.fn().mockReturnValue({
+		search: '',
+		pathname: '/training/session'
+	})
+}))
 
 describe('CalendarTrainingPage', () => {
 	let wrapper: RenderResult
@@ -75,5 +93,26 @@ describe('CalendarTrainingPage', () => {
 
 	it('should render', async () => {
 		await waitFor(() => expect(wrapper.container).toMatchSnapshot())
+	})
+
+	it('should call navigate to back', async () => {
+		const navigate = jest.fn()
+		;(useNavigate as jest.Mock).mockReturnValue(navigate)
+		await waitFor(() =>
+			expect(
+				wrapper.container.querySelector('button[aria-label="back"]')
+			).toBeInTheDocument()
+		)
+
+		act(() => {
+			fireEvent.click(
+				wrapper.container.querySelector(
+					'button[aria-label="back"]'
+				) as Element
+			)
+		})
+		await waitFor(() =>
+			expect(navigate).toHaveBeenCalledWith(-1)
+		)
 	})
 })

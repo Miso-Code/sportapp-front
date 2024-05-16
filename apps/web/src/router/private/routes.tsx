@@ -9,7 +9,8 @@ import {
 	PreferenceFormPageLazy,
 	PreferencePageLazy,
 	TrainingCalendarPageLazy,
-	TrainingPageLazy
+	TrainingPageLazy,
+	TrainingSessionPageLazy
 } from '@/router/private/lazy-pages'
 import { Navigate } from 'react-router-dom'
 
@@ -44,6 +45,10 @@ export default function privateRoutesUser() {
 			{
 				path: '/training/calendar',
 				element: <TrainingCalendarPageLazy />
+			},
+			{
+				path: '/training/session/:id',
+				element: <TrainingSessionPageLazy />
 			},
 			{ path: '*', element: <Navigate to='/' replace /> }
 		]

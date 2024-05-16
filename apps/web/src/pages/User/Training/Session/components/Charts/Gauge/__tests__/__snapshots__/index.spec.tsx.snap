@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GaugeChart should render the component 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-0"
+    style="position: relative; width: 200px; height: 200px;"
+  >
+    <div>
+      PieChart
+    </div>
+    <div
+      class="MuiBox-root css-adxcwc"
+    />
+  </div>
+</div>
+`;

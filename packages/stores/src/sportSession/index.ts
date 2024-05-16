@@ -80,7 +80,21 @@ export const useSportSessionStore = create(
 				set((state) => ({ ...state, sportSessions }))
 				return sportSessions
 			},
-
+			getSportSession: async (sessionId: string) => {
+				const sessionApi = new sportSessionApi()
+				const authToken = useAuthStore.getState().authToken?.accessToken
+				const sportSession = await sessionApi.getSportSession(
+					sessionId,
+					{
+						headers: {
+							Authorization: `Bearer ${authToken}`
+						}
+					}
+				)
+				if (!sportSession) return
+				set((state) => ({ ...state, sportSession }))
+				return sportSession
+			},
 			clearState: () =>
 				set((state) => ({ ...state, ...initialSportSessionState }))
 		}),

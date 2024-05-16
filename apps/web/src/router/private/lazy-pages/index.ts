@@ -12,6 +12,9 @@ export const TrainingPageLazy = lazy(() => import('@/pages/User/Training'))
 export const TrainingCalendarPageLazy = lazy(
 	() => import('@/pages/User/Training/Calendar')
 )
+export const TrainingSessionPageLazy = lazy(
+	() => import('@/pages/User/Training/Session')
+)
 
 // partner pages
 export const HomePartnerLazy = lazy(() => import('@/pages/Partner/Home'))

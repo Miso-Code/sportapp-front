@@ -1,0 +1,11 @@
+.training-session {
+	@apply bg-white;
+
+	&-section {
+		@apply mt-10;
+
+		&-container {
+			height: 4rem;
+		}
+	}
+}

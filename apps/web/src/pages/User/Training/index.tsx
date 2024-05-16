@@ -10,7 +10,7 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Paper,
-	Typography
+	Typography,
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -24,6 +24,7 @@ export default function TrainingPage() {
 		<ContainerLayout withSecondarySection={false} className='training'>
 			<section className='training-section'>
 				<Typography className='training-title' variant='h3'>
+					
 					{t('training.trainings')}
 				</Typography>
 

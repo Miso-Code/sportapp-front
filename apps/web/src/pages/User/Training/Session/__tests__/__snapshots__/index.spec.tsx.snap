@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CalendarTrainingPage should render 1`] = `
+exports[`TrainingSession should render the component 1`] = `
 <div>
   <div
-    class="container-layout training-calendar MuiBox-root css-1xhj18k"
+    class="container-layout training-session MuiBox-root css-1xhj18k"
   >
     <div
       class="navbar  MuiBox-root css-2uchni"
@@ -144,14 +144,14 @@ exports[`CalendarTrainingPage should render 1`] = `
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 container-layout-main-section container-layout-main-section__full css-1ps6pg7-MuiPaper-root"
     >
       <section
-        class="training-calendar-section"
+        class="training-session-section"
       >
         <h3
-          class="MuiTypography-root MuiTypography-h3 training-title css-gepadz-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h3 training-session-title css-gepadz-MuiTypography-root"
         >
           <button
             aria-label="back"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-mf1cb5-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeLarge css-15rynab-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -170,40 +170,38 @@ exports[`CalendarTrainingPage should render 1`] = `
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </button>
-          training.history
+          session.nutritionalSuggestionTitle
         </h3>
       </section>
-      <div
-        class="MuiBox-root css-1we3x27"
+      <section
+        class="MuiBox-root css-j1w12m"
       >
         <div
-          class="sk-chase undefined"
+          class="MuiBox-root css-0"
         >
-          <div
-            class="sk-chase-dot"
-          />
-          <div
-            class="sk-chase-dot"
-          />
-          <div
-            class="sk-chase-dot"
-          />
-          <div
-            class="sk-chase-dot"
-          />
-          <div
-            class="sk-chase-dot"
-          />
-          <div
-            class="sk-chase-dot"
-          />
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+          >
+            session.nutritionalSuggestion
+          </p>
         </div>
-        <h6
-          class="MuiTypography-root MuiTypography-h6 my-4 css-2ulfj5-MuiTypography-root"
+        <div
+          class="MuiBox-root css-1yuhvjn"
         >
-          loading
-        </h6>
-      </div>
+          <h4
+            class="MuiTypography-root MuiTypography-h4 training-session-subtitle css-5lbw0b-MuiTypography-root"
+          >
+            session.metrics
+          </h4>
+          <div
+            class="MuiTypography-root MuiTypography-body1 css-1pz6p8s-MuiTypography-root"
+          >
+            <div>
+              Lines
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </div>

@@ -1,0 +1,24 @@
+.card-product {
+	&-title {
+		width: 10rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		@media (min-width: 600px) {
+			width: 19.5rem;
+		}
+	}
+
+	&-description {
+		width: 100%;
+		overflow: hidden;
+		max-height: 2.5rem;
+		-webkit-box-orient: vertical;
+		display: block;
+		display: -webkit-box;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: 2;
+		line-height: normal;
+	}
+}

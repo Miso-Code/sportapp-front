@@ -55,7 +55,21 @@ jest.mock('@sportapp/sportapp-repository/src/sportSession', () => {
 					max_heartrate: 1,
 					avg_heartrate: 1
 				}
-			])
+			]),
+			getSportSession: jest.fn().mockResolvedValue({
+				session_id: 'session_id',
+				sport_id: 'sport_id',
+				user_id: 'user_id',
+				started_at: 'started_at',
+				duration: 1,
+				distance: 1,
+				steps: 1,
+				calories: 1,
+				average_speed: 1,
+				min_heartrate: 1,
+				max_heartrate: 1,
+				avg_heartrate: 1
+			})
 		}))
 	}
 })
@@ -81,6 +95,7 @@ describe('SportSessionStore', () => {
 			addSessionLocation: expect.any(Function),
 			finishSportSession: expect.any(Function),
 			getSportSessions: expect.any(Function),
+			getSportSession: expect.any(Function),
 			clearState: expect.any(Function)
 		})
 	})
@@ -313,6 +328,39 @@ describe('SportSessionStore', () => {
 			})
 
 			expect(result.current.sportSession).toStrictEqual(sportSession)
+		})
+	})
+	describe('getSportSession', () => {
+		const initialStoreState = useSportSessionStore.getState()
+
+		beforeEach(() => {
+			useSportSessionStore.setState(initialStoreState)
+		})
+
+		it('should get a sport session', async () => {
+			const { result } = renderHook(() => useSportSessionStore())
+
+			const { getSportSession } = result.current
+
+			const session_id = 'session_id'
+
+			await act(async () => {
+				const response = await getSportSession(session_id)
+				expect(response).toStrictEqual({
+					session_id: 'session_id',
+					sport_id: 'sport_id',
+					user_id: 'user_id',
+					started_at: 'started_at',
+					duration: 1,
+					distance: 1,
+					steps: 1,
+					calories: 1,
+					average_speed: 1,
+					min_heartrate: 1,
+					max_heartrate: 1,
+					avg_heartrate: 1
+				})
+			})
 		})
 	})
 })
