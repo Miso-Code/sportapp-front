@@ -40,7 +40,7 @@ exports[`CalendarTrainingPage should render 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiBottomNavigationAction-root navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+            class="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected navbar-content-navigation-button css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
             tabindex="0"
             type="button"
           >
@@ -56,7 +56,7 @@ exports[`CalendarTrainingPage should render 1`] = `
               />
             </svg>
             <span
-              class="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+              class="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
             >
               navbar.training
             </span>
@@ -149,6 +149,27 @@ exports[`CalendarTrainingPage should render 1`] = `
         <h3
           class="MuiTypography-root MuiTypography-h3 training-title css-gepadz-MuiTypography-root"
         >
+          <button
+            aria-label="back"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-mf1cb5-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowBackIosIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11.67 3.87 9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
           training.history
         </h3>
       </section>

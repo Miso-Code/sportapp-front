@@ -1,7 +1,8 @@
 import ContainerLayout from '@/components/ContainerLayout'
 import Spinner from '@/components/Spinner'
 import { useLocation } from '@/hooks/useLocation'
-import { Box, List, ListItem, Typography } from '@mui/material'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import { Box, IconButton, List, ListItem, Typography } from '@mui/material'
 import {
 	useSportEventStore,
 	useSportSessionStore,
@@ -9,8 +10,9 @@ import {
 } from '@sportapp/stores'
 import { format } from 'date-fns/format'
 import { es } from 'date-fns/locale'
-import { useCallback, useEffect, useMemo, useState, memo } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import './_index.scss'
 import InfoCards from './components/InfoCards'
 import CustomCalendar from './containers/CustomCalendar'
@@ -28,6 +30,7 @@ const CalendarTrainingPage = () => {
 	const { trainingPlanSessions, getTrainingPlan } = useTrainingPlanStore()
 	const { getSportEvents, sportEvents } = useSportEventStore()
 	const { location, loading: loadingLocation } = useLocation()
+	const navigate = useNavigate()
 
 	const [loading, setLoading] = useState(false)
 	const [openDialog, setOpenDialog] = useState(false)
@@ -75,7 +78,7 @@ const CalendarTrainingPage = () => {
 							session,
 							t('navbar.training')
 						)
-				  )
+					)
 				: [],
 		[sportSessions, t]
 	)
@@ -120,6 +123,12 @@ const CalendarTrainingPage = () => {
 			className='training-calendar'>
 			<section className='training-calendar-section'>
 				<Typography className='training-title' variant='h3'>
+					<IconButton
+						aria-label='back'
+						size='large'
+						onClick={() => navigate(-1)}>
+						<ArrowBackIosIcon />
+					</IconButton>
 					{t('training.history')}
 				</Typography>
 			</section>
