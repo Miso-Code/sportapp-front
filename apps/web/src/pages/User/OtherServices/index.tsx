@@ -72,13 +72,10 @@ export default function OtherServicePage() {
 	}
 	const handleClose = () => setOpen(false)
 	const handleSelectProduct = (product: Product) => {
-		setProductToCheckout({
-			...product,
-			price: product.price
-		})
+		setProductToCheckout(product)
 		handleClose()
 		navigate(
-			`/other-services/checkout?product_id='${product.product_id}'&quantity=${quantity}`
+			`/other-services/checkout?product_id=${product.product_id}&quantity=${quantity}`
 		)
 	}
 
