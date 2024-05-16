@@ -151,7 +151,7 @@ export default function TrainingSession() {
 									</Typography>
 								</GaugeChart>
 							)}
-							{sportSession.duration && (
+							{!!sportSession.duration && (
 								<GaugeChart
 									maxValue={60}
 									color='#a042cb'

@@ -19,8 +19,7 @@ export default function GaugeChart({
 	const handleSetDataValueChart = useCallback(
 		(valueChart: number) => {
 			const dataValue =
-				Math.max(0, valueChart < maxValue ? valueChart : maxValue) /
-				maxValue
+				Math.min(Math.max(0, valueChart), maxValue) / maxValue
 
 			setData([
 				{
@@ -42,7 +41,7 @@ export default function GaugeChart({
 
 	useEffect(() => {
 		handleSetDataValueChart(value)
-	}, [handleSetDataValueChart, value])
+	}, [handleSetDataValueChart, value, maxValue])
 
 	return (
 		<Box
