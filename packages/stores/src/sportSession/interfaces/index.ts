@@ -30,5 +30,6 @@ export interface ISportSessionActions {
 		session_id: FinishSportSessionRequest
 	) => Promise<FullSportSessionResponse | undefined>
 	getSportSessions: () => Promise<SportSession[] | undefined>
+	getSportSession: (sessionId: string) => Promise<SportSession | undefined>
 	clearState: () => void
 }
