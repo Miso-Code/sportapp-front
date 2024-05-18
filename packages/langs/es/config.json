@@ -5,6 +5,8 @@
 		"logout": "Cerrar sesión"
 	},
 	"language": {
+		"select": "Selecciona el idioma a usar en la aplicación",
+		"button": "Cambiar idioma",
 		"es": "Español",
 		"en": "Inglés"
 	}
