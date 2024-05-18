@@ -80,7 +80,7 @@ exports[`CreateProductPartnerPage should render the component 1`] = `
             class="MuiBox-root css-2uchni"
           >
             <button
-              aria-label="navbar.open.profile"
+              aria-label="navbar.partner.open.profile"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-av538e-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               tabindex="0"
@@ -90,7 +90,7 @@ exports[`CreateProductPartnerPage should render the component 1`] = `
                 class="MuiAvatar-root MuiAvatar-circular css-1wlk0hk-MuiAvatar-root"
               >
                 <img
-                  alt="Remy Sharp"
+                  alt="c"
                   class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
                   src="/static/images/avatar/2.jpg"
                 />

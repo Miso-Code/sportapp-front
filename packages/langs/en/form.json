@@ -164,5 +164,6 @@
 		"address": "Session address",
 		"description": "Session reason"
 	},
-	"schedule": "Schedule"
+	"schedule": "Schedule",
+	"sport": "Sport"
 }

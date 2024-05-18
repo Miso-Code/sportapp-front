@@ -164,5 +164,6 @@
 		"address": "Dirección de la sesión",
 		"description": "Motivo de la sesión"
 	},
-	"schedule": "Agendar"
+	"schedule": "Agendar",
+	"sport": "Deporte"
 }

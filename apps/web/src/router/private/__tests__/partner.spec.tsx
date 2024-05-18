@@ -47,7 +47,7 @@ describe('Private Routes', () => {
 			path: '*',
 			element: expect.any(Object)
 		})
-		expect(redirectRoute?.element.props.to).toBe('/')
+		expect(redirectRoute?.element.props.to).toBe('/partner/login')
 		expect(redirectRoute?.element.props.replace).toBe(true)
 	})
 })

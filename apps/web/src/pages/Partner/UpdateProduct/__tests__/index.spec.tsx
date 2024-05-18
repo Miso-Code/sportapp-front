@@ -73,7 +73,8 @@ jest.mock('@/containers/Partner/CreateProduct', () => ({
 						description: '',
 						image_base64: '',
 						typeImage: 'false',
-						imageUrl: ''
+						imageUrl: '',
+						sport_id: '1'
 					}
 					onHandleSubmit(payload)
 				}}>

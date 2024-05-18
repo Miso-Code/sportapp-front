@@ -21,7 +21,8 @@ const schema = object().shape({
 	imageUrl: string().when('typeImage', {
 		is: 'false',
 		then: () => string().required()
-	})
+	}),
+	sport_id: string().required()
 })
 
 export default schema

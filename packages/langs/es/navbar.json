@@ -8,6 +8,7 @@
 	"partner": {
 		"menu": "Menú",
 		"getProducts": "Ver Productos",
+		"changeLang": "Cambiar Idioma",
 		"createProduct": "Crear Producto",
 		"purchasedProducts": "Productos Comprados",
 		"open": {

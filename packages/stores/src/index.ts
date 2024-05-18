@@ -28,3 +28,5 @@ export {
 	initialNutritionalPlanState,
 	useNutritionalPlanStore
 } from './nutritionalPlan'
+
+export { initialLangState, useLangStore } from './lang'
