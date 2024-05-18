@@ -27,6 +27,7 @@ export const PurchasedProductPartnerLazy = lazy(
 export const UpdateProductPartnerLazy = lazy(
 	() => import('@/pages/Partner/UpdateProduct')
 )
+export const LangPartnerLazy = lazy(() => import('@/pages/Partner/Lang'))
 
 //premium
 export const PreferencePageLazy = lazy(() => import('@/pages/User/Preference'))

@@ -2,6 +2,7 @@ import Layout from '@/router/private/Layout/partner'
 import {
 	CreateProductPartnerLazy,
 	HomePartnerLazy,
+	LangPartnerLazy,
 	PurchasedProductPartnerLazy,
 	UpdateProductPartnerLazy
 } from '@/router/private/lazy-pages'
@@ -24,7 +25,8 @@ export default function privateRoutesUser() {
 				path: '/partner/product/update',
 				element: <UpdateProductPartnerLazy />
 			},
-			{ path: '*', element: <Navigate to='/' replace /> }
+			{ path: '/partner/lang', element: <LangPartnerLazy /> },
+			{ path: '*', element: <Navigate to='/partner/login' replace /> }
 		]
 	}
 }
