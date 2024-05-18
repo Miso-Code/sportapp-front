@@ -1,4 +1,4 @@
-import TitleIcon from '@mui/icons-material/Title'
+import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
 import ChevronRightFilledIcon from '@mui/icons-material/ChevronRight'
 import {
@@ -41,7 +41,7 @@ export default function ConfigMenu({
 							tabIndex={0}
 							className='config-menu-item'>
 							<ListItemIcon>
-								<TitleIcon />
+								<TranslateIcon />
 							</ListItemIcon>
 							<ListItemText primary={t('config.menu.language')} />
 							<ChevronRightFilledIcon color='action' />
