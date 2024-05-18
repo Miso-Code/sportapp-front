@@ -13,7 +13,8 @@ describe('CreateProduct schema', () => {
 			stock: 1,
 			description: 'description',
 			typeImage: 'true',
-			image_base64: 'image_base64'
+			image_base64: 'image_base64',
+			sport_id: '1'
 		}
 
 		await expect(schema.validate(data)).resolves.toBe(data)
@@ -30,7 +31,7 @@ describe('CreateProduct schema', () => {
 			paymentFrequency: 'paymentFrequency',
 			stock: 1,
 			description: 'description',
-			typeImage: 'true'
+			typeImage: 'true',
 		}
 
 		await expect(schema.validate(data)).rejects.toThrow()
@@ -48,7 +49,8 @@ describe('CreateProduct schema', () => {
 			stock: 1,
 			description: 'description',
 			typeImage: 'false',
-			imageUrl: 'imageUrl'
+			imageUrl: 'imageUrl',
+			sport_id: '1'
 		}
 
 		await expect(schema.validate(data)).resolves.toBe(data)

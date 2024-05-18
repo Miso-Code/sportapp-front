@@ -67,7 +67,8 @@ export default function UpdateProductPartnerPage() {
 			paymentFrequency: response.payment_frequency,
 			description: response.description,
 			imageUrl: response.image_url,
-			typeImage: 'false'
+			typeImage: 'false',
+			sport_id: response.sport_id ?? ''
 		}
 		setProduct(payload)
 	}, [getProduct, productId, setError])
@@ -95,7 +96,7 @@ export default function UpdateProductPartnerPage() {
 							payment_frequency: productData.paymentFrequency,
 							description: productData.description,
 							image_base64: image64
-					  } as WithBase64Image)
+						} as WithBase64Image)
 					: ({
 							category: productData.category,
 							name: productData.name,
@@ -106,7 +107,7 @@ export default function UpdateProductPartnerPage() {
 							payment_frequency: productData.paymentFrequency,
 							description: productData.description,
 							image_url: productData.imageUrl
-					  } as WithUrlImage)
+						} as WithUrlImage)
 
 			const response = await updateProduct(product, productId)
 			if (response) {
