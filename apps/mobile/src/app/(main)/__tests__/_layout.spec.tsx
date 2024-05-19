@@ -124,7 +124,7 @@ describe('AppLayout', () => {
 		act(() => showPushNotification('test', 'test', 'info'))
 
 		expect(useAlertStore().setAlert).toHaveBeenCalledWith({
-			message: 'test: test',
+			message: 'test',
 			type: 'info',
 			position: 'top'
 		})
@@ -140,7 +140,7 @@ describe('AppLayout', () => {
 		).mock.calls[0][0]
 		showPushNotification('test', 'test', 'warning')
 		expect(useAlertStore().setAlert).toHaveBeenCalledWith({
-			message: 'test: test',
+			message: 'test',
 			type: 'warning',
 			position: 'top'
 		})
