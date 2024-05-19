@@ -78,7 +78,7 @@ const CalendarTrainingPage = () => {
 							session,
 							t('navbar.training')
 						)
-					)
+				  )
 				: [],
 		[sportSessions, t]
 	)
@@ -103,15 +103,17 @@ const CalendarTrainingPage = () => {
 		trainingPlanSessionEvents
 	])
 
-	const handleShowModalEvent = useCallback((event: CustomEvent) => {
-		if (event && event.type !== EventTypes.SESSION) {
-			setSelectedValue(event)
-			setOpenDialog(true)
-		} else {
-			// TODO: go to session detail
-			setOpenDialog(false)
-		}
-	}, [])
+	const handleShowModalEvent = useCallback(
+		(event: CustomEvent) => {
+			if (event && event.type !== EventTypes.SESSION) {
+				setSelectedValue(event)
+				setOpenDialog(true)
+			} else {
+				navigate(`/training/session/${event.id}`)
+			}
+		},
+		[navigate]
+	)
 
 	useEffect(() => {
 		if (!loadingLocation) handleGetApiData()
