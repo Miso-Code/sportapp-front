@@ -16,6 +16,11 @@ jest.mock('@sportapp/stores', () => ({
 	})
 }))
 
+jest.mock('dayjs', () => () => ({
+	locale: jest.fn().mockReturnThis(),
+	format: jest.fn().mockReturnValue('01 January 2021 12:00 AM')
+}))
+
 describe('Notifications', () => {
 	let component: ReactTestRenderer
 
