@@ -87,6 +87,6 @@ test.describe('[Partner] Products Flow', () => {
 
 		await createProduct(auxPartner, page, baseURL as string, true)
 
-		console.log(page.locator('button[type="submit"]').isEnabled())
+		await expect(await page.locator('button[type="submit"]')).toBeDisabled()
 	})
 })
