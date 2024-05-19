@@ -32,7 +32,7 @@ export default function AppLayout() {
 	const showPushNotification = useCallback(
 		(title: string, body: string, type: 'info' | 'warning') => {
 			setAlert({
-				message: `${title}: ${body}`,
+				message: `${body}`,
 				type: type,
 				position: 'top'
 			})

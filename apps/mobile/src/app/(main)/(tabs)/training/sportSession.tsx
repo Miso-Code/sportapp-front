@@ -3,13 +3,9 @@ import 'dayjs/locale/en' // import English locale
 import 'dayjs/locale/es' // import French locale
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter' // load isSameOrAfter plugin
 import weekday from 'dayjs/plugin/weekday' // load weekday plugin
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
-dayjs.extend(weekday) // use weekday plugin
-
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import { IconButton } from 'react-native-paper'
 
@@ -17,16 +13,20 @@ import TimeRing from '@/components/TimerRing'
 import { usePedometer } from '@/hooks/usePedometer'
 import { useLocation } from '@/hooks/useLocation'
 import {
+	useAlertStore,
 	useAuthStore,
+	useNutritionalPlanStore,
 	useSportSessionStore,
 	useSportStore,
 	useTrainingPlanStore,
-	useAlertStore,
-	useUserStore,
-	useNutritionalPlanStore
+	useUserStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { ESubscription } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
+
+dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
+dayjs.extend(weekday) // use weekday plugin
 
 const SportSession: React.FC = () => {
 	const { user: userAuth } = useAuthStore()
@@ -177,17 +177,14 @@ const SportSession: React.FC = () => {
 			plannedTrainingSession
 		)
 
-		const notifyResponse = await notifyCaloryIntake({
-			calories_burn: calories,
-			calories_burn_expected: plannedCalories,
-			lang: i18n.language
-		})
-
-		if (notifyResponse) {
-			setAlert({
-				type: 'info',
-				message: notifyResponse.message,
-				position: 'top'
+		if (
+			user?.profileData?.subscription_type !== ESubscription.FREE &&
+			user?.sportData
+		) {
+			await notifyCaloryIntake({
+				calories_burn: calories,
+				calories_burn_expected: plannedCalories,
+				lang: i18n.language
 			})
 		}
 
@@ -199,12 +196,12 @@ const SportSession: React.FC = () => {
 		isPedometerAvailable,
 		finishSportSession,
 		calculateSessionCalories,
-		user?.sportData?.weight,
 		plannedTrainingSession,
 		notifyCaloryIntake,
 		i18n.language,
 		currentStepCount,
-		setAlert
+		user?.profileData?.subscription_type,
+		user?.sportData
 	])
 
 	const sendMotivationalMessage = (doingGreat = true) => {
