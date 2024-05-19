@@ -149,8 +149,8 @@ exports[`OtherServicePage should render the component 1`] = `
         class="MuiBox-root css-0"
       >
         <div
-          class="MuiCollapse-root MuiCollapse-vertical css-1fkrdiv-MuiCollapse-root"
-          style="min-height: 0px; height: 0px; transition-duration: 300ms;"
+          class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+          style="min-height: 0px;"
         >
           <div
             class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
@@ -428,8 +428,8 @@ exports[`OtherServicePage should render the component, with products 1`] = `
         class="MuiBox-root css-0"
       >
         <div
-          class="MuiCollapse-root MuiCollapse-vertical css-1fkrdiv-MuiCollapse-root"
-          style="min-height: 0px; height: 0px; transition-duration: 300ms;"
+          class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+          style="min-height: 0px;"
         >
           <div
             class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"

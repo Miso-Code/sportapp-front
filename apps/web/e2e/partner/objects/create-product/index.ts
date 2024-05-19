@@ -1,5 +1,10 @@
 import { type Page } from '@playwright/test'
-import { productCategory, ProductCategoryKey } from './interface'
+import {
+	productCategory,
+	ProductCategoryKey,
+	ProductSportsKey,
+	ProductSportsType
+} from './interface'
 
 export class CreteProductPartnerPage {
 	readonly page: Page
@@ -14,6 +19,13 @@ export class CreteProductPartnerPage {
 
 	async goto() {
 		await this.page.goto(this.homePath)
+	}
+
+	async getAndFillProductSport(productSport: ProductSportsKey) {
+		await this.page.getByLabel('Deporte').click()
+		await this.page
+			.getByRole('option', { name: ProductSportsType[productSport] })
+			.click()
 	}
 
 	async getAndFillProductCategory(productCategoryProp: ProductCategoryKey) {

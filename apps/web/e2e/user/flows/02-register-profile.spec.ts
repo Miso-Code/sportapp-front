@@ -1,73 +1,26 @@
-import { faker } from '@faker-js/faker'
 import { expect, test } from '@playwright/test'
-import { format } from 'date-fns'
-import fs from 'node:fs'
-import path from 'path'
+import { generateJsonFile } from '../../utils'
 import {
 	FavoriteSportType,
 	TrainingDays,
-	TrainingObjective,
-	allergyType,
-	preferenceType
+	TrainingObjective
 } from '../objects/home/interface'
 import { HomeUserNutritionalDataPage } from '../objects/home/nutritional-data'
 import { HomeUserPersonalDataPage } from '../objects/home/personal-data'
 import { HomeUserSportDataPage } from '../objects/home/sport-data'
-import { RegisterUserPage } from '../objects/register'
-import { DocumentTypeKey, GenderTypeKey } from '../objects/register/interfaces'
+import { createUser, generateUser } from '../utils/user'
 import { LoginUserPage } from './../objects/login'
 
 test.describe('[User] Register new user profile', () => {
-	const user = {
-		email: faker.internet.email(),
-		password: faker.internet.password({
-			length: 10,
-			memorable: true,
-			prefix: '!0aA'
-		}),
-		name: faker.person.firstName(),
-		lastName: faker.person.lastName(),
-		documentType: 'Cédula de ciudadanía' as DocumentTypeKey,
-		documentNumber: faker.number
-			.bigInt({ min: 99999, max: 999999999 })
-			.toString(),
-		birthDate: '08/23/1996',
-		gender: 'Masculino' as GenderTypeKey,
-		country: 'Colombia',
-		city: 'Cali',
-		countryResidence: 'Colombia',
-		cityResidence: 'Cali',
-		lengthOfStay: faker.number.int({ min: 1, max: 10 }),
-		sport: {
-			favoriteSport: 'Ciclismo',
-			trainingObjective: 'Pérdida de peso',
-			trainingDays: ['monday', 'wednesday', 'friday'],
-			trainingHours: 2,
-			weight: faker.number.int({ min: 50, max: 100 }),
-			height: faker.number.int({ min: 1.5, max: 2 }),
-			limitation: [
-				{
-					name: 'Rodilla',
-					description: 'Lesión en la rodilla'
-				}
-			]
-		},
-		nutritional: {
-			allergy: [allergyType.GLUTEN_FREE, allergyType.LACTOSE_FREE],
-			preference: preferenceType.VEGETARIAN
-		}
-	}
+	const user = generateUser()
 
-	test.afterAll(async ({ browserName }, { title }) => {
-		const data = JSON.stringify(user, null, 2)
-		const date = format(new Date(), 'yyyy-MM-dd HH-mm-ss')
-		const { pathname: root } = new URL('../files', import.meta.url)
-		const file = path.join(
-			root,
-			`user-${date}-${browserName}_${title}.json`
-		)
-		fs.writeFileSync(file, data, { mode: 0o600 })
-	})
+	test.afterAll(async ({ browserName }, { title }) =>
+		generateJsonFile(user, {
+			browserName,
+			title,
+			flowName: 'user-register-profile'
+		})
+	)
 
 	test('should be not login, because the user is not register', async ({
 		page,
@@ -80,40 +33,12 @@ test.describe('[User] Register new user profile', () => {
 	})
 
 	test('should be register user', async ({ page, baseURL }) => {
-		const registerUserPage = new RegisterUserPage(page, baseURL)
 		const homeUserPersonalDataPage = new HomeUserPersonalDataPage(
 			page,
 			baseURL
 		)
 
-		await registerUserPage.goto()
-		await page.waitForTimeout(1000)
-
-		await registerUserPage.getAndFillEmail(user.email)
-		await registerUserPage.getAndFillPassword(user.password)
-		await registerUserPage.showPassword()
-		await registerUserPage.getAndFillName(user.name)
-		await registerUserPage.getAndFillLastName(user.lastName)
-		await registerUserPage.clickSubmit()
-
-		await page.waitForResponse((response) =>
-			response.status().toString().startsWith('2')
-		)
-
-		await registerUserPage.getAndFillDocumentType(user.documentType)
-		await registerUserPage.getAndFillDocumentNumber(
-			user.documentNumber.toString()
-		)
-		await registerUserPage.getAndFillGender(user.gender)
-		await registerUserPage.getAndFillBirthdate(user.birthDate)
-		await registerUserPage.getAndFillLengthOfStay(user.lengthOfStay)
-
-		await registerUserPage.getAndFillCountry()
-		await registerUserPage.getAndFillCity()
-		await registerUserPage.getAndFillCountryResidence()
-		await registerUserPage.getAndFillCityResidence()
-
-		await registerUserPage.clickSubmit()
+		await createUser(user, page, baseURL as string)
 
 		await page.waitForResponse(
 			(response) =>
@@ -226,11 +151,9 @@ test.describe('[User] Register new user profile', () => {
 		const loginUserPage = new LoginUserPage(page, baseURL)
 		const homeUserSportDataPage = new HomeUserSportDataPage(page, baseURL)
 		await loginUserPage.goto()
+
 		await page.waitForTimeout(1000)
-		/* await loginUserPage.loginCustomUser({
-			email: 'jdoe@gmail.com',
-			password: 'Test123!'
-		}) */
+
 		await loginUserPage.loginCustomUser({
 			email: user.email,
 			password: user.password

@@ -137,7 +137,7 @@ export default function OtherServicePage() {
 				className='other-service-page'
 				withSecondarySection={false}>
 				<TransitionAlert
-					isOpen={alertShow}
+					isOpen={alertShow && !!alert?.message}
 					message={t(alert?.message ?? '')}
 					handleClose={handleCloseAlert}
 				/>

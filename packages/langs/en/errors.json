@@ -8,5 +8,19 @@
 	"preference": {
 		"base": "An error occurred while saving preferences",
 		"scheduleError": "An error occurred while scheduling an appointment"
+	},
+	"partner": {
+		"createProduct": {
+			"base": "An error occurred while creating the product",
+			"image": "An error occurred while uploading the image"
+		},
+		"updateProduct": {
+			"base": "An error occurred while updating the product",
+			"image": "An error occurred while uploading the image"
+		}
+	},
+	"product": {
+		"base": "An error occurred while saving the product",
+		"get": "An error occurred while retrieving the product"
 	}
 }

@@ -18,3 +18,11 @@ export enum productPaymentType {
 
 export type ProductPaymentTypeKey = keyof typeof productPaymentType
 export type ProductPaymentType = `${productPaymentType}`
+
+export enum ProductSportsType {
+	CYCLING = 'Ciclismo',
+	ATHLETICS = 'Atletismo'
+}
+
+export type ProductSportsKey = keyof typeof ProductSportsType
+export type ProductSports = `${ProductSportsType}`
