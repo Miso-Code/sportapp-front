@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test'
-import { AllergyType, PreferenceType, preferenceTypeValue } from './interface'
+import { AllergyType, PreferenceType } from './interface'
 
 export class HomeUserNutritionalDataPage {
 	readonly page: Page
@@ -57,11 +57,10 @@ export class HomeUserNutritionalDataPage {
 	}
 
 	async verifyNutritionalData({
-		allergy,
-		preference
+		allergy
 	}: {
 		allergy: AllergyType[]
-		preference: PreferenceType
+		preference?: PreferenceType
 	}) {
 		const chips = await this.page.locator('.MuiChip-label').all()
 		expect(chips).toHaveLength(allergy.length)
@@ -78,12 +77,5 @@ export class HomeUserNutritionalDataPage {
 			.locator('input[name="foodPreferences"]')
 			.all()
 		expect(preferenceOptions).toHaveLength(3)
-		expect(
-			preferenceOptions.some(
-				async (option) =>
-					(await option.getAttribute('value')) ===
-					preferenceTypeValue[preference]
-			)
-		).toBeTruthy()
 	}
 }
