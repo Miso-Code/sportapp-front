@@ -17,10 +17,12 @@ export const usePaymentPlanStore = create(
 	persist<IPaymentPlanStore>(
 		(set, get) => ({
 			...initialPaymentPlanState,
-			setLoading: (loading) => set({ loading }),
+			setLoading: (loading) => set((state) => ({ ...state, loading })),
 			setError: (error) => set({ error }),
-			setPaymentData: (paymentData) => set({ paymentData }),
-			setSelectedPlan: (selectedPlan) => set({ selectedPlan }),
+			setPaymentData: (paymentData) =>
+				set((state) => ({ ...state, paymentData })),
+			setSelectedPlan: (selectedPlan) =>
+				set((state) => ({ ...state, selectedPlan })),
 			clearState: () =>
 				set((state) => ({ ...state, ...initialPaymentPlanState })),
 			updatePlan: async () => {

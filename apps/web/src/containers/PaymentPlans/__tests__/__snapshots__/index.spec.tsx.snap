@@ -77,6 +77,7 @@ exports[`PaymentPlans should call handleSelect 1`] = `
       >
         <div
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+          data-testid="paymentPlans.premium.title"
         >
           <div
             class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -92,7 +93,7 @@ exports[`PaymentPlans should call handleSelect 1`] = `
               <span
                 class="MuiChip-label MuiChip-labelMedium css-1jzq0dw-MuiChip-label"
               >
-                Active
+                paymentPlans.active
               </span>
             </div>
           </div>
@@ -356,6 +357,7 @@ exports[`PaymentPlans should call handleSelect 1`] = `
         </div>
         <div
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+          data-testid="paymentPlans.free.title"
         >
           <div
             class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -626,6 +628,7 @@ exports[`PaymentPlans should call handleSelect 1`] = `
         </div>
         <div
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+          data-testid="paymentPlans.intermediate.title"
         >
           <div
             class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -980,6 +983,7 @@ exports[`PaymentPlans should render the component 1`] = `
           >
             <div
               class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+              data-testid="paymentPlans.free.title"
             >
               <div
                 class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -995,7 +999,7 @@ exports[`PaymentPlans should render the component 1`] = `
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-1jzq0dw-MuiChip-label"
                   >
-                    Active
+                    paymentPlans.active
                   </span>
                 </div>
               </div>
@@ -1259,6 +1263,7 @@ exports[`PaymentPlans should render the component 1`] = `
             </div>
             <div
               class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+              data-testid="paymentPlans.intermediate.title"
             >
               <div
                 class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -1529,6 +1534,7 @@ exports[`PaymentPlans should render the component 1`] = `
             </div>
             <div
               class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+              data-testid="paymentPlans.premium.title"
             >
               <div
                 class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -1878,6 +1884,7 @@ exports[`PaymentPlans should render the component 1`] = `
         >
           <div
             class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+            data-testid="paymentPlans.free.title"
           >
             <div
               class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -1893,7 +1900,7 @@ exports[`PaymentPlans should render the component 1`] = `
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-1jzq0dw-MuiChip-label"
                 >
-                  Active
+                  paymentPlans.active
                 </span>
               </div>
             </div>
@@ -2157,6 +2164,7 @@ exports[`PaymentPlans should render the component 1`] = `
           </div>
           <div
             class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+            data-testid="paymentPlans.intermediate.title"
           >
             <div
               class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"
@@ -2427,6 +2435,7 @@ exports[`PaymentPlans should render the component 1`] = `
           </div>
           <div
             class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root px-2 pb-4 max-w-[24rem] payment-card css-bhp9pd-MuiPaper-root-MuiCard-root"
+            data-testid="paymentPlans.premium.title"
           >
             <div
               class="MuiCardContent-root flex justify-between css-46bh2p-MuiCardContent-root"

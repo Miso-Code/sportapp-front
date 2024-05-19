@@ -2,7 +2,9 @@
 
 exports[`UpdateProductPartnerPage should render the component 1`] = `
 <div>
-  <div>
+  <div
+    class="MuiBox-root css-0"
+  >
     <header
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorInherit MuiAppBar-positionStatic bg-white css-1cjrmu8-MuiPaper-root-MuiAppBar-root"
     >
@@ -80,7 +82,7 @@ exports[`UpdateProductPartnerPage should render the component 1`] = `
             class="MuiBox-root css-2uchni"
           >
             <button
-              aria-label="navbar.open.profile"
+              aria-label="navbar.partner.open.profile"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-av538e-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               tabindex="0"
@@ -90,7 +92,7 @@ exports[`UpdateProductPartnerPage should render the component 1`] = `
                 class="MuiAvatar-root MuiAvatar-circular css-1wlk0hk-MuiAvatar-root"
               >
                 <img
-                  alt="Remy Sharp"
+                  alt="c"
                   class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
                   src="/static/images/avatar/2.jpg"
                 />
@@ -104,7 +106,7 @@ exports[`UpdateProductPartnerPage should render the component 1`] = `
       </div>
     </header>
     <div
-      class="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+      class="MuiContainer-root MuiContainer-maxWidthXl css-1iq9z6u-MuiContainer-root"
     >
       <main
         class="my-8"
@@ -139,69 +141,69 @@ exports[`UpdateProductPartnerPage should render the component 1`] = `
           </button>
         </div>
       </main>
-    </div>
-  </div>
-  <div
-    class="alert-partner-update-product-container MuiBox-root css-0"
-  >
-    <div
-      class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
-      style="min-height: 0px;"
-    >
       <div
-        class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+        class="alert-partner-update-product-container MuiBox-root css-0"
       >
         <div
-          class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+          class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+          style="min-height: 0px;"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorError MuiAlert-standardError MuiAlert-standard css-1i3m5il-MuiPaper-root-MuiAlert-root"
-            role="alert"
+            class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
           >
             <div
-              class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+              class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
-                data-testid="ErrorOutlineIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorError MuiAlert-standardError MuiAlert-standard css-1i3m5il-MuiPaper-root-MuiAlert-root"
+                role="alert"
               >
-                <path
-                  d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                />
-              </svg>
-            </div>
-            <div
-              class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
-            >
-              errors.partner.updateProduct.base
-            </div>
-            <div
-              class="MuiAlert-action css-ki1hdl-MuiAlert-action"
-            >
-              <button
-                aria-label="close"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1e0d89p-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
-                  data-testid="CloseIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <div
+                  class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
                 >
-                  <path
-                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                    data-testid="ErrorOutlineIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+                >
+                  errors.partner.updateProduct.base
+                </div>
+                <div
+                  class="MuiAlert-action css-ki1hdl-MuiAlert-action"
+                >
+                  <button
+                    aria-label="close"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1e0d89p-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                      data-testid="CloseIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

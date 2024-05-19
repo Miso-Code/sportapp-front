@@ -214,6 +214,7 @@ exports[`TimerRing should render correctly 1`] = `
         ],
       ]
     }
+    testID="trainingTimer"
   >
     0:01
   </Text>

@@ -39,13 +39,13 @@ export const useAuthStore = create(
 								accessToken: response.access_token,
 								accessTokenExpirationMinutes:
 									response.access_token_expires_minutes,
-								refreshToken: response.refresh_token, // TODO: this is not safe to be stored in the client this way
+								refreshToken: response.refresh_token,
 								refreshTokenExpirationMinutes:
 									response.refresh_token_expires_minutes
 							},
 							user: {
 								...state.user!,
-								id: response.user_id // TODO: Crafty
+								id: response.user_id
 							}
 						}))
 						return true
@@ -119,7 +119,6 @@ export const useAuthStore = create(
 				}
 			},
 			logout: () => {
-				// WIP logout logic
 				set((state) => ({
 					...state,
 					user: undefined,
@@ -189,11 +188,24 @@ export const useAuthStore = create(
 					isAuth: true
 				}))
 
-				return await userApi.registerFull(request, {
-					headers: {
-						Authorization: `Bearer ${get().authToken?.accessToken}`
-					}
-				})
+				try {
+					return await userApi.registerFull(request, {
+						headers: {
+							Authorization: `Bearer ${get().authToken?.accessToken}`
+						}
+					})
+				} catch (error) {
+					set((state) => ({
+						...state,
+						error: 'errors.register.full'
+					}))
+					return false
+				} finally {
+					set((state) => ({
+						...state,
+						loading: false
+					}))
+				}
 			},
 			setError: (error) => set({ error }),
 			setLoading: (loading) => set({ loading }),

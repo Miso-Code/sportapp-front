@@ -6,7 +6,7 @@ import TextFieldController from '@/components/Inputs/TexFieldController'
 import { toBase64 } from '@/utils/files'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoadingButton from '@mui/lab/LoadingButton'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
@@ -17,6 +17,7 @@ import {
 	Props
 } from './interfaces'
 import schema, { FormData } from './utils/schema'
+import { useSportStore } from '@sportapp/stores'
 
 export default function CreateProduct({
 	className,
@@ -32,7 +33,8 @@ export default function CreateProduct({
 		paymentType: '',
 		paymentFrequency: PaymentFrequency.OTHER,
 		description: '',
-		image_base64: ''
+		image_base64: '',
+		sport_id: ''
 	},
 	buttonText = 'form.createProduct',
 	...props
@@ -56,10 +58,13 @@ export default function CreateProduct({
 			paymentFrequency: defaultValues.paymentFrequency,
 			description: defaultValues.description ?? '',
 			typeImage: 'false',
-			imageUrl: defaultValues.imageUrl ?? ''
+			imageUrl: defaultValues.imageUrl ?? '',
+			sport_id: defaultValues.sport_id ?? ''
 		},
 		mode: 'onChange'
 	})
+	const { sports } = useSportStore()
+	const { getSports } = useSportStore()
 
 	const watchTypeImage = watch('typeImage')
 	const watchImageBase64 = watch('image_base64')
@@ -78,6 +83,23 @@ export default function CreateProduct({
 		}
 	}
 
+	const getFormatSport = useMemo(() => {
+		if (Array.isArray(sports))
+			return sports.map((sport) => ({
+				label: sport.name,
+				value: sport.sport_id
+			}))
+		else return []
+	}, [sports])
+
+	const handleGetSports = useCallback(async () => {
+		await getSports()
+	}, [getSports])
+
+	useEffect(() => {
+		handleGetSports()
+	}, [handleGetSports])
+
 	useEffect(() => {
 		if (watchTypeImage === 'false') {
 			setImagePreview(watchImageUrl as string)
@@ -93,6 +115,13 @@ export default function CreateProduct({
 			className={`create-product-form ${className}`}
 			onSubmit={handleSubmit(onSubmit)}
 			{...props}>
+			<SelectController
+				control={control}
+				selectProps={{ fullWidth: true }}
+				label={t('form.sport')}
+				name='sport_id'
+				options={getFormatSport}
+			/>
 			<SelectController
 				control={control}
 				selectProps={{ fullWidth: true }}

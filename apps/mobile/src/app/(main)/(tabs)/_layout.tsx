@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Icon } from 'react-native-paper'
+import { Icon, useTheme } from 'react-native-paper'
 
 import { Tabs, useSegments } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { useUserStore } from '@sportapp/stores'
+
+import { ESubscription } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
 
 const ProfileIcon = ({ color }) => (
 	<Icon size={20} source='account' color={color} />
@@ -20,6 +23,9 @@ const PremiumIcon = ({ color }) => (
 )
 
 export default function TabLayout() {
+	const theme = useTheme()
+	const { user } = useUserStore()
+
 	const { t } = useTranslation()
 
 	const segments = useSegments()
@@ -40,34 +46,44 @@ export default function TabLayout() {
 					fontWeight: 'normal',
 					fontSize: 34
 				},
-				headerBackground: () => null
+				headerBackground: () => null,
+				tabBarActiveTintColor: theme.colors.primary
 			}}>
 			<Tabs.Screen
 				name='profile'
 				options={{
 					title: t('navbar.profile'),
-					tabBarIcon: ProfileIcon
+					tabBarIcon: ProfileIcon,
+					tabBarTestID: 'profile-tab'
 				}}
 			/>
 			<Tabs.Screen
 				name='training'
 				options={{
 					title: t('navbar.training'),
-					tabBarIcon: TrainingIcon
+					tabBarIcon: TrainingIcon,
+					tabBarTestID: 'training-tab'
 				}}
 			/>
 			<Tabs.Screen
 				name='notifications'
 				options={{
 					title: t('navbar.notifications'),
-					tabBarIcon: NotificationsIcon
+					tabBarIcon: NotificationsIcon,
+					tabBarTestID: 'notifications-tab'
 				}}
 			/>
 			<Tabs.Screen
 				name='premium'
 				options={{
 					title: t('navbar.preferential'),
-					tabBarIcon: PremiumIcon
+					tabBarIcon: PremiumIcon,
+					href:
+						user?.profileData?.subscription_type ===
+						ESubscription.PREMIUM
+							? '/premium'
+							: null,
+					tabBarTestID: 'premium-tab'
 				}}
 			/>
 		</Tabs>

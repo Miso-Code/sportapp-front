@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { Stack } from 'expo-router/stack'
 
 import {
-	PaperProvider,
 	Snackbar,
 	Icon,
 	Text,
@@ -14,22 +13,41 @@ import {
 
 import { useAlertStore } from '@sportapp/stores'
 import { View, StyleSheet } from 'react-native'
+import { usePushNotification } from '@/hooks/usePushNotifications'
+
+const iconByAlertType = {
+	error: 'alert-circle',
+	success: 'check-circle',
+	warning: 'alert-circle',
+	info: 'information'
+}
 
 export default function AppLayout() {
 	const theme = useTheme()
 	const styles = createStyles(theme)
 	const { alert, setAlert } = useAlertStore()
 
-	const iconByAlertType = {
-		error: 'alert-circle',
-		success: 'check-circle',
-		warning: 'alert-circle',
-		info: 'information'
-	}
+	const { subscribe } = usePushNotification()
+
+	const showPushNotification = useCallback(
+		(title: string, body: string, type: 'info' | 'warning') => {
+			setAlert({
+				message: `${body}`,
+				type: type,
+				position: 'top'
+			})
+		},
+		[setAlert]
+	)
+
+	useEffect(() => {
+		;(async () => {
+			await subscribe(showPushNotification)
+		})()
+	}, [showPushNotification, subscribe])
 
 	return (
-		<PaperProvider>
-			{/** PaperProvider allows modals to render the right way by providing it here */}
+		<>
 			<Stack>
 				<Stack.Screen name='(tabs)' options={{ headerShown: false }} />
 			</Stack>
@@ -56,7 +74,7 @@ export default function AppLayout() {
 					</Snackbar>
 				)}
 			</Portal>
-		</PaperProvider>
+		</>
 	)
 }
 

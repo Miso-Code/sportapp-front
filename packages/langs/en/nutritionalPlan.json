@@ -1,0 +1,30 @@
+{
+	"weekday": {
+		"monday": "Monday",
+		"tuesday": "Tuesday",
+		"wednesday": "Wednesday",
+		"thursday": "Thursday",
+		"friday": "Friday",
+		"saturday": "Saturday",
+		"sunday": "Sunday"
+	},
+	"dishType": {
+		"breakfast": "Breakfast",
+		"lunch": "Lunch",
+		"dinner": "Dinner",
+		"snack": "Snack",
+		"recovery_snack": "Recovery Snack",
+		"dessert": "Dessert",
+		"appetizer": "Appetizer",
+		"drink": "Drink",
+		"other": "Other"
+	},
+	"macros": {
+		"calories": "calories",
+		"of_proteins": "of proteins",
+		"of_carbs": "of carbs",
+		"of_fats": "of fats"
+	},
+	"currentDay": "Today dishes",
+	"futureDishes": "Future dishes"
+}

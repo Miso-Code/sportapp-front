@@ -11,7 +11,8 @@ const yupLocale: LocaleObject = {
 		...defaultLocale.string,
 		email: 'validations.email',
 		min: 'validations.min.string',
-		max: 'validations.max.string'
+		max: 'validations.max.string',
+		url: 'validations.url'
 	},
 	array: {
 		...defaultLocale.array,
@@ -21,7 +22,13 @@ const yupLocale: LocaleObject = {
 	number: {
 		...defaultLocale.number,
 		min: 'validations.min.string',
-		max: 'validations.max.string'
+		max: 'validations.max.string',
+		positive: 'validations.positive'
+	},
+	date: {
+		...defaultLocale.date,
+		min: 'validations.min.date',
+		max: 'validations.max.date'
 	}
 }
 

@@ -83,7 +83,7 @@ describe('NavbarTop', () => {
 
 	it('should open the user menu', async () => {
 		const userButton = wrapper.container.querySelector(
-			'[aria-label="navbar.open.profile"]'
+			'[aria-label="navbar.partner.open.profile"]'
 		)
 
 		act(() => {
@@ -92,6 +92,32 @@ describe('NavbarTop', () => {
 
 		await waitFor(() =>
 			expect(wrapper.getByRole('menu')).toBeInTheDocument()
+		)
+	})
+
+	it('should navigate to the change lang page', async () => {
+		const navigate = jest.fn()
+		;(useNavigate as jest.Mock).mockReturnValue(navigate)
+		wrapper.rerender(<NavbarTop />)
+		const userButton = wrapper.container.querySelector(
+			'[aria-label="navbar.partner.open.profile"]'
+		)
+
+		act(() => {
+			fireEvent.click(userButton as Element)
+		})
+
+		await waitFor(() => {
+			const changeLangButton = wrapper.getByText(
+				'navbar.partner.changeLang'
+			)
+			act(() => {
+				fireEvent.click(changeLangButton as Element)
+			})
+		})
+
+		await waitFor(() =>
+			expect(navigate).toHaveBeenCalledWith('/partner/lang')
 		)
 	})
 })

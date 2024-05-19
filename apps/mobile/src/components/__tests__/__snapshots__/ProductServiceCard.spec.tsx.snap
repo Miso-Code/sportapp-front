@@ -17,7 +17,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
       "width": "100%",
     }
   }
-  testID="card-container-outer-layer"
+  testID="productServiceCard-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -27,7 +27,6 @@ exports[`ProductServiceCard should render correctly 1`] = `
         "borderRadius": 12,
         "elevation": 1,
         "flex": undefined,
-        "paddingBottom": 10,
         "shadowColor": "#000",
         "shadowOffset": {
           "height": 1,
@@ -37,7 +36,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
         "shadowRadius": 1,
       }
     }
-    testID="card-container"
+    testID="productServiceCard-container"
   >
     <View
       style={
@@ -48,7 +47,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
           undefined,
         ]
       }
-      testID="card"
+      testID="productServiceCard"
     >
       <View
         style={
@@ -76,7 +75,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
           }
           source={
             {
-              "uri": undefined,
+              "uri": "test.jpg",
             }
           }
           style={
@@ -108,6 +107,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
             {
               "justifyContent": "center",
               "marginTop": 10,
+              "paddingBottom": 10,
             },
           ]
         }
@@ -136,7 +136,9 @@ exports[`ProductServiceCard should render correctly 1`] = `
               ],
             ]
           }
-        />
+        >
+          Test
+        </Text>
         <Text
           style={
             [
@@ -159,7 +161,9 @@ exports[`ProductServiceCard should render correctly 1`] = `
               ],
             ]
           }
-        />
+        >
+          Test description
+        </Text>
         <View
           style={
             {
@@ -321,7 +325,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
                       ]
                     }
                   >
-                    productService.undefined
+                    productService.Test category
                   </Text>
                 </View>
               </View>
@@ -477,7 +481,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
                       ]
                     }
                   >
-                    COPNaN
+                    COP 100.00 / productService.monthly
                   </Text>
                 </View>
               </View>

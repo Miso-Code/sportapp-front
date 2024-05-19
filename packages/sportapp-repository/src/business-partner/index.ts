@@ -16,7 +16,10 @@ import {
 	ProductGetRequestPayload,
 	ProductSpecificRequestPayload
 } from './interfaces/api/product'
-import { ProductPurchased, ProductPurchasedRequestPayload } from './interfaces/api/product-purchased'
+import {
+	ProductPurchased,
+	ProductPurchasedRequestPayload
+} from './interfaces/api/product-purchased'
 
 export default class BusinessPartnerApi {
 	private readonly sportappApi: AxiosInstance

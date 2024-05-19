@@ -30,6 +30,12 @@
 		"year": "Year Payment",
 		"month": "Month Payment"
 	},
+	"selection": {
+		"title": "Select Plan",
+		"description": "Are you sure you want to select this plan?",
+		"accept": "Accept",
+		"cancel": "Cancel"
+	},
 	"alert": {
 		"error": "Error processing payment, please try again later",
 		"success": "Payment successfully processed and plan updated"

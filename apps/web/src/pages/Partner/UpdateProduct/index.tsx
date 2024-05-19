@@ -15,6 +15,7 @@ import { usePartnerProductStore } from '@sportapp/stores'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
+import './_index.scss'
 
 export default function UpdateProductPartnerPage() {
 	const [product, setProduct] = useState<FormData>()
@@ -67,7 +68,8 @@ export default function UpdateProductPartnerPage() {
 			paymentFrequency: response.payment_frequency,
 			description: response.description,
 			imageUrl: response.image_url,
-			typeImage: 'false'
+			typeImage: 'false',
+			sport_id: response.sport_id ?? ''
 		}
 		setProduct(payload)
 	}, [getProduct, productId, setError])
@@ -94,7 +96,8 @@ export default function UpdateProductPartnerPage() {
 							payment_type: productData.paymentType,
 							payment_frequency: productData.paymentFrequency,
 							description: productData.description,
-							image_base64: image64
+							image_base64: image64,
+							sport_id: productData.sport_id
 					  } as WithBase64Image)
 					: ({
 							category: productData.category,
@@ -105,7 +108,8 @@ export default function UpdateProductPartnerPage() {
 							payment_type: productData.paymentType,
 							payment_frequency: productData.paymentFrequency,
 							description: productData.description,
-							image_url: productData.imageUrl
+							image_url: productData.imageUrl,
+							sport_id: productData.sport_id
 					  } as WithUrlImage)
 
 			const response = await updateProduct(product, productId)
@@ -121,60 +125,56 @@ export default function UpdateProductPartnerPage() {
 	}, [handleGetProduct])
 
 	return (
-		<>
-			<div>
-				<NavbarTop />
-				<Container maxWidth='xl'>
-					<main className='my-8'>
-						<Card
-							variant='outlined'
-							className='p-8 max-w-4xl mx-auto'>
-							<Typography className='mb-4' variant='h4'>
-								{t('productUpdate.title')}
-							</Typography>
+		<Box>
+			<NavbarTop />
+			<Container maxWidth='xl' sx={{ position: 'relative' }}>
+				<main className='my-8'>
+					<Card variant='outlined' className='p-8 max-w-4xl mx-auto'>
+						<Typography className='mb-4' variant='h4'>
+							{t('productUpdate.title')}
+						</Typography>
 
-							{loading ? (
-								<Box
-									sx={{
-										display: 'flex',
-										justifyContent: 'center',
-										width: '100%'
-									}}>
-									<Spinner />
-									<Typography className='mb-4' variant='h4'>
-										{t('loading')}
-									</Typography>
-								</Box>
-							) : (
-								<CreateProduct
-									isLoading={loading}
-									onHandleSubmit={handleUpdateProduct}
-									defaultValues={product}
-									buttonText='productUpdate.update'
-								/>
-							)}
+						{loading ? (
+							<Box
+								sx={{
+									display: 'flex',
+									justifyContent: 'center',
+									width: '100%'
+								}}>
+								<Spinner />
+								<Typography className='mb-4' variant='h4'>
+									{t('loading')}
+								</Typography>
+							</Box>
+						) : (
+							<CreateProduct
+								isLoading={loading}
+								onHandleSubmit={handleUpdateProduct}
+								defaultValues={product}
+								buttonText='productUpdate.update'
+							/>
+						)}
 
-							<LoadingButton
-								className='mt-4'
-								loading={loading}
-								fullWidth
-								type='button'
-								onClick={deleteProductHandler}
-								variant='contained'
-								color='error'>
-								{t('productUpdate.delete')}
-							</LoadingButton>
-						</Card>
-					</main>
-				</Container>
-			</div>
-			<TransitionAlert
-				containerClassName='alert-partner-update-product-container'
-				isOpen={alert}
-				handleClose={setAlert}
-				message={t(error ?? 'errors.partner.updateProduct.base')}
-				severity='error'
-			/>
-		</>
+						<LoadingButton
+							className='mt-4'
+							loading={loading}
+							fullWidth
+							type='button'
+							onClick={deleteProductHandler}
+							variant='contained'
+							color='error'>
+							{t('productUpdate.delete')}
+						</LoadingButton>
+					</Card>
+				</main>
+				<TransitionAlert
+					containerClassName='alert-partner-update-product-container'
+					isOpen={alert}
+					handleClose={setAlert}
+					message={t(error ?? 'errors.partner.updateProduct.base')}
+					severity='error'
+				/>
+			</Container>
+		</Box>
 	)
 }

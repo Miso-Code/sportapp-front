@@ -8,5 +8,19 @@
 	"preference": {
 		"base": "Ha ocurrido un error al guardar las preferencias",
 		"scheduleError": "Se produjo un error al agendar una Cita"
+	},
+	"partner": {
+		"createProduct": {
+			"base": "Ha ocurrido un error al crear el producto",
+			"image": "Ha ocurrido un error al subir la imagen"
+		},
+		"updateProduct": {
+			"base": "Ha ocurrido un error al actualizar el producto",
+			"image": "Ha ocurrido un error al actualizar la imagen"
+		}
+	},
+	"product": {
+		"base": "Ha ocurrido un error al obtener los productos",
+		"get": "Ha ocurrido un error al obtener el producto"
 	}
 }

@@ -21,6 +21,7 @@ export interface Product {
 	image_url: string
 	description: string
 	active: boolean
+	sport_id?: string
 }
 
 export interface ProductSpecificRequestPayload {

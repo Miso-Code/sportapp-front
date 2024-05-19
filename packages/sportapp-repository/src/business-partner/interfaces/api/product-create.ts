@@ -9,6 +9,7 @@ type BaseProductCreateRequest = {
 	payment_type: string
 	payment_frequency?: string
 	description: string
+	sport_id: string
 }
 
 export type WithBase64Image = BaseProductCreateRequest & {

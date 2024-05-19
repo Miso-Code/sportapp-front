@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Appointments should render correctly 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "marginTop": 120,
+      "paddingHorizontal": 15,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        {
+          "gap": 10,
+          "marginBottom": 200,
+          "width": "100%",
+        }
+      }
+    />
+  </View>
+</RCTScrollView>
+`;

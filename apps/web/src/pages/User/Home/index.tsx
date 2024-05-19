@@ -18,7 +18,7 @@ import { NutritionalProfileUpdateRequest } from '@sportapp/sportapp-repository/s
 import { PersonalProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/personalProfile'
 import { SportProfileUpdateRequest } from '@sportapp/sportapp-repository/src/user/interfaces/api/sportProfile'
 import { useUserStore } from '@sportapp/stores/src/user'
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './_index.scss'
@@ -78,7 +78,8 @@ function HomePage() {
 
 			const payload: SportProfileUpdateRequest = {
 				available_training_hours: data.availableTrainingHoursPerDay,
-				available_weekdays: data.weekdays as SportProfileUpdateRequest['available_weekdays'],
+				available_weekdays:
+					data.weekdays as SportProfileUpdateRequest['available_weekdays'],
 				preferred_training_start_time: data.preferedTrainingStartTime,
 				favourite_sport_id: data.favouriteSportId,
 				height: heightPayload,
@@ -145,7 +146,11 @@ function HomePage() {
 				)
 			}
 			defaultValues={{
-				birthday: new Date(user?.profileData?.birth_date ?? ''),
+				birthday: parse(
+					user?.profileData?.birth_date ?? '',
+					"yyyy-MM-dd'T'HH:mm:ss",
+					new Date()
+				),
 				documentNumber: user?.profileData?.identification_number ?? '',
 				documentType: user?.profileData?.identification_type ?? '',
 				gender: user?.profileData?.gender ?? '',

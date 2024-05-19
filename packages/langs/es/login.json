@@ -5,8 +5,14 @@
 		"default": "Registro",
 		"go": "Registrarse"
 	},
+	"login": {
+		"question": "¿Eres un cliente?",
+		"go": "Clic para ingresar"
+	},
 	"partner": {
-		"title": "Inicio de sesión de Socio de Negocio"
+		"title": "Inicio de sesión de Socio de Negocio",
+		"question": "¿Eres un socio de negocio?",
+		"go": "Clic para ingresar"
 	},
 	"image": "Imagen de login"
 }

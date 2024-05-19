@@ -8,6 +8,7 @@
 	"partner": {
 		"getProducts": "Get Products",
 		"createProduct": "Create Product",
+		"changeLang": "Change Language",
 		"purchasedProducts": "Purchased Products",
 		"open": {
 			"profile": "Profile"

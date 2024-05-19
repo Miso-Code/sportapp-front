@@ -5,9 +5,9 @@ exports[`SportSessionSummary should render correctly 1`] = `
   <RCTScrollView
     contentContainerStyle={
       {
-        "alignItems": "flex-start",
+        "alignItems": "center",
         "gap": 20,
-        "justifyContent": "flex-start",
+        "justifyContent": "center",
         "marginHorizontal": 20,
         "paddingVertical": 100,
       }

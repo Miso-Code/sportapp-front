@@ -58,7 +58,10 @@ const TimerRing: FC<TimeRingProps> = ({ currentTime, maxTime }) => {
 				}}
 				hideLegend={true}
 			/>
-			<Text variant='headlineLarge' style={styles.text}>
+			<Text
+				variant='headlineLarge'
+				style={styles.text}
+				testID='trainingTimer'>
 				{formatTime(currentTime)}
 			</Text>
 		</View>

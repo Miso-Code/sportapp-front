@@ -25,6 +25,7 @@ export default {
 		]
 	},
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+	testPathIgnorePatterns: ['<rootDir>/e2e/'],
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'<rootDir>/src/components/**/*.{ts,tsx}',
@@ -32,6 +33,7 @@ export default {
 		'<rootDir>/src/pages/**/*.{ts,tsx}',
 		'<rootDir>/src/router/**/*.{ts,tsx}',
 		'<rootDir>/src/utils/**/*.{ts,tsx}',
+		'<rootDir>/src/hooks/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/interfaces/**/*.{ts,tsx}',
 		'!<rootDir>/src/**/__mocks__/**/*.{ts,tsx}'
 	],

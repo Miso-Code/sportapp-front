@@ -181,7 +181,8 @@ describe('ProductStore', () => {
 			payment_frequency: 'other',
 			image_base64: 'image_base64',
 			description:
-				"I'll override the auxiliary THX feed, that should driver the GB firewall!"
+				"I'll override the auxiliary THX feed, that should driver the GB firewall!",
+			sport_id: '1'
 		}
 		await act(async () => {
 			await createProduct(payload)
@@ -335,7 +336,8 @@ describe('ProductStore', () => {
 			payment_frequency: 'other',
 			image_base64: 'image_base64',
 			description:
-				"I'll override the auxiliary THX feed, that should driver the GB firewall!"
+				"I'll override the auxiliary THX feed, that should driver the GB firewall!",
+			sport_id: '1'
 		}
 		await act(async () => {
 			await createProduct(payload)
@@ -377,7 +379,8 @@ describe('ProductStore', () => {
 			payment_frequency: 'other',
 			image_base64: 'image_base64',
 			description:
-				"I'll override the auxiliary THX feed, that should driver the GB firewall!"
+				"I'll override the auxiliary THX feed, that should driver the GB firewall!",
+			sport_id: '1'
 		}
 		await act(async () => {
 			await createProduct(payload)

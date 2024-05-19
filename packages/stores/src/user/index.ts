@@ -18,13 +18,20 @@ export const useUserStore = create(
 	persist<IUserStore>(
 		(set) => ({
 			...initialUserState,
-			setError: (error) => set({ error }),
-			setLoading: (loading) => set({ loading }),
-			setUser: (user) => set({ user }),
-			clearState: () => set({ ...initialUserState }, true),
+			setError: (error) => set((state) => ({ ...state, error }), true),
+			setLoading: (loading) =>
+				set((state) => ({ ...state, loading }), true),
+			setUser: (user) => set((state) => ({ ...state, user }), true),
+			clearState: () =>
+				set(
+					(state) => ({
+						...state,
+						...initialUserState
+					}),
+					true
+				),
 			getProfile: async () => {
 				const userApi = new UserApi()
-
 				try {
 					set((state) => ({
 						...state,

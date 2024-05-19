@@ -171,6 +171,7 @@ const ServiceAndProducts: React.FC = () => {
 				/>
 				{products.map((product, index) => (
 					<ProductServiceCard
+						testID='productCard'
 						key={'productCard' + index}
 						onPress={() => setSelectedProduct(product)}
 						title={product.name}

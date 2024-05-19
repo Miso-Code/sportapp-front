@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardProduct should render the component 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root card-product css-11w0ezu-MuiPaper-root-MuiCard-root"
+  >
+    <button
+      class="MuiButtonBase-root MuiCardActionArea-root css-58rx-MuiButtonBase-root-MuiCardActionArea-root"
+      tabindex="0"
+      type="button"
+    >
+      <img
+        alt="Live from space album cover"
+        class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img card-product-image css-1n4vbju-MuiCardMedia-root"
+        src="image"
+      />
+      <div
+        class="MuiBox-root css-j7qwjs"
+      >
+        <div
+          class="MuiCardContent-root css-1qaznj3-MuiCardContent-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-noWrap card-product-title css-1961ak2-MuiTypography-root"
+          >
+            title
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-subtitle1 card-product-description css-ecpxie-MuiTypography-root"
+          >
+            description
+          </p>
+        </div>
+      </div>
+      <span
+        class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+      />
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;

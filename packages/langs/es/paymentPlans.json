@@ -32,7 +32,9 @@
 	},
 	"selection": {
 		"title": "Selección de plan",
-		"description": "Esta seguro que desea seleccionar el "
+		"description": "Esta seguro que desea seleccionar el ",
+		"accept": "Aceptar",
+		"cancel": "Cancelar"
 	},
 	"alert": {
 		"error": "Error al procesar el pago, por favor intente nuevamente mas tarde",

@@ -48,7 +48,8 @@ export const usePartnerAuthStore = create(
 							},
 							user: {
 								...state.user!,
-								id: response.user_id // TODO: Crafty
+								id: response.user_id, // TODO: Crafty
+								email: email
 							}
 						}))
 						return true
@@ -74,11 +75,7 @@ export const usePartnerAuthStore = create(
 				// WIP logout logic
 				set((state) => ({
 					...state,
-					user: undefined,
-					isAuth: false,
-					loading: false,
-					error: undefined,
-					authToken: undefined
+					...initialAuthState
 				}))
 			},
 			register: async (request: RegisterBusinessPartnerRequest) => {
@@ -101,6 +98,7 @@ export const usePartnerAuthStore = create(
 							}
 						set((state) => ({
 							...state,
+							loading: false,
 							user: businessPartnerPayload
 						}))
 

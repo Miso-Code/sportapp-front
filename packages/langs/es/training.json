@@ -1,7 +1,7 @@
 {
 	"startTraining": "Iniciar Entrenamento",
 	"endTraining": "Finalizar Entrenamento",
-	"history": "Entranamientos y eventos",
+	"history": "Entrenamientos y eventos",
 	"nutritionalPlan": "Plan Nutricional",
 	"others": "Otros Servicios",
 	"preferentials": "Preferenciales",
@@ -10,6 +10,7 @@
 	"resume": "Reanudar",
 	"stop": "Parar",
 	"trainings": "Entrenamientos",
+	"training": "Entrenamiento",
 	"calendar": "Calendario",
 	"month": "Mes",
 	"week": "Semana",
@@ -29,5 +30,16 @@
 	"strength": "Resistencia",
 	"coolDown": "Enfriamiento",
 	"totalDuration": "Duración Total",
-	"upcomingTraining": "Próximo Entrenamiento"
+	"upcomingTraining": "Próximo Entrenamiento",
+	"hour": "Hora",
+	"event": "Evento",
+	"events": "Eventos",
+	"tomorrow": "Mañana",
+	"previous": "Anterior",
+	"yesterday": "Ayer",
+	"work_week": "Semana Laboral",
+	"date": "Fecha",
+	"allDay": "Todo el día",
+	"showMore": "+ {{total}} más",
+	"next": "Siguiente"
 }

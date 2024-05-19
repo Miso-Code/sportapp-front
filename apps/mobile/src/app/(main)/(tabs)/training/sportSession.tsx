@@ -3,13 +3,9 @@ import 'dayjs/locale/en' // import English locale
 import 'dayjs/locale/es' // import French locale
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter' // load isSameOrAfter plugin
 import weekday from 'dayjs/plugin/weekday' // load weekday plugin
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
-dayjs.extend(weekday) // use weekday plugin
-
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import { IconButton } from 'react-native-paper'
 
@@ -17,28 +13,37 @@ import TimeRing from '@/components/TimerRing'
 import { usePedometer } from '@/hooks/usePedometer'
 import { useLocation } from '@/hooks/useLocation'
 import {
+	useAlertStore,
 	useAuthStore,
+	useNutritionalPlanStore,
 	useSportSessionStore,
 	useSportStore,
 	useTrainingPlanStore,
-	useAlertStore
+	useUserStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { ESubscription } from '@sportapp/sportapp-repository/src/user/interfaces/api/updatePlan'
+
+dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
+dayjs.extend(weekday) // use weekday plugin
 
 const SportSession: React.FC = () => {
-	const { user } = useAuthStore()
+	const { user: userAuth } = useAuthStore()
+	const { user, getSport } = useUserStore()
 	const { startSportSession, finishSportSession, addSessionLocation } =
 		useSportSessionStore()
-	const { getSports, sports } = useSportStore()
 	const { setAlert } = useAlertStore()
+	const { sports, getSports } = useSportStore()
 	const { trainingPlanSessions } = useTrainingPlanStore()
+	const { notifyCaloryIntake } = useNutritionalPlanStore()
+
 	const trainingPlanSessionsMemo = useMemo(
 		() => trainingPlanSessions,
 		[trainingPlanSessions]
 	)
 
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 
 	const { isPedometerAvailable, currentStepCount } = usePedometer()
 	const { locationUpdates, isLocationAvailable } = useLocation()
@@ -56,6 +61,10 @@ const SportSession: React.FC = () => {
 	)
 
 	const [sessionID, setSessionID] = useState<string | null>(null)
+
+	const [plannedTrainingSession, setPlannedTrainingSession] = useState<
+		(typeof trainingPlanSessionsMemo)[number] | null
+	>()
 
 	const motivationalInterval = useRef<ReturnType<typeof setInterval> | null>(
 		null
@@ -98,8 +107,8 @@ const SportSession: React.FC = () => {
 			  }
 
 		const response = await startSportSession({
-			user_id: user.id,
-			sport_id: sports.length ? sports[0].sport_id : '',
+			user_id: userAuth.id,
+			sport_id: user?.sportData?.favourite_sport_id ?? sports[0].sport_id,
 			started_at: startedAt.toISOString(),
 			initial_location
 		})
@@ -108,6 +117,26 @@ const SportSession: React.FC = () => {
 			setSessionID(response.session_id)
 		}
 	}
+
+	const calculateSessionCalories = useCallback(
+		(weight, trainingSession) => {
+			if (!trainingSession)
+				return Math.round((maxTime / 3_600) * 3.5 * weight)
+			const warmUpCaloriesBurned = trainingSession.warm_up * 2 * weight
+			const cardioCaloriesBurned = trainingSession.cardio * 3.5 * weight
+			const strengthCaloriesBurned =
+				trainingSession.strength * 5.5 * weight
+			const coolDownCaloriesBurned =
+				trainingSession.cool_down * 1.5 * weight
+			const totalCaloriesBurned =
+				warmUpCaloriesBurned +
+				cardioCaloriesBurned +
+				strengthCaloriesBurned +
+				coolDownCaloriesBurned
+			return Math.round(totalCaloriesBurned)
+		},
+		[maxTime]
+	)
 
 	const handlePause = () => {
 		setIsPaused(true)
@@ -140,16 +169,39 @@ const SportSession: React.FC = () => {
 		if (isPedometerAvailable) {
 			payload.steps = currentStepCount
 		}
-		await finishSportSession(payload)
+		const response = await finishSportSession(payload)
+
+		const calories = response?.calories ?? 0
+		const plannedCalories = calculateSessionCalories(
+			user?.sportData?.weight,
+			plannedTrainingSession
+		)
+
+		if (
+			user?.profileData?.subscription_type !== ESubscription.FREE &&
+			user?.sportData
+		) {
+			await notifyCaloryIntake({
+				calories_burn: calories,
+				calories_burn_expected: plannedCalories,
+				lang: i18n.language
+			})
+		}
 
 		router.push('training/sportSessionSummary')
 	}, [
 		timer,
+		sessionID,
 		currentTime,
 		isPedometerAvailable,
-		currentStepCount,
 		finishSportSession,
-		sessionID
+		calculateSessionCalories,
+		plannedTrainingSession,
+		notifyCaloryIntake,
+		i18n.language,
+		currentStepCount,
+		user?.profileData?.subscription_type,
+		user?.sportData
 	])
 
 	const sendMotivationalMessage = (doingGreat = true) => {
@@ -202,6 +254,10 @@ const SportSession: React.FC = () => {
 	useEffect(() => {
 		getSports()
 	}, [getSports])
+
+	useEffect(() => {
+		getSport()
+	}, [getSport])
 
 	useEffect(() => {
 		if (motivationalTimer.current) clearInterval(motivationalTimer.current)
@@ -262,6 +318,7 @@ const SportSession: React.FC = () => {
 					return currDiff < prevDiff ? curr : prev
 				}
 			)
+			setPlannedTrainingSession(closestSession)
 			const totalHours =
 				closestSession.warm_up +
 				closestSession.cardio +

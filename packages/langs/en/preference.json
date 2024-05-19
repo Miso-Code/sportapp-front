@@ -13,6 +13,7 @@
 	"types": {
 		"virtual": "Virtual",
 		"inPerson": "In-Person",
+		"in_person": "In-Person",
 		"sport": "Sports",
 		"nutrition": "Nutrition"
 	},

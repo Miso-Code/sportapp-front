@@ -1,19 +1,21 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
 
-import { useSportSessionStore } from '@sportapp/stores'
+import { useBusinessPartnerStore, useSportSessionStore } from '@sportapp/stores'
 
 import { router } from 'expo-router'
 
 import SportSessionHistory from '../sportSessionHistory'
 
 import { Calendar } from 'react-native-big-calendar'
+import ProductServiceCard from '@/components/ProductServiceCard'
 
 jest.mock('dayjs')
 jest.mock('expo-router')
 jest.mock('react-native-safe-area-context')
 jest.mock('react-native-big-calendar', () => {
 	const native = jest.requireActual('react-native')
+	const react = jest.requireActual('react')
 
 	const mockCalendar: typeof Calendar = ({
 		events,
@@ -23,20 +25,16 @@ jest.mock('react-native-big-calendar', () => {
 		return (
 			<native.View>
 				{events.map((event, index) => (
-					<>
+					<react.Fragment key={'mockCalendar' + index}>
 						<native.Button
 							onPress={() => onPressEvent(event)}
 							testID={`testButton`}
 							title={event.title}
-							key={'mockCalendarButton' + index}
 						/>
 						{index < events.length && (
-							<Separator
-								leadingItem={[event]}
-								key={'mockCalendarSeparator' + index}
-							/>
+							<Separator leadingItem={[event]} />
 						)}
-					</>
+					</react.Fragment>
 				))}
 			</native.View>
 		)
@@ -64,6 +62,19 @@ jest.mock('@/components/TrainingCard', () => {
 		</native.View>
 	))
 })
+
+jest.mock('@/hooks/useLocation', () => ({
+	useLocation: jest.fn().mockReturnValue({
+		locationUpdates: [
+			{
+				coords: {
+					latitude: 1,
+					longitude: 1
+				}
+			}
+		]
+	})
+}))
 
 jest.mock('@sportapp/stores', () => ({
 	useSportSessionStore: jest.fn().mockReturnValue({
@@ -117,6 +128,48 @@ jest.mock('@sportapp/stores', () => ({
 			}
 		],
 		getTrainingPlan: jest.fn()
+	}),
+	useSportEventStore: jest.fn().mockReturnValue({
+		sportEvents: [
+			{
+				event_id: '1',
+				sport_id: '1',
+				location_latitude: 1,
+				location_longitude: 1,
+				start_date: new Date().toISOString(),
+				end_date: new Date().toISOString(),
+				title: 'title',
+				capacity: 10,
+				description: 'description'
+			},
+			{
+				event_id: '2',
+				sport_id: '1',
+				location_latitude: 1,
+				location_longitude: 1,
+				start_date: new Date().toISOString(),
+				end_date: new Date().toISOString(),
+				title: 'title',
+				capacity: 10,
+				description: 'description'
+			}
+		],
+		getSportEvents: jest.fn()
+	}),
+	useBusinessPartnerStore: jest.fn().mockReturnValue({
+		suggestProduct: jest.fn().mockResolvedValue({
+			product_id: 'product_id',
+			category: 'category',
+			name: 'name',
+			url: 'url',
+			price: 100,
+			payment_type: 'payment_type',
+			payment_frequency: 'payment_frequency',
+			image_url: 'image_url',
+			description: 'description',
+			active: true
+		}),
+		setProductToCheckout: jest.fn()
 	})
 }))
 
@@ -190,7 +243,7 @@ describe('SportSessionHistory', () => {
 			component.root.findAllByProps({ testID: 'calendarHeader' })[0].props
 				.children
 		).toBe(
-			useSportSessionStore().sportSessions[0].started_at.substring(0, 6)
+			useSportSessionStore().sportSessions[0].started_at.substring(0, 10)
 		)
 	})
 	it('should hide the calendar on switch off', async () => {
@@ -282,7 +335,7 @@ describe('SportSessionHistory', () => {
 		expect(router.push).toHaveBeenCalledTimes(1)
 	})
 
-	it('should show to the training plan on event press if event is training', async () => {
+	it('should show the training plan on event press if event is training', async () => {
 		await act(async () => {
 			await Promise.resolve()
 		})
@@ -295,6 +348,147 @@ describe('SportSessionHistory', () => {
 			testID: 'trainingModal'
 		})
 		expect(trainingModal.props.visible).toBe(true)
+	})
+
+	it('should show the event details on event press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		button.props.onPress()
+		const eventModal = component.root.findByProps({
+			testID: 'eventModal'
+		})
+		expect(eventModal.props.visible).toBe(true)
+	})
+
+	it('should call suggestProduct on event press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+		expect(useBusinessPartnerStore().suggestProduct).toHaveBeenCalled()
+	})
+
+	it('should set the product to checkout on event suggested product press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		const suggestedProductCard =
+			component.root.findByType(ProductServiceCard)
+
+		await act(async () => {
+			suggestedProductCard.props.onPress()
+			await Promise.resolve()
+		})
+		expect(
+			useBusinessPartnerStore().setProductToCheckout
+		).toHaveBeenCalledWith({
+			product_id: 'product_id',
+			category: 'category',
+			name: 'name',
+			url: 'url',
+			price: 100,
+			payment_type: 'payment_type',
+			payment_frequency: 'payment_frequency',
+			image_url: 'image_url',
+			description: 'description',
+			active: true
+		})
+	})
+
+	it('should navigate to the product to checkout on event suggested product press if event is event', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		const suggestedProductCard =
+			component.root.findByType(ProductServiceCard)
+
+		await act(async () => {
+			suggestedProductCard.props.onPress()
+			await Promise.resolve()
+		})
+		expect(router.push).toHaveBeenCalledWith({
+			pathname: 'training/servicesAndProductsCheckout',
+			params: {
+				quantity: 1
+			}
+		})
+	})
+
+	it('should hide the training plan on close', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root.findAllByProps({
+			testID: 'testButton'
+		})
+		const button = eventButtons[Math.floor(eventButtons.length / 2)]
+		button.props.onPress()
+		const trainingModal = component.root.findByProps({
+			testID: 'trainingModal'
+		})
+		trainingModal.props.onDismiss()
+		expect(trainingModal.props.visible).toBe(false)
+	})
+
+	it('should hide the event details on close', async () => {
+		await act(async () => {
+			await Promise.resolve()
+		})
+		const eventButtons = component.root
+			.findAllByProps({
+				testID: 'testButton'
+			})
+			.filter((button) => button.props.onPress)
+
+		const button = eventButtons[eventButtons.length - 1]
+		button.props.onPress()
+		const eventModal = component.root.findByProps({
+			testID: 'eventModal'
+		})
+		eventModal.props.onDismiss()
+		expect(eventModal.props.visible).toBe(false)
 	})
 
 	it('should render a single header when calendar mode is not schedule', async () => {
@@ -313,7 +507,7 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(9) // this is buggy
+		).toBe(93) // this is buggy
 	})
 
 	it('should render unique calendar headers on calendar mode schedule', async () => {
@@ -384,6 +578,6 @@ describe('SportSessionHistory', () => {
 
 		expect(
 			component.root.findAllByProps({ testID: 'calendarHeader' }).length
-		).toBe(15)
+		).toBe(102)
 	})
 })

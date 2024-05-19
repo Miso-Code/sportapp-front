@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateVirtualAppointment should render correctly 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "marginTop": 120,
+      "paddingHorizontal": 15,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        {
+          "gap": 10,
+          "marginBottom": 200,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "borderColor": "gray",
+            "borderRadius": 5,
+            "borderWidth": 1,
+            "gap": 10,
+            "padding": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(28, 27, 31, 1)",
+                "writingDirection": "ltr",
+              },
+              [
+                {
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.15,
+                  "lineHeight": 24,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          preference.form.virtualAppointment.title
+        </Text>
+        <View
+          style={
+            {
+              "alignItems": "flex-start",
+              "flex": 1,
+              "flexGrow": 1,
+              "justifyContent": "center",
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "justifyContent": "flex-start",
+                "width": "100%",
+              }
+            }
+          >
+            <TextInput
+              error={false}
+              keyboardAppearance="default"
+              keyboardType="number-pad"
+              label="form.training.date (MM/DD/YYYY)"
+              maxLength={10}
+              mode="outlined"
+              onChange={[Function]}
+              onChangeText={[Function]}
+              right={
+                <TextInput.Icon
+                  forceTextInputFocus={true}
+                  icon="calendar"
+                  onPress={[Function]}
+                  size={24}
+                  testID="date-picker-appointment-date-icon-button"
+                />
+              }
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "width": "100%",
+                  },
+                  undefined,
+                ]
+              }
+              testID="date-picker-appointment-date"
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          pointerEvents="box-none"
+          style={
+            [
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+        />
+        <TextInput
+          label="form.training.time"
+          mode="outlined"
+          onChangeText={[Function]}
+          testID="time-picker-appointment-time"
+        />
+        <TextInput
+          items={
+            [
+              {
+                "label": "first last",
+                "value": "1",
+              },
+              {
+                "label": "first2 last2",
+                "value": "2",
+              },
+            ]
+          }
+          label="form.training.trainer"
+          onSelect={[Function]}
+          testID="dropdown-trainer"
+        />
+        <TextInput
+          label="form.training.description"
+          mode="outlined"
+          multiline={true}
+          numberOfLines={3}
+          onChangeText={[Function]}
+          testID="input-description"
+        />
+        <View
+          collapsable={false}
+          style={
+            {
+              "backgroundColor": "rgba(28, 27, 31, 0.12)",
+              "borderRadius": 5,
+              "marginTop": 16,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0,
+              "shadowRadius": 0,
+            }
+          }
+          testID="button-container-outer-layer"
+        >
+          <View
+            collapsable={false}
+            style={
+              {
+                "backgroundColor": "rgba(28, 27, 31, 0.12)",
+                "borderColor": "transparent",
+                "borderRadius": 5,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "flex": undefined,
+                "minWidth": 64,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 0,
+                  "width": 0,
+                },
+                "shadowOpacity": 0,
+                "shadowRadius": 0,
+              }
+            }
+            testID="button-container"
+          >
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "borderRadius": 5,
+                  },
+                ]
+              }
+              testID="button"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  selectable={false}
+                  style={
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "rgba(28, 27, 31, 1)",
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontFamily": "System",
+                          "fontSize": 14,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.1,
+                          "lineHeight": 20,
+                        },
+                        [
+                          {
+                            "marginHorizontal": 16,
+                            "marginVertical": 9,
+                            "textAlign": "center",
+                          },
+                          false,
+                          {
+                            "marginHorizontal": 24,
+                            "marginVertical": 10,
+                          },
+                          undefined,
+                          false,
+                          {
+                            "color": "rgba(28, 27, 31, 0.38)",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontWeight": "500",
+                            "letterSpacing": 0.1,
+                            "lineHeight": 20,
+                          },
+                          undefined,
+                        ],
+                      ],
+                    ]
+                  }
+                  testID="button-text"
+                >
+                  form.schedule
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

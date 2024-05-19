@@ -8,6 +8,7 @@ dayjs.extend(isSameOrAfter) // use isSameOrAfter plugin
 dayjs.extend(weekday) // use weekday plugin
 
 import React, { ComponentProps, useEffect, useState, useMemo } from 'react'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { useTranslation } from 'react-i18next'
 
 import { View, ScrollView, StyleSheet, LayoutChangeEvent } from 'react-native'
@@ -26,12 +27,18 @@ import {
 	useSportSessionStore,
 	initialSportSessionState,
 	useTrainingPlanStore,
-	initialTrainingPlanState
+	initialTrainingPlanState,
+	useSportEventStore,
+	initialSportEventState,
+	useBusinessPartnerStore
 } from '@sportapp/stores'
 import { router } from 'expo-router'
 
 import KeyboardAvoidingDialog from '@/components/KeyboardAvoidingDialog'
 import TrianingCard from '@/components/TrainingCard'
+import EventCard from '@/components/EventCard'
+import ProductServiceCard from '@/components/ProductServiceCard'
+import { useLocation } from '@/hooks/useLocation'
 
 interface SportSessionHistoryEvent extends ICalendarEventBase {
 	id: string
@@ -59,7 +66,7 @@ const sportSessionToCalendarEvent = (
 const generateFutureDates = (
 	dayOfWeek: string,
 	time: string,
-	count: number = 30
+	count: number
 ) => {
 	const daysOfWeek = [
 		'sunday',
@@ -71,10 +78,6 @@ const generateFutureDates = (
 		'saturday'
 	]
 	const dayIndex = daysOfWeek.indexOf(dayOfWeek.toLowerCase())
-
-	if (dayIndex === -1) {
-		throw new Error('Invalid day of the week')
-	}
 
 	let [hour, minute] = time.slice(0, -3).split(':').map(Number)
 	const isPM = time.toLowerCase().includes('pm')
@@ -126,6 +129,20 @@ const trainingPlanSessionToCalendarEvents = (
 	}))
 }
 
+const sportEventToCalendarEvent = (
+	event: (typeof initialSportEventState)['sportEvents'][number],
+	title?: string,
+	type: SportSessionHistoryEvent['type'] = 'event'
+): SportSessionHistoryEvent => {
+	return {
+		id: event.event_id,
+		title: title,
+		start: dayjs(event.start_date).toDate(),
+		end: dayjs(event.end_date).toDate(),
+		type: type
+	}
+}
+
 const CalendarHeader: React.FC<{
 	date?: Date
 	leadingItem?: ICalendarEventBase[]
@@ -133,6 +150,7 @@ const CalendarHeader: React.FC<{
 	const { i18n, t } = useTranslation()
 	const { sportSessions } = useSportSessionStore()
 	const { trainingPlanSessions } = useTrainingPlanStore()
+	const { sportEvents } = useSportEventStore()
 
 	const sportSessionEvents = useMemo(
 		() =>
@@ -153,9 +171,25 @@ const CalendarHeader: React.FC<{
 		[trainingPlanSessions, t]
 	)
 
+	const sportEventsCalendarEvents = useMemo(
+		() =>
+			sportEvents.map((event) =>
+				sportEventToCalendarEvent(event, event.title)
+			),
+		[sportEvents]
+	)
+
 	const calendarEvents = useMemo(
-		() => [...sportSessionEvents, ...trainingPlanSessionEvents],
-		[sportSessionEvents, trainingPlanSessionEvents]
+		() => [
+			...sportSessionEvents,
+			...trainingPlanSessionEvents,
+			...sportEventsCalendarEvents
+		],
+		[
+			sportSessionEvents,
+			trainingPlanSessionEvents,
+			sportEventsCalendarEvents
+		]
 	)
 
 	let formattedDate = dayjs(date).locale(i18n.language).format('MMMM YYYY')
@@ -195,13 +229,21 @@ const SportSessionHistory: React.FC = () => {
 	const theme = useTheme()
 	const { t, i18n } = useTranslation()
 
+	const { locationUpdates } = useLocation()
+
 	const { sportSessions, setSportSession, getSportSessions } =
 		useSportSessionStore()
 	const { trainingPlanSessions, getTrainingPlan } = useTrainingPlanStore()
+	const { sportEvents, getSportEvents } = useSportEventStore()
+	const { setProductToCheckout, suggestProduct } = useBusinessPartnerStore()
 
 	const [isLoading, setIsLoading] = useState(true)
 	const [isCalendarActive, setIsCalendarActive] = useState(true)
 	const [calendarHeight, setCalendarHeight] = useState(0)
+	const [suggestedProduct, setSuggestedProduct] =
+		useState<Awaited<ReturnType<typeof suggestProduct>>>()
+	const [loadingSuggestedProduct, setLoadingSuggestedProduct] =
+		useState(false)
 	const [calendarMode, setCalendarMode] =
 		useState<ComponentProps<typeof Calendar>['mode']>('month')
 	const [calendarHeader, setCalendarHeader] = useState<Date>(new Date())
@@ -212,6 +254,8 @@ const SportSessionHistory: React.FC = () => {
 				endDate?: Date
 			}
 		>(null)
+	const [selectedSportEvent, setSelectedSportEvent] =
+		useState<(typeof sportEvents)[number]>(null)
 
 	const sportSessionEvents = useMemo(
 		() =>
@@ -232,9 +276,25 @@ const SportSessionHistory: React.FC = () => {
 		[trainingPlanSessions, t]
 	)
 
+	const sportEventsCalendarEvents = useMemo(
+		() =>
+			sportEvents.map((event) =>
+				sportEventToCalendarEvent(event, event.title, 'event')
+			),
+		[sportEvents]
+	)
+
 	const calendarEvents = useMemo(
-		() => [...sportSessionEvents, ...trainingPlanSessionEvents],
-		[sportSessionEvents, trainingPlanSessionEvents]
+		() => [
+			...sportSessionEvents,
+			...trainingPlanSessionEvents,
+			...sportEventsCalendarEvents
+		],
+		[
+			sportSessionEvents,
+			trainingPlanSessionEvents,
+			sportEventsCalendarEvents
+		]
 	)
 
 	const updateCalendarHeight = (event: LayoutChangeEvent) => {
@@ -267,8 +327,21 @@ const SportSessionHistory: React.FC = () => {
 				})
 				break
 			}
-			default:
+			case 'event': {
+				const sportEvent = sportEvents.find(
+					(sE) => sE.event_id === event.id
+				)
+				setSelectedSportEvent(sportEvent)
+				;(async () => {
+					setLoadingSuggestedProduct(true)
+					const product = await suggestProduct({
+						sport_id: sportEvent.sport_id
+					})
+					setSuggestedProduct(product)
+					setLoadingSuggestedProduct(false)
+				})()
 				break
+			}
 		}
 	}
 
@@ -280,11 +353,19 @@ const SportSessionHistory: React.FC = () => {
 
 	useEffect(() => {
 		;(async () => {
+			setIsLoading(true)
 			await getSportSessions()
 			await getTrainingPlan()
+			if (locationUpdates?.length) {
+				const lastLocation = locationUpdates[locationUpdates.length - 1]
+				await getSportEvents(
+					lastLocation.coords.latitude,
+					lastLocation.coords.longitude
+				)
+			}
 			setIsLoading(false)
 		})()
-	}, [getSportSessions, getTrainingPlan])
+	}, [getSportSessions, getTrainingPlan, getSportEvents, locationUpdates])
 
 	return (
 		<>
@@ -394,6 +475,114 @@ const SportSessionHistory: React.FC = () => {
 							</>
 						)}
 					</View>
+				</KeyboardAvoidingDialog>
+				<KeyboardAvoidingDialog
+					testID='eventModal'
+					visible={!!selectedSportEvent}
+					onDismiss={() => setSelectedSportEvent(null)}>
+					<ScrollView contentContainerStyle={styles.modalContent}>
+						{selectedSportEvent && (
+							<>
+								<Text variant='titleLarge'>
+									{selectedSportEvent.title}
+								</Text>
+								<Text variant='labelMedium'>
+									{dayjs(selectedSportEvent.start_date)
+										.locale(i18n.language)
+										.format('dddd, DD MMMM YYYY')}
+								</Text>
+								<Text variant='labelMedium'>
+									{dayjs(selectedSportEvent.start_date)
+										.locale(i18n.language)
+										.format('hh:mm A')}{' '}
+									-{' '}
+									{dayjs(selectedSportEvent.end_date)
+										.locale(i18n.language)
+										.format('hh:mm A')}
+								</Text>
+								<MapView
+									provider={PROVIDER_GOOGLE}
+									initialRegion={{
+										latitude:
+											selectedSportEvent.location_latitude,
+										longitude:
+											selectedSportEvent.location_longitude,
+										latitudeDelta: 0.0922,
+										longitudeDelta: 0.0421
+									}}
+									initialCamera={{
+										center: {
+											latitude:
+												selectedSportEvent.location_latitude,
+											longitude:
+												selectedSportEvent.location_longitude
+										},
+										zoom: 1,
+										pitch: 0,
+										heading: 0
+									}}
+									style={styles.map}
+								/>
+								<Text variant='bodyLarge'>
+									{selectedSportEvent.description}
+								</Text>
+								{loadingSuggestedProduct ? (
+									<ActivityIndicator />
+								) : (
+									suggestedProduct && (
+										<View
+											style={
+												styles.suggestedProductContainer
+											}>
+											<Text variant='titleSmall'>
+												{t('productService.suggestion')}
+											</Text>
+											<ProductServiceCard
+												title={suggestedProduct.name}
+												description={
+													suggestedProduct.summary
+												}
+												price={suggestedProduct.price}
+												priceFrequency={
+													suggestedProduct.payment_frequency
+												}
+												image={
+													suggestedProduct.image_url
+												}
+												category={
+													suggestedProduct.category
+												}
+												onPress={() => {
+													setSelectedSportEvent(null)
+													setProductToCheckout(
+														suggestedProduct
+													)
+													router.push({
+														pathname:
+															'training/servicesAndProductsCheckout',
+														params: {
+															quantity: 1
+														}
+													})
+												}}
+												small
+											/>
+										</View>
+									)
+								)}
+								<View style={styles.actionsContainer}>
+									<Button
+										testID='cancelButton'
+										textColor={theme.colors.error}
+										onPress={() =>
+											setSelectedSportEvent(null)
+										}>
+										{t('productService.close')}
+									</Button>
+								</View>
+							</>
+						)}
+					</ScrollView>
 				</KeyboardAvoidingDialog>
 			</Portal>
 			<View style={styles.container}>
@@ -512,9 +701,38 @@ const SportSessionHistory: React.FC = () => {
 							<Text variant='headlineSmall'>
 								{t('training.nextEvents')}
 							</Text>
-							<Text variant='bodyLarge'>
-								{t('training.nextEventsEmpty')}
-							</Text>
+							{sportEvents.length ? (
+								sportEvents
+									.filter((event) =>
+										dayjs(event.start_date).isSameOrAfter(
+											dayjs(),
+											'days'
+										)
+									)
+									.sort(
+										(a, b) =>
+											new Date(a.start_date).getTime() -
+											new Date(b.start_date).getTime()
+									)
+									.slice(0, 5)
+									.map((event, i) => (
+										<EventCard
+											key={
+												'card-event-' +
+												event.event_id +
+												'-' +
+												i
+											}
+											date={event.start_date}
+											title={event.title}
+											description={event.description}
+										/>
+									))
+							) : (
+								<Text variant='bodyLarge'>
+									{t('training.nextEventsEmpty')}
+								</Text>
+							)}
 						</ScrollView>
 					</View>
 				)}
@@ -538,11 +756,14 @@ const styles = StyleSheet.create({
 	eventsContainer: {
 		flex: 1,
 		width: '100%',
-		paddingVertical: 20
+		paddingVertical: 20,
+		marginBottom: 20
 	},
 	eventsWrapper: {
 		paddingHorizontal: 20,
-		gap: 10
+		gap: 10,
+		marginBottom: 20,
+		minHeight: 500
 	},
 	horizontalContainer: {
 		flexDirection: 'row',
@@ -574,6 +795,15 @@ const styles = StyleSheet.create({
 	},
 	modalContent: {
 		minHeight: 250
+	},
+	map: {
+		height: 200,
+		width: '100%',
+		marginVertical: 10
+	},
+	suggestedProductContainer: {
+		marginVertical: 10,
+		gap: 10
 	}
 })
 

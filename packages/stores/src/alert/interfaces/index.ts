@@ -2,6 +2,7 @@ export interface IAlertStore extends IAlertState, IAlertActions {}
 
 export interface IAlertState {
 	alert: Alert | undefined
+	alertHistory: Alert[]
 }
 
 export interface Alert {
@@ -9,9 +10,11 @@ export interface Alert {
 	message: string
 	ttl?: number
 	position?: 'top' | 'bottom' | 'center'
+	createAt?: Date
 }
 
 export interface IAlertActions {
-	setAlert: (alert: Alert) => void
+	setAlert: (alert: Alert | undefined) => void
+	addHiddenAlertToHistory: (alert: Alert) => void
 	clearState: () => void
 }

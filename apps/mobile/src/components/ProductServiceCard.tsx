@@ -11,6 +11,7 @@ interface ProductServiceCardProps {
 	category: string
 	image: string
 	onPress?: () => void
+	small?: boolean
 }
 
 const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
@@ -20,6 +21,7 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 	priceFrequency,
 	category,
 	image,
+	small,
 	...props
 }) => {
 	const theme = useTheme()
@@ -34,23 +36,44 @@ const ProductServiceCard: React.FC<ProductServiceCardProps> = ({
 		(priceFrequency ? ` / ${t('productService.' + priceFrequency)}` : '')
 
 	return (
-		<Card elevation={1} style={styles.card} {...props}>
-			<Card.Cover source={{ uri: image }} />
+		<Card
+			testID='productServiceCard'
+			elevation={1}
+			style={small ? styles.cardSmall : styles.card}
+			contentStyle={small ? styles.smallCard : undefined}
+			{...props}>
+			<Card.Cover
+				source={{ uri: image }}
+				style={small ? styles.smallCover : undefined}
+			/>
 			<Card.Content style={styles.cardContent}>
-				<Text variant='titleLarge' style={styles.cardTitle}>
+				<Text
+					variant='titleLarge'
+					ellipsizeMode={small ? 'tail' : undefined}
+					numberOfLines={small ? 1 : undefined}
+					style={styles.cardTitle}>
 					{title}
 				</Text>
-				<Text variant='bodyMedium'>{description}</Text>
-				<View style={styles.chipContainer}>
-					<Chip textStyle={styles.chip} style={styles.chipBackground}>
-						{t(`productService.${category}`)}
-					</Chip>
-					<Chip
-						textStyle={styles.chipCost}
-						style={styles.chipCostBackground}>
-						{formattedPrice}
-					</Chip>
-				</View>
+				<Text
+					variant='bodyMedium'
+					ellipsizeMode={small ? 'tail' : undefined}
+					numberOfLines={small ? 3 : undefined}>
+					{description}
+				</Text>
+				{!small && (
+					<View style={styles.chipContainer}>
+						<Chip
+							textStyle={styles.chip}
+							style={styles.chipBackground}>
+							{t(`productService.${category}`)}
+						</Chip>
+						<Chip
+							textStyle={styles.chipCost}
+							style={styles.chipCostBackground}>
+							{formattedPrice}
+						</Chip>
+					</View>
+				)}
 			</Card.Content>
 		</Card>
 	)
@@ -60,7 +83,11 @@ const createStyles = (theme: MD3Theme) =>
 	StyleSheet.create({
 		card: {
 			backgroundColor: '#f2f2f2',
-			paddingBottom: 10,
+			width: '100%'
+		},
+		cardSmall: {
+			paddingRight: 100,
+			backgroundColor: '#f2f2f2',
 			width: '100%'
 		},
 		cardTitle: {
@@ -68,7 +95,8 @@ const createStyles = (theme: MD3Theme) =>
 		},
 		cardContent: {
 			justifyContent: 'center',
-			marginTop: 10
+			marginTop: 10,
+			paddingBottom: 10
 		},
 		chipContainer: {
 			alignItems: 'flex-start',
@@ -88,6 +116,14 @@ const createStyles = (theme: MD3Theme) =>
 		},
 		chipCost: {
 			color: theme.colors.onTertiaryContainer
+		},
+		smallCard: {
+			flexDirection: 'row',
+			width: '100%'
+		},
+		smallCover: {
+			width: 100,
+			height: 100
 		}
 	})
 

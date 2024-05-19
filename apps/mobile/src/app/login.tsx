@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View, StyleSheet, Image } from 'react-native'
 import {
 	TextInput,
@@ -12,14 +12,31 @@ import SquaredButton from '@/components/SquaredButton'
 import { useAuthStore } from '@sportapp/stores'
 import { router } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import { usePushNotification } from '@/hooks/usePushNotifications'
+import AlertsApi from '@sportapp/sportapp-repository/src/alerts'
 
 export default function App() {
-	const { login, loading, isAuth, error } = useAuthStore()
+	const { login, loading, isAuth, error, authToken } = useAuthStore()
 	const { t } = useTranslation()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [isError, setIsError] = useState(!!error)
+
+	const { getToken } = usePushNotification()
+
+	const sendApiRequest = useCallback(
+		async (deviceToken: string) => {
+			const token = authToken?.accessToken
+			const alertsApi = new AlertsApi()
+			await alertsApi.createOrUpdateUserDeviceToken(deviceToken, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			})
+		},
+		[authToken]
+	)
 
 	useEffect(() => {
 		if (email.length > 0 || password.length > 0) {
@@ -29,22 +46,31 @@ export default function App() {
 
 	useEffect(() => {
 		if (isAuth) {
-			router.navigate('profile')
+			;(async () => {
+				const deviceToken = await getToken()
+				if (deviceToken) {
+					await sendApiRequest(deviceToken)
+				}
+				router.navigate('profile')
+			})()
 		}
-	}, [isAuth])
+	}, [isAuth, getToken, sendApiRequest])
 
 	useEffect(() => {
 		if (error) {
 			setIsError(true)
 		}
+		return () => {
+			setIsError(false)
+		}
 	}, [error])
 
-	const handleLogin = () => {
-		login({ email, password })
+	const handleLogin = async () => {
+		await login({ email, password })
 	}
 
 	const emailHasErrors = () => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 		return !emailRegex.test(email) && email.length > 0
 	}
 

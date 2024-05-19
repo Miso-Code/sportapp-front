@@ -1,5 +1,13 @@
 import React from 'react'
 import renderer, { ReactTestRenderer, act } from 'react-test-renderer'
+import { useAuthStore } from '@sportapp/stores'
+import { router } from 'expo-router'
+
+import Login from '../login'
+import { usePushNotification } from '@/hooks/usePushNotifications'
+
+import AlertsApi from '@sportapp/sportapp-repository/src/alerts'
+import { ActivityIndicator } from 'react-native-paper'
 
 jest.mock('@sportapp/stores', () => ({
 	useAuthStore: jest.fn().mockReturnValue({
@@ -16,10 +24,17 @@ jest.mock('expo-router', () => ({
 	}
 }))
 
-import { useAuthStore } from '@sportapp/stores'
-import { router } from 'expo-router'
+jest.mock('@/hooks/usePushNotifications', () => ({
+	usePushNotification: jest.fn().mockReturnValue({ getToken: jest.fn() })
+}))
 
-import Login from '../login'
+jest.mock('@sportapp/sportapp-repository/src/alerts', () => {
+	return jest.fn().mockImplementation(() => {
+		return {
+			createOrUpdateUserDeviceToken: jest.fn()
+		}
+	})
+})
 
 describe('Login', () => {
 	let component: ReactTestRenderer
@@ -171,7 +186,7 @@ describe('Login', () => {
 		// expect(generalError.props.visible).toBe(true)
 	})
 
-	it('should navigate to the profile screen when the login is successful', () => {
+	it('should navigate to the profile screen when the login is successful', async () => {
 		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
 			login: jest.fn().mockReturnValue(true),
 			loading: false,
@@ -195,6 +210,127 @@ describe('Login', () => {
 
 		act(() => button.props.onPress())
 
+		await act(async () => await Promise.resolve())
+
 		expect(router.navigate).toHaveBeenCalledWith('profile')
+	})
+
+	it('should call getToken when the login is successful', async () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			login: jest.fn().mockReturnValue(true),
+			loading: false,
+			error: null,
+			isAuth: true
+		})
+
+		component.update(<Login />)
+
+		const emailInput = component.root.findByProps({
+			testID: 'text-input-email'
+		})
+		const passwordInput = component.root.findByProps({
+			testID: 'text-input-password'
+		})
+
+		const button = component.root.findByProps({ testID: 'button' })
+
+		act(() => emailInput.props.onChangeText('email@example.com'))
+		act(() => passwordInput.props.onChangeText('password'))
+
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		expect(usePushNotification().getToken).toHaveBeenCalled()
+	})
+
+	it('should not call createOrUpdateUserDeviceToken if the token is not available', async () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			login: jest.fn().mockReturnValue(true),
+			loading: false,
+			error: null,
+			isAuth: true
+		})
+
+		component.update(<Login />)
+
+		const emailInput = component.root.findByProps({
+			testID: 'text-input-email'
+		})
+		const passwordInput = component.root.findByProps({
+			testID: 'text-input-password'
+		})
+
+		const button = component.root.findByProps({ testID: 'button' })
+
+		act(() => emailInput.props.onChangeText('email@example.com'))
+		act(() => passwordInput.props.onChangeText('password'))
+
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		expect(
+			new AlertsApi().createOrUpdateUserDeviceToken
+		).not.toHaveBeenCalled()
+	})
+
+	it('should call createOrUpdateUserDeviceToken if the token is not available', async () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			login: jest.fn().mockReturnValue(true),
+			loading: false,
+			error: null,
+			isAuth: true,
+			authToken: {
+				accessToken: 'authToken'
+			}
+		})
+		;(usePushNotification as unknown as jest.Mock).mockReturnValue({
+			getToken: jest.fn().mockReturnValue('deviceToken')
+		})
+
+		act(() => {
+			component.update(<Login />)
+		})
+
+		const emailInput = component.root.findByProps({
+			testID: 'text-input-email'
+		})
+		const passwordInput = component.root.findByProps({
+			testID: 'text-input-password'
+		})
+
+		const button = component.root.findByProps({ testID: 'button' })
+
+		act(() => emailInput.props.onChangeText('email@example.com'))
+		act(() => passwordInput.props.onChangeText('password'))
+
+		await act(async () => {
+			button.props.onPress()
+			await Promise.resolve()
+		})
+
+		expect(
+			new AlertsApi().createOrUpdateUserDeviceToken
+		).not.toHaveBeenCalledWith('deviceToken', {
+			headers: {
+				Authorization: 'Bearer authToken'
+			}
+		})
+	})
+
+	it('should render an ActivityIndicator when loading', () => {
+		;(useAuthStore as unknown as jest.Mock).mockReturnValue({
+			login: jest.fn().mockReturnValue(false),
+			loading: true,
+			error: null,
+			isAuth: false
+		})
+
+		act(() => component.update(<Login />))
+
+		expect(component.root.findByType(ActivityIndicator)).toBeTruthy()
 	})
 })

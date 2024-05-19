@@ -1,5 +1,6 @@
 import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
+import TranslateIcon from '@mui/icons-material/Translate'
 import {
 	AppBar,
 	Avatar,
@@ -39,6 +40,7 @@ const pages = [
 export default function NavbarTop() {
 	const { t } = useTranslation()
 	const { logout } = usePartnerAuthStore()
+	const { user } = usePartnerAuthStore()
 	const navigate = useNavigate()
 
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
@@ -58,6 +60,10 @@ export default function NavbarTop() {
 
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null)
+	}
+
+	const handleGoToChangeLang = () => {
+		navigate('/partner/lang')
 	}
 
 	return (
@@ -126,12 +132,12 @@ export default function NavbarTop() {
 						))}
 					</Box>
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title={t('navbar.open.profile')}>
+						<Tooltip title={t('navbar.partner.open.profile')}>
 							<IconButton
 								onClick={handleOpenUserMenu}
 								sx={{ p: 0 }}>
 								<Avatar
-									alt='Remy Sharp'
+									alt={user?.email[0] || ''}
 									src='/static/images/avatar/2.jpg'
 								/>
 							</IconButton>
@@ -156,8 +162,8 @@ export default function NavbarTop() {
 								onClick={handleCloseUserMenu}
 								className='gap-4'>
 								<ListItemText
-									primary='John Doe'
-									secondary='jdoe@gmail.com'
+									primary={user?.business_partner_name || ''}
+									secondary={user?.email || ''}
 								/>
 							</MenuItem>
 							<Divider />
@@ -167,6 +173,14 @@ export default function NavbarTop() {
 								</ListItemIcon>
 								<ListItemText
 									primary={t('navbar.partner.logout')}
+								/>
+							</MenuItem>
+							<MenuItem onClick={handleGoToChangeLang}>
+								<ListItemIcon>
+									<TranslateIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={t('navbar.partner.changeLang')}
 								/>
 							</MenuItem>
 						</Menu>

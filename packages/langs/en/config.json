@@ -5,6 +5,8 @@
 		"logout": "Logout"
 	},
 	"language": {
+		"select": "Select language to use in the application",
+		"button": "Change language",
 		"en": "English",
 		"es": "Spanish"
 	}

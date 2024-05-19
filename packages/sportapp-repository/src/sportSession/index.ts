@@ -139,4 +139,17 @@ export default class sportSessionApi {
 			console.error(error)
 		}
 	}
+
+	async getSportSession(session_id: string, options?: AxiosRequestConfig) {
+		try {
+			const endpoint = endpoints.getSession(session_id)
+			const response = await this.sportappApi.get(endpoint, options)
+
+			if (response.status.toString().startsWith('2')) {
+				return response.data
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
 }

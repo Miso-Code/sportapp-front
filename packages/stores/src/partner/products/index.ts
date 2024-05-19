@@ -33,7 +33,8 @@ export const usePartnerProductStore = create(
 				}))
 			},
 			clearState: () => {
-				set(() => ({
+				set((state) => ({
+					...state,
 					...initialProductPartnerState
 				}))
 			},
