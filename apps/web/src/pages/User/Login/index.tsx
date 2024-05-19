@@ -2,7 +2,7 @@ import SecondarySection from '@/components/SecondarySection'
 import TransitionAlert from '@/components/TransitionAlert'
 import LoginContainer from '@/containers/Login'
 import { FormData } from '@/containers/Login/utils/schema'
-import { Button, Paper, Typography } from '@mui/material'
+import { Box, Button, Paper, Typography } from '@mui/material'
 import { useAuthStore } from '@sportapp/stores/src/auth'
 import registerImage from 'assets/images/login-wallpaper.jpg'
 import { useEffect, useState } from 'react'
@@ -33,6 +33,10 @@ export default function Login() {
 
 	const handleGoToRegister = () => {
 		navigate('/register')
+	}
+
+	const handleGoToPartner = () => {
+		navigate('/partner/login')
 	}
 
 	useEffect(() => {
@@ -66,6 +70,23 @@ export default function Login() {
 							{t('login.register.go')}
 						</Button>
 					</Paper>
+					<Box className='navigation-partner'>
+						<Typography
+							sx={{
+								m: 0
+							}}
+							variant='body1'>
+							{t('login.partner.question')}
+							<Button
+								type='button'
+								disabled={loading}
+								onClick={handleGoToPartner}
+								variant='text'
+								title={t('login.button')}>
+								{t('login.partner.go')}
+							</Button>
+						</Typography>
+					</Box>
 				</main>
 				<SecondarySection
 					image={registerImage}

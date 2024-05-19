@@ -196,12 +196,14 @@ export default function PaymentPlans() {
 								key={index}
 								className='payment-card'
 								isActive={plan.isActive}
+								activeText={t('paymentPlans.active')}
 								name={plan.name}
 								description={plan.description}
 								benefits={plan.benefits}
 								duration={plan.duration}
 								price={plan.price}
 								onClick={plan.onClick}
+								data-testid={plan.name}
 							/>
 						))}
 					</Box>

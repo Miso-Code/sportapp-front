@@ -3,7 +3,7 @@ import TransitionAlert from '@/components/TransitionAlert'
 import CreateProduct from '@/containers/Partner/CreateProduct'
 import { FormData } from '@/containers/Partner/CreateProduct/utils/schema'
 import { toBase64 } from '@/utils/files'
-import { Card, Container, Typography } from '@mui/material'
+import { Box, Card, Container, Typography } from '@mui/material'
 import {
 	ProductCreateRequest,
 	WithBase64Image,
@@ -13,6 +13,7 @@ import { usePartnerProductStore } from '@sportapp/stores'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import './_index.scss'
 
 export default function CreateProductPartnerPage() {
 	const navigate = useNavigate()
@@ -42,7 +43,8 @@ export default function CreateProductPartnerPage() {
 						payment_type: data.paymentType,
 						payment_frequency: data.paymentFrequency,
 						description: data.description,
-						image_base64: image64
+						image_base64: image64,
+						sport_id: data.sport_id
 				  } as WithBase64Image)
 				: ({
 						category: data.category,
@@ -53,40 +55,37 @@ export default function CreateProductPartnerPage() {
 						payment_type: data.paymentType,
 						payment_frequency: data.paymentFrequency,
 						description: data.description,
-						image_url: data.imageUrl
+						image_url: data.imageUrl,
+						sport_id: data.sport_id
 				  } as WithUrlImage)
 
 		const result = await createProduct(payload)
 		if (result) navigate('/partner/home')
 	}
 	return (
-		<>
-			<div>
-				<NavbarTop />
-				<Container maxWidth='xl'>
-					<main className='my-8'>
-						<Card
-							variant='outlined'
-							className='p-8 max-w-4xl mx-auto'>
-							<Typography className='mb-4' variant='h4'>
-								{t('productCreate.title')}
-							</Typography>
+		<Box>
+			<NavbarTop />
+			<Container maxWidth='xl' sx={{ position: 'relative' }}>
+				<main className='my-8'>
+					<Card variant='outlined' className='p-8 max-w-4xl mx-auto'>
+						<Typography className='mb-4' variant='h4'>
+							{t('productCreate.title')}
+						</Typography>
 
-							<CreateProduct
-								isLoading={loading}
-								onHandleSubmit={onSubmit}
-							/>
-						</Card>
-					</main>
-				</Container>
-			</div>
-			<TransitionAlert
-				containerClassName='alert-partner-login-container'
-				isOpen={alert}
-				handleClose={setAlert}
-				message={t(error ?? 'errors.partner.createProduct.base')}
-				severity='error'
-			/>
-		</>
+						<CreateProduct
+							isLoading={loading}
+							onHandleSubmit={onSubmit}
+						/>
+					</Card>
+				</main>
+				<TransitionAlert
+					containerClassName='alert-partner-login-container'
+					isOpen={alert}
+					handleClose={setAlert}
+					message={t(error ?? 'errors.partner.createProduct.base')}
+					severity='error'
+				/>
+			</Container>
+		</Box>
 	)
 }

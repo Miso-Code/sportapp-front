@@ -148,7 +148,7 @@ function HomePage() {
 			defaultValues={{
 				birthday: parse(
 					user?.profileData?.birth_date ?? '',
-					'yyyy-MM-dd',
+					"yyyy-MM-dd'T'HH:mm:ss",
 					new Date()
 				),
 				documentNumber: user?.profileData?.identification_number ?? '',
