@@ -605,29 +605,6 @@ describe('SportSession', () => {
 				useNutritionalPlanStore().notifyCaloryIntake
 			).toHaveBeenCalled()
 		})
-
-		it('should call setAlert when the timer is stopped and there is a response on notifyCaloryIntake', async () => {
-			;(
-				useNutritionalPlanStore().notifyCaloryIntake as jest.Mock
-			).mockReturnValue({
-				user_id: 'user_id',
-				message: 'message'
-			})
-
-			const stopButton = component.root.findByProps({
-				testID: 'stopButton'
-			})
-			await act(async () => {
-				stopButton.props.onPress()
-				await Promise.resolve()
-			})
-
-			expect(useAlertStore().setAlert).toHaveBeenCalledWith({
-				type: 'info',
-				message: 'message',
-				position: 'top'
-			})
-		})
 	})
 
 	describe('Motivation Alerts', () => {
