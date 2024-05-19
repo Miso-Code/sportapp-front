@@ -5,8 +5,14 @@
 		"default": "Register",
 		"go": "Sign Up"
 	},
+	"login": {
+		"question": "Don't have an account?",
+		"go": "Click to enter"
+	},
 	"partner": {
-		"title": "Partner Login"
+		"title": "Partner Login",
+		"question": "Are you a partner?",
+		"go": "Click to enter"
 	},
 	"image": "Login Image"
 }
