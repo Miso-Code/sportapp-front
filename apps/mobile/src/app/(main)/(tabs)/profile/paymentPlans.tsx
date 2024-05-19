@@ -298,7 +298,10 @@ const PaymentPlans: React.FC = () => {
 			</Portal>
 			<ScrollView contentContainerStyle={styles.container}>
 				{paymentPlans.map((plan) => (
-					<Surface style={styles.paymentCard} key={plan.name}>
+					<Surface
+						style={styles.paymentCard}
+						key={plan.name}
+						testID='planCard'>
 						<Text variant='titleMedium'>{plan.name}</Text>
 						<Text variant='bodySmall'>{plan.description}</Text>
 						<Text variant='displaySmall'>

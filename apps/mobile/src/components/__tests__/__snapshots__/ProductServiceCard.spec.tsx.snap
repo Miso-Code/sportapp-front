@@ -17,7 +17,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
       "width": "100%",
     }
   }
-  testID="card-container-outer-layer"
+  testID="productServiceCard-container-outer-layer"
 >
   <View
     collapsable={false}
@@ -36,7 +36,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
         "shadowRadius": 1,
       }
     }
-    testID="card-container"
+    testID="productServiceCard-container"
   >
     <View
       style={
@@ -47,7 +47,7 @@ exports[`ProductServiceCard should render correctly 1`] = `
           undefined,
         ]
       }
-      testID="card"
+      testID="productServiceCard"
     >
       <View
         style={

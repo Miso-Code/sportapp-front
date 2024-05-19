@@ -498,7 +498,7 @@ exports[`PaymentPlans should render correctly 1`] = `
             "width": "90%",
           }
         }
-        testID="surface-outer-layer"
+        testID="planCard-outer-layer"
       >
         <View
           collapsable={false}
@@ -518,7 +518,7 @@ exports[`PaymentPlans should render correctly 1`] = `
               "shadowRadius": 1,
             }
           }
-          testID="surface"
+          testID="planCard"
         >
           <Text
             style={
@@ -1394,7 +1394,7 @@ exports[`PaymentPlans should render correctly 1`] = `
             "width": "90%",
           }
         }
-        testID="surface-outer-layer"
+        testID="planCard-outer-layer"
       >
         <View
           collapsable={false}
@@ -1414,7 +1414,7 @@ exports[`PaymentPlans should render correctly 1`] = `
               "shadowRadius": 1,
             }
           }
-          testID="surface"
+          testID="planCard"
         >
           <Text
             style={
@@ -2129,7 +2129,7 @@ exports[`PaymentPlans should render correctly 1`] = `
             "width": "90%",
           }
         }
-        testID="surface-outer-layer"
+        testID="planCard-outer-layer"
       >
         <View
           collapsable={false}
@@ -2149,7 +2149,7 @@ exports[`PaymentPlans should render correctly 1`] = `
               "shadowRadius": 1,
             }
           }
-          testID="surface"
+          testID="planCard"
         >
           <Text
             style={

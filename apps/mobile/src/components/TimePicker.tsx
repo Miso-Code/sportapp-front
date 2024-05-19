@@ -31,7 +31,8 @@ const TimePicker: React.FC<TimePickerProps> = ({
 	label,
 	disabled,
 	value,
-	onChangeText
+	onChangeText,
+	...props
 }) => {
 	const { i18n } = useTranslation()
 
@@ -71,6 +72,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
 					right={<TextInput.Icon icon='clock-outline' />}
 					editable={false}
 					disabled={disabled}
+					{...props}
 				/>
 				<Pressable
 					testID='timePickerPressable'
