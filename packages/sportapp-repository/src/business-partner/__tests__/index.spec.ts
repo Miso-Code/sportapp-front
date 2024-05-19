@@ -213,7 +213,8 @@ describe('BusinessPartnerApi', () => {
 					payment_frequency: 'test',
 					image_url: 'test',
 					description: 'test',
-					active: true
+					active: true,
+					sport_id: '1'
 				}
 			}
 
@@ -247,7 +248,8 @@ describe('BusinessPartnerApi', () => {
 					payment_frequency: 'test',
 					image_url: 'test',
 					description: 'test',
-					active: true
+					active: true,
+					sport_id: '1'
 				}
 			}
 
@@ -285,7 +287,8 @@ describe('BusinessPartnerApi', () => {
 					payment_frequency: 'test',
 					image_url: 'test',
 					description: 'test',
-					active: true
+					active: true,
+					sport_id: '1'
 				}
 			}
 

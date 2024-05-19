@@ -49,3 +49,12 @@ export enum trainingDays {
 }
 
 export type TrainingDays = `${trainingDays}`
+
+export enum Plans {
+	PLAN_FREE = 'Plan Gratuito',
+	PLAN_INTERMEDIATE = 'Plan Intermedio',
+	PLAN_PREMIUM = 'Plan Premium'
+}
+
+export type PlanType = `${Plans}`
+export type PlanTypeKey = keyof typeof Plans
