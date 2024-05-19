@@ -69,6 +69,10 @@ jobs:
                   "labels": ["refactor"]
                 },
                 {
+                  "title": "## 🧪 E2E Tests",
+                  "labels": ["e2e"]
+                },
+                {
                   "title": "## 💬 Other",
                   "labels": ["other"]
                 }
